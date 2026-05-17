@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2137647420380853634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3399599375635464398}
+  - component: {fileID: 367070659484833109}
+  m_Layer: 0
+  m_Name: AkazukinStageStateUpdateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3399599375635464398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137647420380853634}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &367070659484833109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137647420380853634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88284d2dd0ec65d4ab19dfd459eb815b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dontDestroyOnLoad: 1
+  m_stateUpdateList:
+  - {fileID: 2926392426969629170, guid: 83a852da9b080344486485f2158e1cd6, type: 3}
+  - {fileID: -3812119049362189747, guid: 5519c7e7789ca954faff499b78d2730c, type: 3}
+  - {fileID: -9192173384410959007, guid: a301428136d35624ba17c846e2a9a64b, type: 3}
+  - {fileID: -921909540177251060, guid: 3dfa44e7c036f784daab18d9eb38715d, type: 3}
+  - {fileID: -2626332291287311242, guid: 1deb9cb1467965446bb53ba6257ddb38, type: 3}
+  - {fileID: -5256788588203043217, guid: f0e4e99c4d749894dbde4463aa499d1f, type: 3}
+  - {fileID: -1825624721072915247, guid: 19f0fc63638c0714daef222009b501bf, type: 3}
+  - {fileID: 5461272391591969195, guid: 387e6e97e5fcac0439299ac53e667f7d, type: 3}
+  - {fileID: 5193794998851135683, guid: 7cee8e9d9ec7402429dd764d23031800, type: 3}
+  - {fileID: 4209437909695871753, guid: 046d29f51cc535043ab808aed319f408, type: 3}
+  - {fileID: 6981085490432841693, guid: 9fa759eeef5bfc04ba9972e057f5a336, type: 3}
+  - {fileID: 8445744741595369207, guid: 0447e0d4a10a08240ab2640a3161a3bf, type: 3}
+  m_isActive: 1
+  m_akazukinStageState: 6
+  m_initilizeStateList:
+  - m_sceneName: LobbyScene
+    m_akazukinStageState: 16
+  m_initilizeState: 0
+  m_tutrialColliderList:
+    _list:
+    - key: 1
+      value: {fileID: 0}
+    - key: 4
+      value: {fileID: 0}
+    - key: 5
+      value: {fileID: 0}
+    - key: 6
+      value: {fileID: 0}
+  m_changeCharacterTransformList:
+  - m_akazukinStageState: 5
+    m_speakerType: 40
+    m_changeTransform: {fileID: 0}
+  - m_akazukinStageState: 15
+    m_speakerType: 44
+    m_changeTransform: {fileID: 0}
+  - m_akazukinStageState: 15
+    m_speakerType: 43
+    m_changeTransform: {fileID: 0}
+  - m_akazukinStageState: 15
+    m_speakerType: 41
+    m_changeTransform: {fileID: 0}
+  m_BossCharacter: {fileID: 0}
+  m_NPCPositisonsParentTrans: {fileID: 0}

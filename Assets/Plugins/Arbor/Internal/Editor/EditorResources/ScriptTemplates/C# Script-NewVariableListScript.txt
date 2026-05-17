@@ -1,0 +1,41 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using Arbor;
+
+	#ROOTNAMESPACEBEGIN#
+[System.Serializable]
+public class FlexibleList#VARIABLENAME# : FlexibleList<#VARIABLENAME#>
+{
+	public FlexibleList#VARIABLENAME#()
+	{
+	}
+
+	public FlexibleList#VARIABLENAME#(IList<#VARIABLENAME#> value) : base(value)
+	{
+	}
+
+	public FlexibleList#VARIABLENAME#(AnyParameterReference parameter) : base(parameter)
+	{
+	}
+
+	public FlexibleList#VARIABLENAME#(InputSlotAny slot) : base(slot)
+	{
+	}
+}
+
+[System.Serializable]
+public class InputSlotList#VARIABLENAME# : InputSlot<IList<#VARIABLENAME#>>
+{
+}
+
+[System.Serializable]
+public class OutputSlotList#VARIABLENAME# : OutputSlot<IList<#VARIABLENAME#>>
+{
+}
+
+[AddComponentMenu("")]
+public class #VARIABLENAME#ListVariable : VariableList<#VARIABLENAME#>
+{
+}
+#ROOTNAMESPACEEND#

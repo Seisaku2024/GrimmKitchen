@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6582520944376093557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2645234977089375552}
+  - component: {fileID: 5193794998851135683}
+  m_Layer: 0
+  m_Name: AkazukinStageUpdate_PreBossBattleTalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2645234977089375552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582520944376093557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5193794998851135683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582520944376093557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dfe79f8115d7ef47919e19add6a060e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_akazukinStageState: 13
+  m_nextAkazukinStageState: 14
+  m_conversationWindowController: {fileID: 151814443516001538, guid: 3638e9774becded49ab7201a8cc8935d, type: 3}
+  m_speakerType: 44
+  m_storyType: 3
+  m_talkingFase: 4
+  m_changeNpcActiveList:
+    _list:
+    - key: 40
+      value: 0
+    - key: 41
+      value: 0
+    - key: 43
+      value: 0
+    - key: 44
+      value: 0
+    - key: 42
+      value: 0
+  m_changeNonNpcActiveList:
+    _list:
+    - key: 5
+      value: 1

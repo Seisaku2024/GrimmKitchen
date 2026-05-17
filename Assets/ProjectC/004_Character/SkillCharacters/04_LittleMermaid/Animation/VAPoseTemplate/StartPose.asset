@@ -1,0 +1,1065 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f78c6efa51b78674bac5fa1e7f03afe6, type: 3}
+  m_Name: StartPose
+  m_EditorClassIdentifier: 
+  isHuman: 1
+  haveRootT: 1
+  rootT: {x: 0.0024196138, y: 1.0000001, z: -0.012239841}
+  haveRootQ: 1
+  rootQ: {x: 0.000000007450582, y: -0.0000000041910937, z: 2.5982066e-10, w: 1}
+  musclePropertyNames:
+  - Spine Front-Back
+  - Spine Left-Right
+  - Spine Twist Left-Right
+  - Chest Front-Back
+  - Chest Left-Right
+  - Chest Twist Left-Right
+  - UpperChest Front-Back
+  - UpperChest Left-Right
+  - UpperChest Twist Left-Right
+  - Neck Nod Down-Up
+  - Neck Tilt Left-Right
+  - Neck Turn Left-Right
+  - Head Nod Down-Up
+  - Head Tilt Left-Right
+  - Head Turn Left-Right
+  - Left Eye Down-Up
+  - Left Eye In-Out
+  - Right Eye Down-Up
+  - Right Eye In-Out
+  - Jaw Close
+  - Jaw Left-Right
+  - Left Upper Leg Front-Back
+  - Left Upper Leg In-Out
+  - Left Upper Leg Twist In-Out
+  - Left Lower Leg Stretch
+  - Left Lower Leg Twist In-Out
+  - Left Foot Up-Down
+  - Left Foot Twist In-Out
+  - Left Toes Up-Down
+  - Right Upper Leg Front-Back
+  - Right Upper Leg In-Out
+  - Right Upper Leg Twist In-Out
+  - Right Lower Leg Stretch
+  - Right Lower Leg Twist In-Out
+  - Right Foot Up-Down
+  - Right Foot Twist In-Out
+  - Right Toes Up-Down
+  - Left Shoulder Down-Up
+  - Left Shoulder Front-Back
+  - Left Arm Down-Up
+  - Left Arm Front-Back
+  - Left Arm Twist In-Out
+  - Left Forearm Stretch
+  - Left Forearm Twist In-Out
+  - Left Hand Down-Up
+  - Left Hand In-Out
+  - Right Shoulder Down-Up
+  - Right Shoulder Front-Back
+  - Right Arm Down-Up
+  - Right Arm Front-Back
+  - Right Arm Twist In-Out
+  - Right Forearm Stretch
+  - Right Forearm Twist In-Out
+  - Right Hand Down-Up
+  - Right Hand In-Out
+  - LeftHand.Thumb.1 Stretched
+  - LeftHand.Thumb.Spread
+  - LeftHand.Thumb.2 Stretched
+  - LeftHand.Thumb.3 Stretched
+  - LeftHand.Index.1 Stretched
+  - LeftHand.Index.Spread
+  - LeftHand.Index.2 Stretched
+  - LeftHand.Index.3 Stretched
+  - LeftHand.Middle.1 Stretched
+  - LeftHand.Middle.Spread
+  - LeftHand.Middle.2 Stretched
+  - LeftHand.Middle.3 Stretched
+  - LeftHand.Ring.1 Stretched
+  - LeftHand.Ring.Spread
+  - LeftHand.Ring.2 Stretched
+  - LeftHand.Ring.3 Stretched
+  - LeftHand.Little.1 Stretched
+  - LeftHand.Little.Spread
+  - LeftHand.Little.2 Stretched
+  - LeftHand.Little.3 Stretched
+  - RightHand.Thumb.1 Stretched
+  - RightHand.Thumb.Spread
+  - RightHand.Thumb.2 Stretched
+  - RightHand.Thumb.3 Stretched
+  - RightHand.Index.1 Stretched
+  - RightHand.Index.Spread
+  - RightHand.Index.2 Stretched
+  - RightHand.Index.3 Stretched
+  - RightHand.Middle.1 Stretched
+  - RightHand.Middle.Spread
+  - RightHand.Middle.2 Stretched
+  - RightHand.Middle.3 Stretched
+  - RightHand.Ring.1 Stretched
+  - RightHand.Ring.Spread
+  - RightHand.Ring.2 Stretched
+  - RightHand.Ring.3 Stretched
+  - RightHand.Little.1 Stretched
+  - RightHand.Little.Spread
+  - RightHand.Little.2 Stretched
+  - RightHand.Little.3 Stretched
+  muscleValues:
+  - 0
+  - 0
+  - 0
+  - 0.0000002561321
+  - 0
+  - 0
+  - -0.00000017075473
+  - 0
+  - 0
+  - -0.009430664
+  - -0.00019800568
+  - -0.000756533
+  - -0.009837153
+  - -0.000011305079
+  - -0.0007934593
+  - 0.0000002748255
+  - -0.0000015367923
+  - -0.000000070728944
+  - 0.00000068301887
+  - 1.0285534
+  - -0.00000035060478
+  - 0.65860033
+  - 0.0023805813
+  - -0.00000029676062
+  - 1.0598037
+  - 0.000000051378514
+  - 0.03732941
+  - -0.00446822
+  - 0
+  - 0.65859884
+  - -0.0023802835
+  - 0.00000029676056
+  - 1.0598013
+  - 0.0000001541353
+  - 0.037327114
+  - 0.004467661
+  - 0
+  - 0.00000013784887
+  - 0.00000083954393
+  - -0.5277603
+  - 0.38248923
+  - -0.00000104105
+  - 0.99991626
+  - -0.000024795534
+  - 0.0000048451666
+  - -0.00000017064355
+  - 0.0000003632984
+  - -0.00000019209907
+  - -0.5277603
+  - 0.38248923
+  - -0.0000012492599
+  - 0.99991626
+  - -0.000024795538
+  - 0.00000546415
+  - 0.00000025625994
+  - -0.68499744
+  - 0.47293398
+  - 0.6459684
+  - 0.64596844
+  - 0.66682726
+  - -0.4674994
+  - 0.81107616
+  - 0.81107616
+  - 0.66796976
+  - -0.6108315
+  - 0.8116842
+  - 0.8116839
+  - 0.6679698
+  - -0.6108281
+  - 0.81168395
+  - 0.811684
+  - 0.6679698
+  - -0.457393
+  - 0.8116842
+  - 0.8116841
+  - -0.6849987
+  - 0.47293395
+  - 0.64596814
+  - 0.6459687
+  - 0.66682684
+  - -0.4674994
+  - 0.81107616
+  - 0.81107616
+  - 0.6679697
+  - -0.6108278
+  - 0.8116841
+  - 0.8116842
+  - 0.6679698
+  - -0.6108318
+  - 0.811684
+  - 0.8116842
+  - 0.66797
+  - -0.45739263
+  - 0.8116837
+  - 0.811684
+  tdofIndices: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f0000001000000011000000120000001300000014000000
+  tdofValues:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  ikIndices: 00000000010000000200000003000000
+  ikValues:
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+  transformPaths:
+  - 
+  - Armature
+  - Armature/Root
+  - Armature/Root/J_Bip_C_Hips
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_L_FaceEye
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_L_FaceEye/J_Adj_L_FaceEye_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_R_FaceEye
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Adj_R_FaceEye/J_Adj_R_FaceEye_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01/J_Sec_Hair3_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01/J_Sec_Hair3_01/J_Sec_Hair4_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01/J_Sec_Hair3_01/J_Sec_Hair4_01/J_Sec_Hair5_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01/J_Sec_Hair3_01/J_Sec_Hair4_01/J_Sec_Hair5_01/J_Sec_Hair6_01
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_01/J_Sec_Hair2_01/J_Sec_Hair3_01/J_Sec_Hair4_01/J_Sec_Hair5_01/J_Sec_Hair6_01/J_Sec_Hair6_01_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02/J_Sec_Hair2_02
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02/J_Sec_Hair2_02/J_Sec_Hair3_02
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02/J_Sec_Hair2_02/J_Sec_Hair3_02/J_Sec_Hair4_02
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02/J_Sec_Hair2_02/J_Sec_Hair3_02/J_Sec_Hair4_02/J_Sec_Hair5_02
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_02/J_Sec_Hair2_02/J_Sec_Hair3_02/J_Sec_Hair4_02/J_Sec_Hair5_02/J_Sec_Hair5_02_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03/J_Sec_Hair2_03
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03/J_Sec_Hair2_03/J_Sec_Hair3_03
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03/J_Sec_Hair2_03/J_Sec_Hair3_03/J_Sec_Hair4_03
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03/J_Sec_Hair2_03/J_Sec_Hair3_03/J_Sec_Hair4_03/J_Sec_Hair5_03
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_03/J_Sec_Hair2_03/J_Sec_Hair3_03/J_Sec_Hair4_03/J_Sec_Hair5_03/J_Sec_Hair5_03_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04/J_Sec_Hair2_04
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04/J_Sec_Hair2_04/J_Sec_Hair3_04
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04/J_Sec_Hair2_04/J_Sec_Hair3_04/J_Sec_Hair4_04
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04/J_Sec_Hair2_04/J_Sec_Hair3_04/J_Sec_Hair4_04/J_Sec_Hair5_04
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_04/J_Sec_Hair2_04/J_Sec_Hair3_04/J_Sec_Hair4_04/J_Sec_Hair5_04/J_Sec_Hair5_04_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05/J_Sec_Hair2_05
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05/J_Sec_Hair2_05/J_Sec_Hair3_05
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05/J_Sec_Hair2_05/J_Sec_Hair3_05/J_Sec_Hair4_05
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05/J_Sec_Hair2_05/J_Sec_Hair3_05/J_Sec_Hair4_05/J_Sec_Hair5_05
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_05/J_Sec_Hair2_05/J_Sec_Hair3_05/J_Sec_Hair4_05/J_Sec_Hair5_05/J_Sec_Hair5_05_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06/J_Sec_Hair2_06
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06/J_Sec_Hair2_06/J_Sec_Hair3_06
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06/J_Sec_Hair2_06/J_Sec_Hair3_06/J_Sec_Hair4_06
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06/J_Sec_Hair2_06/J_Sec_Hair3_06/J_Sec_Hair4_06/J_Sec_Hair5_06
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_06/J_Sec_Hair2_06/J_Sec_Hair3_06/J_Sec_Hair4_06/J_Sec_Hair5_06/J_Sec_Hair5_06_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07/J_Sec_Hair2_07
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07/J_Sec_Hair2_07/J_Sec_Hair3_07
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07/J_Sec_Hair2_07/J_Sec_Hair3_07/J_Sec_Hair4_07
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07/J_Sec_Hair2_07/J_Sec_Hair3_07/J_Sec_Hair4_07/J_Sec_Hair5_07
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_07/J_Sec_Hair2_07/J_Sec_Hair3_07/J_Sec_Hair4_07/J_Sec_Hair5_07/J_Sec_Hair5_07_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08/J_Sec_Hair2_08
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08/J_Sec_Hair2_08/J_Sec_Hair3_08
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08/J_Sec_Hair2_08/J_Sec_Hair3_08/J_Sec_Hair4_08
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08/J_Sec_Hair2_08/J_Sec_Hair3_08/J_Sec_Hair4_08/J_Sec_Hair5_08
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_08/J_Sec_Hair2_08/J_Sec_Hair3_08/J_Sec_Hair4_08/J_Sec_Hair5_08/J_Sec_Hair5_08_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09/J_Sec_Hair2_09
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09/J_Sec_Hair2_09/J_Sec_Hair3_09
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09/J_Sec_Hair2_09/J_Sec_Hair3_09/J_Sec_Hair4_09
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09/J_Sec_Hair2_09/J_Sec_Hair3_09/J_Sec_Hair4_09/J_Sec_Hair5_09
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_09/J_Sec_Hair2_09/J_Sec_Hair3_09/J_Sec_Hair4_09/J_Sec_Hair5_09/J_Sec_Hair5_09_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10/J_Sec_Hair2_10
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10/J_Sec_Hair2_10/J_Sec_Hair3_10
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10/J_Sec_Hair2_10/J_Sec_Hair3_10/J_Sec_Hair4_10
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10/J_Sec_Hair2_10/J_Sec_Hair3_10/J_Sec_Hair4_10/J_Sec_Hair5_10
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_10/J_Sec_Hair2_10/J_Sec_Hair3_10/J_Sec_Hair4_10/J_Sec_Hair5_10/J_Sec_Hair5_10_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11/J_Sec_Hair2_11
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11/J_Sec_Hair2_11/J_Sec_Hair3_11
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11/J_Sec_Hair2_11/J_Sec_Hair3_11/J_Sec_Hair4_11
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11/J_Sec_Hair2_11/J_Sec_Hair3_11/J_Sec_Hair4_11/J_Sec_Hair5_11
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_11/J_Sec_Hair2_11/J_Sec_Hair3_11/J_Sec_Hair4_11/J_Sec_Hair5_11/J_Sec_Hair5_11_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12/J_Sec_Hair2_12
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12/J_Sec_Hair2_12/J_Sec_Hair3_12
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12/J_Sec_Hair2_12/J_Sec_Hair3_12/J_Sec_Hair4_12
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12/J_Sec_Hair2_12/J_Sec_Hair3_12/J_Sec_Hair4_12/J_Sec_Hair5_12
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_12/J_Sec_Hair2_12/J_Sec_Hair3_12/J_Sec_Hair4_12/J_Sec_Hair5_12/J_Sec_Hair5_12_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13/J_Sec_Hair2_13
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13/J_Sec_Hair2_13/J_Sec_Hair3_13
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13/J_Sec_Hair2_13/J_Sec_Hair3_13/J_Sec_Hair4_13
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13/J_Sec_Hair2_13/J_Sec_Hair3_13/J_Sec_Hair4_13/J_Sec_Hair5_13
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/J_Bip_C_Head/J_Sec_Hair1_13/J_Sec_Hair2_13/J_Sec_Hair3_13/J_Sec_Hair4_13/J_Sec_Hair5_13/J_Sec_Hair5_13_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_C_Neck/MagicaHeadCollider
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Index1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Index1/J_Bip_L_Index2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Index1/J_Bip_L_Index2/J_Bip_L_Index3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Index1/J_Bip_L_Index2/J_Bip_L_Index3/J_Bip_L_Index3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Little1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Little1/J_Bip_L_Little2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Little1/J_Bip_L_Little2/J_Bip_L_Little3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Little1/J_Bip_L_Little2/J_Bip_L_Little3/J_Bip_L_Little3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Middle1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Middle1/J_Bip_L_Middle2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Middle1/J_Bip_L_Middle2/J_Bip_L_Middle3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Middle1/J_Bip_L_Middle2/J_Bip_L_Middle3/J_Bip_L_Middle3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Ring1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Ring1/J_Bip_L_Ring2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Ring1/J_Bip_L_Ring2/J_Bip_L_Ring3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Ring1/J_Bip_L_Ring2/J_Bip_L_Ring3/J_Bip_L_Ring3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1/J_Bip_L_Thumb2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1/J_Bip_L_Thumb2/J_Bip_L_Thumb3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/J_Bip_L_LowerArm/J_Bip_L_Hand/J_Bip_L_Thumb1/J_Bip_L_Thumb2/J_Bip_L_Thumb3/J_Bip_L_Thumb3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm/MagicaLArmCollider
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Index1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Index1/J_Bip_R_Index2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Index1/J_Bip_R_Index2/J_Bip_R_Index3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Index1/J_Bip_R_Index2/J_Bip_R_Index3/J_Bip_R_Index3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Little1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Little1/J_Bip_R_Little2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Little1/J_Bip_R_Little2/J_Bip_R_Little3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Little1/J_Bip_R_Little2/J_Bip_R_Little3/J_Bip_R_Little3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Middle1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Middle1/J_Bip_R_Middle2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Middle1/J_Bip_R_Middle2/J_Bip_R_Middle3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Middle1/J_Bip_R_Middle2/J_Bip_R_Middle3/J_Bip_R_Middle3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2/J_Bip_R_Ring3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Ring1/J_Bip_R_Ring2/J_Bip_R_Ring3/J_Bip_R_Ring3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Thumb1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Thumb1/J_Bip_R_Thumb2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Thumb1/J_Bip_R_Thumb2/J_Bip_R_Thumb3
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/J_Bip_R_LowerArm/J_Bip_R_Hand/J_Bip_R_Thumb1/J_Bip_R_Thumb2/J_Bip_R_Thumb3/J_Bip_R_Thumb3_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm/MagicaRArmCollider
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_L_Bust1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_L_Bust1/J_Sec_L_Bust2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_L_Bust1/J_Sec_L_Bust2/J_Sec_L_Bust2_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_R_Bust1
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_R_Bust1/J_Sec_R_Bust2
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Sec_R_Bust1/J_Sec_R_Bust2/J_Sec_R_Bust2_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/MagicaChastCollider
+  - Armature/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg
+  - Armature/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg/J_Bip_L_LowerLeg
+  - Armature/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg/J_Bip_L_LowerLeg/J_Bip_L_Foot
+  - Armature/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg/J_Bip_L_LowerLeg/J_Bip_L_Foot/J_Bip_L_ToeBase
+  - Armature/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg/J_Bip_L_LowerLeg/J_Bip_L_Foot/J_Bip_L_ToeBase/J_Bip_L_ToeBase_end
+  - Armature/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg
+  - Armature/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Bip_R_LowerLeg
+  - Armature/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Bip_R_LowerLeg/J_Bip_R_Foot
+  - Armature/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Bip_R_LowerLeg/J_Bip_R_Foot/J_Bip_R_ToeBase
+  - Armature/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg/J_Bip_R_LowerLeg/J_Bip_R_Foot/J_Bip_R_ToeBase/J_Bip_R_ToeBase_end
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01/J_Opt_C_CatTail6_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01/J_Opt_C_CatTail6_01/J_Opt_C_CatTail7_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01/J_Opt_C_CatTail6_01/J_Opt_C_CatTail7_01/J_Opt_C_CatTail8_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01/J_Opt_C_CatTail6_01/J_Opt_C_CatTail7_01/J_Opt_C_CatTail8_01/J_Opt_C_CatTail8_end_01
+  - Armature/Root/J_Bip_C_Hips/J_Opt_C_CatTail1_01/J_Opt_C_CatTail2_01/J_Opt_C_CatTail3_01/J_Opt_C_CatTail4_01/J_Opt_C_CatTail5_01/J_Opt_C_CatTail6_01/J_Opt_C_CatTail7_01/J_Opt_C_CatTail8_01/J_Opt_C_CatTail8_end_01/J_Opt_C_CatTail8_end_01_end
+  - Body
+  - Face
+  - MagicaCloth
+  - MagicaCloth/Tail
+  - MagicaCloth/Hair
+  transformValues:
+  - position: {x: 0.0016261276, y: 0, z: -0.008225918}
+    rotation: {x: -0, y: -0.0000000041910937, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+    scale: {x: 100, y: 100, z: 100}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0.7091914, y: -0, z: 3.6608963e-10, w: 0.7050161}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.000004855124, y: 0.0061961845, z: 0.0001554057}
+    rotation: {x: 0.11475221, y: 0.00000001557884, z: 0.000000010904846, w: 0.99339414}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -3.330669e-18, y: 0.000559669, z: -9.3132255e-12}
+    rotation: {x: -0.104277834, y: -0, z: -0, w: 0.9945482}
+    scale: {x: 1, y: 1.0000001, z: 1.0000001}
+  - position: {x: 2.7755574e-18, y: 0.0011814726, z: 1.164153e-11}
+    rotation: {x: -0.081018716, y: -0, z: -0, w: 0.9967126}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -2.1094237e-17, y: 0.0011352999, z: 3.7252895e-11}
+    rotation: {x: -0.0734196, y: 0.000000029802322, z: -0.000000029802322, w: 0.99730116}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: -8.881784e-18, y: 0.0014394182, z: 1.11758706e-10}
+    rotation: {x: 0.206832, y: -0.00027230385, z: 0.00001308322, w: 0.9783764}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 5.995204e-17, y: 0.00064876786, z: -1.3969838e-10}
+    rotation: {x: -0.060469784, y: -0.00027632713, z: 0.000020682814, w: 0.99816996}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.00021729301, y: 0.0007641697, z: 0.00035254765}
+    rotation: {x: 0.00000023841855, y: 0.7071069, z: 0.70710677, w: -0.00000008413861}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0003125, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00021729279, y: 0.0007641697, z: 0.00035254806}
+    rotation: {x: 0.0000001788139, y: 0.7071068, z: 0.70710677, w: 0.0000000052683498}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0003125, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.0005512868, y: 0.0014944839, z: 0.0010293594}
+    rotation: {x: 0.9785458, y: 0.14530897, z: 0.1453093, w: -0.014790747}
+    scale: {x: 0.99999756, y: 0.99999976, z: 0.99999994}
+  - position: {x: -7.4505985e-10, y: 0.0011566039, z: 1.0244548e-10}
+    rotation: {x: -0.057511054, y: -0.014741208, z: -0.0021486203, w: 0.99823374}
+    scale: {x: 0.9999999, y: 0.99999994, z: 1}
+  - position: {x: -4.0978193e-10, y: 0.0011558618, z: 1.4901161e-10}
+    rotation: {x: -0.06375792, y: -0.018680356, z: -0.0002449254, w: 0.9977905}
+    scale: {x: 0.9999999, y: 1, z: 0.99999994}
+  - position: {x: 3.7252902e-11, y: 0.0011567508, z: -3.7252902e-11}
+    rotation: {x: -0.028633794, y: -0.009396145, z: 0.0006944667, w: 0.9995456}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 1.862645e-10, y: 0.0011572121, z: 2.2351741e-10}
+    rotation: {x: 0.0039595184, y: 0.001341597, z: -0.00012778044, w: 0.9999913}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: -3.72529e-10, y: 0.0011571558, z: 2.2351741e-10}
+    rotation: {x: 0.000000010244547, y: 0.00000014714897, z: -0.000000049360093, w: 1}
+    scale: {x: 1, y: 1.0000001, z: 1.0000001}
+  - position: {x: -0, y: 0.0011571563, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00077481434, y: 0.0017950451, z: 0.00004519874}
+    rotation: {x: 0.9483424, y: 0.2229183, z: 0.22291853, w: 0.03551884}
+    scale: {x: 0.9999995, y: 0.9999999, z: 0.9999999}
+  - position: {x: 1.2223608e-10, y: 0.0015488786, z: -9.546056e-11}
+    rotation: {x: -0.042188045, y: -0.054443818, z: 0.031395115, w: 0.9971311}
+    scale: {x: 1.0000001, y: 1, z: 1}
+  - position: {x: 5.7742e-10, y: 0.0015490056, z: -1.11758706e-10}
+    rotation: {x: -0.02911399, y: -0.043235514, z: 0.026455803, w: 0.9982901}
+    scale: {x: 0.99999994, y: 1.0000001, z: 1}
+  - position: {x: 2.9802322e-10, y: 0.0015502756, z: -1.4901161e-10}
+    rotation: {x: -0.0024315207, y: -0.0038869944, z: 0.0024284138, w: 0.9999866}
+    scale: {x: 1, y: 0.9999999, z: 1}
+  - position: {x: -7.4505804e-11, y: 0.001550377, z: 0}
+    rotation: {x: -0.00000008381903, y: -0.000000038184226, z: -0.000000033527613, w: 1}
+    scale: {x: 1, y: 1, z: 1.0000001}
+  - position: {x: -0, y: 0.001550378, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.0009131767, y: 0.0013755417, z: -0.0008073237}
+    rotation: {x: 0.9694891, y: 0.16362938, z: 0.16362913, w: -0.0808822}
+    scale: {x: 0.99999875, y: 0.9999999, z: 0.9999998}
+  - position: {x: -2.6077032e-10, y: 0.0014708752, z: -1.4901161e-10}
+    rotation: {x: -0.021106636, y: -0.091914006, z: 0.10087319, w: 0.99041957}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 7.4505804e-11, y: 0.001470491, z: 1.8626451e-11}
+    rotation: {x: -0.0035602606, y: -0.06405467, z: 0.071930416, w: 0.99534434}
+    scale: {x: 1, y: 0.9999999, z: 0.99999994}
+  - position: {x: 1.4915713e-11, y: 0.0014734488, z: 1.022272e-10}
+    rotation: {x: 0.00008060622, y: -0.0038419792, z: 0.004314508, w: 0.9999833}
+    scale: {x: 1, y: 1, z: 1.0000001}
+  - position: {x: 1.0244548e-10, y: 0.0014735908, z: -1.9674189e-10}
+    rotation: {x: 0.000000047060894, y: -0.0000000010913938, z: -6.8394e-10, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014735915, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.00092930737, y: 0.0014194703, z: -0.0003483876}
+    rotation: {x: 0.9668837, y: -0.15196104, z: -0.1519612, w: -0.13766454}
+    scale: {x: 1.0000013, y: 1.0000002, z: 1.0000005}
+  - position: {x: 1.862645e-10, y: 0.0014938195, z: 1.862645e-10}
+    rotation: {x: -0.047969624, y: 0.0837634, z: -0.093994476, w: 0.9908823}
+    scale: {x: 1, y: 1, z: 0.99999994}
+  - position: {x: 2.0489097e-10, y: 0.0014938479, z: -2.2351741e-10}
+    rotation: {x: -0.021750437, y: 0.054904103, z: -0.0629867, w: 0.9962656}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 2.1187588e-10, y: 0.0014966751, z: -7.916242e-11}
+    rotation: {x: -0.00074622274, y: 0.0023018322, z: -0.002642436, w: 0.9999936}
+    scale: {x: 0.9999999, y: 1, z: 0.99999994}
+  - position: {x: -9.6624715e-11, y: 0.0014967759, z: -2.0372681e-11}
+    rotation: {x: -0.000000047012236, y: 0.0000000013533282, z: 4.511094e-10, w: 1}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014967774, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00094828266, y: 0.0014791178, z: -0.00018973646}
+    rotation: {x: 0.95093656, y: 0.21674418, z: 0.21674441, w: -0.041994054}
+    scale: {x: 0.9999988, y: 0.99999976, z: 1}
+  - position: {x: -9.313225e-11, y: 0.0014465203, z: 0}
+    rotation: {x: -0.09438969, y: -0.082373306, z: 0.04496874, w: 0.991102}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: -2.0954757e-10, y: 0.001446493, z: -1.11758706e-10}
+    rotation: {x: -0.056675654, y: -0.06169278, z: 0.03789799, w: 0.99576384}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -3.329478e-10, y: 0.0014495974, z: -1.5832484e-10}
+    rotation: {x: -0.0027745648, y: -0.0033676897, z: 0.0021298882, w: 0.99998826}
+    scale: {x: 0.9999999, y: 1, z: 1}
+  - position: {x: -1.2107193e-10, y: 0.0014497538, z: -2.6077032e-10}
+    rotation: {x: 0.000000019557776, y: -0.000000015832484, z: 0.000000002793968, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014497531, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0007520635, y: 0.0017716134, z: -0.00007337177}
+    rotation: {x: 0.95442486, y: -0.1686996, z: -0.16869971, w: -0.17931555}
+    scale: {x: 1.0000005, y: 1.0000001, z: 1.0000002}
+  - position: {x: -4.0978193e-10, y: 0.0015763749, z: -4.4703483e-10}
+    rotation: {x: -0.06827339, y: 0.076679975, z: -0.082440004, w: 0.9912934}
+    scale: {x: 0.9999999, y: 0.9999999, z: 1}
+  - position: {x: 1.8626451e-11, y: 0.0015746347, z: 0}
+    rotation: {x: -0.044238687, y: 0.06460217, z: -0.07222099, w: 0.9943106}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: -1.3504177e-10, y: 0.0015789573, z: -2.561137e-10}
+    rotation: {x: -0.0035631177, y: 0.006115743, z: -0.0068672188, w: 0.99995136}
+    scale: {x: 1, y: 0.9999998, z: 0.99999994}
+  - position: {x: 8.381903e-11, y: 0.001579287, z: 1.2107193e-10}
+    rotation: {x: 0.000000011263182, y: 0.0000000012805685, z: -0.0000000023283067, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0015792878, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0007223187, y: 0.0015019631, z: 0.0006404455}
+    rotation: {x: 0.9501416, y: -0.16301197, z: -0.16301166, w: -0.20996489}
+    scale: {x: 0.9999995, y: 0.9999998, z: 0.9999995}
+  - position: {x: 5.5879353e-11, y: 0.0014799088, z: 2.8871e-10}
+    rotation: {x: -0.05460764, y: 0.07386616, z: -0.09172068, w: 0.99153876}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 1.7695129e-10, y: 0.001477387, z: -9.313225e-11}
+    rotation: {x: -0.03667142, y: 0.06889575, z: -0.08836451, w: 0.99302584}
+    scale: {x: 0.99999994, y: 1.0000001, z: 1}
+  - position: {x: 1.3184034e-10, y: 0.00148166, z: -2.0489097e-10}
+    rotation: {x: -0.003720953, y: 0.00889365, z: -0.011411287, w: 0.9998884}
+    scale: {x: 1.0000001, y: 0.9999999, z: 1}
+  - position: {x: 3.259629e-11, y: 0.0014822494, z: 1.2107193e-10}
+    rotation: {x: 0.000000113614064, y: -8.1490714e-10, z: 0.000000002444722, w: 1}
+    scale: {x: 1, y: 1.0000001, z: 1.0000001}
+  - position: {x: -0, y: 0.0014822498, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0009142447, y: 0.0013759637, z: -0.0008042703}
+    rotation: {x: 0.96958536, y: -0.1631573, z: -0.16315736, w: -0.081630975}
+    scale: {x: 1.0000002, y: 1, z: 0.99999994}
+  - position: {x: -1.4901161e-10, y: 0.0014709748, z: -7.4505804e-11}
+    rotation: {x: -0.021547643, y: 0.091569066, z: -0.100486755, w: 0.9904813}
+    scale: {x: 0.99999994, y: 1, z: 0.99999994}
+  - position: {x: 1.862645e-10, y: 0.0014705871, z: 4.0978193e-10}
+    rotation: {x: -0.0039444757, y: 0.06391904, z: -0.07176624, w: 0.9953635}
+    scale: {x: 1, y: 0.9999999, z: 0.99999994}
+  - position: {x: 9.131327e-11, y: 0.0014735298, z: -1.1641532e-10}
+    rotation: {x: 0.000056058467, y: 0.003843615, z: -0.004315708, w: 0.9999833}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: -1.04773785e-11, y: 0.0014736743, z: -4.0745362e-11}
+    rotation: {x: -0.000000048839865, y: 6.5483613e-10, z: -2.9103837e-11, w: 1}
+    scale: {x: 1.0000001, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014736735, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0005736534, y: 0.0012381457, z: -0.0012855971}
+    rotation: {x: 0.9853635, y: -0.09582538, z: -0.09582535, w: -0.10341082}
+    scale: {x: 0.9999998, y: 1, z: 0.9999999}
+  - position: {x: -1.4901161e-10, y: 0.0014446061, z: -7.8231094e-10}
+    rotation: {x: -0.038878858, y: 0.052695137, z: -0.05660392, w: 0.9962468}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 7.4505804e-11, y: 0.0014443443, z: -6.519258e-11}
+    rotation: {x: -0.023477098, y: 0.038627177, z: -0.041938994, w: 0.9980971}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: -4.4237822e-11, y: 0.0014455441, z: -4.901085e-10}
+    rotation: {x: -0.0015476546, y: 0.002814533, z: -0.00305642, w: 0.99999017}
+    scale: {x: 0.9999999, y: 1, z: 0.99999994}
+  - position: {x: 3.608875e-11, y: 0.0014456348, z: 4.5693012e-11}
+    rotation: {x: 0.00000010450094, y: -0.000000045351044, z: 0.000000026695488, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014456353, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00057365483, y: 0.0012381457, z: -0.0012855968}
+    rotation: {x: 0.98536354, y: 0.09582551, z: 0.09582533, w: -0.10341058}
+    scale: {x: 0.9999999, y: 1, z: 1}
+  - position: {x: 2.6077032e-10, y: 0.0014446055, z: 3.1664968e-10}
+    rotation: {x: -0.038878627, y: -0.052694995, z: 0.05660389, w: 0.9962468}
+    scale: {x: 0.99999994, y: 0.9999999, z: 0.9999999}
+  - position: {x: 5.5879353e-11, y: 0.0014443427, z: 2.840534e-10}
+    rotation: {x: -0.02347711, y: -0.038627174, z: 0.0419391, w: 0.9980971}
+    scale: {x: 1, y: 0.99999994, z: 0.9999999}
+  - position: {x: -2.0081643e-11, y: 0.0014455476, z: 2.6047928e-11}
+    rotation: {x: -0.0015475635, y: -0.0028146296, z: 0.0030564242, w: 0.99999017}
+    scale: {x: 0.9999999, y: 1, z: 1}
+  - position: {x: 2.2700987e-11, y: 0.0014456335, z: 1.7200363e-10}
+    rotation: {x: 0.00000005411448, y: -0.000000024941984, z: 0.000000025633199, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014456342, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0003079933, y: 0.0011346769, z: -0.0014846199}
+    rotation: {x: 0.99076086, y: -0.06415652, z: -0.06415722, w: -0.10080058}
+    scale: {x: 1.0000011, y: 1.0000001, z: 1.0000021}
+  - position: {x: 3.7252902e-11, y: 0.0014193332, z: -1.3969838e-11}
+    rotation: {x: -0.036408097, y: 0.028355846, z: -0.029530149, w: 0.9984981}
+    scale: {x: 1, y: 0.9999999, z: 1}
+  - position: {x: 3.7252902e-11, y: 0.0014190698, z: 1.816079e-10}
+    rotation: {x: -0.027177788, y: 0.023304803, z: -0.024477834, w: 0.99905914}
+    scale: {x: 1, y: 1, z: 1.0000001}
+  - position: {x: 3.7252902e-11, y: 0.0014196786, z: -5.1106325e-10}
+    rotation: {x: -0.0025983483, y: 0.0023428358, z: -0.002463821, w: 0.9999909}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 5.122274e-11, y: 0.0014197461, z: -3.0267983e-11}
+    rotation: {x: 0.00000004917093, y: 0.0000000074214777, z: 8.731151e-11, w: 1}
+    scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+  - position: {x: -0, y: 0.0014197461, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00030799495, y: 0.0011346769, z: -0.0014846197}
+    rotation: {x: 0.9907609, y: 0.064156644, z: 0.06415618, w: -0.10080041}
+    scale: {x: 0.9999996, y: 0.9999999, z: 0.99999905}
+  - position: {x: 1.862645e-10, y: 0.0014193313, z: -2.3283064e-10}
+    rotation: {x: -0.03640756, y: -0.028355852, z: 0.029530205, w: 0.9984981}
+    scale: {x: 1.0000001, y: 1, z: 1}
+  - position: {x: 7.4505804e-11, y: 0.0014190717, z: -4.33065e-10}
+    rotation: {x: -0.027178163, y: -0.023304919, z: 0.024477934, w: 0.9990591}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: 2.3283063e-11, y: 0.0014196791, z: -6.635673e-11}
+    rotation: {x: -0.0025978913, y: -0.0023425978, z: 0.002463868, w: 0.9999909}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: -3.259629e-11, y: 0.0014197454, z: 3.608875e-11}
+    rotation: {x: 0.00000015866682, y: -0.0000000041036397, z: 0.0000000041327444, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014197462, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.0000062422755, y: 0.0010865926, z: -0.0015921473}
+    rotation: {x: 0.994639, y: -0.00082453276, z: -0.00082440715, w: -0.10340243}
+    scale: {x: 1, y: 1, z: 1.0000052}
+  - position: {x: -8.731149e-13, y: 0.001421589, z: 2.7204236e-10}
+    rotation: {x: -0.039527725, y: 0.00085959566, z: -0.0009860875, w: 0.9992176}
+    scale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+  - position: {x: -4.0017767e-13, y: 0.001421348, z: 1.124647e-12}
+    rotation: {x: -0.028990226, y: 0.0006696179, z: -0.00076760567, w: 0.9995792}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: 1.4551914e-12, y: 0.0014217229, z: -3.20631e-10}
+    rotation: {x: -0.0024566876, y: 0.00005841647, z: -0.00006684368, w: 0.999997}
+    scale: {x: 1.0000001, y: 0.99999994, z: 1}
+  - position: {x: 2.910383e-13, y: 0.0014217597, z: 1.4273496e-10}
+    rotation: {x: -3.655032e-11, y: 8.913048e-11, z: 2.8012437e-10, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0014217594, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.00023244515, y: 0.0011480016, z: 0.0000067678093}
+    rotation: {x: -0.5048961, y: 0.42041862, z: 0.5596339, w: 0.50511193}
+    scale: {x: 1.0000001, y: 1.0000001, z: 1}
+  - position: {x: -6.984918e-12, y: 0.0006333751, z: 8.381903e-11}
+    rotation: {x: -0.4719571, y: -0.22376274, z: -0.11112113, w: 0.84548146}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: -1.8626451e-11, y: 0.0017887473, z: 0}
+    rotation: {x: 0.0000014901162, y: -0.000010162594, z: 0.0008828939, w: 0.99999964}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 1.7229468e-10, y: 0.0015888318, z: -7.858034e-12}
+    rotation: {x: 0.032686308, y: -0.03275056, z: -0.011834557, w: 0.99885887}
+    scale: {x: 1, y: 1, z: 0.9999999}
+  - position: {x: -0.00017260673, y: 0.0005346508, z: 0.000029667972}
+    rotation: {x: -0.033034824, y: 0.026469635, z: 0.0012765374, w: 0.99910283}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: 1.16415315e-11, y: 0.00027211913, z: 6.071059e-10}
+    rotation: {x: -0.012929006, y: 0.0017506925, z: -0.004729211, w: 0.9999038}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 3.8417054e-11, y: 0.00016751769, z: -0.0000000011833619}
+    rotation: {x: -0.00013422962, y: -0.010798711, z: 0.00355856, w: 0.9999354}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.00016751766, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00023371688, y: 0.0005069163, z: 0.0000051277507}
+    rotation: {x: -0.03272013, y: 0.03272028, z: 0.010953068, w: 0.9988688}
+    scale: {x: 0.9999998, y: 0.99999994, z: 1}
+  - position: {x: 3.7252878e-11, y: 0.0002571842, z: -3.552714e-17}
+    rotation: {x: -0.000000014901158, y: -0.000004105269, z: -0.00000046193588, w: 1}
+    scale: {x: 1, y: 0.9999999, z: 1}
+  - position: {x: -2.793967e-11, y: 0.00014822576, z: -2.88658e-16}
+    rotation: {x: 0.000008046626, y: -0.000000059604638, z: -0.000000104308114, w: 1}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: -0, y: 0.00014822543, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.000026565416, y: 0.0005448246, z: 0.000019511303}
+    rotation: {x: -0.032720204, y: 0.032722052, z: 0.010952636, w: 0.9988687}
+    scale: {x: 0.9999998, y: 0.9999999, z: 0.9999999}
+  - position: {x: 7.450581e-11, y: 0.00030310577, z: 1.8066514e-11}
+    rotation: {x: -0.000000044703473, y: -0.0000051334487, z: 0.000000029802315, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 1.8626448e-11, y: 0.00018698994, z: 1.14353e-16}
+    rotation: {x: 0.0000062733875, y: 0.00000005215405, z: 0.00000007450579, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0001869899, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00010340335, y: 0.0005412223, z: 0.000011311854}
+    rotation: {x: -0.03272013, y: 0.03272015, z: 0.010952844, w: 0.9988688}
+    scale: {x: 0.99999976, y: 0.99999994, z: 1}
+  - position: {x: 9.313227e-11, y: 0.00028116704, z: 0}
+    rotation: {x: -0.0000001043081, y: -0.00000016391273, z: -0.0000002086162, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 5.587938e-11, y: 0.00016226292, z: 2.6645354e-17}
+    rotation: {x: 0.000000014901159, y: -0.00000023841855, z: -0.000000104308114, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0001622629, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.00013794753, y: 0.00002131714, z: -0.00006561013}
+    rotation: {x: -0.08031818, y: 0.14617793, z: 0.3540866, w: 0.9202194}
+    scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+  - position: {x: -1.3038516e-10, y: 0.00038390426, z: 5.587937e-10}
+    rotation: {x: 0.0071131256, y: -0.0047782375, z: -0.019270776, w: 0.9997776}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: -1.862645e-10, y: 0.00023596044, z: -5.5879374e-11}
+    rotation: {x: 0.0011700894, y: 0.005837196, z: 0.000066943314, w: 0.9999823}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.00023596051, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.5, y: 0.5, z: 0.5}
+  - position: {x: 0.00023244515, y: 0.0011480016, z: 0.0000067678466}
+    rotation: {x: -0.5048959, y: -0.42041877, z: -0.559634, w: 0.505112}
+    scale: {x: 1.0000001, y: 1.0000001, z: 1}
+  - position: {x: -4.5401967e-11, y: 0.00063337485, z: -3.7252902e-11}
+    rotation: {x: -0.4719572, y: 0.22376288, z: 0.11112094, w: 0.8454814}
+    scale: {x: 0.99999994, y: 0.99999994, z: 1}
+  - position: {x: -7.4505804e-11, y: 0.0017887469, z: -3.1985295e-10}
+    rotation: {x: 0.0000014305115, y: 0.000010237098, z: -0.0008831024, w: 0.99999964}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -3.0238878e-10, y: 0.0015888324, z: -1.9732396e-10}
+    rotation: {x: 0.032686874, y: 0.032750655, z: 0.011834694, w: 0.99885887}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: 0.00017260674, y: 0.0005346513, z: 0.000029667875}
+    rotation: {x: 0.033034943, y: 0.026469434, z: 0.0012765225, w: -0.99910283}
+    scale: {x: 1.0000001, y: 1, z: 1.0000001}
+  - position: {x: -4.9476503e-11, y: 0.0002721186, z: -6.286426e-11}
+    rotation: {x: 0.012929065, y: 0.0017508266, z: -0.0047291513, w: -0.9999038}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: -4.3655735e-11, y: 0.00016751772, z: -0.000000001826556}
+    rotation: {x: 0.00013434885, y: -0.010798543, z: 0.0035584415, w: -0.9999354}
+    scale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  - position: {x: -0, y: 0.00016751766, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.00023371716, y: 0.0005069167, z: 0.0000051269867}
+    rotation: {x: 0.03271998, y: 0.032720264, z: 0.010953023, w: -0.99886876}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: -1.1175865e-10, y: 0.00025718403, z: -4.5988102e-11}
+    rotation: {x: 0.00000013411042, y: -0.000004261731, z: -0.000000566244, w: -1}
+    scale: {x: 1, y: 0.9999999, z: 1}
+  - position: {x: -4.6566164e-11, y: 0.00014822552, z: -1.7670717e-11}
+    rotation: {x: -0.000007957218, y: -0.00000017881389, z: -0.000000089406946, w: -1}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: -0, y: 0.00014822543, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.000026565316, y: 0.00054482504, z: 0.000019510584}
+    rotation: {x: 0.03272011, y: 0.03272205, z: 0.010952813, w: -0.9988687}
+    scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+  - position: {x: -9.313447e-11, y: 0.0003031059, z: -6.6831296e-10}
+    rotation: {x: -0.000000044703476, y: -0.0000050663944, z: -0.000000059604638, w: -1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -7.4505783e-11, y: 0.00018699002, z: -4.4581644e-11}
+    rotation: {x: -0.0000064223996, y: 0.000000029802319, z: -0, w: -1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0001869899, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.000103403465, y: 0.0005412227, z: 0.000011311126}
+    rotation: {x: 0.0327201, y: 0.032720175, z: 0.010952934, w: -0.9988688}
+    scale: {x: 0.9999999, y: 1, z: 1}
+  - position: {x: -1.3038515e-10, y: 0.00028116716, z: -5.0276595e-11}
+    rotation: {x: -0.000000014901159, y: -0.00000023841855, z: -0.00000028312203, w: -1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -9.3132314e-11, y: 0.000162263, z: -2.9014834e-11}
+    rotation: {x: 0.000000029802319, y: -0.00000026822087, z: 0.00000016391276, w: -1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0001622629, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00013794766, y: 0.000021317419, z: -0.00006561075}
+    rotation: {x: 0.0803181, y: 0.14617787, z: 0.35408637, w: -0.9202195}
+    scale: {x: 1, y: 1, z: 0.9999999}
+  - position: {x: -9.313225e-11, y: 0.0003839042, z: 4.6566134e-10}
+    rotation: {x: -0.007113261, y: -0.0047772266, z: -0.019270977, w: -0.9997776}
+    scale: {x: 1, y: 0.9999999, z: 0.99999994}
+  - position: {x: 2.0489097e-10, y: 0.00023596064, z: -0.0000000013038519}
+    rotation: {x: -0.0011702179, y: 0.0058381287, z: 0.00006690385, w: -0.9999823}
+    scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+  - position: {x: -0, y: 0.00023596056, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 0.5000002, y: 0.50000024, z: 0.50000024}
+  - position: {x: -0.00051621493, y: -0.00027339993, z: 0.0006744417}
+    rotation: {x: 0.4068701, y: 0.29803264, z: 0.39672083, w: 0.7669719}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: -0, y: 0.00050327415, z: -7.4505804e-11}
+    rotation: {x: -0.0000004656613, y: -0.000000007450581, z: -0.0000013634562, w: 1}
+    scale: {x: 1, y: 1.0000001, z: 1}
+  - position: {x: -0, y: 0.00050327455, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.00051621493, y: -0.00027339996, z: 0.00067444186}
+    rotation: {x: 0.40687016, y: -0.29803255, z: -0.3967207, w: 0.76697195}
+    scale: {x: 0.99999994, y: 0.9999999, z: 1}
+  - position: {x: -7.45058e-10, y: 0.00050327287, z: -1.11758706e-10}
+    rotation: {x: -0.00000028684735, y: 0.00000017508864, z: 0.0000013336539, w: 1}
+    scale: {x: 1, y: 0.99999994, z: 1}
+  - position: {x: -0, y: 0.0005032746, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0.0008008137, y: -0.0004130775, z: 0.00006000244}
+    rotation: {x: 0.9969219, y: -0.001116231, z: 0.00042745465, w: 0.07839238}
+    scale: {x: 1, y: 1.0000001, z: 1.0000058}
+  - position: {x: 7.718883e-12, y: 0.0026348871, z: -2.3282928e-11}
+    rotation: {x: -0.00000040978193, y: -0.000000026178895, z: 0.00000008021016, w: 1}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: 1.9892477e-16, y: 0.0021891037, z: 1.8626344e-11}
+    rotation: {x: -0.5362393, y: 0.0005303695, z: -0.0010422989, w: 0.84406525}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 5.3051095e-11, y: 0.0012321313, z: 1.5198757e-11}
+    rotation: {x: -0.000000014901161, y: -1.3233858e-13, z: -8.881785e-15, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0012321377, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0.0008008137, y: -0.00041307748, z: 0.000060002636}
+    rotation: {x: 0.9969219, y: -0.0011161863, z: 0.00042739505, w: 0.078393005}
+    scale: {x: 1, y: 1.0000001, z: 1.0000058}
+  - position: {x: 7.7187675e-12, y: 0.0026348871, z: -2.3282928e-11}
+    rotation: {x: 0.0000012218952, y: -0.00000009301584, z: -0.00000007636845, w: 1}
+    scale: {x: 1, y: 0.99999994, z: 0.99999994}
+  - position: {x: -5.2385303e-16, y: 0.0021891035, z: 1.8626344e-11}
+    rotation: {x: -0.53624016, y: 0.0005303174, z: -0.0010422318, w: 0.8440647}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 5.305107e-11, y: 0.0012321312, z: 2.2056437e-11}
+    rotation: {x: 0.000000014901161, y: -8.1712415e-14, z: -1.2434498e-14, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0.0012321376, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -3.53233e-11, y: 0.0019250971, z: 0.00000047896054}
+    rotation: {x: 0.9958819, y: -0.004373246, z: -0.0034464868, w: 0.09048864}
+    scale: {x: 0.9999999, y: 1, z: 0.9999996}
+  - position: {x: -4.0745363e-12, y: 0.0006213217, z: -3.2564458e-11}
+    rotation: {x: 0.16477649, y: 0.007321756, z: -0.009068103, w: 0.9862621}
+    scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+  - position: {x: -1.0186341e-12, y: 0.00063400454, z: -2.467823e-10}
+    rotation: {x: 0.1013985, y: 0.0037402203, z: -0.004443483, w: 0.99482894}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: -1.5133991e-11, y: 0.0012688743, z: 6.59129e-10}
+    rotation: {x: 0.030155806, y: 0.0010350931, z: -0.0011766477, w: 0.999544}
+    scale: {x: 1, y: 1, z: 1.0000001}
+  - position: {x: -4.6566128e-12, y: 0.0021784364, z: 1.4442776e-10}
+    rotation: {x: 0.11348183, y: 0.0036301394, z: -0.0038950313, w: 0.9935258}
+    scale: {x: 0.99999994, y: 1, z: 1}
+  - position: {x: 2.3283064e-12, y: 0.0015029827, z: -4.9127263e-10}
+    rotation: {x: 0.36763334, y: 0.009863752, z: -0.007371575, w: 0.92988926}
+    scale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+  - position: {x: 7.566996e-12, y: 0.0022133526, z: 1.9019353e-10}
+    rotation: {x: -0.0000001370172, y: -0.0000000032305252, z: 0.000000056108547, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 2.6775523e-11, y: -8.253846e-10, z: 9.91713e-11}
+    rotation: {x: 0.09969801, y: 0.002713289, z: -0.000669496, w: 0.99501383}
+    scale: {x: 0.99999994, y: 0.99999994, z: 1}
+  - position: {x: -3.0267983e-11, y: 0.0015852103, z: 1.3882527e-10}
+    rotation: {x: 0.00000003146124, y: 0.00000021595041, z: 0.000000017433196, w: 1}
+    scale: {x: 1, y: 1, z: 1.0000001}
+  - position: {x: -0, y: 0.0015852097, z: 0}
+    rotation: {x: 0, y: -0, z: -0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: -0, y: 0, z: 0}
+    rotation: {x: -0.000000053385076, y: 0.7071068, z: 0.70710677, w: 0.00000005338508}
+    scale: {x: 100, y: 100, z: 100}
+  - position: {x: -0, y: 0, z: 0}
+    rotation: {x: -0.000000053385076, y: 0.7071068, z: 0.70710677, w: 0.00000005338508}
+    scale: {x: 100, y: 100, z: 100}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  - position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0, w: 1}
+    scale: {x: 1, y: 1, z: 1}
+  blendShapePaths:
+  - Face
+  blendShapeValues:
+  - names:
+    - Fcl_ALL_Neutral
+    - Fcl_ALL_Angry
+    - Fcl_ALL_Fun
+    - Fcl_ALL_Joy
+    - Fcl_ALL_Sorrow
+    - Fcl_ALL_Surprised
+    - Fcl_BRW_Angry
+    - Fcl_BRW_Fun
+    - Fcl_BRW_Joy
+    - Fcl_BRW_Sorrow
+    - Fcl_BRW_Surprised
+    - Fcl_EYE_Natural
+    - Fcl_EYE_Angry
+    - Fcl_EYE_Close
+    - Fcl_EYE_Close_R
+    - Fcl_EYE_Close_L
+    - Fcl_EYE_Fun
+    - Fcl_EYE_Joy
+    - Fcl_EYE_Joy_R
+    - Fcl_EYE_Joy_L
+    - Fcl_EYE_Sorrow
+    - Fcl_EYE_Surprised
+    - Fcl_EYE_Spread
+    - Fcl_EYE_Iris_Hide
+    - Fcl_EYE_Highlight_Hide
+    - Fcl_MTH_Close
+    - Fcl_MTH_Up
+    - Fcl_MTH_Down
+    - Fcl_MTH_Angry
+    - Fcl_MTH_Small
+    - Fcl_MTH_Large
+    - Fcl_MTH_Neutral
+    - Fcl_MTH_Fun
+    - Fcl_MTH_Joy
+    - Fcl_MTH_Sorrow
+    - Fcl_MTH_Surprised
+    - Fcl_MTH_SkinFung
+    - Fcl_MTH_SkinFung_R
+    - Fcl_MTH_SkinFung_L
+    - Fcl_MTH_A
+    - Fcl_MTH_I
+    - Fcl_MTH_U
+    - Fcl_MTH_E
+    - Fcl_MTH_O
+    - Fcl_HA_Hide
+    - Fcl_HA_Fung1
+    - Fcl_HA_Fung1_Low
+    - Fcl_HA_Fung1_Up
+    - Fcl_HA_Fung2
+    - Fcl_HA_Fung2_Low
+    - Fcl_HA_Fung2_Up
+    - Fcl_HA_Fung3
+    - Fcl_HA_Fung3_Up
+    - Fcl_HA_Fung3_Low
+    - Fcl_HA_Short
+    - Fcl_HA_Short_Up
+    - Fcl_HA_Short_Low
+    weights:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0

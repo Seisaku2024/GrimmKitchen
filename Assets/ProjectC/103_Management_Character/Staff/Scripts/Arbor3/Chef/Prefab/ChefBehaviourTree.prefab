@@ -1,0 +1,696 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5854011952059218178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3441137484961125617}
+  - component: {fileID: 4243745000372242592}
+  - component: {fileID: -1138431890039452737}
+  - component: {fileID: 6460907875436022470}
+  - component: {fileID: 3099146859599554466}
+  - component: {fileID: 8652174933674387175}
+  - component: {fileID: 7395272306663881771}
+  - component: {fileID: 4720366814315807492}
+  - component: {fileID: 3577605365783854054}
+  m_Layer: 0
+  m_Name: ChefBehaviourTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3441137484961125617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4243745000372242592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d777a828a6247b594b0e8c83d051e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GraphName: New BehaviourTree
+  playOnStart: 1
+  updateSettings:
+    type: 0
+    timeType: 0
+    seconds: 0.1
+  debugInfiniteLoopSettings:
+    maxLoopCount: 10000
+    enableLogging: 1
+    enableBreak: 0
+  _OwnerBehaviour: {fileID: 0}
+  _ParameterContainer: {fileID: 6460907875436022470}
+  _Calculators:
+  - _NodeGraph: {fileID: 4243745000372242592}
+    _NodeID: 1211126341
+    position:
+      serializedVersion: 2
+      x: -600
+      y: 204
+      width: 200
+      height: 100
+    showComment: 0
+    nodeComment: 
+    _Name: Get Parameter
+    _IsSettedName: 1
+    _Object: {fileID: 4720366814315807492}
+  _Comments: []
+  _Groups: []
+  _DataBranchRerouteNodes:
+    _Nodes: []
+  _DataBranchies:
+  - branchID: 534011718
+    enabled: 1
+    inBehaviour: {fileID: 8652174933674387175}
+    inNodeID: 1752227528
+    outBehaviour: {fileID: 4720366814315807492}
+    outNodeID: 1211126341
+    lineBezier:
+      _StartPosition: {x: -400, y: 263.4}
+      _StartControl: {x: -350, y: 263.4}
+      _EndPosition: {x: 207.19998, y: 474}
+      _EndControl: {x: 157.19998, y: 474}
+    showDataValue: 0
+  - branchID: 237820880
+    enabled: 1
+    inBehaviour: {fileID: 3577605365783854054}
+    inNodeID: 2128155929
+    outBehaviour: {fileID: 4720366814315807492}
+    outNodeID: 1211126341
+    lineBezier:
+      _StartPosition: {x: -400, y: 263.4}
+      _StartControl: {x: -350, y: 263.4}
+      _EndPosition: {x: -296.79996, y: 460.80002}
+      _EndControl: {x: -346.79996, y: 460.80002}
+    showDataValue: 0
+  - branchID: 1655911537
+    enabled: 1
+    inBehaviour: {fileID: 3099146859599554466}
+    inNodeID: 2128155929
+    outBehaviour: {fileID: 4720366814315807492}
+    outNodeID: 1211126341
+    lineBezier:
+      _StartPosition: {x: -400, y: 263.4}
+      _StartControl: {x: -350, y: 263.4}
+      _EndPosition: {x: -296.79996, y: 600.4}
+      _EndControl: {x: -346.79996, y: 600.4}
+    showDataValue: 0
+  restartOnFinish: 1
+  executionSettings:
+    type: 0
+    maxCount: 1
+  _NodeBranchies:
+    _NodeBranchies:
+    - branchID: 1559595546
+      parentNodeID: 1
+      childNodeID: 534011718
+    - branchID: 534011718
+      parentNodeID: 534011718
+      childNodeID: 2128155929
+    - branchID: 1655911537
+      parentNodeID: 534011718
+      childNodeID: 1752227528
+  _RootNode:
+    _NodeGraph: {fileID: 4243745000372242592}
+    _NodeID: 1
+    position:
+      serializedVersion: 2
+      x: -12
+      y: -36
+      width: 180
+      height: 0
+    showComment: 0
+    nodeComment: 
+    _Name: Root
+    _IsSettedName: 1
+    _EnablePriority: 1
+    _Priority: 0
+    _ChildNodeLink:
+      branchID: 1559595546
+  _CompositeNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 534011718
+      position:
+        serializedVersion: 2
+        x: -72
+        y: 96
+        width: 300
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: Selector
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 1
+      _Behaviour: {fileID: -1138431890039452737}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1559595546
+      _ChildrenLink:
+        branchIDs: 465fd41f7134b362
+      _SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _OldChildrenLink: []
+  _ActionNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 2128155929
+      position:
+        serializedVersion: 2
+        x: -276
+        y: 312
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u30BF\u30FC\u30B2\u30C3\u30C8\u6599\u7406\u4F5C\u6210"
+      _Name: Sub State Machine Reference
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 2
+      _Behaviour: {fileID: 3099146859599554466}
+      _DecoratorList:
+        _Objects:
+        - {fileID: 3577605365783854054}
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 534011718
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 1752227528
+      position:
+        serializedVersion: 2
+        x: 228
+        y: 312
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u5F85\u6A5F"
+      _Name: Sub State Machine Reference
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 3
+      _Behaviour: {fileID: 8652174933674387175}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1655911537
+--- !u!114 &-1138431890039452737
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f576b8f70a8dd455aa8cc931f62790c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 534011718
+  _DataSlotFieldLinks: []
+  expanded: 1
+--- !u!114 &6460907875436022470
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff7f9820050bbf468fba4b58fe18f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Owner: {fileID: 4243745000372242592}
+  _Parameters:
+  - container: {fileID: 6460907875436022470}
+    id: 1559595546
+    type: 3000
+    name: New Staff Data Variable
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: 
+  - container: {fileID: 6460907875436022470}
+    id: 534011718
+    type: 2004
+    name: New Component
+    _ParameterIndex: 1
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldParameters: []
+  _AssetObjectListParameters: []
+  _BoolParameters: 
+  _BoolListParameters: []
+  _BoundsParameters: []
+  _BoundsIntParameters: []
+  _BoundsIntListParameters: []
+  _BoundsListParameters: []
+  _ColorParameters: []
+  _ColorListParameters: []
+  _ComponentListParameters: []
+  _EnumListParameters: []
+  _FloatParameters: []
+  _FloatListParameters: []
+  _GameObjectListParameters: []
+  _IntParameters: 
+  _IntListParameters: []
+  _LongParameters: 
+  _LongListParameters: []
+  _ObjectParameters:
+  - {fileID: 7395272306663881771}
+  - {fileID: 0}
+  _QuaternionParameters: []
+  _QuaternionListParameters: []
+  _RectParameters: []
+  _RectIntParameters: []
+  _RectIntListParameters: []
+  _RectListParameters: []
+  _StringParameters: []
+  _StringListParameters: []
+  _Vector2Parameters: []
+  _Vector2IntParameters: []
+  _Vector2IntListParameters: []
+  _Vector2ListParameters: []
+  _Vector3Parameters: []
+  _Vector3IntParameters: []
+  _Vector3IntListParameters: []
+  _Vector3ListParameters: []
+  _Vector4Parameters: []
+  _Vector4ListParameters: []
+--- !u!114 &3099146859599554466
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ac99b14436964bb71de141a0550a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 2128155929
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _ExternalFSM:
+    _Type: 0
+    _HierarchyType: 0
+    _Value: {fileID: 9083886882605975674, guid: 0135aa7f74079ff4891e2b7a6c26d6ef, type: 3}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _UseDirectlyInScene:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _UsePool:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ArgumentList:
+    _Arguments:
+    - _ParameterID: 1559595546
+      _ParameterName: New Staff Data Variable
+      _ParameterType: 3000
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+      _ParameterIndex: 0
+      _OutputSlotIndex: 0
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    - _ParameterID: 534011718
+      _ParameterName: New Component
+      _ParameterType: 2004
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+      _ParameterIndex: 0
+      _OutputSlotIndex: 1
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    _IntParameters: []
+    _LongParameters: []
+    _FloatParameters: []
+    _BoolParameters: []
+    _EnumParameters: []
+    _StringParameters: []
+    _Vector2Parameters: []
+    _Vector3Parameters: []
+    _QuaternionParameters: []
+    _RectParameters: []
+    _BoundsParameters: []
+    _ColorParameters: []
+    _Vector4Parameters: []
+    _Vector2IntParameters: []
+    _Vector3IntParameters: []
+    _RectIntParameters: []
+    _BoundsIntParameters: []
+    _GameObjectParameters: []
+    _ComponentParameters:
+    - _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 6460907875436022470}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 534011718
+        name: New Component
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _AssetObjectParameters: []
+    _InputSlots:
+    - nodeGraph: {fileID: 4243745000372242592}
+      branchID: 1655911537
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+    _OutputSlots:
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldExternalFSM: {fileID: 0}
+--- !u!114 &8652174933674387175
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ac99b14436964bb71de141a0550a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 1752227528
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _ExternalFSM:
+    _Type: 0
+    _HierarchyType: 0
+    _Value: {fileID: 9083886882605975674, guid: b9c8eb603102d004182336a3fc5075bb, type: 3}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _UseDirectlyInScene:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _UsePool:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ArgumentList:
+    _Arguments:
+    - _ParameterID: 1559595546
+      _ParameterName: New Staff Data Variable
+      _ParameterType: 3000
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+      _ParameterIndex: 0
+      _OutputSlotIndex: 0
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    - _ParameterID: 534011718
+      _ParameterName: New Component
+      _ParameterType: 2004
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+      _ParameterIndex: 0
+      _OutputSlotIndex: 1
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    _IntParameters: []
+    _LongParameters: []
+    _FloatParameters: []
+    _BoolParameters: []
+    _EnumParameters: []
+    _StringParameters: []
+    _Vector2Parameters: []
+    _Vector3Parameters: []
+    _QuaternionParameters: []
+    _RectParameters: []
+    _BoundsParameters: []
+    _ColorParameters: []
+    _Vector4Parameters: []
+    _Vector2IntParameters: []
+    _Vector3IntParameters: []
+    _RectIntParameters: []
+    _BoundsIntParameters: []
+    _GameObjectParameters: []
+    _ComponentParameters:
+    - _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 6460907875436022470}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 534011718
+        name: New Component
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _AssetObjectParameters: []
+    _InputSlots:
+    - nodeGraph: {fileID: 4243745000372242592}
+      branchID: 534011718
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+    _OutputSlots:
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldExternalFSM: {fileID: 0}
+--- !u!114 &7395272306663881771
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac39ac583a992254a83f1c066d466ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ParameterContainer: {fileID: 6460907875436022470}
+  _Parameter:
+    m_staffData: {fileID: 0}
+--- !u!114 &4720366814315807492
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49f6be3b3b23cc4d86f5db3a17b9429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 1211126341
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 1
+  _ParameterReference:
+    _Type: 0
+    _Container: {fileID: 6460907875436022470}
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    id: 1559595546
+    name: New Staff Data Variable
+  _Output:
+    nodeGraph: {fileID: 4243745000372242592}
+    branchIDs: 465fd41fd0db2c0e7134b362
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+    _Type:
+      _AssemblyTypeName: StaffDataVariable, Assembly-CSharp
+  _IsInGraphParameter: 1
+  _SerializeVersion: 1
+--- !u!114 &3577605365783854054
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358dfe6db70219c47b8761590bbd00e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 2128155929
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AbortFlags: -1
+  _LogicalCondition:
+    logicalOperation: 0
+    notOp: 0
+  m_flexibleStaffDataVariable:
+    _Type: 2
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 6460907875436022470}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Staff Data Variable
+    _Slot:
+      nodeGraph: {fileID: 4243745000372242592}
+      branchID: 237820880

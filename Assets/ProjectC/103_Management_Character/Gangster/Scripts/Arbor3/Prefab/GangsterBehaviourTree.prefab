@@ -1,0 +1,977 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5854011952059218178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3441137484961125617}
+  - component: {fileID: 4243745000372242592}
+  - component: {fileID: -1138431890039452737}
+  - component: {fileID: -8741765432045747210}
+  - component: {fileID: 6460907875436022470}
+  - component: {fileID: -6157275842980856178}
+  - component: {fileID: 1444740091359960589}
+  - component: {fileID: 6992468761788298960}
+  - component: {fileID: 3304231222948612164}
+  - component: {fileID: 2492604590891495128}
+  - component: {fileID: 5225726744920987573}
+  m_Layer: 0
+  m_Name: GangsterBehaviourTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3441137484961125617
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4243745000372242592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d777a828a6247b594b0e8c83d051e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GraphName: New BehaviourTree
+  playOnStart: 1
+  updateSettings:
+    type: 0
+    timeType: 0
+    seconds: 0.1
+  debugInfiniteLoopSettings:
+    maxLoopCount: 10000
+    enableLogging: 1
+    enableBreak: 0
+  _OwnerBehaviour: {fileID: 0}
+  _ParameterContainer: {fileID: 6460907875436022470}
+  _Calculators:
+  - _NodeGraph: {fileID: 4243745000372242592}
+    _NodeID: 630327709
+    position:
+      serializedVersion: 2
+      x: -684
+      y: 144
+      width: 200
+      height: 100
+    showComment: 0
+    nodeComment: 
+    _Name: Get Parameter
+    _IsSettedName: 1
+    _Object: {fileID: 1444740091359960589}
+  _Comments: []
+  _Groups: []
+  _DataBranchRerouteNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 1848543519
+      position:
+        serializedVersion: 2
+        x: -48
+        y: 216
+        width: 32
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: DataBranchRerouteNode
+      _IsSettedName: 1
+      link:
+        nodeGraph: {fileID: 4243745000372242592}
+        inputBranchID: 1655911537
+        outputBranchIDs: 9d099225
+        type:
+          _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+        _RerouteSlot_SerializeVersion:
+          _Version: 1
+          _IsInitialized: 1
+          _IsVersioning: 1
+      direction: {x: 0.6454949, y: 0.76376456}
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 822959691
+      position:
+        serializedVersion: 2
+        x: 300
+        y: 192
+        width: 32
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: DataBranchRerouteNode
+      _IsSettedName: 1
+      link:
+        nodeGraph: {fileID: 4243745000372242592}
+        inputBranchID: 1498044246
+        outputBranchIDs: c8de7068
+        type:
+          _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+        _RerouteSlot_SerializeVersion:
+          _Version: 1
+          _IsInitialized: 1
+          _IsVersioning: 1
+      direction: {x: 0.9416369, y: 0.33663025}
+  _DataBranchies:
+  - branchID: 534011718
+    enabled: 1
+    inBehaviour: {fileID: 6992468761788298960}
+    inNodeID: 1752227528
+    outBehaviour: {fileID: 1444740091359960589}
+    outNodeID: 630327709
+    lineBezier:
+      _StartPosition: {x: -484, y: 253.40001}
+      _StartControl: {x: -434, y: 253.40001}
+      _EndPosition: {x: -416.8, y: 744.4}
+      _EndControl: {x: -466.8, y: 744.4}
+    showDataValue: 0
+  - branchID: 1655911537
+    enabled: 1
+    inBehaviour: {fileID: 4243745000372242592}
+    inNodeID: 1848543519
+    outBehaviour: {fileID: 1444740091359960589}
+    outNodeID: 630327709
+    lineBezier:
+      _StartPosition: {x: -484, y: 253.40001}
+      _StartControl: {x: -434, y: 253.40001}
+      _EndPosition: {x: -37.16398, y: 225.88986}
+      _EndControl: {x: -69.43872, y: 187.70163}
+    showDataValue: 0
+  - branchID: 630327709
+    enabled: 1
+    inBehaviour: {fileID: 2492604590891495128}
+    inNodeID: 726643700
+    outBehaviour: {fileID: 4243745000372242592}
+    outNodeID: 1848543519
+    lineBezier:
+      _StartPosition: {x: -26.83606, y: 238.1101}
+      _StartControl: {x: 5.4386826, y: 276.29834}
+      _EndPosition: {x: -8.799983, y: 744.4}
+      _EndControl: {x: -58.799984, y: 744.4}
+    showDataValue: 0
+  - branchID: 1498044246
+    enabled: 1
+    inBehaviour: {fileID: 4243745000372242592}
+    inNodeID: 822959691
+    outBehaviour: {fileID: 1444740091359960589}
+    outNodeID: 630327709
+    lineBezier:
+      _StartPosition: {x: -484, y: 253.40001}
+      _StartControl: {x: -434, y: 253.40001}
+      _EndPosition: {x: 308.46692, y: 205.30695}
+      _EndControl: {x: 261.38507, y: 188.47543}
+    showDataValue: 0
+  - branchID: 1752227528
+    enabled: 1
+    inBehaviour: {fileID: -8741765432045747210}
+    inNodeID: 1655911537
+    outBehaviour: {fileID: 4243745000372242592}
+    outNodeID: 822959691
+    lineBezier:
+      _StartPosition: {x: 323.53308, y: 210.69302}
+      _StartControl: {x: 370.61493, y: 227.52454}
+      _EndPosition: {x: 411.20004, y: 450}
+      _EndControl: {x: 361.20004, y: 450}
+    showDataValue: 0
+  restartOnFinish: 1
+  executionSettings:
+    type: 0
+    maxCount: 1
+  _NodeBranchies:
+    _NodeBranchies:
+    - branchID: 1559595546
+      parentNodeID: 1
+      childNodeID: 534011718
+    - branchID: 534011718
+      parentNodeID: 534011718
+      childNodeID: 1655911537
+    - branchID: 1655911537
+      parentNodeID: 534011718
+      childNodeID: 1752227528
+    - branchID: 630327709
+      parentNodeID: 534011718
+      childNodeID: 726643700
+  _RootNode:
+    _NodeGraph: {fileID: 4243745000372242592}
+    _NodeID: 1
+    position:
+      serializedVersion: 2
+      x: -48
+      y: -144
+      width: 180
+      height: 0
+    showComment: 0
+    nodeComment: 
+    _Name: Root
+    _IsSettedName: 1
+    _EnablePriority: 1
+    _Priority: 0
+    _ChildNodeLink:
+      branchID: 1559595546
+  _CompositeNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 534011718
+      position:
+        serializedVersion: 2
+        x: -108
+        y: 0
+        width: 300
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: Selector
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 1
+      _Behaviour: {fileID: -1138431890039452737}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1559595546
+      _ChildrenLink:
+        branchIDs: 7134b3629d099225465fd41f
+      _SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _OldChildrenLink: []
+  _ActionNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 1655911537
+      position:
+        serializedVersion: 2
+        x: 432
+        y: 288
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u901A\u5E38"
+      _Name: Sub State Machine Reference
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 4
+      _Behaviour: {fileID: -8741765432045747210}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 534011718
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 1752227528
+      position:
+        serializedVersion: 2
+        x: -396
+        y: 288
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u6B7B\u3093\u3060"
+      _Name: Sub State Machine Reference
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 2
+      _Behaviour: {fileID: 6992468761788298960}
+      _DecoratorList:
+        _Objects:
+        - {fileID: 3304231222948612164}
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1655911537
+    - _NodeGraph: {fileID: 4243745000372242592}
+      _NodeID: 726643700
+      position:
+        serializedVersion: 2
+        x: 12
+        y: 288
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u653B\u6483"
+      _Name: Sub State Machine Reference
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 3
+      _Behaviour: {fileID: 2492604590891495128}
+      _DecoratorList:
+        _Objects:
+        - {fileID: 5225726744920987573}
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 630327709
+--- !u!114 &-1138431890039452737
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f576b8f70a8dd455aa8cc931f62790c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 534011718
+  _DataSlotFieldLinks: []
+  expanded: 1
+--- !u!114 &-8741765432045747210
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ac99b14436964bb71de141a0550a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 1655911537
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _ExternalFSM:
+    _Type: 0
+    _HierarchyType: 0
+    _Value: {fileID: 717851627318756542, guid: f5d64a8362284cf418b790cd20bf4160, type: 3}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _UseDirectlyInScene:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _UsePool:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ArgumentList:
+    _Arguments:
+    - _ParameterID: 1559595546
+      _ParameterName: New Gangster Data Variable
+      _ParameterType: 3000
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+      _ParameterIndex: 0
+      _OutputSlotIndex: 0
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    - _ParameterID: 534011718
+      _ParameterName: Animator
+      _ParameterType: 2004
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+      _ParameterIndex: 0
+      _OutputSlotIndex: 1
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    _IntParameters: []
+    _LongParameters: []
+    _FloatParameters: []
+    _BoolParameters: []
+    _EnumParameters: []
+    _StringParameters: []
+    _Vector2Parameters: []
+    _Vector3Parameters: []
+    _QuaternionParameters: []
+    _RectParameters: []
+    _BoundsParameters: []
+    _ColorParameters: []
+    _Vector4Parameters: []
+    _Vector2IntParameters: []
+    _Vector3IntParameters: []
+    _RectIntParameters: []
+    _BoundsIntParameters: []
+    _GameObjectParameters: []
+    _ComponentParameters:
+    - _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 6460907875436022470}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 1559595546
+        name: Animator
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _AssetObjectParameters: []
+    _InputSlots:
+    - nodeGraph: {fileID: 4243745000372242592}
+      branchID: 1752227528
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    _OutputSlots:
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldExternalFSM: {fileID: 0}
+--- !u!114 &6460907875436022470
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff7f9820050bbf468fba4b58fe18f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Owner: {fileID: 4243745000372242592}
+  _Parameters:
+  - container: {fileID: 6460907875436022470}
+    id: 534011718
+    type: 3000
+    name: GangsterDataVariable
+    _ParameterIndex: 1
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: 
+  - container: {fileID: 6460907875436022470}
+    id: 1559595546
+    type: 2004
+    name: Animator
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldParameters: []
+  _AssetObjectListParameters: []
+  _BoolParameters: 
+  _BoolListParameters: []
+  _BoundsParameters: []
+  _BoundsIntParameters: []
+  _BoundsIntListParameters: []
+  _BoundsListParameters: []
+  _ColorParameters: []
+  _ColorListParameters: []
+  _ComponentListParameters: []
+  _EnumListParameters: []
+  _FloatParameters: []
+  _FloatListParameters: []
+  _GameObjectListParameters: []
+  _IntParameters: 
+  _IntListParameters: []
+  _LongParameters: 
+  _LongListParameters: []
+  _ObjectParameters:
+  - {fileID: 0}
+  - {fileID: -6157275842980856178}
+  _QuaternionParameters: []
+  _QuaternionListParameters: []
+  _RectParameters: []
+  _RectIntParameters: []
+  _RectIntListParameters: []
+  _RectListParameters: []
+  _StringParameters: []
+  _StringListParameters: []
+  _Vector2Parameters: []
+  _Vector2IntParameters: []
+  _Vector2IntListParameters: []
+  _Vector2ListParameters: []
+  _Vector3Parameters: []
+  _Vector3IntParameters: []
+  _Vector3IntListParameters: []
+  _Vector3ListParameters: []
+  _Vector4Parameters: []
+  _Vector4ListParameters: []
+--- !u!114 &-6157275842980856178
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e2f4ebfe3437124c97ea5285e778912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ParameterContainer: {fileID: 6460907875436022470}
+  _Parameter:
+    m_gangsterData: {fileID: 0}
+--- !u!114 &1444740091359960589
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49f6be3b3b23cc4d86f5db3a17b9429, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 630327709
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 1
+  _ParameterReference:
+    _Type: 0
+    _Container: {fileID: 6460907875436022470}
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    id: 534011718
+    name: GangsterDataVariable
+  _Output:
+    nodeGraph: {fileID: 4243745000372242592}
+    branchIDs: 465fd41f7134b36256574a59
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+    _Type:
+      _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+  _IsInGraphParameter: 1
+  _SerializeVersion: 1
+--- !u!114 &6992468761788298960
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ac99b14436964bb71de141a0550a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 1752227528
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _ExternalFSM:
+    _Type: 0
+    _HierarchyType: 0
+    _Value: {fileID: 717851627318756542, guid: 61023291079d23e418562d43dd61fa2a, type: 3}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _UseDirectlyInScene:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _UsePool:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ArgumentList:
+    _Arguments:
+    - _ParameterID: 1559595546
+      _ParameterName: New Gangster Data Variable
+      _ParameterType: 3000
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+      _ParameterIndex: 0
+      _OutputSlotIndex: 0
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    - _ParameterID: 534011718
+      _ParameterName: Animator
+      _ParameterType: 2004
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+      _ParameterIndex: 0
+      _OutputSlotIndex: 1
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    _IntParameters: []
+    _LongParameters: []
+    _FloatParameters: []
+    _BoolParameters: []
+    _EnumParameters: []
+    _StringParameters: []
+    _Vector2Parameters: []
+    _Vector3Parameters: []
+    _QuaternionParameters: []
+    _RectParameters: []
+    _BoundsParameters: []
+    _ColorParameters: []
+    _Vector4Parameters: []
+    _Vector2IntParameters: []
+    _Vector3IntParameters: []
+    _RectIntParameters: []
+    _BoundsIntParameters: []
+    _GameObjectParameters: []
+    _ComponentParameters:
+    - _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 6460907875436022470}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 1559595546
+        name: Animator
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _AssetObjectParameters: []
+    _InputSlots:
+    - nodeGraph: {fileID: 4243745000372242592}
+      branchID: 534011718
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    _OutputSlots:
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldExternalFSM: {fileID: 0}
+--- !u!114 &3304231222948612164
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e36a515b5f596f428f375f7a9dbd335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 1752227528
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AbortFlags: -1
+  _LogicalCondition:
+    logicalOperation: 0
+    notOp: 0
+  m_flexibleGangsterDataVariable:
+    _Type: 1
+    _Value:
+      m_gangsterData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 6460907875436022470}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 534011718
+      name: GangsterDataVariable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_gangsterStateList: 02000000
+--- !u!114 &2492604590891495128
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ac99b14436964bb71de141a0550a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 726643700
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _ExternalFSM:
+    _Type: 0
+    _HierarchyType: 0
+    _Value: {fileID: 717851627318756542, guid: bf1547e3f8bfbc04fa0edd12cb1b5369, type: 3}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _UseDirectlyInScene:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _UsePool:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ArgumentList:
+    _Arguments:
+    - _ParameterID: 1559595546
+      _ParameterName: New Gangster Data Variable
+      _ParameterType: 3000
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+      _ParameterIndex: 0
+      _OutputSlotIndex: 0
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    - _ParameterID: 534011718
+      _ParameterName: Animator
+      _ParameterType: 2004
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+      _ParameterIndex: 0
+      _OutputSlotIndex: 1
+      _UpdateTiming: 1
+      _IsPublicSet: 1
+      _IsPublicGet: 1
+    _IntParameters: []
+    _LongParameters: []
+    _FloatParameters: []
+    _BoolParameters: []
+    _EnumParameters: []
+    _StringParameters: []
+    _Vector2Parameters: []
+    _Vector3Parameters: []
+    _QuaternionParameters: []
+    _RectParameters: []
+    _BoundsParameters: []
+    _ColorParameters: []
+    _Vector4Parameters: []
+    _Vector2IntParameters: []
+    _Vector3IntParameters: []
+    _RectIntParameters: []
+    _BoundsIntParameters: []
+    _GameObjectParameters: []
+    _ComponentParameters:
+    - _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 6460907875436022470}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 1559595546
+        name: Animator
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _AssetObjectParameters: []
+    _InputSlots:
+    - nodeGraph: {fileID: 4243745000372242592}
+      branchID: 630327709
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    _OutputSlots:
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: GangsterDataVariable, Assembly-CSharp
+    - nodeGraph: {fileID: 0}
+      branchIDs: 
+      _OutputSlotBase_SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _Type:
+        _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldExternalFSM: {fileID: 0}
+--- !u!114 &5225726744920987573
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5854011952059218178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e36a515b5f596f428f375f7a9dbd335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4243745000372242592}
+  _NodeID: 726643700
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AbortFlags: -1
+  _LogicalCondition:
+    logicalOperation: 0
+    notOp: 0
+  m_flexibleGangsterDataVariable:
+    _Type: 1
+    _Value:
+      m_gangsterData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 6460907875436022470}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 534011718
+      name: GangsterDataVariable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_gangsterStateList: 01000000

@@ -1,0 +1,1444 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8787589705030715376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4331399263190662324}
+  - component: {fileID: 4150177945887553502}
+  - component: {fileID: 1191172070963592093}
+  - component: {fileID: 5690823119451735438}
+  - component: {fileID: -8810489012079282724}
+  - component: {fileID: -4288581617449390175}
+  - component: {fileID: -7244142134735659870}
+  - component: {fileID: 6419309865977713267}
+  - component: {fileID: 7564963924184735383}
+  - component: {fileID: 8897405200650972840}
+  - component: {fileID: 6206464605258086630}
+  - component: {fileID: -1328551686455769649}
+  - component: {fileID: -4322189435587741467}
+  - component: {fileID: -4882280282141746161}
+  - component: {fileID: 4110074328051774715}
+  - component: {fileID: -6401423089109374714}
+  - component: {fileID: 7074810015804051543}
+  - component: {fileID: 507458926096894568}
+  - component: {fileID: -5885544169158311995}
+  - component: {fileID: 4096837308550057782}
+  - component: {fileID: 1364945152552365673}
+  - component: {fileID: 5697803042537568276}
+  - component: {fileID: 3461586410151173682}
+  m_Layer: 0
+  m_Name: FindCustomerArborFSM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4331399263190662324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4150177945887553502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3982f3d49853bb44283cd1fcef05a3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GraphName: FindCustomerArborFSM
+  playOnStart: 0
+  updateSettings:
+    type: 0
+    timeType: 0
+    seconds: 0.1
+  debugInfiniteLoopSettings:
+    maxLoopCount: 10000
+    enableLogging: 1
+    enableBreak: 0
+  _OwnerBehaviour: {fileID: 0}
+  _ParameterContainer: {fileID: 1191172070963592093}
+  _Calculators:
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1559595546
+    position:
+      serializedVersion: 2
+      x: 780
+      y: 1164
+      width: 300
+      height: 100
+    showComment: 0
+    nodeComment: 
+    _Name: Calc Chair Pos Customer
+    _IsSettedName: 1
+    _Object: {fileID: 5690823119451735438}
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 842412939
+    position:
+      serializedVersion: 2
+      x: 960
+      y: 2604
+      width: 300
+      height: 167.2
+    showComment: 0
+    nodeComment: 
+    _Name: Calc Queue Point Pos Customer
+    _IsSettedName: 1
+    _Object: {fileID: -6401423089109374714}
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 585264341
+    position:
+      serializedVersion: 2
+      x: 276
+      y: 2652
+      width: 300
+      height: 100
+    showComment: 0
+    nodeComment: 
+    _Name: Calc Rotate Queue Head Customer
+    _IsSettedName: 1
+    _Object: {fileID: -5885544169158311995}
+  _Comments: []
+  _Groups: []
+  _DataBranchRerouteNodes:
+    _Nodes: []
+  _DataBranchies:
+  - branchID: 1559595546
+    enabled: 1
+    inBehaviour: {fileID: -8810489012079282724}
+    inNodeID: 534011718
+    outBehaviour: {fileID: 5690823119451735438}
+    outNodeID: 1559595546
+    lineBezier:
+      _StartPosition: {x: 1080, y: 1357.4}
+      _StartControl: {x: 1130, y: 1357.4}
+      _EndPosition: {x: 1131.2, y: 1687.5999}
+      _EndControl: {x: 1081.2, y: 1687.5999}
+    showDataValue: 0
+  - branchID: 1655911537
+    enabled: 1
+    inBehaviour: {fileID: -4882280282141746161}
+    inNodeID: 1400855637
+    outBehaviour: {fileID: -6401423089109374714}
+    outNodeID: 842412939
+    lineBezier:
+      _StartPosition: {x: 1260, y: 2797.4}
+      _StartControl: {x: 1310, y: 2797.4}
+      _EndPosition: {x: 1299.2, y: 2395.5999}
+      _EndControl: {x: 1249.2, y: 2395.5999}
+    showDataValue: 0
+  - branchID: 867932563
+    enabled: 1
+    inBehaviour: {fileID: 3461586410151173682}
+    inNodeID: 182639827
+    outBehaviour: {fileID: -5885544169158311995}
+    outNodeID: 585264341
+    lineBezier:
+      _StartPosition: {x: 576, y: 2845.4}
+      _StartControl: {x: 626, y: 2845.4}
+      _EndPosition: {x: 639.2001, y: 2478.7998}
+      _EndControl: {x: 589.2001, y: 2478.7998}
+    showDataValue: 0
+  _StartStateID: 630327709
+  _States:
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 534011718
+    position:
+      serializedVersion: 2
+      x: 1152
+      y: 1452
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30C6\u30FC\u30D6\u30EB\u306E\u65B9\u3078\u79FB\u52D5\u3059\u308B"
+    _Name: MoveToChair
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: -8810489012079282724}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1655911537
+    position:
+      serializedVersion: 2
+      x: 660
+      y: 1452
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u6905\u5B50\u3078\u79FB\u52D5\u3059\u308B\u72B6\u614B\u306B\u5909\u66F4"
+    _Name: SetMoveChairState
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: -4288581617449390175}
+    - {fileID: -7244142134735659870}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 630327709
+    position:
+      serializedVersion: 2
+      x: 108
+      y: 1452
+      width: 348
+      height: 169.6
+    showComment: 1
+    nodeComment: "\u30C6\u30FC\u30D6\u30EB\u304C\u7A7A\u3044\u3066\u3044\u308B\u304B\u78BA\u8A8D\n\u7121\u3051\u308C\u3070\u5F85\u6A5F\u5217\u3078"
+    _Name: FindChair
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 6419309865977713267}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1848543519
+    position:
+      serializedVersion: 2
+      x: 1548
+      y: 1452
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u6599\u7406\u3092\u6CE8\u6587\u3059\u308B"
+    _Name: OrderFood
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 7564963924184735383}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 2041175501
+    position:
+      serializedVersion: 2
+      x: 144
+      y: 2088
+      width: 324
+      height: 277.6
+    showComment: 1
+    nodeComment: "\u5F85\u3061\u5217\u72B6\u614B\u3078\u5909\u66F4"
+    _Name: SetWaitQueueState
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 8897405200650972840}
+    - {fileID: 6206464605258086630}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 182639827
+    position:
+      serializedVersion: 2
+      x: 660
+      y: 2088
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u5F85\u6A5F\u5217\u3067\u5F85\u6A5F\n\u30C6\u30FC\u30D6\u30EB\u304C\u7A7A\u304F\u306E\u3082\u5F85\u3064"
+    _Name: WaitQueue
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: -4322189435587741467}
+    - {fileID: 5697803042537568276}
+    - {fileID: 3461586410151173682}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1304539646
+    position:
+      serializedVersion: 2
+      x: 156
+      y: 2412
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u81EA\u4FE1\u3092\u884C\u5217\u3078\u8FFD\u52A0"
+    _Name: AddQueue
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 4110074328051774715}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1400855637
+    position:
+      serializedVersion: 2
+      x: 1320
+      y: 2160
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u5F85\u6A5F\u5217\u30DD\u30A4\u30F3\u30C8\u3078\u79FB\u52D5"
+    _Name: MoveToQueuePoint
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: -4882280282141746161}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 375271809
+    position:
+      serializedVersion: 2
+      x: 660
+      y: 1776
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u5F85\u6A5F\u5217\u304B\u3089\u5916\u308C\u308B"
+    _Name: RemoveQueue
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 507458926096894568}
+    - {fileID: 7074810015804051543}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 664219782
+    position:
+      serializedVersion: 2
+      x: 1668
+      y: 1860
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u5E38\u306B\u6599\u7406\u304C\u63D0\u4F9B\u3067\u304D\u308B\u72B6\u614B\u304B\u3069\u3046\u304B\u78BA\u8A8D\u3059\u308B\n\u7121\u3051\u308C\u3070\u30B9\u30C6\u30FC\u30C8\u30EA\u30F3\u30AF\u3092\u901A\u308B"
+    _Name: New State
+    _IsSettedName: 1
+    _Resident: 1
+    _Behaviours:
+    - {fileID: 4096837308550057782}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 4150177945887553502}
+    _NodeID: 1099561537
+    position:
+      serializedVersion: 2
+      x: 2148
+      y: 1884
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u5E30\u308B\u72B6\u614B\u306B\u5909\u66F4"
+    _Name: SetState
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 1364945152552365673}
+    _BreakPoint: 0
+  _StateLinkRerouteNodes:
+    _Nodes: []
+--- !u!114 &1191172070963592093
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff7f9820050bbf468fba4b58fe18f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Owner: {fileID: 4150177945887553502}
+  _Parameters:
+  - container: {fileID: 1191172070963592093}
+    id: 1559595546
+    type: 3000
+    name: New Customer Data Variable
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: 
+  - container: {fileID: 1191172070963592093}
+    id: 630327709
+    type: 2004
+    name: Animator
+    _ParameterIndex: 1
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldParameters: []
+  _AssetObjectListParameters: []
+  _BoolParameters: 
+  _BoolListParameters: []
+  _BoundsParameters: []
+  _BoundsIntParameters: []
+  _BoundsIntListParameters: []
+  _BoundsListParameters: []
+  _ColorParameters: []
+  _ColorListParameters: []
+  _ComponentListParameters: []
+  _EnumListParameters: []
+  _FloatParameters: []
+  _FloatListParameters: []
+  _GameObjectListParameters: []
+  _IntParameters: 
+  _IntListParameters: []
+  _LongParameters: 
+  _LongListParameters: []
+  _ObjectParameters:
+  - {fileID: -1328551686455769649}
+  - {fileID: 0}
+  _QuaternionParameters: []
+  _QuaternionListParameters: []
+  _RectParameters: []
+  _RectIntParameters: []
+  _RectIntListParameters: []
+  _RectListParameters: []
+  _StringParameters: []
+  _StringListParameters: []
+  _Vector2Parameters: []
+  _Vector2IntParameters: []
+  _Vector2IntListParameters: []
+  _Vector2ListParameters: []
+  _Vector3Parameters: []
+  _Vector3IntParameters: []
+  _Vector3IntListParameters: []
+  _Vector3ListParameters: []
+  _Vector4Parameters: []
+  _Vector4ListParameters: []
+--- !u!114 &5690823119451735438
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 731cbf790f5d4e944a29ad80c576e14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1559595546
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 2
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_outputPos:
+    nodeGraph: {fileID: 4150177945887553502}
+    branchIDs: 1a8af55c
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+--- !u!114 &-8810489012079282724
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb67c7a96c7f7b949a4e552143593788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 534011718
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AgentController:
+    _Type: 3
+    _HierarchyType: 1
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _SerializeVersion: 2
+  _OldAgentController: {fileID: 0}
+  _StopOnStateEnd:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ClearVelocityOnStop:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Done:
+    name: 
+    _StateID: 1848543519
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.9600766, a: 1}
+  _CantMove:
+    name: 
+    _StateID: 1848543519
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+  _UpdateType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _TimeType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Interval:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _IntervalUpdate_SerializeVersion: 2
+  _MinInterval: 0
+  _MaxInterval: 0
+  _OldUpdateType: 0
+  _OldTimeType: 0
+  _OldStopOnStateEnd: 0
+  _Speed:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _AgentMoveBase_SerializeVersion: 1
+  _OldSpeed: 0
+  _StoppingDistance:
+    _Type: 0
+    _Value: 0.25
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Position:
+    _Type: 2
+    _Value: {x: 0, y: 0, z: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 4150177945887553502}
+      branchID: 1559595546
+--- !u!114 &-4288581617449390175
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4936d5ae28c9aa24aa05203e5fe2e380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1655911537
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_customerState: 1
+--- !u!114 &-7244142134735659870
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1655911537
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 534011718
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.97765493, b: 1, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &6419309865977713267
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf6641b2d66275442a68000896c946f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 630327709
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_successLink:
+    name: 
+    _StateID: 1655911537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.9851489, b: 1, a: 1}
+  m_failLink:
+    name: 
+    _StateID: 2041175501
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &7564963924184735383
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8715fd4360aca2449a2d52119fd716da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1848543519
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_successLink:
+    name: 
+    _StateID: 0
+    transitionTiming: 4
+    _LineColorChanged: 0
+    _LineColor: {r: 1, g: 1, b: 1, a: 1}
+  m_failLink:
+    name: 
+    _StateID: 1099561537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &8897405200650972840
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4936d5ae28c9aa24aa05203e5fe2e380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 2041175501
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_customerState: 6
+--- !u!114 &6206464605258086630
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 2041175501
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 1304539646
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.93763614, b: 1, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &-1328551686455769649
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6f65670584c311458e6c45b8f8621b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ParameterContainer: {fileID: 1191172070963592093}
+  _Parameter:
+    m_customerData: {fileID: 0}
+--- !u!114 &-4322189435587741467
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d95ddde09986734bbab152d069c20f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 182639827
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_successLink:
+    name: 
+    _StateID: 1400855637
+    transitionTiming: 3
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.9980221, a: 1}
+--- !u!114 &-4882280282141746161
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb67c7a96c7f7b949a4e552143593788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1400855637
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AgentController:
+    _Type: 3
+    _HierarchyType: 1
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _SerializeVersion: 2
+  _OldAgentController: {fileID: 0}
+  _StopOnStateEnd:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ClearVelocityOnStop:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Done:
+    name: 
+    _StateID: 182639827
+    transitionTiming: 3
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.9573624, a: 1}
+  _CantMove:
+    name: 
+    _StateID: 182639827
+    transitionTiming: 3
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+  _UpdateType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _TimeType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Interval:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _IntervalUpdate_SerializeVersion: 2
+  _MinInterval: 0
+  _MaxInterval: 0
+  _OldUpdateType: 0
+  _OldTimeType: 0
+  _OldStopOnStateEnd: 0
+  _Speed:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _AgentMoveBase_SerializeVersion: 1
+  _OldSpeed: 0
+  _StoppingDistance:
+    _Type: 0
+    _Value: 0.2
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Position:
+    _Type: 2
+    _Value: {x: 0, y: 0, z: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 4150177945887553502}
+      branchID: 1655911537
+--- !u!114 &4110074328051774715
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcc30b8afd198b43a52b12abb521f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1304539646
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_successLink:
+    name: 
+    _StateID: 182639827
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.9944632, b: 1, a: 1}
+  m_failLink:
+    name: 
+    _StateID: 1099561537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &-6401423089109374714
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d86f1885c79964d9c06f9009797083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 842412939
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 2
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_outputPos:
+    nodeGraph: {fileID: 4150177945887553502}
+    branchIDs: 7134b362
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+--- !u!114 &7074810015804051543
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 375271809
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 1655911537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.9424758, b: 1, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &507458926096894568
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59dcb97f693df0d459c0af9038df991f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 375271809
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+--- !u!114 &-5885544169158311995
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90b43e1b0023290478525721923deeda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 585264341
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 2
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_outputPos:
+    nodeGraph: {fileID: 4150177945887553502}
+    branchIDs: 9399bb33
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+--- !u!114 &4096837308550057782
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657fb6c33fbef7d4697b0f805751c25d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 664219782
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_stateLink:
+    name: 
+    _StateID: 1099561537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &1364945152552365673
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4936d5ae28c9aa24aa05203e5fe2e380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 1099561537
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_customerState: 5
+--- !u!114 &5697803042537568276
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad1d5d7029bc664fbf5eaaed71851a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 182639827
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleCustomerDataVariable:
+    _Type: 1
+    _Value:
+      m_customerData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 1191172070963592093}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: New Customer Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_successLink:
+    name: 
+    _StateID: 375271809
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 0.96927214, b: 1, a: 1}
+--- !u!114 &3461586410151173682
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8787589705030715376}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbe01799e0e54447a0329334ae52f29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 4150177945887553502}
+  _NodeID: 182639827
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_targetPos:
+    _Type: 2
+    _Value: {x: 0, y: 0, z: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 4150177945887553502}
+      branchID: 867932563
+  m_characterCore:
+    _Type: 3
+    _HierarchyType: 1
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 

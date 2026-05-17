@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cfedc4822d2cec4bb83d6aa29135780, type: 3}
+  m_Name: PlayerDataBase
+  m_EditorClassIdentifier: 
+  m_characterStatus:
+    m_walkSpeed: 4
+    m_dushSpeed: 8
+    m_hp:
+      value: 50
+    m_attack:
+      value: 5
+    m_defense:
+      value: 5
+    m_knockBackDamage: 0
+  m_staminaData:
+    m_maxStamina:
+      value: 35
+    m_staminaSpeed: 12
+    m_rollingStaminaCost: 10
+    m_dashStaminaCost: 0.2
+  m_attackData:
+  - m_hitStopTime: 0.1
+    m_attack: 0.5
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  - m_hitStopTime: 0.1
+    m_attack: 0.7
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  - m_hitStopTime: 0.1
+    m_attack: 0.75
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  - m_hitStopTime: 0.1
+    m_attack: 1.8
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  - m_hitStopTime: 0.05
+    m_attack: 0.35
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 1
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  - m_hitStopTime: 0.1
+    m_attack: 2.5
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 1
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0.5
+    m_condition: 0
+  m_parameterLimit:
+  - m_attackLimit: 10
+    m_hpLimit: 100
+    m_defenceLimit: 10
+    m_staminaLimit: 60
+  - m_attackLimit: 15
+    m_hpLimit: 150
+    m_defenceLimit: 15
+    m_staminaLimit: 100

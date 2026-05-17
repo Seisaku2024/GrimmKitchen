@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: LobbyStoryConversation
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: d8b08f6ec4e297e45914136a6b821843, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: c231c127fd9fda54593fd0212d1e374c, type: 2}
+  - {fileID: 11400000, guid: 0169b292b59e57749b313aa7b443573f, type: 2}
+  - {fileID: 11400000, guid: 3a67dfbaf090e664ab53158c94dac964, type: 2}
+  m_Extensions:
+  - rid: 3238065110623453187
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds:
+    - rid: 3238065110623453187
+      type: {class: GoogleSheetsExtension, ns: UnityEditor.Localization.Plugins.Google, asm: Unity.Localization.Editor}
+      data:
+        m_Collection: {fileID: 11400000}
+        m_SheetsServiceProvider: {fileID: 11400000, guid: 6589dc6669bd28b4799df6795c54ff50, type: 2}
+        m_SpreadsheetId: 1o4vrzg3Av_D0fzLf4fF17W716ddq8q4gNo8Bq6Xx9sU
+        m_SheetId: 87045235
+        m_Columns:
+        - rid: 3238065110623453189
+        - rid: 3238065110623453190
+        - rid: 3238065110623453191
+        - rid: 3238065110623453192
+        m_RemoveMissingPulledKeys: 1
+    - rid: 3238065110623453189
+      type: {class: KeyColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: A
+    - rid: 3238065110623453190
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: B
+        m_LocaleIdentifier:
+          m_Code: en
+        m_IncludeComments: 0
+    - rid: 3238065110623453191
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: C
+        m_LocaleIdentifier:
+          m_Code: ja
+        m_IncludeComments: 0
+    - rid: 3238065110623453192
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: D
+        m_LocaleIdentifier:
+          m_Code: zh
+        m_IncludeComments: 0

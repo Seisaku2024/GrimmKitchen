@@ -1,0 +1,1118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5805598656855535877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6910454524015857694}
+  - component: {fileID: 1815286867725072435}
+  - component: {fileID: 665136066596948709}
+  - component: {fileID: -9110211153526671660}
+  - component: {fileID: -5487402245807528541}
+  - component: {fileID: 486728331095308895}
+  - component: {fileID: 8260291293774892624}
+  - component: {fileID: 9176292437510407669}
+  - component: {fileID: 8628997177623652606}
+  - component: {fileID: 5832027506226484051}
+  - component: {fileID: 5101814757978118164}
+  - component: {fileID: 118808267756963012}
+  - component: {fileID: 7522043819556597005}
+  - component: {fileID: 3928218674185747532}
+  - component: {fileID: 5510540622882784318}
+  - component: {fileID: 3892245340416301146}
+  m_Layer: 0
+  m_Name: HallStaffDefaultArborFSM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6910454524015857694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1815286867725072435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3982f3d49853bb44283cd1fcef05a3dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GraphName: New StateMachine
+  playOnStart: 1
+  updateSettings:
+    type: 0
+    timeType: 0
+    seconds: 0.1
+  debugInfiniteLoopSettings:
+    maxLoopCount: 10000
+    enableLogging: 1
+    enableBreak: 0
+  _OwnerBehaviour: {fileID: 0}
+  _ParameterContainer: {fileID: 665136066596948709}
+  _Calculators:
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 1752227528
+    position:
+      serializedVersion: 2
+      x: -1068
+      y: 252
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30C7\u30D5\u30A9\u30EB\u30C8\u306E\u4F4D\u7F6E"
+    _Name: Calc Default Pos Staff
+    _IsSettedName: 1
+    _Object: {fileID: 486728331095308895}
+  _Comments: []
+  _Groups: []
+  _DataBranchRerouteNodes:
+    _Nodes: []
+  _DataBranchies:
+  - branchID: 534011718
+    enabled: 1
+    inBehaviour: {fileID: -5487402245807528541}
+    inNodeID: 1655911537
+    outBehaviour: {fileID: 486728331095308895}
+    outNodeID: 1752227528
+    lineBezier:
+      _StartPosition: {x: -768, y: 445.4}
+      _StartControl: {x: -718, y: 445.4}
+      _EndPosition: {x: -644.80005, y: -40.40001}
+      _EndControl: {x: -694.80005, y: -40.40001}
+    showDataValue: 0
+  _StartStateID: 1848543519
+  _States:
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 1655911537
+    position:
+      serializedVersion: 2
+      x: -624
+      y: -276
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30C7\u30D5\u30A9\u30EB\u30C8\u306E\u4F4D\u7F6E\u306B\u79FB\u52D5\u3059\u308B"
+    _Name: MoveToDefaultPos
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: -5487402245807528541}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 919275682
+    position:
+      serializedVersion: 2
+      x: -1068
+      y: -276
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30C7\u30D5\u30A9\u4F4D\u7F6E\u79FB\u52D5\u30B9\u30C6\u30FC\u30C8\u306B\u5909\u66F4\n\u30A2\u30CB\u30E1\u30FC\u30BF\u30FC\u3092\u5909\u66F4"
+    _Name: SetGetState
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 9176292437510407669}
+    - {fileID: 5832027506226484051}
+    - {fileID: 8260291293774892624}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 2041175501
+    position:
+      serializedVersion: 2
+      x: 864
+      y: -228
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30BF\u30FC\u30B2\u30C3\u30C8\u306B\u3067\u304D\u308B\u6599\u7406\u304C\u3042\u308B\u304B\u78BA\u8A8D"
+    _Name: FindTarget
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 8628997177623652606}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 1015591673
+    position:
+      serializedVersion: 2
+      x: -132
+      y: -252
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30C7\u30D5\u30A9\u30EB\u30C8\u306E\u30B9\u30C6\u30FC\u30C8\u306B\u5909\u66F4"
+    _Name: Default
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 7522043819556597005}
+    - {fileID: 5101814757978118164}
+    - {fileID: 118808267756963012}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 2137491492
+    position:
+      serializedVersion: 2
+      x: 360
+      y: -228
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30A2\u30CB\u30E1\u30FC\u30BF\u30FC\u3092\u521D\u671F\u5316"
+    _Name: DefaultAnimator
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 3928218674185747532}
+    - {fileID: 5510540622882784318}
+    _BreakPoint: 0
+  - _NodeGraph: {fileID: 1815286867725072435}
+    _NodeID: 1848543519
+    position:
+      serializedVersion: 2
+      x: -1596
+      y: -684
+      width: 300
+      height: 100
+    showComment: 1
+    nodeComment: "\u30B9\u30C6\u30FC\u30C8\u306B\u3088\u3063\u3066\u30EA\u30F3\u30AF\u3092\u5909\u66F4"
+    _Name: CheckState
+    _IsSettedName: 1
+    _Resident: 0
+    _Behaviours:
+    - {fileID: 3892245340416301146}
+    _BreakPoint: 0
+  _StateLinkRerouteNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 1815286867725072435}
+      _NodeID: 983747050
+      position:
+        serializedVersion: 2
+        x: -1176
+        y: -396
+        width: 32
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: StateLinkRerouteNode
+      _IsSettedName: 1
+      link:
+        name: 
+        _StateID: 919275682
+        transitionTiming: 4
+        _LineColorChanged: 1
+        _LineColor: {r: 1, g: 1, b: 1, a: 1}
+      direction: {x: 0.98397404, y: 0.17831208}
+    - _NodeGraph: {fileID: 1815286867725072435}
+      _NodeID: 1613858733
+      position:
+        serializedVersion: 2
+        x: -1176
+        y: -372
+        width: 32
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: StateLinkRerouteNode
+      _IsSettedName: 1
+      link:
+        name: 
+        _StateID: 919275682
+        transitionTiming: 4
+        _LineColorChanged: 1
+        _LineColor: {r: 1, g: 1, b: 1, a: 1}
+      direction: {x: 0.98871756, y: 0.14979154}
+    - _NodeGraph: {fileID: 1815286867725072435}
+      _NodeID: 726598452
+      position:
+        serializedVersion: 2
+        x: -1188
+        y: -348
+        width: 32
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: StateLinkRerouteNode
+      _IsSettedName: 1
+      link:
+        name: 
+        _StateID: 919275682
+        transitionTiming: 4
+        _LineColorChanged: 1
+        _LineColor: {r: 1, g: 0, b: 0, a: 1}
+      direction: {x: 0.9983817, y: 0.05686834}
+--- !u!114 &665136066596948709
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff7f9820050bbf468fba4b58fe18f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Owner: {fileID: 1815286867725072435}
+  _Parameters:
+  - container: {fileID: 665136066596948709}
+    id: 1559595546
+    type: 3000
+    name: StaffDataVariable
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: 
+  - container: {fileID: 665136066596948709}
+    id: 534011718
+    type: 2004
+    name: Animator
+    _ParameterIndex: 1
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: UnityEngine.Animator, UnityEngine
+  _SerializeVersion: 1
+  _OldParameters: []
+  _AssetObjectListParameters: []
+  _BoolParameters: 
+  _BoolListParameters: []
+  _BoundsParameters: []
+  _BoundsIntParameters: []
+  _BoundsIntListParameters: []
+  _BoundsListParameters: []
+  _ColorParameters: []
+  _ColorListParameters: []
+  _ComponentListParameters: []
+  _EnumListParameters: []
+  _FloatParameters: []
+  _FloatListParameters: []
+  _GameObjectListParameters: []
+  _IntParameters: 
+  _IntListParameters: []
+  _LongParameters: 
+  _LongListParameters: []
+  _ObjectParameters:
+  - {fileID: -9110211153526671660}
+  - {fileID: 0}
+  _QuaternionParameters: []
+  _QuaternionListParameters: []
+  _RectParameters: []
+  _RectIntParameters: []
+  _RectIntListParameters: []
+  _RectListParameters: []
+  _StringParameters: []
+  _StringListParameters: []
+  _Vector2Parameters: []
+  _Vector2IntParameters: []
+  _Vector2IntListParameters: []
+  _Vector2ListParameters: []
+  _Vector3Parameters: []
+  _Vector3IntParameters: []
+  _Vector3IntListParameters: []
+  _Vector3ListParameters: []
+  _Vector4Parameters: []
+  _Vector4ListParameters: []
+--- !u!114 &-9110211153526671660
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac39ac583a992254a83f1c066d466ede, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ParameterContainer: {fileID: 665136066596948709}
+  _Parameter:
+    m_staffData: {fileID: 0}
+--- !u!114 &-5487402245807528541
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb67c7a96c7f7b949a4e552143593788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1655911537
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AgentController:
+    _Type: 3
+    _HierarchyType: 1
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _SerializeVersion: 2
+  _OldAgentController: {fileID: 0}
+  _StopOnStateEnd:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _ClearVelocityOnStop:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Done:
+    name: 
+    _StateID: 1015591673
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.8807664, a: 1}
+  _CantMove:
+    name: 
+    _StateID: 1015591673
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}
+  _UpdateType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _TimeType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Interval:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _IntervalUpdate_SerializeVersion: 2
+  _MinInterval: 0
+  _MaxInterval: 0
+  _OldUpdateType: 0
+  _OldTimeType: 0
+  _OldStopOnStateEnd: 0
+  _Speed:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _AgentMoveBase_SerializeVersion: 1
+  _OldSpeed: 0
+  _StoppingDistance:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Position:
+    _Type: 2
+    _Value: {x: 0, y: 0, z: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 1815286867725072435}
+      branchID: 534011718
+--- !u!114 &486728331095308895
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5df996056b1b12429cab93ae8aa00cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1752227528
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 1
+  m_flexibleStaffDataVariable:
+    _Type: 1
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: Staff Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_outputPos:
+    nodeGraph: {fileID: 1815286867725072435}
+    branchIDs: 465fd41f
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1
+--- !u!114 &8260291293774892624
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 919275682
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 1655911537
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.86747694, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &9176292437510407669
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361ec214bcd462f45a5448c44f8bc4db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 919275682
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleStaffDataVariable:
+    _Type: 1
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: Staff Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_staffState: 3
+--- !u!114 &8628997177623652606
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06d910e8c6272854aa6a3d3401f8c845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 2041175501
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleStaffDataVariable:
+    _Type: 1
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: Staff Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+--- !u!114 &5832027506226484051
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3828ce0faee3db48b9ecfa18e668be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 919275682
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _ExecuteMethodFlags:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Reference:
+    _Animator:
+      _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 665136066596948709}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 534011718
+        name: New Component
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _Name:
+      _Name: IsMoveDefault
+    type: 9
+    _SerializeVersion:
+      _Version: 2
+      _IsInitialized: 1
+      _IsVersioning: 1
+    _OldAnimator: {fileID: 0}
+    _OldName: 
+  _Function:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _FloatValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _IntValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _BoolValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _SerializeVersion: 2
+  _OldFloatValue: 0
+  _OldIntValue: 0
+  _OldBoolValue: 0
+  _OldFunction: 0
+--- !u!114 &5101814757978118164
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3828ce0faee3db48b9ecfa18e668be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1015591673
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _ExecuteMethodFlags:
+    _Type: 0
+    _Value: 1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Reference:
+    _Animator:
+      _Type: 1
+      _HierarchyType: 0
+      _Value: {fileID: 0}
+      _Parameter:
+        _Type: 0
+        _Container: {fileID: 665136066596948709}
+        _Slot:
+          nodeGraph: {fileID: 0}
+          branchID: 0
+        id: 534011718
+        name: Animator
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      _OverrideConstraintType:
+        _AssemblyTypeName: 
+    _Name:
+      _Name: IsDefault
+    type: 9
+    _SerializeVersion:
+      _Version: 2
+      _IsInitialized: 1
+      _IsVersioning: 1
+    _OldAnimator: {fileID: 0}
+    _OldName: 
+  _Function:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _FloatValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _IntValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _BoolValue:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Probability: 0
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _SerializeVersion: 2
+  _OldFloatValue: 0
+  _OldIntValue: 0
+  _OldBoolValue: 0
+  _OldFunction: 0
+--- !u!114 &118808267756963012
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1015591673
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 2137491492
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.90404534, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &7522043819556597005
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361ec214bcd462f45a5448c44f8bc4db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1015591673
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleStaffDataVariable:
+    _Type: 1
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: Staff Data Variable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_staffState: 0
+--- !u!114 &3928218674185747532
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7046f40c77a5c4388ab4efc28b1f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 2137491492
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_animator:
+    _Type: 1
+    _HierarchyType: 0
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 534011718
+      name: StaffAnimator
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+--- !u!114 &5510540622882784318
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0ffa05d7023f44aacdfada32c15663, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 2137491492
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _TransitionMethod:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _NextState:
+    name: 
+    _StateID: 2041175501
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 0, g: 1, b: 0.88543344, a: 1}
+  _SerializeVersion: 1
+  _OldTransitionMethod: 0
+--- !u!114 &3892245340416301146
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805598656855535877}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfaa1667dd799404dbe3d1a1c7a92146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 1815286867725072435}
+  _NodeID: 1848543519
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  m_flexibleStaffDataVariable:
+    _Type: 1
+    _Value:
+      m_staffData: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 665136066596948709}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 1559595546
+      name: StaffDataVariable
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  m_linkList:
+  - State: 0
+    StateLink:
+      name: 
+      _StateID: 983747050
+      transitionTiming: 0
+      _LineColorChanged: 1
+      _LineColor: {r: 0.8787513, g: 1, b: 0, a: 1}
+  - State: 1
+    StateLink:
+      name: 
+      _StateID: 1613858733
+      transitionTiming: 0
+      _LineColorChanged: 1
+      _LineColor: {r: 0, g: 1, b: 0.22903132, a: 1}
+  m_failLink:
+    name: 
+    _StateID: 726598452
+    transitionTiming: 4
+    _LineColorChanged: 1
+    _LineColor: {r: 1, g: 0, b: 0, a: 1}

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53598f71b1a75384bad647599bba76f6, type: 3}
+  m_Name: ConditionAttackData
+  m_EditorClassIdentifier: 
+  m_enemyID: 1000
+  m_isBoss: 0
+  m_characterStatus:
+    m_walkSpeed: 0
+    m_dushSpeed: 0
+    m_hp:
+      value: 0
+    m_attack: 0
+    m_defense: 0
+    m_knockBackDamage: 0
+  m_idleSpan: 0
+  m_idleMoveRadius: 0
+  m_chaseParameter:
+    m_searchCharacterDist: 0
+    m_searchDishDist: 0
+    m_noticeDist: 0
+    m_viewAngle: 0
+    m_maxChaseTime: 0
+    m_chaseDistFromTarget: 0
+    m_distAwayFromSpawnPos: 0
+  m_dropItemInfo: []
+  m_attackData:
+  - m_hitStopTime: 0
+    m_attack: 1
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 1665663892461992380, guid: fb22020c90df3a0438d9ce114efdd646, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 1
+    m_doMultiHit: 1
+    m_recoverBPMagni: 0
+    m_condition: 0
+  m_firstAttackData:
+    m_attackSpan: 0
+    m_maxApproachTime: 0
+    m_lotteryData: []
+  m_secondAttackData:
+    m_attackSpan: 0
+    m_maxApproachTime: 0
+    m_lotteryData: []

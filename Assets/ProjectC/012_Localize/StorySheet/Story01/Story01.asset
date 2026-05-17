@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Story01
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: ad5bcde1ac0602142ba6db103cd9e1d3, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: 223c0be5caaedc44c9a2399dffec90e9, type: 2}
+  - {fileID: 11400000, guid: 3e265c95cab1b7448ab189d8cd915604, type: 2}
+  m_Extensions:
+  - rid: 1655643611272314883
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds:
+    - rid: 1655643611272314883
+      type: {class: GoogleSheetsExtension, ns: UnityEditor.Localization.Plugins.Google, asm: Unity.Localization.Editor}
+      data:
+        m_Collection: {fileID: 11400000}
+        m_SheetsServiceProvider: {fileID: 11400000, guid: 6589dc6669bd28b4799df6795c54ff50, type: 2}
+        m_SpreadsheetId: 16MwZMfK7qEa4nMgTFtdH9Y1kTPfft1lBi6kUtS4CXGM
+        m_SheetId: 1022173310
+        m_Columns:
+        - rid: 1655643611272314885
+        - rid: 1655643611272314886
+        - rid: 1655643611272314887
+        m_RemoveMissingPulledKeys: 1
+    - rid: 1655643611272314885
+      type: {class: KeyColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: A
+    - rid: 1655643611272314886
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: B
+        m_LocaleIdentifier:
+          m_Code: en
+        m_IncludeComments: 0
+    - rid: 1655643611272314887
+      type: {class: LocaleColumn, ns: UnityEditor.Localization.Plugins.Google.Columns, asm: Unity.Localization.Editor}
+      data:
+        m_Column: C
+        m_LocaleIdentifier:
+          m_Code: ja
+        m_IncludeComments: 0

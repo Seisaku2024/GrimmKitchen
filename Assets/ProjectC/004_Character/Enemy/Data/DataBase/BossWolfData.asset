@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53598f71b1a75384bad647599bba76f6, type: 3}
+  m_Name: BossWolfData
+  m_EditorClassIdentifier: 
+  m_enemyID: 5
+  m_isBoss: 1
+  m_characterStatus:
+    m_walkSpeed: 3
+    m_dushSpeed: 5
+    m_hp:
+      value: 200
+    m_attack:
+      value: 8
+    m_defense:
+      value: 6
+    m_knockBackDamage: 20
+  m_idleSpan: 5
+  m_idleMoveRadius: 10
+  m_chaseParameter:
+    m_searchCharacterDist: 15
+    m_searchDishDist: 30
+    m_noticeDist: 8
+    m_viewAngle: 120
+    m_maxChaseTime: 10
+    m_chaseDistFromTarget: 30
+    m_distAwayFromSpawnPos: 30
+  m_dropItemInfo:
+  - m_ingredientID: 1001
+    m_weightLottery: 1
+  m_attackData:
+  - m_hitStopTime: 0
+    m_attack: 1
+    m_knockBackMultiplier: 3
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0
+    m_condition: 0
+  - m_hitStopTime: 0
+    m_attack: 1
+    m_knockBackMultiplier: 4
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundSlash
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0
+    m_condition: 0
+  - m_hitStopTime: 0
+    m_attack: 1.2
+    m_knockBackMultiplier: 5
+    m_isStrongAttack: 1
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 1
+    m_recoverBPMagni: 0
+    m_condition: 0
+  - m_hitStopTime: 0
+    m_attack: 0
+    m_knockBackMultiplier: 0
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 0}
+    m_soundData:
+      m_soundName: 
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0
+    m_condition: 0
+  - m_hitStopTime: 0
+    m_attack: 2
+    m_knockBackMultiplier: 7
+    m_isStrongAttack: 1
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 1
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0
+    m_condition: 0
+  - m_hitStopTime: 0
+    m_attack: 0.75
+    m_knockBackMultiplier: 3
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 2396596928512637478, guid: 80a5c944230b70549b717c12b65e7410, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 1
+    m_knockBackType: 1
+    m_recoverBPMagni: 0
+    m_condition: 6
+  m_firstAttackData:
+    m_attackSpan: 0.4
+    m_maxApproachTime: 3
+    m_lotteryData:
+    - m_defaultWeight: 50
+      m_weightInclude: 20
+      m_bestAttackDist: 3
+      m_isApproachBeforeAttack: 1
+      m_lotteryWeight: 65.55876
+    - m_defaultWeight: 30
+      m_weightInclude: 30
+      m_bestAttackDist: 7
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 15
+    - m_defaultWeight: 25
+      m_weightInclude: 20
+      m_bestAttackDist: 2.5
+      m_isApproachBeforeAttack: 1
+      m_lotteryWeight: 38.2041
+    - m_defaultWeight: 10
+      m_weightInclude: 5
+      m_bestAttackDist: 1.5
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 80
+  m_secondAttackData:
+    m_attackSpan: 0.4
+    m_maxApproachTime: 3
+    m_lotteryData:
+    - m_defaultWeight: 50
+      m_weightInclude: 20
+      m_bestAttackDist: 3
+      m_isApproachBeforeAttack: 1
+      m_lotteryWeight: 53.260128
+    - m_defaultWeight: 30
+      m_weightInclude: 30
+      m_bestAttackDist: 7
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 30
+    - m_defaultWeight: 25
+      m_weightInclude: 20
+      m_bestAttackDist: 2.5
+      m_isApproachBeforeAttack: 1
+      m_lotteryWeight: 138.6765
+    - m_defaultWeight: 10
+      m_weightInclude: 5
+      m_bestAttackDist: 1.5
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 50
+    - m_defaultWeight: 20
+      m_weightInclude: 30
+      m_bestAttackDist: 8
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 85
+    - m_defaultWeight: 10
+      m_weightInclude: 30
+      m_bestAttackDist: 1.5
+      m_isApproachBeforeAttack: 0
+      m_lotteryWeight: 20

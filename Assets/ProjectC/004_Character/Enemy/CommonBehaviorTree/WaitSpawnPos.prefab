@@ -1,0 +1,531 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6401273877958928881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7969925286246511082}
+  - component: {fileID: 3649892000841521131}
+  - component: {fileID: 7671597342786551462}
+  - component: {fileID: 5491368190653027775}
+  - component: {fileID: 3591244047299320016}
+  - component: {fileID: 6622500046029375495}
+  - component: {fileID: 1542144501018803839}
+  - component: {fileID: 6433536941203746042}
+  - component: {fileID: 3054335732379651574}
+  m_Layer: 0
+  m_Name: WaitSpawnPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7969925286246511082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3649892000841521131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d777a828a6247b594b0e8c83d051e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _GraphName: WalkAroundNearSpawn
+  playOnStart: 1
+  updateSettings:
+    type: 0
+    timeType: 0
+    seconds: 0.1
+  debugInfiniteLoopSettings:
+    maxLoopCount: 10000
+    enableLogging: 1
+    enableBreak: 0
+  _OwnerBehaviour: {fileID: 0}
+  _ParameterContainer: {fileID: 3591244047299320016}
+  _Calculators:
+  - _NodeGraph: {fileID: 3649892000841521131}
+    _NodeID: 1419354884
+    position:
+      serializedVersion: 2
+      x: -564
+      y: 156
+      width: 300
+      height: 100
+    showComment: 0
+    nodeComment: 
+    _Name: Calc Idle Span
+    _IsSettedName: 1
+    _Object: {fileID: 3054335732379651574}
+  _Comments: []
+  _Groups: []
+  _DataBranchRerouteNodes:
+    _Nodes: []
+  _DataBranchies:
+  - branchID: 534011718
+    enabled: 1
+    inBehaviour: {fileID: 5491368190653027775}
+    inNodeID: 726643700
+    outBehaviour: {fileID: 3054335732379651574}
+    outNodeID: 1419354884
+    lineBezier:
+      _StartPosition: {x: -264, y: 295}
+      _StartControl: {x: -214, y: 295}
+      _EndPosition: {x: -176.99995, y: 85.00001}
+      _EndControl: {x: -226.99995, y: 85.00001}
+    showDataValue: 0
+  restartOnFinish: 1
+  executionSettings:
+    type: 0
+    maxCount: 1
+  _NodeBranchies:
+    _NodeBranchies:
+    - branchID: 630327709
+      parentNodeID: 534011718
+      childNodeID: 726643700
+    - branchID: 1752227528
+      parentNodeID: 1
+      childNodeID: 1871007331
+    - branchID: 726643700
+      parentNodeID: 1871007331
+      childNodeID: 822959691
+    - branchID: 1848543519
+      parentNodeID: 1871007331
+      childNodeID: 534011718
+  _RootNode:
+    _NodeGraph: {fileID: 3649892000841521131}
+    _NodeID: 1
+    position:
+      serializedVersion: 2
+      x: -204
+      y: -588
+      width: 180
+      height: 0
+    showComment: 0
+    nodeComment: 
+    _Name: Root
+    _IsSettedName: 1
+    _EnablePriority: 1
+    _Priority: 0
+    _ChildNodeLink:
+      branchID: 1752227528
+  _CompositeNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 3649892000841521131}
+      _NodeID: 534011718
+      position:
+        serializedVersion: 2
+        x: -36
+        y: -312
+        width: 300
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: WalkAround
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 3
+      _Behaviour: {fileID: 7671597342786551462}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1848543519
+      _ChildrenLink:
+        branchIDs: 9d099225
+      _SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _OldChildrenLink: []
+    - _NodeGraph: {fileID: 3649892000841521131}
+      _NodeID: 1871007331
+      position:
+        serializedVersion: 2
+        x: -264
+        y: -516
+        width: 300
+        height: 0
+      showComment: 0
+      nodeComment: 
+      _Name: Selector
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 1
+      _Behaviour: {fileID: 1542144501018803839}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 1752227528
+      _ChildrenLink:
+        branchIDs: f4b34f2b1f892e6e
+      _SerializeVersion:
+        _Version: 1
+        _IsInitialized: 1
+        _IsVersioning: 1
+      _OldChildrenLink: []
+  _ActionNodes:
+    _Nodes:
+    - _NodeGraph: {fileID: 3649892000841521131}
+      _NodeID: 726643700
+      position:
+        serializedVersion: 2
+        x: -156
+        y: -12
+        width: 300
+        height: 0
+      showComment: 1
+      nodeComment: "\u79FB\u52D5\u5F8C\u306E\u5F85\u6A5F\u6642\u9593\n\u79FB\u52D5\u3092\u5148\u306B\u7F6E\u304F\u3068\u3001\u98DF\u4E8B\u5F8C\u3059\u3050\u6B69\u304F\u305F\u3081\u3053\u306E\u9806\u756A"
+      _Name: Wait
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 4
+      _Behaviour: {fileID: 5491368190653027775}
+      _DecoratorList:
+        _Objects: []
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 630327709
+    - _NodeGraph: {fileID: 3649892000841521131}
+      _NodeID: 822959691
+      position:
+        serializedVersion: 2
+        x: -564
+        y: -312
+        width: 300
+        height: 619
+      showComment: 1
+      nodeComment: "\u4F55\u304B\u898B\u3064\u3051\u305F\u3089Trigger"
+      _Name: Send Trigger
+      _IsSettedName: 1
+      _EnablePriority: 1
+      _Priority: 2
+      _Behaviour: {fileID: 6622500046029375495}
+      _DecoratorList:
+        _Objects:
+        - {fileID: 6433536941203746042}
+      _ServiceList:
+        _Objects: []
+      _BreakPoint: 0
+      _ParentLink:
+        branchID: 726643700
+--- !u!114 &7671597342786551462
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a8e0f1bce29453b909fd30bde3dc5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 534011718
+  _DataSlotFieldLinks: []
+  expanded: 1
+--- !u!114 &5491368190653027775
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f1f1b66603647e6b354957909ce4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 726643700
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _TimeType:
+    _Type: 0
+    _Value: 0
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _Seconds:
+    _Type: 3
+    _Value: 2
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 3591244047299320016}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 630327709
+      name: WaitTime
+    _MinRange: 0
+    _MaxRange: 0
+    _Slot:
+      nodeGraph: {fileID: 3649892000841521131}
+      branchID: 534011718
+  _SerializeVersion: 1
+  _OldTimeType: 0
+--- !u!114 &3591244047299320016
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff7f9820050bbf468fba4b58fe18f2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Owner: {fileID: 3649892000841521131}
+  _Parameters:
+  - container: {fileID: 3591244047299320016}
+    id: 919275682
+    type: 4
+    name: FindTriggerMessage
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: 
+  - container: {fileID: 3591244047299320016}
+    id: 822959691
+    type: 2004
+    name: EnemyParameters
+    _ParameterIndex: 0
+    _IsPublicSet: 1
+    _IsPublicGet: 1
+    referenceType:
+      _AssemblyTypeName: EnemyParameters, Assembly-CSharp
+  _SerializeVersion: 1
+  _OldParameters: []
+  _AssetObjectListParameters: []
+  _BoolParameters: 
+  _BoolListParameters: []
+  _BoundsParameters: []
+  _BoundsIntParameters: []
+  _BoundsIntListParameters: []
+  _BoundsListParameters: []
+  _ColorParameters: []
+  _ColorListParameters: []
+  _ComponentListParameters: []
+  _EnumListParameters: []
+  _FloatParameters: []
+  _FloatListParameters: []
+  _GameObjectListParameters: []
+  _IntParameters: 
+  _IntListParameters: []
+  _LongParameters: 
+  _LongListParameters: []
+  _ObjectParameters:
+  - {fileID: 0}
+  _QuaternionParameters: []
+  _QuaternionListParameters: []
+  _RectParameters: []
+  _RectIntParameters: []
+  _RectIntListParameters: []
+  _RectListParameters: []
+  _StringParameters:
+  - Attack
+  _StringListParameters: []
+  _Vector2Parameters: []
+  _Vector2IntParameters: []
+  _Vector2IntListParameters: []
+  _Vector2ListParameters: []
+  _Vector3Parameters: []
+  _Vector3IntParameters: []
+  _Vector3IntListParameters: []
+  _Vector3ListParameters: []
+  _Vector4Parameters: []
+  _Vector4ListParameters: []
+--- !u!114 &6622500046029375495
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ffd563418eff6478b1b6fe3c92435c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 822959691
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _Target:
+    _Type: 3
+    _HierarchyType: 2
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  _Message:
+    _Type: 1
+    _Value: Attack
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 3591244047299320016}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 919275682
+      name: FindTriggerMessage
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+  _SendFlags:
+    _Type: 0
+    _Value: -1
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 0}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 0
+      name: 
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+--- !u!114 &1542144501018803839
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f576b8f70a8dd455aa8cc931f62790c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 1871007331
+  _DataSlotFieldLinks: []
+  expanded: 1
+--- !u!114 &6433536941203746042
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5eea8cedaa3a2e4fab37faae90afccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 822959691
+  _DataSlotFieldLinks: []
+  expanded: 1
+  _BehaviourEnabled: 1
+  _AbortFlags: -1
+  _LogicalCondition:
+    logicalOperation: 0
+    notOp: 0
+  m_enemyParameters:
+    _Type: 1
+    _HierarchyType: 0
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 3591244047299320016}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 822959691
+      name: EnemyParameters
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+--- !u!114 &3054335732379651574
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401273877958928881}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9161c866d4dc1e48aed7c665ea1bf77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NodeGraph: {fileID: 3649892000841521131}
+  _NodeID: 1419354884
+  _DataSlotFieldLinks: []
+  expanded: 1
+  recalculateMode: 2
+  m_enemyParameters:
+    _Type: 1
+    _HierarchyType: 0
+    _Value: {fileID: 0}
+    _Parameter:
+      _Type: 0
+      _Container: {fileID: 3591244047299320016}
+      _Slot:
+        nodeGraph: {fileID: 0}
+        branchID: 0
+      id: 822959691
+      name: EnemyParameters
+    _Slot:
+      nodeGraph: {fileID: 0}
+      branchID: 0
+    _OverrideConstraintType:
+      _AssemblyTypeName: 
+  m_outputTime:
+    nodeGraph: {fileID: 3649892000841521131}
+    branchIDs: 465fd41f
+    _OutputSlotBase_SerializeVersion:
+      _Version: 1
+      _IsInitialized: 1
+      _IsVersioning: 1

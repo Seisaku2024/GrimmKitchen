@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2984777126599920521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 687146510617493544}
+  - component: {fileID: 9164897515486152744}
+  m_Layer: 0
+  m_Name: ProvideVegetableClearConditionChallenge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &687146510617493544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984777126599920521}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9164897515486152744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2984777126599920521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af42314e29f4e214a98ad8c8d6a18a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_conditionName:
+    m_localizedString:
+      m_TableReference:
+        m_TableCollectionName: GUID:1a39c39987d8373478f9d5e2146ae1c3
+      m_TableEntryReference:
+        m_KeyId: 2457125781504
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables:
+      - name: variable
+        variable:
+          rid: 8102068128739753992
+    m_valueLocalizedStringList:
+    - ValueName: variable
+      LocalizedString:
+        m_TableReference:
+          m_TableCollectionName: GUID:f8f1112a26964ac4392bd823d4ee2b91
+        m_TableEntryReference:
+          m_KeyId: 453418729472
+          m_Key: 
+        m_FallbackState: 0
+        m_WaitForCompletion: 0
+        m_LocalVariables: []
+      String: 0
+  m_conditionSprite: {fileID: 405191764, guid: c483830503191f849bc2e14df5e091b4, type: 3}
+  m_ingredientTypeID: 4
+  m_provideNum: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 8102068128739753992
+      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: 

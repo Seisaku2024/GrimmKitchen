@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53598f71b1a75384bad647599bba76f6, type: 3}
+  m_Name: ChickenData
+  m_EditorClassIdentifier: 
+  m_enemyID: 0
+  m_isBoss: 0
+  m_characterStatus:
+    m_walkSpeed: 3
+    m_dushSpeed: 4
+    m_hp:
+      value: 30
+    m_attack:
+      value: 5
+    m_defense:
+      value: 3
+    m_knockBackDamage: 0
+  m_idleSpan: 3
+  m_idleMoveRadius: 5
+  m_chaseParameter:
+    m_searchCharacterDist: 6
+    m_searchDishDist: 16
+    m_noticeDist: 2
+    m_viewAngle: 110
+    m_maxChaseTime: 2
+    m_chaseDistFromTarget: 9
+    m_distAwayFromSpawnPos: 15
+  m_dropItemInfo:
+  - m_ingredientID: 510
+    m_weightLottery: 7
+  - m_ingredientID: 500
+    m_weightLottery: 3
+  m_attackData:
+  - m_hitStopTime: 0.1
+    m_attack: 1
+    m_knockBackMultiplier: 1
+    m_isStrongAttack: 0
+    m_assetHitEffect: {fileID: 1665663892461992380, guid: fb22020c90df3a0438d9ce114efdd646, type: 3}
+    m_soundData:
+      m_soundName: HitSoundBlow
+      m_volume: 0.5
+      m_pitch: 0
+    m_doFriendlyFire: 0
+    m_doMultiHit: 0
+    m_knockBackType: 0
+    m_recoverBPMagni: 0
+    m_condition: 0
+  m_firstAttackData:
+    m_attackSpan: 3
+    m_maxApproachTime: 3
+    m_lotteryData:
+    - m_defaultWeight: 1
+      m_weightInclude: 1
+      m_bestAttackDist: 0
+      m_isApproachBeforeAttack: 1
+      m_lotteryWeight: 1.0782838
+  m_secondAttackData:
+    m_attackSpan: 0
+    m_maxApproachTime: 0
+    m_lotteryData: []
