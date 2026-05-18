@@ -12,20 +12,22 @@ public class BK_EnvironmentManagerEditor : Editor
     private SerializedProperty overrideSunColorProp;
     private SerializedProperty overrideFogColorProp;
     private SerializedProperty overrideCloudColorProp;
+    private SerializedProperty overrideAmbientColorProp;
 
     private bool lightingFoldout = true;
     private bool windFoldout = true;
     private bool grassFoldout = true;
     private bool cloudsFoldout = true;
 
-    private void OnEnable()
-    {
-        overrideSunColorProp = serializedObject.FindProperty("overrideSunColor");
-        overrideFogColorProp = serializedObject.FindProperty("overrideFogColor");
-        overrideCloudColorProp = serializedObject.FindProperty("overrideCloudColor");
-    }
+        private void OnEnable()
+        {
+            overrideSunColorProp = serializedObject.FindProperty("overrideSunColor");
+            overrideFogColorProp = serializedObject.FindProperty("overrideFogColor");
+            overrideCloudColorProp = serializedObject.FindProperty("overrideCloudColor");
+            overrideAmbientColorProp = serializedObject.FindProperty("overrideAmbientColor");
+        }
 
-    public override void OnInspectorGUI()
+        public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
@@ -73,6 +75,15 @@ if (lightingFoldout)
         EditorGUILayout.PropertyField(serializedObject.FindProperty("scatteringColorGradient"), GUIContent.none);
     }
     Rect gradientRect = GUILayoutUtility.GetLastRect();
+    EditorGUILayout.EndHorizontal();
+
+    // Ambient Gradient
+    EditorGUILayout.BeginHorizontal();
+    overrideAmbientColorProp.boolValue = EditorGUILayout.ToggleLeft("Ambient", overrideAmbientColorProp.boolValue, GUILayout.Width(70));
+    using (new EditorGUI.DisabledScope(!overrideAmbientColorProp.boolValue))
+    {
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ambientColorGradient"), GUIContent.none);
+    }
     EditorGUILayout.EndHorizontal();
 
     // Day & Night icons

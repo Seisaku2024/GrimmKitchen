@@ -13,11 +13,13 @@ public class BK_EnvironmentManager : MonoBehaviour
     public Gradient fogColorGradient;
     public Gradient cloudColorGradient;
     public Gradient scatteringColorGradient;
+    public Gradient ambientColorGradient;
 
     [Header("Color Gradients Enable Flags")]
     public bool overrideSunColor = true;
     public bool overrideFogColor = true;
     public bool overrideCloudColor = true;
+    public bool overrideAmbientColor = true;
 
     [Header("Base Wind")]
     [Tooltip("Base wind animate the trunks")]
@@ -132,26 +134,28 @@ public class BK_EnvironmentManager : MonoBehaviour
         Graphics.DrawMeshInstanced(quadMesh, 0, cloudsMaterial, matrices, volumeSamples);
     }
 
-    private void UpdateLighting()
-    {
-        if (directionalLight == null) return;
-
-        float dot = Vector3.Dot(directionalLight.transform.forward, Vector3.up);
-        float time = (dot + 1f) / 2f;
-
-        if (overrideFogColor)
-            RenderSettings.fogColor = fogColorGradient.Evaluate(time);
-        if (overrideSunColor)
-            directionalLight.color = sunColorGradient.Evaluate(time);
-
-        if (cloudsMaterial != null && cloudsMaterial.HasProperty("_ScatteringColor") && overrideCloudColor)
+        private void UpdateLighting()
         {
-            cloudsMaterial.SetColor("_ScatteringColor", scatteringColorGradient.Evaluate(time));
-        }
-        else if (cloudsMaterial == null)
-        {
-            Debug.LogError("cloudsMaterial is null. Please assign a material.");
+            if (directionalLight == null) return;
+
+            float dot = Vector3.Dot(directionalLight.transform.forward, Vector3.up);
+            float time = (dot + 1f) / 2f;
+
+            if (overrideFogColor)
+                RenderSettings.fogColor = fogColorGradient.Evaluate(time);
+            if (overrideSunColor)
+                directionalLight.color = sunColorGradient.Evaluate(time);
+            if (overrideAmbientColor)
+                RenderSettings.ambientLight = ambientColorGradient.Evaluate(time);
+
+            if (cloudsMaterial != null && cloudsMaterial.HasProperty("_ScatteringColor") && overrideCloudColor)
+            {
+                cloudsMaterial.SetColor("_ScatteringColor", scatteringColorGradient.Evaluate(time));
+            }
+            else if (cloudsMaterial == null)
+            {
+                Debug.LogError("cloudsMaterial is null. Please assign a material.");
+            }
         }
     }
-}
 }
