@@ -1,12 +1,12 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HanselGretelSignal : MonoBehaviour
 {
-    [SerializeField]
-    private CinemachineBlendListCamera m_cinemachine;
+    //[SerializeField]
+    //private CinemachineBlendListCamera m_cinemachine;
 
     [SerializeField]
     private CharacterCore  m_hanselCore;
@@ -19,7 +19,7 @@ public class HanselGretelSignal : MonoBehaviour
 
     public void SetPriority()
     {
-        m_cinemachine.Priority = 0;
+        //m_cinemachine.Priority = 0;
     }
 
     public void StopTimeScale()

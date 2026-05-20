@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 using System;
-using Cinemachine;
+using Unity.Cinemachine;
 using DG.Tweening;
 
 

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
-using Cinemachine;
+using Unity.Cinemachine;
 
 public class AkazukinStageStateUpdate_TalkingEvent : BaseAkazukinStageStateUpdate
 {

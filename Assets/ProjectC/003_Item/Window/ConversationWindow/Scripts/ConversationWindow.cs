@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using Cysharp.Threading.Tasks;
 using Speaker;
 using System.Collections.Generic;

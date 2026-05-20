@@ -1,4 +1,4 @@
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -212,7 +212,7 @@ public class CutSceneManager : BaseManager<CutSceneManager>
     {
         if (Camera.main.TryGetComponent(out CinemachineBrain cinemachineBrain))
         {
-            cinemachineBrain.m_DefaultBlend.m_Time = value;
+            cinemachineBrain.DefaultBlend.Time = value;
         }
     }
 

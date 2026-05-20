@@ -1,5 +1,5 @@
 using Arbor;
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -11,7 +11,7 @@ public class AimCameraController : MonoBehaviour
 {
 
     private IInputProvider m_inputProvider = null;
-    [SerializeField] private CinemachineInputProvider m_cinemachineInputProvider = null;
+    [SerializeField][System.Obsolete] private CinemachineInputProvider m_cinemachineInputProvider = null;
 
     [SerializeField]
     private Transform m_verticalTarget = null;

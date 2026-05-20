@@ -105,7 +105,7 @@ public class PlayerParameters : MonoBehaviour
     public GameObject m_playerfollowCamera = null;
 
     [SerializeField]
-    public Cinemachine.CinemachineBrain m_cinemachineBrain = null;
+    public Unity.Cinemachine.CinemachineBrain m_cinemachineBrain = null;
     #endregion
 
     //---------------------------------------------------------------------------------

@@ -3,7 +3,7 @@
 * @brief 何かにぶつかったら自分を削除する
 */
 
-using Cinemachine;
+using Unity.Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
