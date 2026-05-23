@@ -10,6 +10,7 @@ public class MapRendererFeature : ScriptableRendererFeature
     {
         public enum Passes
         {
+            Copy,
             Contrast,
             HSV,
             GrayToon
@@ -137,7 +138,18 @@ public class MapRendererFeature : ScriptableRendererFeature
             }
 
             // 最終結果をカメラカラーとして差し替え
-            resourceData.cameraColor = finalTexture;
+            //resourceData.cameraColor = finalTexture;
+
+            AddBlitPass(
+             renderGraph,
+            "Map Final Blit",
+            finalTexture,
+            cameraColor,
+            _material,
+             0
+             )
+                ;
+
         }
 
         private static void AddBlitPass(
