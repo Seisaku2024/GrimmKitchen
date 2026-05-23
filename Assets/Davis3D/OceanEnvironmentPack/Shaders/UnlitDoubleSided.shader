@@ -1,4 +1,4 @@
-// Made with Amplify Shader Editor v1.9.2.2
+// Made with Amplify Shader Editor v1.9.7.1
 // Available at the Unity Asset Store - http://u3d.as/y3X 
 Shader "Davis3D/OceanEnviroment/UnlitDoubleSided"
 {
@@ -33,7 +33,8 @@ Shader "Davis3D/OceanEnviroment/UnlitDoubleSided"
 
 			CGPROGRAM
 
-			
+			#define ASE_VERSION 19701
+
 
 			#ifndef UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX
 			//only defining to not throw compilation error over Unity 5.5
@@ -114,9 +115,9 @@ Shader "Davis3D/OceanEnviroment/UnlitDoubleSided"
 	Fallback Off
 }
 /*ASEBEGIN
-Version=19202
-Node;AmplifyShaderEditor.ColorNode;2;-251,-5.5;Inherit;False;Property;_Color;Color;0;0;Create;True;0;0;0;False;0;False;1,1,1,1;1,1,1,1;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Version=19701
+Node;AmplifyShaderEditor.ColorNode;2;-251,-5.5;Inherit;False;Property;_Color;Color;0;0;Create;True;0;0;0;False;0;False;1,1,1,1;1,1,1,1;True;True;0;6;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4;FLOAT3;5
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;-1;2;ASEMaterialInspector;100;5;Davis3D/OceanEnviroment/UnlitDoubleSided;0770190933193b94aaa3065e307002fa;True;Unlit;0;0;Unlit;2;False;True;0;1;False;;0;False;;0;1;False;;0;False;;True;0;False;;0;False;;False;False;False;False;False;False;False;False;False;True;0;False;;True;True;2;False;;False;True;True;True;True;True;0;False;;False;False;False;False;False;False;False;True;False;255;False;;255;False;;255;False;;7;False;;1;False;;1;False;;1;False;;7;False;;1;False;;1;False;;1;False;;True;True;1;False;;True;3;False;;True;False;0;False;;0;False;;True;1;RenderType=Opaque=RenderType;True;2;False;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;0;;0;0;Standard;1;Vertex Position,InvertActionOnDeselection;1;0;0;1;True;False;;False;0
 WireConnection;1;0;2;0
 ASEEND*/
-//CHKSM=D53D7611299922493200131E6B2ED5D0CC2C243B
+//CHKSM=34ECBFB2B5D0B2C9843A1C4BB69A175FB70F685B
