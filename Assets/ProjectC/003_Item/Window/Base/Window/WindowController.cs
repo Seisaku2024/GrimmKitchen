@@ -34,6 +34,11 @@ public class WindowController : MonoBehaviour
 
     protected GameObject m_createWindowObject = null;
 
+    /// <summary>
+    /// Cameraの回転をロックするかどうかのフラグ
+    /// </summary>
+    private bool m_isCameraLocked;
+
     //================================================================
     //                        実行処理
     //================================================================
@@ -54,6 +59,9 @@ public class WindowController : MonoBehaviour
 
         try
         {
+
+            LockCameraInput();
+            
             // ウィンドウを作成
             await CreateWindow<BaseWindow>();
             cancelToken.ThrowIfCancellationRequested();
@@ -165,6 +173,8 @@ public class WindowController : MonoBehaviour
 
             }
 
+            UnlockCameraInput();
+
             // ウィンドウを返す
             return window as WindowType;
 
@@ -194,8 +204,33 @@ public class WindowController : MonoBehaviour
     // ウィンドウを削除する
     protected void DestroyWindow()
     {
+        
+
         if (m_createWindowObject == null) return;
         Destroy(m_createWindowObject);
+    }
+
+
+    private void LockCameraInput()
+    {
+        if (m_isCameraLocked)
+        {
+            return;
+        }
+
+        CameraInputLockManager.Instance?.Lock();
+        m_isCameraLocked = true;
+    }
+
+    private void UnlockCameraInput()
+    {
+        if (!m_isCameraLocked)
+        {
+            return;
+        }
+
+        CameraInputLockManager.Instance?.Unlock();
+        m_isCameraLocked = false;
     }
 
 
