@@ -109,6 +109,8 @@ public class WindowController : MonoBehaviour
 
         try
         {
+            LockCameraInput();
+
             // ウィンドウを作成
             m_createWindowObject = Instantiate(m_window, transform);
 
