@@ -35,7 +35,7 @@ public class WindowController : MonoBehaviour
 
     protected GameObject m_createWindowObject = null;
 
-   
+
     //================================================================
     //                        実行処理
     //================================================================
@@ -57,8 +57,6 @@ public class WindowController : MonoBehaviour
         try
         {
 
-            // LockCameraInput();
-            PlayerInputManager.instance.SetGameplayInputActive(false);
 
             // ウィンドウを作成
             await CreateWindow<BaseWindow>();
@@ -107,7 +105,10 @@ public class WindowController : MonoBehaviour
 
         try
         {
-            PlayerInputManager.instance.SetGameplayInputActive(false);
+            if (_bSelef == true)
+            {
+                PlayerInputManager.instance.SetGameplayInputActive(false);
+            }
 
             // ウィンドウを作成
             m_createWindowObject = Instantiate(m_window, transform);
@@ -206,13 +207,13 @@ public class WindowController : MonoBehaviour
     // ウィンドウを削除する
     protected void DestroyWindow()
     {
-        
+
 
         if (m_createWindowObject == null) return;
         Destroy(m_createWindowObject);
     }
 
 
-   
+
 
 }

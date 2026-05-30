@@ -77,7 +77,7 @@ public class HanselStageStateUpdate_BattleTutorial : BaseHanselStageStateUpdate
                 return;
             }
 
-
+            //PlayerInputManager.instance.SetGameplayInputActive(false);  
 
             // カメラターゲットを取得し渡す
             Transform camTargetTrans = null;
@@ -120,6 +120,9 @@ public class HanselStageStateUpdate_BattleTutorial : BaseHanselStageStateUpdate
             await m_tutorialWindowController.CreateWindow<BaseWindow>();
             cancelToken.ThrowIfCancellationRequested();
 
+
+
+            //PlayerInputManager.instance.SetGameplayInputActive(true);
 
             //会話ウィンドウ終わったらプレイヤー戻す
             m_playerCore.m_animator.SetTrigger("ReturnIdle");
