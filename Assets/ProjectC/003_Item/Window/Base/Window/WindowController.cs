@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using NaughtyAttributes;
 
+
 using Cysharp.Threading.Tasks;
 
 // 制作者(田内)
@@ -34,11 +35,7 @@ public class WindowController : MonoBehaviour
 
     protected GameObject m_createWindowObject = null;
 
-    /// <summary>
-    /// Cameraの回転をロックするかどうかのフラグ
-    /// </summary>
-    private bool m_isCameraLocked;
-
+   
     //================================================================
     //                        実行処理
     //================================================================
@@ -60,8 +57,9 @@ public class WindowController : MonoBehaviour
         try
         {
 
-            LockCameraInput();
-            
+            // LockCameraInput();
+            PlayerInputManager.instance.SetGameplayInputActive(false);
+
             // ウィンドウを作成
             await CreateWindow<BaseWindow>();
             cancelToken.ThrowIfCancellationRequested();
@@ -109,7 +107,7 @@ public class WindowController : MonoBehaviour
 
         try
         {
-            LockCameraInput();
+            PlayerInputManager.instance.SetGameplayInputActive(false);
 
             // ウィンドウを作成
             m_createWindowObject = Instantiate(m_window, transform);
@@ -175,7 +173,9 @@ public class WindowController : MonoBehaviour
 
             }
 
-            UnlockCameraInput();
+            //UnlockCameraInput();
+            PlayerInputManager.instance.SetGameplayInputActive(true);
+
 
             // ウィンドウを返す
             return window as WindowType;
@@ -213,27 +213,6 @@ public class WindowController : MonoBehaviour
     }
 
 
-    private void LockCameraInput()
-    {
-        if (m_isCameraLocked)
-        {
-            return;
-        }
-
-        CameraInputLockManager.Instance?.Lock();
-        m_isCameraLocked = true;
-    }
-
-    private void UnlockCameraInput()
-    {
-        if (!m_isCameraLocked)
-        {
-            return;
-        }
-
-        CameraInputLockManager.Instance?.Unlock();
-        m_isCameraLocked = false;
-    }
-
+   
 
 }

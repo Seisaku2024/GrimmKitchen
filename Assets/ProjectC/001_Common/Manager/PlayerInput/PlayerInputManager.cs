@@ -28,6 +28,8 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
 
     private Dictionary<InputActionMapTypes, InputActionMap> m_inputActionMapDictionary = new();
 
+
+
     //==============================================
     //              実行処理
     //==============================================
@@ -202,5 +204,29 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
 
         return action.WasReleasedThisFrame();
     }
+
+
+    // カメラ入力とプレイヤー入力を止める関数
+    public void SetGameplayInputActive(bool isActive)
+    {
+        SetActionMapActive(InputActionMapTypes.Player, isActive);
+        SetActionMapActive(InputActionMapTypes.Camera, isActive);
+    }
+
+    public void SetActionMapActive(InputActionMapTypes type, bool isActive)
+    {
+        InputActionMap actionMap = GetInputActionMap(type);
+        if (actionMap == null) return;
+
+        if (isActive)
+        {
+            actionMap.Enable();
+        }
+        else
+        {
+            actionMap.Disable();
+        }
+    }
+
 
 }
