@@ -38,6 +38,10 @@ public class ConversationWindowController : WindowController
 
         try
         {
+            // PlayerInput停止
+            PlayerInputManager.instance.SetGameplayInputActive(false);
+
+
             // ウィンドウを作成
             m_createWindowObject = Instantiate(m_window, transform);
 
@@ -125,6 +129,10 @@ public class ConversationWindowController : WindowController
                 cancelToken.ThrowIfCancellationRequested();
 
             }
+
+            // PlayerInput再開
+            PlayerInputManager.instance.SetGameplayInputActive(true);
+
 
             // ウィンドウを返す
             return window as WindowType;

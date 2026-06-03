@@ -94,7 +94,7 @@ public class HanselStageStateUpdate_PortalTutrial : BaseHanselStageStateUpdate
                 if (core.GroupNo == CharacterGroupNumber.player)
                 {
                     m_playerCore = core;
-                    m_playerCore.m_animator.SetTrigger("ShowCutScene");
+                   // m_playerCore.m_animator.SetTrigger("ShowCutScene");
                     continue;
                 }
 

@@ -1,15 +1,58 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 [System.Serializable]
-[VolumeComponentMenu("Diffusion")]
-public class DiffusionPostProcessVolume : VolumeComponent
+[VolumeComponentMenu("Post-processing/Custom/Diffusion")]
+public class DiffusionPostProcessVolume : VolumeComponent, IPostProcessComponent
 {
-    //Defalt’l‚Í‚»‚Ìˆ—‚ª“­‚©‚È‚¢’l‚É‚µ‚½•û‚ª‚æ‚¢iƒ`ƒFƒbƒNŠO‚ê‚½‚Æ‚«‚ÉDefalt’l‚ð•Ô‚·‚©‚çj
-    public ClampedFloatParameter GaussDispersion = new ClampedFloatParameter(3, 0, 10);
-    public ClampedIntParameter GaussSmaplingTexelAmount = new ClampedIntParameter(9, 0, 32);
-    public ClampedFloatParameter ScreenBlend = new ClampedFloatParameter(1, 0, 3);
+    public ClampedFloatParameter ScreenBlend =
+        new ClampedFloatParameter(0.5f, 0.0f, 1.0f);
 
+    public ClampedFloatParameter GaussDispersion =
+        new ClampedFloatParameter(2.0f, 0.0f, 10.0f);
+
+    public ClampedIntParameter GaussSmaplingTexelAmount =
+        new ClampedIntParameter(8, 1, 32);
+
+    public bool IsActive()
+    {
+        return active && ScreenBlend.value > 0.0f;
+    }
+
+    public bool IsTileCompatible()
+    {
+        return false;
+    }
 }
+
+
+//using System.Collections;
+//using System.Collections.Generic;
+//using UnityEngine;
+//using UnityEngine.Rendering;
+
+//[System.Serializable]
+//[VolumeComponentMenu("Diffusion")]
+//public class DiffusionPostProcessVolume : VolumeComponent
+//{
+
+
+
+//    ////Defaltå€¤ã¯ãã®å‡¦ç†ãŒåƒã‹ãªã„å€¤ã«ã—ãŸæ–¹ãŒã‚ˆã„ï¼ˆãƒã‚§ãƒƒã‚¯å¤–ã‚ŒãŸã¨ãã«Defaltå€¤ã‚’è¿”ã™ã‹ã‚‰ï¼‰
+//    //public ClampedFloatParameter GaussDispersion = new ClampedFloatParameter(3, 0, 10);
+//    //public ClampedIntParameter GaussSmaplingTexelAmount = new ClampedIntParameter(9, 0, 32);
+//    //public ClampedFloatParameter ScreenBlend = new ClampedFloatParameter(1, 0, 3);
+
+
+//    //public bool IsActive()
+//    //{
+//    //    return active && ScreenBlend.value > 0.0f;
+//    //}
+
+//    //public bool IsTileCompatible()
+//    //{
+//    //    return false;
+//    //}
+
+
+//}

@@ -86,7 +86,7 @@ public class HanselStageStateUpdate_BattleTutorial : BaseHanselStageStateUpdate
                 if (core.GroupNo == CharacterGroupNumber.player)
                 {
                     m_playerCore = core;
-                    m_playerCore.m_animator.SetTrigger("ShowCutScene");
+                    //m_playerCore.m_animator.SetTrigger("ShowCutScene");
                     continue;
                 }
 
@@ -125,7 +125,7 @@ public class HanselStageStateUpdate_BattleTutorial : BaseHanselStageStateUpdate
             //PlayerInputManager.instance.SetGameplayInputActive(true);
 
             //会話ウィンドウ終わったらプレイヤー戻す
-            m_playerCore.m_animator.SetTrigger("ReturnIdle");
+            //m_playerCore.m_animator.SetTrigger("ReturnIdle");
 
             // 敵倒すまでコライダー出現
             var colList = HanselStageStateUpdateManager.instance.GetBarrierColliderList(m_hanselStageState);

@@ -74,7 +74,7 @@ public class SetCheckLobbyStateInputAction : MonoBehaviour
         if (m_playerCore.InputProvider.Search
             && (m_bSearchObjFlg == false))
         {
-            m_playerCore.m_animator.SetTrigger("ShowCutScene");
+           // m_playerCore.m_animator.SetTrigger("ShowCutScene");
             m_bSearchObjFlg = true;
 
             PlayerInputManager.instance.GetInputAction(InputActionMapTypes.Player, "Attack").Enable();

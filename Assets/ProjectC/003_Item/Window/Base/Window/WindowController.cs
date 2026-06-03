@@ -105,7 +105,7 @@ public class WindowController : MonoBehaviour
 
         try
         {
-            if (_bSelef == true)
+            //if (_bSelef == false)
             {
                 PlayerInputManager.instance.SetGameplayInputActive(false);
             }
@@ -200,6 +200,8 @@ public class WindowController : MonoBehaviour
 
         // ウィンドウを作成
         await CreateWindow<BaseWindow>();
+
+        PlayerInputManager.instance.SetGameplayInputActive(true);
 
         await UniTask.CompletedTask;
     }
