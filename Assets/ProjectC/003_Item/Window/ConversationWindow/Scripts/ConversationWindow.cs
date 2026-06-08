@@ -398,12 +398,6 @@ public class ConversationWindow : BaseWindow
 
             // 会話時にアイテムを非表示にするかどうか
 
-            // 前回の会話時に表示していたアイテムがあるなら全て非表示
-            //if(showItemName.Length>0)
-            //{
-            //    preCharacterCore.NPCParameters?.SetNotActiveAllListObj();
-            //}
-
             // 次の会話で表示するアイテムがあるなら表示
             if (m_conversationList[m_listCount].ActiveItemName.Length>0)
             {
@@ -438,6 +432,19 @@ public class ConversationWindow : BaseWindow
                 if (core.GroupNo == CharacterGroupNumber.player && m_conversationCameraFollowTransform)
                 {
                     core.ConversationObjTrans = m_conversationCameraFollowTransform;
+                    var targetVec = core.ConversationObjTrans.position 
+                                        - core.transform.position;
+                    targetVec.y = 0.0f;
+                    targetVec.Normalize();
+
+                    core.SetRotateToTarget(targetVec, false);
+                }
+
+                // 武器を消す
+                if (core.PlayerParameters != null)
+                {
+                    core.PlayerParameters.HideWeapon(core.m_animator);
+                    core.PlayerParameters.IsNotAutoAppearWepon = true;
                 }
 
                 continue;
@@ -480,6 +487,12 @@ public class ConversationWindow : BaseWindow
         {
             if (core.GroupNo == CharacterGroupNumber.player || core.GroupNo == CharacterGroupNumber.NPC)
             {
+                // 武器出現
+                if (core.PlayerParameters != null)
+                {
+                    core.PlayerParameters.IsNotAutoAppearWepon = false;
+                }
+
                 continue;
             }
 

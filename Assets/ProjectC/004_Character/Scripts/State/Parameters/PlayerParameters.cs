@@ -194,6 +194,14 @@ public class PlayerParameters : MonoBehaviour
     [Header("消失した武器が出現するまでの時間")]
     [SerializeField] private float m_appearEventTime = 5.0f;
 
+    [Header("自動で武器を出現させないようにする")]
+    [SerializeField] private bool m_isNotAutoAppearWepon = false;
+    public bool IsNotAutoAppearWepon
+    {
+        set { m_isNotAutoAppearWepon = value; }
+        get { return m_isNotAutoAppearWepon; }
+    }
+
     private float m_eventTime = 0.0f;
 
     //-------------------------------------------------------------------------------------
@@ -271,6 +279,7 @@ public class PlayerParameters : MonoBehaviour
     public void UpdateVanishWeapon(Animator animator)
     {
         if (!m_isVanishWeapon) return;
+        if (m_isNotAutoAppearWepon) return;
 
         if (m_eventTime <= 0.0f)
         {
