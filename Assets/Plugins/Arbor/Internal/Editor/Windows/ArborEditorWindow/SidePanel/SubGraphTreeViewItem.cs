@@ -25,7 +25,7 @@ namespace ArborEditor
 			}
 		}
 
-		public SubGraphTreeViewItem(int id, ISubGraphBehaviour subGraphyReference) : base(id, subGraphyReference.GetSubGraph())
+		public SubGraphTreeViewItem(int id, ObjectId objectId, ISubGraphBehaviour subGraphyReference) : base(id, objectId, subGraphyReference.GetSubGraph())
 		{
 			this.subGraphReference = subGraphyReference;
 		}

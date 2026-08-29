@@ -19,6 +19,7 @@ namespace Arbor
 	/// </summary>
 	/// <typeparam name="T">Type of component to reference</typeparam>
 #endif
+	[System.Serializable]
 	public class ComponentParameterReference<T> : ParameterReferenceBase<T> where T : Component
 	{
 #if ARBOR_DOC_JA

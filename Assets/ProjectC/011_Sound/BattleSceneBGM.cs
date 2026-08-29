@@ -34,7 +34,7 @@ public class BattleSceneBGM : MonoBehaviour
             if (!boss.TryGetComponent(out EnemyParameters parameters)) return;
             if (parameters.Target == null) continue;
 
-            if (parameters.Target.GetInstanceID() == m_player.GetInstanceID())
+            if (parameters.Target.GetEntityId().Equals(m_player.GetEntityId()))
             {
                 findPlayer = true;
                 break;

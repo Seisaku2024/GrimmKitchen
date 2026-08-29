@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEditor;
+using UnityEditor.UIElements;
 
 namespace ArborEditor
 {
@@ -16,6 +17,7 @@ namespace ArborEditor
 
 	public abstract class SelectWindowBase : EditorWindow
 	{
+		[System.Serializable]
 		public class Element : System.IComparable
 		{
 			public int level;
@@ -475,66 +477,6 @@ namespace ArborEditor
 			Repaint();
 		}
 
-		void SearchGUI()
-		{
-			GUI.SetNextControlName("ArborBehaviourSearch");
-			string str = EditorGUITools.DropdownSearchField(searchWord);
-			if (str != searchWord)
-			{
-				searchWord = str;
-				RebuildSearch();
-			}
-		}
-
-		private void HandleKeyboard()
-		{
-			Event current = Event.current;
-			if (current.type != EventType.KeyDown)
-			{
-				return;
-			}
-
-			if (current.keyCode == KeyCode.DownArrow)
-			{
-				++activeParent.selectedIndex;
-				activeParent.selectedIndex = Mathf.Min(activeParent.selectedIndex, GetChildren(activeTree, activeParent).Count - 1);
-				_ListElement.SetSelection(activeParent.selectedIndex);
-				current.Use();
-			}
-			if (current.keyCode == KeyCode.UpArrow)
-			{
-				--activeParent.selectedIndex;
-				activeParent.selectedIndex = Mathf.Max(activeParent.selectedIndex, 0);
-				_ListElement.SetSelection(activeParent.selectedIndex);
-				current.Use();
-			}
-			if (current.keyCode == KeyCode.Return || current.keyCode == KeyCode.KeypadEnter)
-			{
-				GoToChild(activeElement, true);
-				current.Use();
-			}
-			if (hasSearch)
-			{
-				return;
-			}
-			if (current.keyCode == KeyCode.LeftArrow || current.keyCode == KeyCode.Backspace)
-			{
-				GoToParent();
-				current.Use();
-			}
-			if (current.keyCode == KeyCode.RightArrow)
-			{
-				GoToChild(activeElement, false);
-				current.Use();
-			}
-			if (current.keyCode != KeyCode.Escape)
-			{
-				return;
-			}
-			Close();
-			current.Use();
-		}
-
 		private bool _IsSelected = false;
 
 		void OnEnable()
@@ -554,10 +496,72 @@ namespace ArborEditor
 		private ListElement _ListElement;
 		private ListElement _PrevListElement;
 
+		class SearchField : ToolbarSearchField
+		{
+			public SearchField() : base()
+			{
+				// Externally set text cannot be cleared with the escape key, so clear it yourself
+				textInputField.RegisterCallback<KeyDownEvent>(OnTextFieldKeyDown, TrickleDown.TrickleDown);
+
+				RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
+				RegisterCallback<BlurEvent>(OnBlur);
+			}
+
+			void OnAttachToPanel(AttachToPanelEvent evt)
+			{
+				Focus();
+			}
+
+			void OnBlur(BlurEvent evt)
+			{
+				var relatedTarget = evt.relatedTarget as VisualElement;
+				var leaveFocus = (relatedTarget != null && relatedTarget.GetFirstAncestorOfType<SearchField>() != this);
+				if (leaveFocus)
+				{
+					schedule.Execute(() =>
+					{
+						Focus();
+					});
+				}
+			}
+
+			void OnTextFieldKeyDown(KeyDownEvent evt)
+			{
+				if (evt.keyCode == KeyCode.Escape)
+				{
+					ClearTextField();
+					evt.StopPropagation();
+				}
+			}
+		}
+
 		void SetupElements()
 		{
-			var searchBarGUI = new IMGUIContainer(OnSearchBarGUI);
-			rootVisualElement.Add(searchBarGUI);
+			var toolbar = new Toolbar();
+			rootVisualElement.Add(toolbar);
+
+			var searchField = new SearchField()
+			{
+				style =
+				{
+					width = StyleKeyword.Initial,
+					flexGrow = 1,
+					flexShrink = 0,
+					marginRight = 3f,
+				},
+			};
+			searchField.SetValueWithoutNotify(searchWord);
+			searchField.RegisterValueChangedCallback(evt =>
+			{
+				var str = evt.newValue;
+				if (str != searchWord)
+				{
+					searchWord = str;
+					RebuildSearch();
+				}
+			});
+
+			toolbar.Add(searchField);
 
 			_ListAreaElement = new VisualElement()
 			{
@@ -588,6 +592,66 @@ namespace ArborEditor
 				}
 			};
 			_ListAreaElement.Add(_ListElement);
+
+			rootVisualElement.RegisterCallback<KeyDownEvent>(OnKeyDown, TrickleDown.TrickleDown);
+		}
+
+		void OnKeyDown(KeyDownEvent evt)
+		{
+			switch (evt.keyCode)
+			{
+				case KeyCode.DownArrow:
+					{
+						++activeParent.selectedIndex;
+						activeParent.selectedIndex = Mathf.Min(activeParent.selectedIndex, GetChildren(activeTree, activeParent).Count - 1);
+						_ListElement.SetSelection(activeParent.selectedIndex);
+						evt.StopPropagation();
+					}
+					return;
+				case KeyCode.UpArrow:
+					{
+						--activeParent.selectedIndex;
+						activeParent.selectedIndex = Mathf.Max(activeParent.selectedIndex, 0);
+						_ListElement.SetSelection(activeParent.selectedIndex);
+						evt.StopPropagation();
+					}
+					return;
+				case KeyCode.Return:
+				case KeyCode.KeypadEnter:
+					{
+						GoToChild(activeElement, true);
+						evt.StopPropagation();
+					}
+					return;
+			}
+
+			if (hasSearch)
+			{
+				return;
+			}
+
+			switch (evt.keyCode)
+			{
+				case KeyCode.LeftArrow:
+				case KeyCode.Backspace:
+					{
+						GoToParent();
+						evt.StopPropagation();
+					}
+					return;
+				case KeyCode.RightArrow:
+					{
+						GoToChild(activeElement, false);
+						evt.StopPropagation();
+					}
+					return;
+				case KeyCode.Escape:
+					{
+						Close();
+						evt.StopPropagation();
+					}
+					return;
+			}
 		}
 
 		void OnDisable()
@@ -606,23 +670,6 @@ namespace ArborEditor
 
 		protected virtual void OnClose()
 		{
-		}
-
-		static class Styles
-		{
-			public static readonly GUIStyle background = new GUIStyle(GUIStyle.none);
-		}
-
-		void OnSearchBarGUI()
-		{
-			using (new GUILayout.VerticalScope(Styles.background))
-			{
-				HandleKeyboard();
-
-				EditorGUI.FocusTextInControl("ArborBehaviourSearch");
-
-				SearchGUI();
-			}
 		}
 
 		protected virtual void OnBindIconElement(Image iconElement, Element item)
@@ -681,8 +728,8 @@ namespace ArborEditor
 				};
 				_ListView.name = s_ListViewName;
 				_ListView.AddToClassList(s_ListViewName);
-				_ListView.RegisterCallbackSelectionChange(OnSelectionChange);
-				_ListView.RegisterCallbackItemsChosen(OnItemChosen);
+				_ListView.selectionChanged += OnSelectionChange;
+				_ListView.itemsChosen += OnItemChosen;
 				_ListView.onAfterDeserialize += UpdateSelection;
 
 				Add(_ListView);
@@ -745,7 +792,7 @@ namespace ArborEditor
 				if (_RefreshOnAttachToPanel)
 				{
 					_RefreshOnAttachToPanel = false;
-					_ListView.RebuildList();
+					_ListView.Rebuild();
 				}
 
 				RestoreScrollOffset();
@@ -920,7 +967,7 @@ namespace ArborEditor
 
 				if (_ScrollView.panel != null)
 				{
-					_ListView.RebuildList();
+					_ListView.Rebuild();
 				}
 				else
 				{
@@ -958,7 +1005,7 @@ namespace ArborEditor
 
 			public void SetSelection(int index, bool scrollTo = true)
 			{
-				_ListView.UnregisterCallbackSelectionChange(OnSelectionChange);
+				_ListView.selectionChanged -= OnSelectionChange;
 
 				if (_ListView.itemsSource.Count <= index)
 				{
@@ -970,7 +1017,7 @@ namespace ArborEditor
 					_ListView.ScrollToItem(index);
 				}
 
-				_ListView.RegisterCallbackSelectionChange(OnSelectionChange);
+				_ListView.selectionChanged += OnSelectionChange;
 			}
 		}
 	}

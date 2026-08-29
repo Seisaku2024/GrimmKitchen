@@ -142,22 +142,6 @@ namespace ArborEditor.BehaviourTree
 			abortField.bindingPath = "_AbortFlags";
 			_ConditionSettingsElement.Add(abortField);
 
-#if ARBOR_DLL
-			var unityEngineAssembly = System.Reflection.Assembly.Load("UnityEngine.dll");
-			var enumFieldType = unityEngineAssembly.GetType("UnityEngine.UIElements.EnumField", false);
-			if (enumFieldType == null)
-			{
-				var unityEditorAssembly = System.Reflection.Assembly.Load("UnityEditor.dll");
-				enumFieldType = unityEditorAssembly.GetType("UnityEditor.UIElements.EnumField", false);
-			}
-
-			BindableElement logicalOperation = System.Activator.CreateInstance(enumFieldType) as BindableElement;
-			logicalOperation.style.marginRight = 0f;
-			logicalOperation.style.width = 50f;
-			var inputUssClassNameField = enumFieldType.GetField("inputUssClassName");
-			var inputUssClassName = (string)inputUssClassNameField.GetValue(null);
-			var logicalInput = logicalOperation.Q(className: inputUssClassName);
-#else
 			BindableElement logicalOperation = new EnumField()
 			{
 				style =
@@ -167,7 +151,6 @@ namespace ArborEditor.BehaviourTree
 				}
 			};
 			var logicalInput = logicalOperation.Q(className: EnumField.inputUssClassName);
-#endif
 			logicalInput.AddToClassList("button-left");
 			logicalOperation.tooltip = "Logical Operation";
 			logicalOperation.bindingPath = "_LogicalCondition.logicalOperation";

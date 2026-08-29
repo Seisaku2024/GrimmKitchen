@@ -10,6 +10,7 @@ namespace Arbor
 {
 	using Internal;
 
+	[System.Serializable]
 	public abstract class WeightListBase
 	{
 		public abstract int count

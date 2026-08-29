@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Arbor.Playables
 {
@@ -27,7 +28,7 @@ namespace Arbor.Playables
 		{
 			if (_Actions == null)
 			{
-				_Actions = Pool.ListPool<System.Action>.Get();
+				_Actions = ListPool<System.Action>.Get();
 			}
 
 			_Actions.Add(action);
@@ -46,7 +47,7 @@ namespace Arbor.Playables
 					action?.Invoke();
 				}
 
-				Pool.ListPool<System.Action>.Release(actions);
+				ListPool<System.Action>.Release(actions);
 			}
 		}
 	}

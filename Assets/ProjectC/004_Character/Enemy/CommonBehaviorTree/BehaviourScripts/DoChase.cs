@@ -42,7 +42,7 @@ public class DoChase : Decorator {
         Vector2 targetPos = new Vector2(enemyParameter.Target.position.x, enemyParameter.Target.position.z);
 
         float distToTarget = Vector2.Distance(myPos, targetPos);
-        float distToSpawn = Vector3.Distance(enemyParameter.Target.position, (_agent.value as AgentController).StartPosition);
+        float distToSpawn = Vector3.Distance(enemyParameter.Target.position, (_agent.value as AgentController).position);
         bool isChase = (distToTarget <= chaseParameters.ChaseDistFromTarget)
             && (distToSpawn <= chaseParameters.DistAwayFromSpawnPos);
         return isChase;

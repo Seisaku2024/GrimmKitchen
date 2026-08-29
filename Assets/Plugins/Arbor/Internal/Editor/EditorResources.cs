@@ -1,146 +1,179 @@
-﻿//-----------------------------------------------------
+//-----------------------------------------------------
 //            Arbor 3: FSM & BT Graph Editor
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
-using UnityEngine;
-#if ARBOR_DLL
-using System.Reflection;
-#else
-using UnityEditor;
-#endif
 using System.IO;
+using UnityEngine;
+using UnityEditor;
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
 namespace ArborEditor
 {
-	public sealed class EditorResources : Arbor.ScriptableSingleton<EditorResources>
-	{
-		const string k_DirectoryName = "EditorResources";
+    public sealed class EditorResources : Arbor.ScriptableSingleton<EditorResources>
+    {
+        const string k_DirectoryName = "EditorResources";
 
-		private IAssetLoader _AssetLoader;
-		private IAssetLoader loader
-		{
-			get
-			{
-				if (_AssetLoader == null)
-				{
-#if ARBOR_DLL
-					Assembly assembly = Assembly.GetExecutingAssembly();
-					string directory = Path.GetDirectoryName(assembly.Location);
-					_Directory = PathUtility.Combine(directory, k_DirectoryName);
-					_Directory = _Directory.Replace(Application.dataPath, "Assets");
-					_AssetLoader = new AssetDatabaseLoader( _Directory );
+        private IAssetLoader _AssetLoader;
+        private IAssetLoader loader
+        {
+            get
+            {
+                if (_AssetLoader == null)
+                {
+                    var packageInfo = PackageInfo.FindForAssembly(typeof(EditorResources).Assembly);
 
-					string arborDirectoryName = "/Arbor/";
-					int index = _Directory.LastIndexOf(arborDirectoryName);
-					if (index >= 0)
-					{
-						_ArborRootDirectory = _Directory.Substring(0, index + arborDirectoryName.Length);
-					}
-#else
-					MonoScript script = MonoScript.FromScriptableObject(this);
+                    if (packageInfo != null)
+                    {
+                        // Package Manager 経由の場合
+                        _ArborRootDirectory = packageInfo.assetPath;
+                    }
+                    else
+                    {
+                        // Assets/Plugins/Arbor に直接配置されている場合
+                        _ArborRootDirectory = FindArborRootDirectory();
+                    }
 
-					if (script != null)
-					{
-						string directory = Path.GetDirectoryName(AssetDatabase.GetAssetPath(script));
-						_Directory = PathUtility.Combine(directory, k_DirectoryName);
-						_AssetLoader = new AssetDatabaseLoader(_Directory);
+                    if (string.IsNullOrEmpty(_ArborRootDirectory))
+                    {
+                        Debug.LogError("Arbor root directory could not be found.");
+                        return null;
+                    }
 
-						string arborDirectoryName = "/Arbor/";
-						int index = _Directory.LastIndexOf(arborDirectoryName, System.StringComparison.Ordinal);
-						if (index >= 0)
-						{
-							_ArborRootDirectory = _Directory.Substring(0, index + arborDirectoryName.Length);
-						}
-					}
-#endif
-				}
+                    _Directory = PathUtility.Combine(
+                        _ArborRootDirectory,
+                        k_DirectoryName);
 
-				return _AssetLoader;
-			}
-		}
+                    _AssetLoader = new AssetDatabaseLoader(_Directory);
+                }
 
-		private string _ArborRootDirectory;
-		public static string arborRootDirectory
-		{
-			get
-			{
-				return instance._ArborRootDirectory;
-			}
-		}
+                return _AssetLoader;
+            }
+        }
 
-		private string _Directory;
+        private string _ArborRootDirectory;
 
-		public static string directory
-		{
-			get
-			{
-				return instance._Directory;
-			}
-		}
+        public static string arborRootDirectory
+        {
+            get
+            {
+                return instance._ArborRootDirectory;
+            }
+        }
 
-		public static Object Load(string name, System.Type type)
-		{
-			IAssetLoader loader = instance.loader;
-			if (loader == null)
-			{
-				return null;
-			}
+        private string _Directory;
 
-			return loader.Load(name, type);
-		}
+        public static string directory
+        {
+            get
+            {
+                return instance._Directory;
+            }
+        }
 
-		public static T Load<T>(string name) where T : Object
-		{
-			IAssetLoader loader = instance.loader;
-			if (loader == null)
-			{
-				return null;
-			}
+        private static string FindArborRootDirectory()
+        {
+            // まず現在の配置を直接確認
+            const string defaultPath = "Assets/Plugins/Arbor";
 
-			return loader.Load<T>(name);
-		}
+            if (AssetDatabase.IsValidFolder(defaultPath))
+            {
+                return defaultPath;
+            }
 
-		public static Object Load(string name, string ext, System.Type type)
-		{
-			IAssetLoader loader = instance.loader;
-			if (loader == null)
-			{
-				return null;
-			}
+            // Arbor フォルダを検索
+            string[] guids = AssetDatabase.FindAssets("EditorResources t:MonoScript");
 
-			Object obj = loader.Load(name, type);
-			if (obj != null)
-			{
-				return obj;
-			}
-			return loader.Load(Path.ChangeExtension(name, ext), type);
-		}
+            foreach (string guid in guids)
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
 
-		public static T Load<T>(string name, string ext) where T : Object
-		{
-			IAssetLoader loader = instance.loader;
-			if (loader == null)
-			{
-				return null;
-			}
+                if (!path.EndsWith("/EditorResources.cs"))
+                {
+                    continue;
+                }
 
-			T obj = loader.Load<T>(name);
-			if (obj != null)
-			{
-				return obj;
-			}
-			return loader.Load<T>(Path.ChangeExtension(name, ext));
-		}
+                // 例:
+                // Assets/Plugins/Arbor/Internal/Editor/EditorResources.cs
+                string normalizedPath = path.Replace("\\", "/");
 
-		public static Texture2D LoadTexture(string name)
-		{
-			Texture2D tex = Load<Texture2D>(name);
-			if (tex != null)
-			{
-				return tex;
-			}
-			tex = Load<Texture2D>(name + ".png");
-			return tex;
-		}
-	}
+                const string marker = "/Internal/Editor/EditorResources.cs";
+                int index = normalizedPath.LastIndexOf(marker);
+
+                if (index >= 0)
+                {
+                    return normalizedPath.Substring(0, index);
+                }
+            }
+
+            return null;
+        }
+
+        public static Object Load(string name, System.Type type)
+        {
+            IAssetLoader loader = instance.loader;
+            if (loader == null)
+            {
+                return null;
+            }
+
+            return loader.Load(name, type);
+        }
+
+        public static T Load<T>(string name) where T : Object
+        {
+            IAssetLoader loader = instance.loader;
+            if (loader == null)
+            {
+                return null;
+            }
+
+            return loader.Load<T>(name);
+        }
+
+        public static Object Load(string name, string ext, System.Type type)
+        {
+            IAssetLoader loader = instance.loader;
+            if (loader == null)
+            {
+                return null;
+            }
+
+            Object obj = loader.Load(name, type);
+            if (obj != null)
+            {
+                return obj;
+            }
+
+            return loader.Load(Path.ChangeExtension(name, ext), type);
+        }
+
+        public static T Load<T>(string name, string ext) where T : Object
+        {
+            IAssetLoader loader = instance.loader;
+            if (loader == null)
+            {
+                return null;
+            }
+
+            T obj = loader.Load<T>(name);
+            if (obj != null)
+            {
+                return obj;
+            }
+
+            return loader.Load<T>(Path.ChangeExtension(name, ext));
+        }
+
+        public static Texture2D LoadTexture(string name)
+        {
+            Texture2D tex = Load<Texture2D>(name);
+            if (tex != null)
+            {
+                return tex;
+            }
+
+            tex = Load<Texture2D>(name + ".png");
+            return tex;
+        }
+    }
 }

@@ -29,7 +29,7 @@ namespace Arbor
 					return parameter.GetRectInt();
 				}
 
-				return RectIntExtensions.zero;
+				return RectInt.zero;
 			}
 			set
 			{

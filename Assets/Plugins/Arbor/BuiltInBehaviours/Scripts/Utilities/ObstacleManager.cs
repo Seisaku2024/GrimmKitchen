@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Pool;
 using UnityEngine.SceneManagement;
 
 namespace Arbor
@@ -160,11 +161,11 @@ namespace Arbor
 
 			float minDistanceSqrToTarget = minDistanceToTarget * minDistanceToTarget;
 
-			using (Pool.ListPool<ObstacleObject>.Get(out var obstacleObjects))
+			using (ListPool<ObstacleObject>.Get(out var obstacleObjects))
 			{
 				if ((obstacleTargetFlags & ObstacleTargetFlags.NavMeshObstacle) == ObstacleTargetFlags.NavMeshObstacle)
 				{
-					using (Pool.ListPool<NavMeshObstacle>.Get(out var obstacles))
+					using (ListPool<NavMeshObstacle>.Get(out var obstacles))
 					{
 						FindComponentsOfType<NavMeshObstacle>(obstacles);
 						for (int i = 0, count = obstacles.Count; i < count; i++)
@@ -181,7 +182,7 @@ namespace Arbor
 								continue;
 							}
 
-							var obstacleObject = Pool.GenericPool<ObstacleObject>.Get();
+							var obstacleObject = GenericPool<ObstacleObject>.Get();
 							obstacleObject.obstacle = obstacle;
 							obstacleObject.distanceSqrToAgent = (obstacleObject.transform.position - agentPos).sqrMagnitude;
 
@@ -192,7 +193,7 @@ namespace Arbor
 
 				if ((obstacleTargetFlags & ObstacleTargetFlags.NavMeshAgent) == ObstacleTargetFlags.NavMeshAgent)
 				{
-					using (Pool.ListPool<NavMeshAgent>.Get(out var agents))
+					using (ListPool<NavMeshAgent>.Get(out var agents))
 					{
 						FindComponentsOfType<NavMeshAgent>(agents);
 						for (int i = 0, count = agents.Count; i < count; i++)
@@ -209,7 +210,7 @@ namespace Arbor
 								continue;
 							}
 
-							var obstacleObject = Pool.GenericPool<ObstacleObject>.Get();
+							var obstacleObject = GenericPool<ObstacleObject>.Get();
 							obstacleObject.agent = agent;
 							obstacleObject.distanceSqrToAgent = (obstacleObject.transform.position - agentPos).sqrMagnitude;
 
@@ -266,7 +267,7 @@ namespace Arbor
 					}
 					finally
 					{
-						Pool.GenericPool<ObstacleObject>.Release(obstacleObject);
+						GenericPool<ObstacleObject>.Release(obstacleObject);
 					}
 				}
 			}
@@ -308,7 +309,7 @@ namespace Arbor
 					continue;
 				}
 
-				using (Pool.ListPool<GameObject>.Get(out var gameObjects))
+				using (ListPool<GameObject>.Get(out var gameObjects))
 				{
 					scene.GetRootGameObjects(gameObjects);
 
@@ -317,7 +318,7 @@ namespace Arbor
 						GameObject gameObject = gameObjects[gameObjectIndex];
 						if (gameObject.activeInHierarchy)
 						{
-							using (Pool.ListPool<T>.Get(out var components))
+							using (ListPool<T>.Get(out var components))
 							{
 								gameObject.GetComponentsInChildren(components);
 								result.AddRange(components);

@@ -1,4 +1,4 @@
-﻿/****************************************************************************
+/****************************************************************************
  *
  * Copyright (c) 2022 CRI Middleware Co., Ltd.
  *
@@ -41,7 +41,7 @@ namespace CriWare.Assets
 
 		[MenuItem("Assets/Create/CRIWARE/Localized ACB")]
 		static void CreateAsset() {
-			ProjectWindowUtil.CreateAssetWithContent($"New Licalized ACB Asset.localizedacb", "");
+			ProjectWindowUtil.CreateAssetWithTextContent($"New Licalized ACB Asset.localizedacb", "");
 			AssetDatabase.Refresh();
 		}
 

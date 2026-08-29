@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Arbor.BehaviourTree
 {
@@ -59,7 +60,7 @@ namespace Arbor.BehaviourTree
 					branch.isActive = false;
 				}
 
-				Pool.GenericPool<BehaviourTreeExecutor>.Release(executor);
+				GenericPool<BehaviourTreeExecutor>.Release(executor);
 			}
 
 			_Executors.Clear();
@@ -93,7 +94,7 @@ namespace Arbor.BehaviourTree
 
 					TreeNodeBase childNode = behaviourTree.GetNodeFromID(branch.childNodeID) as TreeNodeBase;
 
-					BehaviourTreeExecutor executor = Pool.GenericPool<BehaviourTreeExecutor>.Get();
+					BehaviourTreeExecutor executor = GenericPool<BehaviourTreeExecutor>.Get();
 					executor.Play(behaviourTree, childNode, OnFinish);
 
 					_Executors.Add(executor);

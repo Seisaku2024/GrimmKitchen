@@ -82,6 +82,7 @@ namespace Arbor.DynamicReflection
 #endif
 		public abstract void SetValue(object instance, object value);
 
+		private static object s_LockFieldCache = new object();
 		private static Dictionary<FieldInfo, DynamicField> s_FieldCache = new Dictionary<FieldInfo, DynamicField>();
 
 #if ARBOR_DOC_JA
@@ -99,48 +100,56 @@ namespace Arbor.DynamicReflection
 #endif
 		public static DynamicField GetField(FieldInfo fieldInfo)
 		{
+			if (fieldInfo == null)
+			{
+				return null;
+			}
+			
 			DynamicField dynamicField = null;
 
-			if (fieldInfo != null && !s_FieldCache.TryGetValue(fieldInfo, out dynamicField))
+			lock (s_LockFieldCache)
 			{
-#if ENABLE_DELEGATE_CALL
-				try
+				if (!s_FieldCache.TryGetValue(fieldInfo, out dynamicField))
 				{
+#if ENABLE_DELEGATE_CALL
+					try
+					{
+						if (fieldInfo.IsLiteral)
+						{
+							dynamicField = new ConstField();
+						}
+						else
+						{
+							dynamicField = new DelegatedField();
+						}
+						dynamicField.Create(fieldInfo);
+					}
+					catch (System.NotSupportedException)
+					{
+						dynamicField = new DefaultField();
+						dynamicField.Create(fieldInfo);
+					}
+					catch (System.Exception ex)
+					{
+						UnityEngine.Debug.LogException(ex);
+
+						dynamicField = new DefaultField();
+						dynamicField.Create(fieldInfo);
+					}
+#else
 					if (fieldInfo.IsLiteral)
 					{
 						dynamicField = new ConstField();
 					}
 					else
 					{
-						dynamicField = new DelegatedField();
+						dynamicField = new DefaultField();
 					}
 					dynamicField.Create(fieldInfo);
-				}
-				catch (System.NotSupportedException)
-				{
-					dynamicField = new DefaultField();
-					dynamicField.Create(fieldInfo);
-				}
-				catch (System.Exception ex)
-				{
-					UnityEngine.Debug.LogException(ex);
-
-					dynamicField = new DefaultField();
-					dynamicField.Create(fieldInfo);
-				}
-#else
-				if (fieldInfo.IsLiteral)
-				{
-					dynamicField = new ConstField();
-				}
-				else
-				{
-					dynamicField = new DefaultField();
-				}
-				dynamicField.Create(fieldInfo);
 #endif
 
-				s_FieldCache.Add(fieldInfo, dynamicField);
+					s_FieldCache.Add(fieldInfo, dynamicField);
+				}
 			}
 
 			return dynamicField;

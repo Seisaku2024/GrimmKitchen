@@ -533,7 +533,7 @@ namespace Arbor
 					AddParameterValue(parameter, _Vector3IntParameters, Vector3Int.zero);
 					break;
 				case Parameter.Type.RectInt:
-					AddParameterValue(parameter, _RectIntParameters, RectIntExtensions.zero);
+					AddParameterValue(parameter, _RectIntParameters, RectInt.zero);
 					break;
 				case Parameter.Type.BoundsInt:
 					AddParameterValue(parameter, _BoundsIntParameters, BoundsIntExtensions.zero);

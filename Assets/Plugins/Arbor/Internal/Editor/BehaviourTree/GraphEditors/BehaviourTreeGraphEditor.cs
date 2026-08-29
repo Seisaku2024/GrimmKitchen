@@ -4,6 +4,7 @@
 //-----------------------------------------------------
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Pool;
 using UnityEditor;
 using System.Collections.Generic;
 
@@ -516,7 +517,7 @@ namespace ArborEditor.BehaviourTree
 				branchElement.Update(branch);
 			}
 
-			using (Arbor.Pool.ListPool<int>.Get(out var removeList))
+			using (ListPool<int>.Get(out var removeList))
 			{
 				foreach (var pair in _NodeBranchElements)
 				{

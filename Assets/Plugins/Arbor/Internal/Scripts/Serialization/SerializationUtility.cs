@@ -144,9 +144,6 @@ namespace Arbor.Serialization
 				{
 					return true;
 				}
-#if !UNITY_2020_1_OR_NEWER
-				return false;
-#endif
 			}
 
 			try

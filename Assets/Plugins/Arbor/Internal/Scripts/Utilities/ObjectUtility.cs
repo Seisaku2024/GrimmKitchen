@@ -30,14 +30,10 @@ namespace Arbor
 		/// <typeparam name="T">Object type</typeparam>
 		/// <returns>the object found</returns>
 #endif
+		[System.Obsolete("use Object.FindAnyObjectByType")] // The minimum supported Unity version is now 6.0, so direct calls to Object-type methods are recommended.
 		public static T FindObjectOfType<T>() where T : Object
 		{
-			return
-#if UNITY_2023_1_OR_NEWER
-				Object.FindFirstObjectByType<T>();
-#else
-				Object.FindObjectOfType<T>();
-#endif
+			return Object.FindAnyObjectByType<T>();
 		}
 
 #if ARBOR_DOC_JA
@@ -55,13 +51,18 @@ namespace Arbor
 		/// <typeparam name="T">Object type</typeparam>
 		/// <returns>an array of found objects</returns>
 #endif
+		[System.Obsolete("use Object.FindObjectsByType")] // The minimum supported Unity version is now 6.0, so direct calls to Object-type methods are recommended.
 		public static T[] FindObjectsOfType<T>() where T : Object
 		{
-			return
-#if UNITY_2023_1_OR_NEWER
-				Object.FindObjectsByType<T>(FindObjectsSortMode.InstanceID);
+			return FindObjectsByTypeInternal<T>();
+		}
+
+		internal static T[] FindObjectsByTypeInternal<T>() where T : Object
+		{
+#if UNITY_6000_4_OR_NEWER
+			return Object.FindObjectsByType<T>();
 #else
-				Object.FindObjectsOfType<T>();
+			return Object.FindObjectsByType<T>(FindObjectsSortMode.InstanceID);
 #endif
 		}
 	}

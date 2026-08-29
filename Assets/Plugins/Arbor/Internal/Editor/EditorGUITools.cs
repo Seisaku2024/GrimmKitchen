@@ -197,21 +197,12 @@ namespace ArborEditor
 			{
 				var md = mgc.Allocate(vertices.Count, triangles.Count, tex);
 
-#if !UNITY_2023_1_OR_NEWER
-				Rect uvRegion = md.uvRegion;
-#endif
-
 				for (int count = md.vertexCount, i = 0; i < count; i++)
 				{
 					Vector3 position = vertices[i];
 					position.z = Vertex.nearZ;
 
 					Vector2 texcoord = texcoords[i];
-#if !UNITY_2023_1_OR_NEWER
-					texcoord.x *= uvRegion.width;
-					texcoord.y *= uvRegion.height;
-					texcoord += uvRegion.min;
-#endif
 
 					md.SetNextVertex(new Vertex()
 					{

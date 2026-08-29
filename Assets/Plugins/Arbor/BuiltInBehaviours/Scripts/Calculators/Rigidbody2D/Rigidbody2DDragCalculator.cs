@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace Arbor.Calculators
 {
+	using Arbor.Utilities;
+
 #if ARBOR_DOC_JA
 	/// <summary>
 	/// オブジェクトの抵抗
@@ -52,7 +54,7 @@ namespace Arbor.Calculators
 			Rigidbody2D rigidbody2D = _Rigidbody2D.value;
 			if (rigidbody2D != null)
 			{
-				_Drag.SetValue(rigidbody2D.linearDamping);
+				_Drag.SetValue(Physics2DUtility.GetLinearDamping(rigidbody2D));
 			}
 		}
 	}

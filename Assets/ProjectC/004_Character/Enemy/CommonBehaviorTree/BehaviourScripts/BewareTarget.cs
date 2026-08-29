@@ -30,7 +30,7 @@ public class BewareTarget : Decorator
         m_input = transform.root.GetComponentInChildren<EnemyInputProvider>();
         if (transform.root.TryGetComponent(out AgentController agent))
         {
-            m_startPos = agent.StartPosition;
+            m_startPos = agent.transform.position;
         }
 
         EnemyParameters parameters = m_enemyParameters.value as EnemyParameters;

@@ -20,6 +20,7 @@ namespace Arbor
 	/// Defined for bridging to PropertyDrawer.
 	/// </summary>
 #endif
+	[System.Serializable]
 	public abstract class FlexibleComponentBase : FlexibleSceneObjectBase
 	{
 	}
@@ -35,6 +36,7 @@ namespace Arbor
 	/// </summary>
 	/// <typeparam name="T">Specify Component Type</typeparam>
 #endif
+	[System.Serializable]
 	public class FlexibleComponent<T> : FlexibleComponentBase, IValueGetter<T> where T : Component
 	{
 #if ARBOR_DOC_JA

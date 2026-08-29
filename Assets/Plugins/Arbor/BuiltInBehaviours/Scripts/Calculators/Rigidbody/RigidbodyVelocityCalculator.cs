@@ -52,11 +52,7 @@ namespace Arbor.Calculators
 			Rigidbody rigidbody = _Rigidbody.value;
 			if (rigidbody != null)
 			{
-#if UNITY_2023_3_OR_NEWER
 				_Velocity.SetValue(rigidbody.linearVelocity);
-#else
-				_Velocity.SetValue(rigidbody.velocity);
-#endif
 			}
 		}
 	}

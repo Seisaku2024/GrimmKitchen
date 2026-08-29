@@ -2,6 +2,8 @@
 //            Arbor 3: FSM & BT Graph Editor
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
+using System;
+
 namespace Arbor.Pool
 {
 #if ARBOR_DOC_JA
@@ -15,6 +17,7 @@ namespace Arbor.Pool
 	/// </summary>
 	/// <typeparam name="T">Pool type</typeparam>
 #endif
+	[Obsolete("use UnityEngine.Pool.IObjectPool")] // The minimum supported Unity version is now 6.0, so UnityEngine.Pool is recommended.
 	public interface IObjectPool<T> where T : class
 	{
 #if ARBOR_DOC_JA

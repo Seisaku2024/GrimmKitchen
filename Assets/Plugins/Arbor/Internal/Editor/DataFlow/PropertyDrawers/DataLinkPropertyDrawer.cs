@@ -66,8 +66,8 @@ namespace ArborEditor
 			{
 				InputSlotTypableProperty slotProperty = new InputSlotTypableProperty(linkProperty.FindPropertyRelative("slot"));
 
-				int targetInstanceID = property.serializedObject.targetObject.GetInstanceID();
-				BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetInstanceID);
+				var targetObjectID = new ObjectId(property.serializedObject.targetObject);
+				BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetObjectID);
 				editorGUI?.SetInputSlotLink(position, slotProperty.property);
 
 				bool on = slotProperty.branchID != 0;

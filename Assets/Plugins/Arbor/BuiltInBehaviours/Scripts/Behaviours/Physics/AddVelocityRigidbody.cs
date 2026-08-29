@@ -152,11 +152,7 @@ namespace Arbor.StateMachine.StateBehaviours
 					break;
 			}
 
-#if UNITY_2023_3_OR_NEWER
 			target.linearVelocity += direction.normalized * _Speed.value;
-#else
-			target.velocity += direction.normalized * _Speed.value;
-#endif
 		}
 
 		// Use this for enter state

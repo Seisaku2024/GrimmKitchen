@@ -35,27 +35,6 @@ namespace ArborEditor.UpdateCheck
 			}
 		}
 
-#if ARBOR_DLL
-		static readonly System.Reflection.PropertyInfo s_ResultPropertyInfo;
-		static readonly System.Reflection.PropertyInfo s_IsNetworkErrorPropertyInfo;
-		static readonly System.Reflection.PropertyInfo s_IsHttpErrorPropertyInfo;
-
-		static ArborUpdateCheck()
-		{
-			System.Type unityWebRequestType = typeof(UnityWebRequest);
-
-			s_ResultPropertyInfo = unityWebRequestType.GetProperty("result", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-
-			s_IsNetworkErrorPropertyInfo = unityWebRequestType.GetProperty("isNetworkError", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-			if (s_IsNetworkErrorPropertyInfo == null)
-			{
-				s_IsNetworkErrorPropertyInfo = unityWebRequestType.GetProperty("isError", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-			}
-
-			s_IsHttpErrorPropertyInfo = unityWebRequestType.GetProperty("isHttpError", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-		}
-#endif
-
 		private UnityWebRequest _Request;
 
 		public event Action onDone;
@@ -186,29 +165,8 @@ namespace ArborEditor.UpdateCheck
 			_IsDone = true;
 
 			bool isError = false;
-#if ARBOR_DLL
-			if(s_ResultPropertyInfo != null)
-			{
-				int result = (int)s_ResultPropertyInfo.GetValue(_Request, null);
-				isError = isError || result != 1;
-			}
-			else
-			{
-				if (s_IsNetworkErrorPropertyInfo != null)
-				{
-					isError = isError || (bool)s_IsNetworkErrorPropertyInfo.GetValue(_Request, null);
-				}
-				if (s_IsHttpErrorPropertyInfo != null)
-				{
-					isError = isError || (bool)s_IsHttpErrorPropertyInfo.GetValue(_Request, null);
-				}
-			}
-#elif UNITY_2020_2_OR_NEWER
 			UnityWebRequest.Result result = _Request.result;
 			isError = result != UnityWebRequest.Result.Success;
-#else
-			isError = _Request.isNetworkError || _Request.isHttpError;
-#endif
 
 			if (!isError)
 			{

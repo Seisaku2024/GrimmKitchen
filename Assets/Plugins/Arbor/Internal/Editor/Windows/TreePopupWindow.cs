@@ -53,6 +53,8 @@ namespace ArborEditor
 
 		protected abstract void OnCreateTree(TreeViewItem root);
 
+		private bool _IsCreating = false;
+
 		protected void CreateTree()
 		{
 			if (_TreeView == null)
@@ -63,7 +65,15 @@ namespace ArborEditor
 			TreeViewItem root = _TreeView.root;
 			root.children.Clear();
 
-			OnCreateTree(root);
+			_IsCreating = true;
+			try
+			{
+				OnCreateTree(root);
+			}
+			finally
+			{
+				_IsCreating = false;
+			}
 
 			_TreeView.SetupDepths();
 
@@ -503,7 +513,10 @@ namespace ArborEditor
 		{
 			_TreeViewState.SetExpanded(item.id, expand);
 
-			_TreeViewElement?.UpdateViewTree();
+			if (!_IsCreating)
+			{
+				_TreeViewElement?.UpdateViewTree();
+			}
 		}
 
 		protected void SetSelectedItem(TreeViewItem item, bool scrollTo)

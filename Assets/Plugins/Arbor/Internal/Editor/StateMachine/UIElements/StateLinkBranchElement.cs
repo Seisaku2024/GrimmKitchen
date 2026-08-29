@@ -21,6 +21,7 @@ namespace ArborEditor.UIElements
 		private CountBadgeElement _TransitionCountElement;
 
 		private bool _IsHover = false;
+		private bool _IsAttached = false;
 
 		public StateLinkBranchElement(StateLinkElementBase linkElement)
 		{
@@ -45,6 +46,8 @@ namespace ArborEditor.UIElements
 
 		void OnAttachToPanel(AttachToPanelEvent e)
 		{
+			_IsAttached = true;
+
 			var nodeEditor = _LinkElement.nodeEditor;
 			var nodeElement = nodeEditor.nodeElement;
 			nodeElement.RegisterCallback<UndoRedoPerformedEvent>(OnUndoRedoPerformed);
@@ -98,6 +101,7 @@ namespace ArborEditor.UIElements
 
 		void OnDetachFromPanel(DetachFromPanelEvent e)
 		{
+			_IsAttached = false;
 			var nodeEditor = _LinkElement.nodeEditor;
 			var nodeElement = nodeEditor.nodeElement;
 			nodeElement.UnregisterCallback<UndoRedoPerformedEvent>(OnUndoRedoPerformed);
@@ -396,16 +400,36 @@ namespace ArborEditor.UIElements
 			if (!_IsHover)
 			{
 				_IsHover = true;
-				_LinkElement._GraphEditor.graphView.branchOverlayLayer.Add(this);
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
 			}
 		}
+
+		void ChangeLayer()
+		{
+			if (!_IsAttached)
+			{
+				return;
+			}
+
+			if (_IsHover)
+			{
+				_LinkElement._GraphEditor.graphView.branchOverlayLayer.Add(this);
+			}
+			else
+			{
+				_LinkElement._GraphEditor.graphView.branchUnderlayLayer.Add(this);
+			}
+		}
+
 
 		void OnMouseOut(MouseOutEvent evt)
 		{
 			if (_IsHover)
 			{
 				_IsHover = false;
-				_LinkElement._GraphEditor.graphView.branchUnderlayLayer.Add(this);
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
 			}
 		}
 
@@ -420,7 +444,7 @@ namespace ArborEditor.UIElements
 
 				Vector2 size = new Vector2(_TransitionCountElement.resolvedStyle.width, _TransitionCountElement.resolvedStyle.height);
 				Vector2 pos = graphEditor.graphView.GraphToElement(this, bezier.GetPoint(0.5f));
-				_TransitionCountElement.transform.position = pos - size * 0.5f;
+				UIElementsUtility.SetTransformPosition(_TransitionCountElement, pos - size * 0.5f);
 			}
 		}
 

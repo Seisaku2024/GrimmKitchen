@@ -3,6 +3,7 @@
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
 using UnityEngine;
+using UnityEngine.Pool;
 using System.Collections.Generic;
 
 namespace Arbor.BehaviourTree
@@ -186,7 +187,7 @@ namespace Arbor.BehaviourTree
 
 			ReleaseExecutor();
 
-			_Executor = Pool.GenericPool<BehaviourTreeExecutor>.Get();
+			_Executor = GenericPool<BehaviourTreeExecutor>.Get();
 			_Executor.Play(this, _RootNode, _OnFinish);
 		}
 
@@ -196,7 +197,7 @@ namespace Arbor.BehaviourTree
 			{
 				_Executor.Stop();
 
-				Pool.GenericPool<BehaviourTreeExecutor>.Release(_Executor);
+				GenericPool<BehaviourTreeExecutor>.Release(_Executor);
 				_Executor = null;
 			}
 		}

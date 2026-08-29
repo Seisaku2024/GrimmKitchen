@@ -13,18 +13,18 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 10
+  serializedVersion: 9
   m_Fog: 0
-  m_FogColor: {r: 0.4488548, g: 0.638318, b: 0.8396226, a: 1}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.80754316, g: 0.836478, b: 0.8356962, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -38,12 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0.18028443, g: 0.22571556, b: 0.3069231, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 13
-  m_BakeOnSceneLoad: 0
+  serializedVersion: 12
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 1
@@ -1742,7 +1746,6 @@ GameObject:
   - component: {fileID: 591728360}
   - component: {fileID: 591728359}
   - component: {fileID: 591728358}
-  - component: {fileID: 591728361}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1817,57 +1820,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591728356}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0805594, y: 0.9162978, z: -0.29897025, w: 0.2540183}
-  m_LocalPosition: {x: -83.567314, y: 61.886784, z: 45.9715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &591728361
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591728356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
-  m_Antialiasing: 1
-  m_AntialiasingQuality: 2
-  m_StopNaN: 1
-  m_Dithering: 1
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_AllowHDROutput: 1
-  m_UseScreenCoordOverride: 0
-  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
-  m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
 --- !u!1001 &599922819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2514,9 +2473,10 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798950414}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 10
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -2565,12 +2525,8 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ForceVisible: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_LightUnit: 1
-  m_LuxAtDistance: 1
-  m_EnableSpotReflector: 1
 --- !u!4 &798950416
 Transform:
   m_ObjectHideFlags: 0
@@ -2857,55 +2813,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3505542565794248853, guid: bf851fa37f3d42899815bb6f1a01ea41, type: 3}
   m_PrefabInstance: {fileID: 863945986}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &885273808
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 885273810}
-  - component: {fileID: 885273809}
-  m_Layer: 0
-  m_Name: Global Volume
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &885273809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885273808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: f4183c61c9a6d8c4bb0d0146c5266f75, type: 2}
---- !u!4 &885273810
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885273808}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.063675, y: 9.347235, z: 101.309425}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &890405856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3469,9 +3376,6 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3910,90 +3814,6 @@ PrefabInstance:
     - target: {fileID: 5276194084423436494, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: renderDistance
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: directionalLight
-      value: 
-      objectReference: {fileID: 798950415}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: overrideAmbientColor
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.ctime0
-      value: 20624
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.ctime1
-      value: 29876
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.ctime2
-      value: 36109
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.ctime3
-      value: 41827
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.ctime4
-      value: 48380
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key0.b
-      value: 0.8356962
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key0.g
-      value: 0.836478
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key0.r
-      value: 0.80754316
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key1.b
-      value: 0.61504674
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key1.g
-      value: 0.7495059
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key1.r
-      value: 0.91823894
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key2.b
-      value: 0.5074183
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key2.g
-      value: 0.44612545
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key2.r
-      value: 0.64779866
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key3.b
-      value: 0.31241414
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key3.g
-      value: 0.22534706
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.key3.r
-      value: 0.33962262
-      objectReference: {fileID: 0}
-    - target: {fileID: 5276194084423436495, guid: 8149d26980d14792bffa647f2ce4cc54, type: 3}
-      propertyPath: ambientColorGradient.m_NumColorKeys
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7732,7 +7552,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 591728360}
   - {fileID: 798950416}
-  - {fileID: 885273810}
   - {fileID: 1036939988}
   - {fileID: 1019436390}
   - {fileID: 1011472212}

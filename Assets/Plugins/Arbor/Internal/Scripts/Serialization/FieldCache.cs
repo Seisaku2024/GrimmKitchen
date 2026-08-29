@@ -7,6 +7,8 @@ using System.Reflection;
 
 namespace Arbor.Serialization
 {
+	using Arbor.Pool;
+
 #if ARBOR_DOC_JA
 	/// <summary>
 	/// FieldInfoのキャッシュ
@@ -18,9 +20,10 @@ namespace Arbor.Serialization
 #endif
 	public static class FieldCache
 	{
+		private static object s_LockTypeCache = new object();
 		private static Dictionary<System.Type, FieldInfo[]> s_TypeCaches = new Dictionary<System.Type, FieldInfo[]>();
 
-		private static List<FieldInfo> s_FieldBuilder = new List<FieldInfo>();
+		private static ThreadSafeObjectPool<List<FieldInfo>> s_FieldBuilderPool = new ThreadSafeObjectPool<List<FieldInfo>>(()=> new List<FieldInfo>(), null, l => l.Clear());
 
 #if ARBOR_DOC_JA
 		/// <summary>
@@ -38,10 +41,13 @@ namespace Arbor.Serialization
 		public static FieldInfo[] GetFields(System.Type type)
 		{
 			FieldInfo[] fields = null;
-			if (!s_TypeCaches.TryGetValue(type, out fields))
+			lock (s_LockTypeCache)
 			{
-				fields = CreateFields(type);
-				s_TypeCaches.Add(type, fields);
+				if (!s_TypeCaches.TryGetValue(type, out fields))
+				{
+					fields = CreateFields(type);
+					s_TypeCaches.Add(type, fields);
+				}
 			}
 
 			return fields;
@@ -58,28 +64,38 @@ namespace Arbor.Serialization
 #endif
 		public static void Clear()
 		{
-			s_TypeCaches.Clear();
+			lock (s_LockTypeCache)
+			{
+				s_TypeCaches.Clear();
+			}
 		}
 
 		static FieldInfo[] CreateFields(System.Type type)
 		{
-			var fields = TypeUtility.GetFields(type, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-			for (int i = 0, count = fields.Length; i < count; i++)
+			var list = s_FieldBuilderPool.Get();
+			try
 			{
-				var fieldInfo = fields[i];
-
-				if (!SerializationUtility.IsSerializableField(fieldInfo))
+				var fields = TypeUtility.GetFields(type, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
+				for (int i = 0, count = fields.Length; i < count; i++)
 				{
-					continue;
+					var fieldInfo = fields[i];
+
+					if (!SerializationUtility.IsSerializableField(fieldInfo))
+					{
+						continue;
+					}
+
+					list.Add(fieldInfo);
 				}
 
-				s_FieldBuilder.Add(fieldInfo);
+				var serializeFields = list.ToArray();
+
+				return serializeFields;
 			}
-
-			var serializeFields = s_FieldBuilder.ToArray();
-			s_FieldBuilder.Clear();
-
-			return serializeFields;
+			finally
+			{
+				s_FieldBuilderPool.Release(list);
+			}
 		}
 	}
 }

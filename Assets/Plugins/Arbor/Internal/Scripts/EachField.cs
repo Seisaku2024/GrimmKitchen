@@ -10,6 +10,7 @@ using System.Reflection;
 namespace Arbor
 {
 	using Arbor.DynamicReflection;
+	using Arbor.Pool;
 	using Arbor.Serialization;
 
 	internal static class EachFieldUtility
@@ -100,9 +101,18 @@ namespace Arbor
 			void OnFind(T value, FieldInfo fieldInfo);
 		}
 
+		static object s_LockTypes = new object();
 		static Dictionary<System.Type, TypeElement> s_Types = new Dictionary<System.Type, TypeElement>();
 
 		static TypeElement GetTypeElement(System.Type type)
+		{
+			lock (s_LockTypes)
+			{
+				return GetTypeElementInternal(type);
+			}
+		}
+
+		static TypeElement GetTypeElementInternal(System.Type type)
 		{
 			if (EachFieldUtility.IsIgnoreDeclaringType(type))
 			{
@@ -121,7 +131,7 @@ namespace Arbor
 
 		static bool HasFields(System.Type type)
 		{
-			for (TypeElement typeElement = GetTypeElement(type); typeElement != null; typeElement = typeElement.baseType)
+			for (TypeElement typeElement = GetTypeElementInternal(type); typeElement != null; typeElement = typeElement.baseType)
 			{
 				if (typeElement.fields.Count > 0)
 				{
@@ -282,7 +292,7 @@ namespace Arbor
 
 				if (baseType != null)
 				{
-					this.baseType = GetTypeElement(baseType);
+					this.baseType = GetTypeElementInternal(baseType);
 				}
 				else
 				{
@@ -294,6 +304,10 @@ namespace Arbor
 		private class FindFieldBase
 		{
 			public virtual void OnFindField(T obj, FieldInfo fieldInfo)
+			{
+			}
+
+			public virtual void Clear()
 			{
 			}
 
@@ -404,6 +418,11 @@ namespace Arbor
 			{
 				onFind(obj);
 			}
+
+			public override void Clear()
+			{
+				onFind = null;
+			}
 		}
 
 		private sealed class FindFieldEx : FindFieldBase
@@ -413,6 +432,11 @@ namespace Arbor
 			public override void OnFindField(T obj, FieldInfo fieldInfo)
 			{
 				onFind(obj, fieldInfo);
+			}
+
+			public override void Clear()
+			{
+				onFind = null;
 			}
 		}
 
@@ -424,6 +448,11 @@ namespace Arbor
 			{
 				list.Add(obj);
 			}
+
+			public override void Clear()
+			{
+				list = null;
+			}
 		}
 
 		private sealed class FindFieldReceiver : FindFieldBase
@@ -434,12 +463,17 @@ namespace Arbor
 			{
 				receiver.OnFind(obj, fieldInfo);
 			}
+
+			public override void Clear()
+			{
+				receiver = null;
+			}
 		}
 
-		static FindField s_Find = new FindField();
-		static FindFieldEx s_FindEx = new FindFieldEx();
-		static FindFieldList s_FindList = new FindFieldList();
-		static FindFieldReceiver s_FindReceiver = new FindFieldReceiver();
+		static ThreadSafeObjectPool<FindField> s_FindPool = new ThreadSafeObjectPool<FindField>(() => new FindField(), null, i => i.Clear());
+		static ThreadSafeObjectPool<FindFieldEx> s_FindExPool = new ThreadSafeObjectPool<FindFieldEx>(() => new FindFieldEx(), null, i => i.Clear());
+		static ThreadSafeObjectPool<FindFieldList> s_FindListPool = new ThreadSafeObjectPool<FindFieldList>(() => new FindFieldList(), null, i => i.Clear());
+		static ThreadSafeObjectPool<FindFieldReceiver> s_FindReceiverPool = new ThreadSafeObjectPool<FindFieldReceiver>(() => new FindFieldReceiver(), null, i => i.Clear());
 
 #if ARBOR_DOC_JA
 		/// <summary>
@@ -508,8 +542,16 @@ namespace Arbor
 #endif
 		public static void Find(object rootObj, System.Type type, OnFind onFind, bool ignoreRoot)
 		{
-			s_Find.onFind = onFind;
-			s_Find.Find(rootObj, type, ignoreRoot);
+			var find = s_FindPool.Get();
+			try
+			{
+				find.onFind = onFind;
+				find.Find(rootObj, type, ignoreRoot);
+			}
+			finally
+			{
+				s_FindPool.Release(find);
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -551,8 +593,16 @@ namespace Arbor
 #endif
 		public static void Find(object rootObj, System.Type type, OnFindEx onFind, bool ignoreRoot)
 		{
-			s_FindEx.onFind = onFind;
-			s_FindEx.Find(rootObj, type, ignoreRoot);
+			var findEx = s_FindExPool.Get();
+			try
+			{
+				findEx.onFind = onFind;
+				findEx.Find(rootObj, type, ignoreRoot);
+			}
+			finally
+			{
+				s_FindExPool.Release(findEx);
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -594,9 +644,9 @@ namespace Arbor
 #endif
 		public static List<T> Find(object rootObj, System.Type type, bool ignoreRoot)
 		{
-			s_FindList.list = new List<T>();
-			s_FindList.Find(rootObj, type, ignoreRoot);
-			return s_FindList.list;
+			var list = new List<T>();
+			Find(rootObj, type, list, ignoreRoot);
+			return list;
 		}
 
 #if ARBOR_DOC_JA
@@ -638,8 +688,16 @@ namespace Arbor
 #endif
 		public static void Find(object rootObj, System.Type type, List<T> list, bool ignoreRoot)
 		{
-			s_FindList.list = list;
-			s_FindList.Find(rootObj, type, ignoreRoot);
+			var findList = s_FindListPool.Get();
+			try
+			{
+				findList.list = list;
+				findList.Find(rootObj, type, ignoreRoot);
+			}
+			finally
+			{
+				s_FindListPool.Release(findList);
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -681,8 +739,16 @@ namespace Arbor
 #endif
 		public static void Find(object rootObj, System.Type type, IFindReceiver receiver, bool ignoreRoot)
 		{
-			s_FindReceiver.receiver = receiver;
-			s_FindReceiver.Find(rootObj, type, ignoreRoot);
+			var findReceiver = s_FindReceiverPool.Get();
+			try
+			{
+				findReceiver.receiver = receiver;
+				findReceiver.Find(rootObj, type, ignoreRoot);
+			}
+			finally
+			{
+				s_FindReceiverPool.Release(findReceiver);
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -696,7 +762,10 @@ namespace Arbor
 #endif
 		public static void ClearCache()
 		{
-			s_Types.Clear();
+			lock (s_LockTypes)
+			{
+				s_Types.Clear();
+			}
 		}
 
 		//public static void DebugList()

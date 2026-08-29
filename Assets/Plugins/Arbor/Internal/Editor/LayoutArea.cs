@@ -196,7 +196,7 @@ namespace ArborEditor
 			private set;
 		}
 
-		private static Arbor.Pool.ObjectPool<LayoutGroup> s_GroupPool = new Arbor.Pool.ObjectPool<LayoutGroup>(
+		private static UnityEngine.Pool.ObjectPool<LayoutGroup> s_GroupPool = new UnityEngine.Pool.ObjectPool<LayoutGroup>(
 			()=> new LayoutGroup(),
 			null,
 			null,

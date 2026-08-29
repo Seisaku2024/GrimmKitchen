@@ -71,10 +71,10 @@ FSMとBTの各ノードはカスタムスクリプトに対応しており、Mon
 
 ## 同梱しているドキュメント
 
-* Assets/Plugins/Arbor/readme-ja.txt
+* Packages/Arbor 3: FSM & BT Graph Editor/readme-ja.txt
   このファイル
   基本的な概要や注意点など
-* Assets/Plugins/Arbor/CHANGELOG-ja
+* Packages/Arbor 3: FSM & BT Graph Editor/CHANGELOG-ja
   更新ログ
 
 ## 詳細ドキュメント
@@ -112,8 +112,19 @@ FSMとBTの各ノードはカスタムスクリプトに対応しており、Mon
 
 # サンプルシーン 
 
-サンプルシーンはプロジェクト内の以下のフォルダにあります。
-Assets/Plugins/Arbor/Examples/
+サンプルシーンはPackage Managerからインポートします。
+
+1. メニューから「Window > Package Manager」を選択する。
+2. Package ManagerウィンドウのIn Projectカテゴリを選択する。
+3. パッケージリストから「Arbor 3: FSM & BT Graph Editor」(Customタグのある方)を選択
+4. パッケージの詳細欄の「Samples」タブを選択
+5. Examplesの「Import」ボタンをクリック
+6. Import Unity Packageウィンドウの「All」ボタンをクリックしすべてを選択する。
+7. Import Unity Packageウィンドウの「Import」ボタンをクリック
+
+インポートすると以下のフォルダが追加されます。
+
+Assets/Arbor/Examples/
 
 各サンプルの詳細については、Examplesフォルダ下のreadme-ja.txtを参照してください。
 
@@ -142,21 +153,20 @@ Arborを更新する際は必ずお読みください。
 1. 更新前に必ずプロジェクトのバックアップを取ってください。
 2. 既存のシーンを開いている場合は、メニューの「File / New Scene」からシーンを新規作成しておきます。
 3. Arbor　Editorウィンドウを開いている場合は一旦閉じておきます。
-4. 既にインポートされているArborフォルダを削除。
-5. Arborの新バージョンをインポート。
+4. メニューから「Window > Package Manager」を選択する。
+5. Package ManagerウィンドウのIn Projectカテゴリを選択する。
+6. パッケージリストから「Arbor 3: FSM & BT Graph Editor」(Customタグのある方)を選択する。
+7. 詳細欄の「Remove」ボタンをクリックする。
+8. 確認ダイアログの「Yes」ボタンをクリックする。
+9. Package ManagerウィンドウのMy Assetsカテゴリを選択する。
+10. アセットリストから「Arbor 3: FSM & BT Graph Editor」を選択する。
+11. 詳細欄の「Download update バージョン番号」ボタンをクリックする。
+12. ダウンロード完了後「Import バージョン番号 to project」ボタンをクリックする。
+13. Import Unity Packageウィンドウの「All」ボタンをクリックしすべてを選択する。
+14. Import Unity Packageウィンドウの「Import」ボタンをクリック
 
 ## 各バージョンの更新ガイド
 
 Arborの各バージョン別の更新ガイドは以下ページを参照してください。
 
-https://caitsithware.com/assets/arbor/docs/ja/manual/updateguide.html
-
-
-
-# MadeWithArbor3ロゴアセット
-
-Arbor3利用作品に掲載する用途のロゴアセットをご用意いたしました。
-
-掲載は任意ですが、もしご厚意で掲載していただける場合は、以下ページよりダウンロードしてご利用ください。
-
-https://arbor.caitsithware.com/madewitharbo3-logo-assets/
+https://arbor-docs.caitsithware.com/ja/manual/updateguide.html

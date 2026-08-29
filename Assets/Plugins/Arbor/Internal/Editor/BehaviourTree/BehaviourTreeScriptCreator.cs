@@ -18,19 +18,19 @@ namespace ArborEditor.BehaviourTree
 		[MenuItem("Assets/Create/Arbor/BehaviourTree/ActionBehaviour C# Script", false, 113)]
 		public static void CreateCSharpScriptActionBehaviour()
 		{
-			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), "NewActionBehaviourScript.cs", DefaultScriptIcon.CSharpIcon, _ActionBehaviourCSharpTemplatePath);
+			ArborScriptCreator.StartNameEditing("NewActionBehaviourScript.cs", _ActionBehaviourCSharpTemplatePath);
 		}
 
 		[MenuItem("Assets/Create/Arbor/BehaviourTree/Decorator C# Script", false, 114)]
 		public static void CreateCSharpScriptDecorator()
 		{
-			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), "NewDecoratorScript.cs", DefaultScriptIcon.CSharpIcon, _DecoratorCSharpTemplatePath);
+			ArborScriptCreator.StartNameEditing("NewDecoratorScript.cs", _DecoratorCSharpTemplatePath);
 		}
 
 		[MenuItem("Assets/Create/Arbor/BehaviourTree/Service C# Script", false, 115)]
 		public static void CreateCSharpScriptService()
 		{
-			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), "NewServiceScript.cs", DefaultScriptIcon.CSharpIcon, _ServiceCSharpTemplatePath);
+			ArborScriptCreator.StartNameEditing("NewServiceScript.cs", _ServiceCSharpTemplatePath);
 		}
 	}
 }

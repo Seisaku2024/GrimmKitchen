@@ -92,7 +92,7 @@ namespace Arbor
 				return true;
 			}
 
-			value = RectIntExtensions.zero;
+			value = RectInt.zero;
 			return false;
 		}
 
@@ -133,7 +133,7 @@ namespace Arbor
 #endif
 		public RectInt GetRectInt()
 		{
-			return GetRectInt(RectIntExtensions.zero);
+			return GetRectInt(RectInt.zero);
 		}
 
 #endregion //RectInt

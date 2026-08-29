@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace Arbor.Calculators
 {
+	using Arbor.Utilities;
+
 #if ARBOR_DOC_JA
 	/// <summary>
 	/// Rigdibodyの線形速度
@@ -52,7 +54,7 @@ namespace Arbor.Calculators
 			Rigidbody2D rigidbody2D = _Rigidbody2D.value;
 			if (rigidbody2D != null)
 			{
-				_Velocity.SetValue(rigidbody2D.linearVelocity);
+				_Velocity.SetValue(Physics2DUtility.GetLinearVelocity(rigidbody2D));
 			}
 		}
 	}

@@ -1,10 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 #if ENABLE_INPUT_SYSTEM
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 #endif
 

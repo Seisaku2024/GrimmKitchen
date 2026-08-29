@@ -205,7 +205,7 @@ namespace ArborEditor.UIElements
 			get
 			{
 				Rect layout = this.layout;
-				layout.position += (Vector2)transform.position;
+				layout.position += (Vector2)UIElementsUtility.GetTransformPosition(this);
 				return layout;
 			}
 		}
@@ -339,7 +339,7 @@ namespace ArborEditor.UIElements
 				}
 
 				Rect newNodePosition = evt.newRect;
-				newNodePosition.position = transform.position;
+				newNodePosition.position = UIElementsUtility.GetTransformPosition(this);
 				if (nodeEditor.rect != newNodePosition)
 				{
 					nodeEditor.rect = newNodePosition;
@@ -381,11 +381,11 @@ namespace ArborEditor.UIElements
 			Node node = nodeEditor.node;
 
 			Rect nodePosition = node.position;
-			Vector2 oldPosition = transform.position;
+			Vector2 oldPosition = UIElementsUtility.GetTransformPosition(this);
 			Vector2 newPosition = nodePosition.position;
 			if (oldPosition != newPosition)
 			{
-				transform.position = newPosition;
+				UIElementsUtility.SetTransformPosition(this, newPosition);
 
 				using (var e = ChangeNodePositionEvent.GetPooled(oldPosition, newPosition))
 				{

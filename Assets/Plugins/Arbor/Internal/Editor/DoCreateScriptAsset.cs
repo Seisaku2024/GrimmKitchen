@@ -13,7 +13,11 @@ using UnityEditor.Compilation;
 
 namespace ArborEditor
 {
+#if UNITY_6000_4_OR_NEWER
+	public sealed class DoCreateScriptAsset : AssetCreationEndAction
+#else
 	public sealed class DoCreateScriptAsset : EndNameEditAction
+#endif
 	{
 		internal static string RemoveOrInsertNamespace(string content, string rootNamespace)
 		{
@@ -72,35 +76,13 @@ namespace ArborEditor
 			return string.Join(newline, contentLines.ToArray());
 		}
 
-#if ARBOR_DLL
-		static System.Func<string, string> s_GetAssemblyRootNamespaceFromScriptPath;
-#endif
-
-		static DoCreateScriptAsset()
-		{
-#if ARBOR_DLL
-			var getAssemblyRootNamespaceFromScriptPathMethod = typeof(CompilationPipeline).GetMethod("GetAssemblyRootNamespaceFromScriptPath", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
-			if (getAssemblyRootNamespaceFromScriptPathMethod != null)
-			{
-				s_GetAssemblyRootNamespaceFromScriptPath = (System.Func<string, string>)System.Delegate.CreateDelegate(typeof(System.Func<string, string>), getAssemblyRootNamespaceFromScriptPathMethod);
-			}
-#endif
-		}
-
 		internal static string PreprocessScriptAssetTemplate(string pathName, string resourceContent)
 		{
 			string rootNamespace = null;
 
 			if (Path.GetExtension(pathName) == ".cs")
 			{
-#if ARBOR_DLL
-				if (s_GetAssemblyRootNamespaceFromScriptPath != null)
-				{
-					rootNamespace = s_GetAssemblyRootNamespaceFromScriptPath(pathName);
-				}
-#elif UNITY_2020_2_OR_NEWER
 				rootNamespace = CompilationPipeline.GetAssemblyRootNamespaceFromScriptPath(pathName);
-#endif
 			}
 
 			string content = resourceContent;
@@ -180,7 +162,11 @@ namespace ArborEditor
 			return AssetDatabase.LoadAssetAtPath(pathName, typeof(Object));
 		}
 
+#if UNITY_6000_4_OR_NEWER
+		public override void Action(EntityId entityId, string pathName, string resourceFile)
+#else
 		public override void Action(int instanceId, string pathName, string resourceFile)
+#endif
 		{
 			string template = "";
 

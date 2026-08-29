@@ -9,6 +9,7 @@ using PocketItemDataInfo;
 using SaintsField;
 using CI.QuickSave;
 using System;
+using NaughtyAttributes;
 
 [CreateAssetMenu(fileName = "FoodData", menuName = "ScriptableObjects/Food/作成 FoodItemData")]
 [System.Serializable]

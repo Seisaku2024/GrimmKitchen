@@ -96,7 +96,7 @@ namespace ArborEditor.StateMachine.StateBehaviours
 					if (graphEditor != null)
 					{
 						var hostWindow = graphEditor.hostWindow;
-						hostWindow.ChangeCurrentNodeGraph(target.GetInstanceID());
+						hostWindow.ChangeCurrentNodeGraph(target);
 						EditorGUIUtility.ExitGUI();
 					}
 				}

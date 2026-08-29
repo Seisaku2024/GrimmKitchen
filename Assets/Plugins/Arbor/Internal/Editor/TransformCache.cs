@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 
 namespace ArborEditor
 {
+	using ObjectId = Arbor.ObjectId;
+
 	[System.Serializable]
 	internal sealed class TransformCache : ScriptableSingleton<TransformCache>
 	{
@@ -19,7 +21,7 @@ namespace ArborEditor
 		}
 
 		[System.Serializable]
-		class LocalTransformDictionary : SerializableDictionary<int, TransformData>
+		class LocalTransformDictionary : SerializableDictionary<ObjectId, TransformData>
 		{
 
 		}
@@ -44,7 +46,7 @@ namespace ArborEditor
 		{
 			foreach (var pair in _LocalTransforms)
 			{
-				var obj =  EditorUtility.InstanceIDToObject(pair.Key);
+				var obj = EditorObjectUtility.IdToObject(pair.Key);
 				if (obj == null)
 				{
 					continue;
@@ -71,7 +73,7 @@ namespace ArborEditor
 
 				if (globalObjectId.assetGUID.Empty())
 				{
-					return _LocalTransforms.TryGetValue(obj.GetInstanceID(), out transform);
+					return _LocalTransforms.TryGetValue(new ObjectId(obj), out transform);
 				}
 				else
 				{
@@ -96,8 +98,8 @@ namespace ArborEditor
 
 			if (globalObjectId.assetGUID.Empty())
 			{
-				int instanceID = obj.GetInstanceID();
-				_LocalTransforms[instanceID] = transform;
+				var objectId = new ObjectId(obj);
+				_LocalTransforms[objectId] = transform;
 			}
 			else
 			{

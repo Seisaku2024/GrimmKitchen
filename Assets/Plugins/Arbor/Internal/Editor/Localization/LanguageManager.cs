@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
 namespace ArborEditor
 {
@@ -41,6 +42,21 @@ namespace ArborEditor
 
 		static LanguageManager()
 		{
+			// The system checks if the package has just been imported. If it has, it performs a delayed call because the assets within the package cannot be loaded.
+			var assembly = PackageInfo.FindForAssembly(typeof(LanguageManager).Assembly);
+			if (assembly == null)
+			{
+				EditorApplication.delayCall += Initialize;
+				return;
+			}
+
+			var packageAsset = AssetDatabase.LoadAssetAtPath<TextAsset>(PathUtility.Combine(assembly.assetPath, "package.json"));
+			if (packageAsset == null)
+			{
+				EditorApplication.delayCall += Initialize;
+				return;
+			}
+
 			Initialize();
 		}
 

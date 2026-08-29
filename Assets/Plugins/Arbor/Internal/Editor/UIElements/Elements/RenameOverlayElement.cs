@@ -10,12 +10,16 @@ using UnityEditor;
 
 namespace ArborEditor.UIElements
 {
-	using ArborEditor.UnityEditorBridge;
 	using ArborEditor.UnityEditorBridge.UIElements.Extensions;
 
-	internal sealed class RenameOverlayElement : IMGUIContainer
+	internal sealed class RenameOverlayElement : VisualElement
 	{
-		private RenameOverlay _RenameOverlay;
+		private TextField _TextField;
+
+		private int _UserData;
+		private bool _IsWaitingForDelay;
+		private bool _IsRenaming;
+		private string _OriginalValue;
 
 		private System.Action<string, int> _OnRenameEnded = null;
 
@@ -23,7 +27,7 @@ namespace ArborEditor.UIElements
 		{
 			get
 			{
-				return _RenameOverlay.userData;
+				return _UserData;
 			}
 		}
 
@@ -31,7 +35,7 @@ namespace ArborEditor.UIElements
 		{
 			get
 			{
-				return _RenameOverlay.isWaitingForDelay;
+				return _IsWaitingForDelay;
 			}
 		}
 
@@ -128,24 +132,32 @@ namespace ArborEditor.UIElements
 
 		public RenameOverlayElement(System.Action<string, int> onRenameEnded)
 		{
-			focusable = true;
-
-			onGUIHandler = OnGUI;
-			_RenameOverlay = new RenameOverlay();
-
 			_OnRenameEnded = onRenameEnded;
 
 			style.position = Position.Absolute;
 
-			RegisterCallback<FocusEvent>(OnFocus);
-			RegisterCallback<BlurEvent>(OnBlur);
+			_TextField = new TextField()
+			{
+				isDelayed = true,
+				style =
+				{
+					marginBottom = 0f,
+					marginLeft = -5f,
+					marginTop = 0f,
+					marginRight = 0f,
+					flexGrow = 1f,
+					flexShrink = 0f,
+					display = DisplayStyle.None,
+				},
+			};
+			_TextField.RegisterCallback<BlurEvent>(OnBlur);
+			Add(_TextField);
+
 			RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
 		}
 
 		void OnDetachFromPanel(DetachFromPanelEvent e)
 		{
-			_HasFocus = false;
-
 			if (_AttachTarget != null)
 			{
 				UnregisterCallbackFromAttachElement();
@@ -154,108 +166,76 @@ namespace ArborEditor.UIElements
 			}
 		}
 
-		private bool _HasFocus = false;
-
-		private void OnFocus(FocusEvent evt)
-		{
-			_HasFocus = true;
-		}
-
 		private void OnBlur(BlurEvent evt)
 		{
-			_HasFocus = false;
-
 			EndRename(true);
 		}
 
 		public void BeginRename(string name, int userData, float delay)
 		{
-			_Renaming = false;
+			_IsRenaming = true;
+			_OriginalValue = name;
+			_UserData = userData;
 
-			_RenameOverlay.BeginRename(name, userData, delay);
+			_TextField.SetValueWithoutNotify(_OriginalValue);
+
+			// Depending on the timing of the call, it may not be possible to focus immediately, so a one-frame delay is always performed.
+			_IsWaitingForDelay = true;
+			schedule.Execute(BeginRenaming).ExecuteLater(Mathf.FloorToInt(delay * 1000));
+		}
+
+		void BeginRenaming()
+		{
+			_IsWaitingForDelay = false;
+
+			_TextField.SelectAll();
+			_TextField.style.display = DisplayStyle.Flex;
+			_TextField.Focus();
+
+			if (_AttachTarget != null)
+			{
+				_AttachTarget.visible = false;
+			}
 		}
 
 		public void EndRename(bool acceptChanges)
 		{
-			if (!_RenameOverlay.IsRenaming())
+			if (!_IsRenaming)
 			{
 				return;
 			}
 			
-			_RenameOverlay.EndRename(acceptChanges);
-
-			RenameEnded();
+			RenameEnded(acceptChanges);
 		}
 
 		public bool IsRenaming()
 		{
-			return _RenameOverlay.IsRenaming();
+			return _IsRenaming;
 		}
 
-		private void RenameEnded()
+		private void RenameEnded(bool userAcceptedRename)
 		{
-			if (_RenameOverlay.userAcceptedRename)
+			if (userAcceptedRename)
 			{
 				if (_OnRenameEnded != null)
 				{
-					string name = !string.IsNullOrEmpty(_RenameOverlay.name) ? _RenameOverlay.name : _RenameOverlay.originalName;
-					_OnRenameEnded(name, _RenameOverlay.userData);
+					var value = _TextField.value;
+					string name = !string.IsNullOrEmpty(value) ? value : _OriginalValue;
+					_OnRenameEnded(name, _UserData);
 				}
 			}
-			_RenameOverlay.Clear();
 
-			_Renaming = false;
+			_IsRenaming = false;
+			_TextField.style.display = DisplayStyle.None;
 
 			RemoveFromHierarchy();
-		}
-
-		public VisualElement focusAfterComfirm;
-
-		private bool _Renaming = false;
-
-		private void OnGUI()
-		{
-			if (!_RenameOverlay.IsRenaming())
-			{
-				return;
-			}
-
-			if (!_Renaming)
-			{
-				if (!_RenameOverlay.isWaitingForDelay)
-				{
-					if (_AttachTarget != null)
-					{
-						_AttachTarget.visible = false;
-					}
-					_Renaming = true;
-				}
-			}
-
-			if (!_HasFocus && Event.current.type != EventType.Layout)
-			{
-				Focus();
-			}
-
-			_RenameOverlay.OnEvent();
-
-			_RenameOverlay.editFieldRect = contentRect;
-			if (_RenameOverlay.OnGUI(BuiltInStyles.renameTextField))
-			{
-				return;
-			}
-
-			var focusedElement = focusController?.focusedElement;
-
-			RenameEnded();
 
 			if (focusAfterComfirm != null)
 			{
-				focusedElement?.Blur();
 				focusAfterComfirm.Focus();
 			}
-
-			GUIUtility.ExitGUI();
 		}
+
+		public VisualElement focusAfterComfirm;
 	}
 }

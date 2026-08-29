@@ -30,18 +30,31 @@ namespace ArborEditor
 
 		static void EnableExtensionsGUI()
 		{
+#if UNITY_6000_4_OR_NEWER
+			EditorApplication.hierarchyWindowItemByEntityIdOnGUI -= HierarchyWindowItemOnGUI;
+			if (ArborSettings.showHierarchyIcons)
+			{
+				EditorApplication.hierarchyWindowItemByEntityIdOnGUI += HierarchyWindowItemOnGUI;
+			}
+#else
 			EditorApplication.hierarchyWindowItemOnGUI -= HierarchyWindowItemOnGUI;
 			if (ArborSettings.showHierarchyIcons)
 			{
 				EditorApplication.hierarchyWindowItemOnGUI += HierarchyWindowItemOnGUI;
 			}
+#endif
 
 			EditorApplication.RepaintHierarchyWindow();
 		}
 
+#if UNITY_6000_4_OR_NEWER
+		private static void HierarchyWindowItemOnGUI(EntityId instanceID, Rect selectionRect)
+#else
 		private static void HierarchyWindowItemOnGUI(int instanceID, Rect selectionRect)
+#endif
 		{
-			var gameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
+			var objectId = ObjectId.From(instanceID);
+			var gameObject = EditorObjectUtility.IdToObject(objectId) as GameObject;
 			if (gameObject == null)
 			{
 				return;

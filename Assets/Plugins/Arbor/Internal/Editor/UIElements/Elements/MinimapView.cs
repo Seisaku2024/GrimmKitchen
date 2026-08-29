@@ -286,7 +286,7 @@ namespace ArborEditor.UIElements
 
 			if (viewportRect.width > 15f && viewportRect.height >= 15f)
 			{
-				_ViewportCross.style.display = StyleKeyword.Null;
+				_ViewportCross.style.display = DisplayStyle.Flex;
 			}
 			else
 			{

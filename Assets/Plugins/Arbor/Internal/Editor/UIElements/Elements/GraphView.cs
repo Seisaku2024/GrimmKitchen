@@ -91,19 +91,11 @@ namespace ArborEditor.UIElements
 			}
 		}
 
-		public ITransform graphTransform
-		{
-			get
-			{
-				return m_ContentContainer.transform;
-			}
-		}
-
 		public Vector3 graphPosition
 		{
 			get
 			{
-				return graphTransform.position;
+				return UIElementsUtility.GetTransformPosition(m_ContentContainer);
 			}
 			set
 			{
@@ -112,9 +104,9 @@ namespace ArborEditor.UIElements
 				position.y = Mathf.Round(position.y);
 				position.z = Mathf.Round(position.z);
 
-				if (graphTransform.position != position)
+				if (UIElementsUtility.GetTransformPosition(m_ContentContainer) != position)
 				{
-					graphTransform.position = position;
+					UIElementsUtility.SetTransformPosition(m_ContentContainer, position);
 				}
 			}
 		}
@@ -135,19 +127,11 @@ namespace ArborEditor.UIElements
 		{
 			get
 			{
-				return graphTransform.scale;
+				return UIElementsUtility.GetTransformScale(m_ContentContainer);
 			}
 			set
 			{
-				graphTransform.scale = value;
-			}
-		}
-
-		public Matrix4x4 graphMatrix
-		{
-			get
-			{
-				return graphTransform.matrix;
+				UIElementsUtility.SetTrasnformScale(m_ContentContainer, value);
 			}
 		}
 
@@ -450,7 +434,7 @@ namespace ArborEditor.UIElements
 				}
 			};
 
-			UIElementsUtility.SetTransformOrigin(m_ContentContainer, 0f, 0f, 0f);
+			m_ContentContainer.style.transformOrigin = new TransformOrigin(0f, 0f, 0f);
 
 			contentViewport.Add(m_ContentContainer);
 
@@ -1680,15 +1664,13 @@ namespace ArborEditor.UIElements
 			{
 				VisualElement target = m_ContentContainer;
 
-				ITransform transform = target.transform;
+				Vector3 oldPosition = UIElementsUtility.GetTransformPosition(target);
+				Quaternion oldRotation = UIElementsUtility.GetTrasformRotation(target);
+				Vector3 oldScale = UIElementsUtility.GetTransformScale(target);
 
-				Vector3 oldPosition = transform.position;
-				Quaternion oldRotation = transform.rotation;
-				Vector3 oldScale = transform.scale;
-
-				transform.rotation = Quaternion.identity;
-				transform.scale = Vector3.one;
-				transform.position = -graphCaptureExtents.position;
+				UIElementsUtility.SetTransformRotation(target, Quaternion.identity);
+				UIElementsUtility.SetTrasnformScale(target, Vector3.one);
+				UIElementsUtility.SetTransformPosition(target, -graphCaptureExtents.position);
 
 				Rect oldGraphExtents = this.graphExtents;
 				this.graphExtents = graphCaptureExtents;
@@ -1732,9 +1714,9 @@ namespace ArborEditor.UIElements
 					logoImage.RemoveFromHierarchy();
 				}
 
-				transform.position = oldPosition;
-				transform.rotation = oldRotation;
-				transform.scale = oldScale;
+				UIElementsUtility.SetTransformPosition(target, oldPosition);
+				UIElementsUtility.SetTransformRotation(target, oldRotation);
+				UIElementsUtility.SetTrasnformScale(target, oldScale);
 
 				this.graphExtents = oldGraphExtents;
 			}

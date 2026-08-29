@@ -186,11 +186,11 @@ namespace ArborEditor.UIElements
 		{
 			if (_IsDragHover || on || _ConnectManipulator.isActive)
 			{
-				_Pin.transform.rotation = Quaternion.identity;
+				UIElementsUtility.SetTransformRotation(_Pin, Quaternion.identity);
 			}
 			else
 			{
-				_Pin.transform.rotation = Quaternion.FromToRotation(Vector2.right, _NodeEditor.stateLinkRerouteNode.direction);
+				UIElementsUtility.SetTransformRotation(_Pin, Quaternion.FromToRotation(Vector2.right, _NodeEditor.stateLinkRerouteNode.direction));
 			}
 		}
 

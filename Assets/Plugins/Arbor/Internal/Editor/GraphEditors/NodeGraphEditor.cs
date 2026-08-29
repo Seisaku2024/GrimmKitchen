@@ -4,6 +4,7 @@
 //-----------------------------------------------------
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Pool;
 using UnityEditor;
 using UnityEditor.UIElements;
 using System.Collections;
@@ -127,7 +128,7 @@ namespace ArborEditor
 		private NodeGraph _NodeGraph;
 
 		[SerializeField]
-		private int _NodeGraphInstanceID = 0;
+		private ObjectId _NodeGraphInstanceID;
 
 		[SerializeField]
 		private List<int> _Selection = new List<int>();
@@ -226,11 +227,11 @@ namespace ArborEditor
 					_NodeGraph = value;
 					if (_NodeGraph != null)
 					{
-						_NodeGraphInstanceID = _NodeGraph.GetInstanceID();
+						_NodeGraphInstanceID = new ObjectId(_NodeGraph);
 					}
 					else
 					{
-						_NodeGraphInstanceID = 0;
+						_NodeGraphInstanceID = ObjectId.None;
 					}
 
 					UpdateParameterContainerEditor();
@@ -332,12 +333,12 @@ namespace ArborEditor
 
 		public bool RepairReferences()
 		{
-			if (_NodeGraph == null && _NodeGraphInstanceID != 0)
+			if (_NodeGraph == null && _NodeGraphInstanceID.IsValid())
 			{
 #if ARBOR_DEBUG
 				Debug.Log("Reatach");
 #endif
-				_NodeGraph = EditorUtility.InstanceIDToObject(_NodeGraphInstanceID) as NodeGraph;
+				_NodeGraph = EditorObjectUtility.IdToObject(_NodeGraphInstanceID) as NodeGraph;
 
 				UpdateParameterContainerEditor();
 
@@ -814,7 +815,9 @@ namespace ArborEditor
 				position = default;
 				return false;
 			}
-			var editorGUI = BehaviourEditorGUI.Get(obj.GetInstanceID());
+
+			var objectId = new ObjectId(obj);
+			var editorGUI = BehaviourEditorGUI.Get(objectId);
 			if (editorGUI == null)
 			{
 				position = default;
@@ -1095,7 +1098,7 @@ namespace ArborEditor
 				}
 			}
 
-			using (Arbor.Pool.ListPool<int>.Get(out var removeList))
+			using (ListPool<int>.Get(out var removeList))
 			{
 				foreach (var pair in _DataBranchElements)
 				{
@@ -1182,7 +1185,7 @@ namespace ArborEditor
 
 			}
 
-			using (Arbor.Pool.ListPool<int>.Get(out var removeList))
+			using (ListPool<int>.Get(out var removeList))
 			{
 				foreach (var pair in _MinimapDataBranchElements)
 				{
@@ -3022,7 +3025,7 @@ namespace ArborEditor
 						NodeBehaviour behaviour = subBehaviour as NodeBehaviour;
 						if (behaviour != null)
 						{
-							_HostWindow.ChangeCurrentNodeGraph(behaviour.GetInstanceID(), true);
+							_HostWindow.ChangeCurrentNodeGraph(behaviour, true);
 							return true;
 						}
 					}
@@ -3036,8 +3039,8 @@ namespace ArborEditor
 				if (parentGraph != null)
 				{
 					var ownerObject = parentGraph.ownerBehaviourObject;
-					int id = (ownerObject != null)? ownerObject.GetInstanceID() : parentGraph.GetInstanceID();
-					_HostWindow.ChangeCurrentNodeGraph(id, true);
+					var targetObj = ownerObject != null ? ownerObject : parentGraph;
+					_HostWindow.ChangeCurrentNodeGraph(targetObj, true);
 					return true;
 				}
 			}

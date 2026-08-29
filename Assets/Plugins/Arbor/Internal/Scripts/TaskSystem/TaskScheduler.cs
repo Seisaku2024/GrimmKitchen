@@ -4,6 +4,7 @@
 //-----------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 
 namespace Arbor.TaskSystem
 {
@@ -253,7 +254,7 @@ namespace Arbor.TaskSystem
 #endif
 		public override string ToString()
 		{
-			using (Pool.GenericPool<System.Text.StringBuilder>.Get(out var sb))
+			using (GenericPool<System.Text.StringBuilder>.Get(out var sb))
 			{
 				sb.Length = 0;
 

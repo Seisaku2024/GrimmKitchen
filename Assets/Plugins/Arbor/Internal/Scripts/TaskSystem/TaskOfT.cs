@@ -5,11 +5,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Arbor.TaskSystem
 {
-	using Arbor.Pool;
-
 #if ARBOR_DOC_JA
 	/// <summary>
 	/// プールに対応したタスククラス

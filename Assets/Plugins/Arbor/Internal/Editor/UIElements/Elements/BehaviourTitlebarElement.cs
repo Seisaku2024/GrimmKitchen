@@ -85,7 +85,7 @@ namespace ArborEditor.UIElements
 
 			_Label = new Label();
 			UIElementsUtility.SetBoldFont(_Label);
-			UIElementsUtility.SetEllipsis(_Label);
+			_Label.style.textOverflow = TextOverflow.Ellipsis;
 			Add(_Label);
 
 			var behaviourObj = _BehaviourEditorGUI.behaviourObj;
@@ -168,7 +168,7 @@ namespace ArborEditor.UIElements
 			
 			if (behaviourInfo.HasHelp(behaviourObj))
 			{
-				_HelpButton.style.display = StyleKeyword.Null;
+				_HelpButton.style.display = DisplayStyle.Flex;
 				_HelpButton.tooltip = behaviourInfo.GetHelpTooltip(behaviourObj);
 			}
 			else
@@ -255,7 +255,7 @@ namespace ArborEditor.UIElements
 
 			if (Presets.PresetContextMenu.HasPresetButton(behaviourObj))
 			{
-				_PresetButton.style.display = StyleKeyword.Null;
+				_PresetButton.style.display = DisplayStyle.Flex;
 			}
 			else
 			{

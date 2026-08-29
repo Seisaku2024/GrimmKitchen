@@ -14,42 +14,10 @@ namespace Arbor.ObjectPooling
 	{
 		private static class ResolutionUtility
 		{
-#if ARBOR_DLL
-			private static readonly System.Reflection.PropertyInfo s_RefreshRateRatioProperty;
-			private static readonly System.Reflection.PropertyInfo s_ValueProperty;
-			private static readonly System.Reflection.PropertyInfo s_RefreshRateProperty;
-
-			static ResolutionUtility()
-			{
-				var typeResolution = typeof(Resolution);
-				s_RefreshRateRatioProperty = typeResolution.GetProperty("refreshRateRatio", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-				if (s_RefreshRateRatioProperty != null)
-				{
-					s_ValueProperty = s_RefreshRateRatioProperty.PropertyType.GetProperty("value", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-				}
-
-				s_RefreshRateProperty = typeResolution.GetProperty("refreshRate", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
-			}
-#endif
 			public static double GetRefreshRate()
 			{
 				Resolution currentResolution = Screen.currentResolution;
-#if ARBOR_DLL
-				if (s_RefreshRateRatioProperty != null)
-				{
-					object refreshRateRatio = s_RefreshRateRatioProperty.GetValue(currentResolution);
-					return (double)s_ValueProperty.GetValue(refreshRateRatio);
-				}
-				else if (s_RefreshRateProperty != null)
-				{
-					return (int)s_RefreshRateProperty.GetValue(currentResolution);
-				}
-				return 60.0; // dummy
-#elif UNITY_2022_2_OR_NEWER
 				return currentResolution.refreshRateRatio.value;
-#else
-				return currentResolution.refreshRate;
-#endif
 			}
 		}
 

@@ -69,6 +69,7 @@ namespace Arbor.DynamicReflection
 #endif
 		public abstract object Invoke(object instance, object[] arguments);
 
+		private static object s_LockMethodCache = new object();
 		private static Dictionary<MethodInfo, DynamicMethod> s_MethodCache = new Dictionary<MethodInfo, DynamicMethod>();
 
 #if ARBOR_DOC_JA
@@ -86,34 +87,42 @@ namespace Arbor.DynamicReflection
 #endif
 		public static DynamicMethod GetMethod(MethodInfo methodInfo)
 		{
+			if (methodInfo == null)
+			{
+				return null;
+			}
+
 			DynamicMethod dynamicMethod = null;
 
-			if (methodInfo != null && !s_MethodCache.TryGetValue(methodInfo, out dynamicMethod))
+			lock (s_LockMethodCache)
 			{
+				if (!s_MethodCache.TryGetValue(methodInfo, out dynamicMethod))
+				{
 #if ENABLE_DELEGATE_CALL
-				try
-				{
-					dynamicMethod = new DelegatedMethod();
-					dynamicMethod.Create(methodInfo);
-				}
-				catch (System.NotSupportedException)
-				{
-					dynamicMethod = new DefaultMethod();
-					dynamicMethod.Create(methodInfo);
-				}
-				catch (System.Exception ex)
-				{
-					UnityEngine.Debug.LogException(ex);
+					try
+					{
+						dynamicMethod = new DelegatedMethod();
+						dynamicMethod.Create(methodInfo);
+					}
+					catch (System.NotSupportedException)
+					{
+						dynamicMethod = new DefaultMethod();
+						dynamicMethod.Create(methodInfo);
+					}
+					catch (System.Exception ex)
+					{
+						UnityEngine.Debug.LogException(ex);
 
+						dynamicMethod = new DefaultMethod();
+						dynamicMethod.Create(methodInfo);
+					}
+#else
 					dynamicMethod = new DefaultMethod();
 					dynamicMethod.Create(methodInfo);
-				}
-#else
-				dynamicMethod = new DefaultMethod();
-				dynamicMethod.Create(methodInfo);
 #endif
 
-				s_MethodCache.Add(methodInfo, dynamicMethod);
+					s_MethodCache.Add(methodInfo, dynamicMethod);
+				}
 			}
 
 			return dynamicMethod;

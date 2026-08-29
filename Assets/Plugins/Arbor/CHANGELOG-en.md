@@ -4,6 +4,147 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [3.11.4] - 2026-08-03
+
+### Fixed
+
+- Fixed an issue where the application did not function correctly on the Universal Windows Platform.
+
+
+
+## [3.11.3] - 2026-07-01
+
+### Added
+
+- Added support for Unity 6000.5.0f1
+
+### Fixed
+
+- Fixed an issue where an exception occurred during the window shutdown process when using the Arbor Editor window's screenshot function in Unity 6.4 or later.
+
+
+
+## [3.11.2] - 2026-03-23
+
+### Added
+
+- Added support for Unity 6000.4.0f1
+
+### Changed
+
+- When loading a scene using the LoadScene or RestartScene script while playing in the editor, unregistered scenes will now be loaded via EditorSceneManager (to accommodate changes in Unity's internal behavior).
+
+### Fixed
+
+- Fixed a bug where the live tracking toggle and other elements were not displayed.
+- Fixed a bug where the language pack loading was delayed immediately after compilation.
+- Fixed a bug where each scene could not be loaded from the sample ExampleSelector.
+
+
+
+## [3.11.1] - 2026-03-14
+
+### Fixed
+
+- Fixed a bug in Unity 6000.3 and later where the input focus appeared in the search bar of the behavior addition menu but the input was not reflected.
+- Fixed a bug where the text in various editor windows was not displayed correctly during new imports.
+
+
+
+## [3.11.0] - 2026-03-10
+
+### Changed
+
+- Changed the minimum supported Unity version to Unity6000.0.
+- Changed the import destination folder to Packages.
+- Changed the sample Render Pipeline to Universal Render Pipeline.
+- Changed samples to be imported from Samples in the Package Manager.
+
+### Deprecated
+
+- Deprecated the Arbor.Pool object pool type.  
+  Please use UnityEngine.Pool instead.
+
+### Fixed
+
+- Fixed an issue where IME conversion did not work properly when renaming nodes on a Mac.
+
+
+
+## [3.10.7] - 2025-12-09
+
+### Added
+
+- Added support for Unity 6000.3.0f1
+
+### Fixed
+
+- Fixed an issue in Unity 2022 where clicking the dropdown field again while the type selection popup was displayed would cause the program to freeze.
+- Fixed an issue in Unity 6000.1 and later where the connection line would disappear when hovering over it.
+
+
+
+## [3.10.6] - 2025-05-01
+
+### Fixed
+
+#### Compatible with Unity6
+
+- Fixed a bug where graph screenshots did not work on Unity 6 and later.
+
+
+
+## [3.10.5] - 2025-01-19
+
+### Improved
+
+#### Scripts
+
+- Applying Serializable to FlexibleComponent<T>
+
+### Fixed
+
+#### Scripts
+
+- Fixed a bug that caused an exception to occur in Object.InstantiateAsync.
+- Fixed a bug that caused instances of graph-related data to remain in memory due to unintended caching.
+
+
+
+
+## [3.10.4] - 2024-10-21
+
+### Fixed
+
+#### Compatible with Unity6000.0.11f1 or later
+
+- Fixed warning due to Rigidbody2D.velocity being renamed to Rigidbody2D.linearVelocity
+- Fixed warning due to Rigidbody2D.drag being renamed to Rigidbody2D.linearDamping
+- Fixed warning due to Rigidbody2D.angularDrag being renamed to Rigidbody2D.angularDamping
+
+
+
+## [3.10.3] - 2024-06-17
+
+### Fixed
+
+#### Built in Component
+
+- [AgentController](https://arbor-docs.caitsithware.com/en/3.10.2/manual/builtin/agentcontroller.html) : Fixed a bug where a NullReferenceException would be thrown if no Agent was assigned when Awake was called.
+
+
+
+## [3.10.2] - 2024-04-24
+
+### Fixed
+
+#### Compatible with Unity6000.0b16
+
+- Fixed a bug that caused the display position of the behavior title bar to shift.
+- Fixed a bug that caused an exception to occur when capturing a graph.
+
+
+
 ## [3.10.1] - 2024-03-08
 
 ### Fixed

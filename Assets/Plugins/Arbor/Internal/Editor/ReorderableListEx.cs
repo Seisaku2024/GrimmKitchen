@@ -45,13 +45,6 @@ namespace ArborEditor
 
 		void DrawElement(Rect rect, int index, bool isActive, bool isFocused)
 		{
-#if !(UNITY_2020_2_OR_NEWER && !ARBOR_DLL)
-			if (!IsVisible(rect))
-			{
-				return;
-			}
-#endif
-
 			drawElementCallback?.Invoke(rect, index, isActive, isFocused);
 		}
 
@@ -61,13 +54,6 @@ namespace ArborEditor
 			{
 				return;
 			}
-
-#if !(UNITY_2020_2_OR_NEWER && !ARBOR_DLL)
-			if (!IsVisible(rect))
-			{
-				return;
-			}
-#endif
 
 			if (isActive)
 			{
@@ -88,19 +74,8 @@ namespace ArborEditor
 			}
 		}
 
-#if !(UNITY_2020_2_OR_NEWER && !ARBOR_DLL)
-		private bool _IsSettedVisibleRect = false;
-		private Rect _VisibleRect;
-
-		private bool IsVisible(Rect rect)
-		{
-			return !_IsSettedVisibleRect || _VisibleRect.Overlaps(rect);
-		}
-#endif
-
 		public void DoLayoutList(Rect visibleRect)
 		{
-#if UNITY_2020_2_OR_NEWER && !ARBOR_DLL
 			GUILayout.BeginVertical();
 
 			Rect listRect = GUILayoutUtility.GetRect(0, GetHeight(), GUILayout.ExpandWidth(true));
@@ -109,18 +84,6 @@ namespace ArborEditor
 			base.DoList(listRect, visibleRect);
 			
 			GUILayout.EndVertical();
-#else
-			_IsSettedVisibleRect = true;
-			_VisibleRect = visibleRect;
-			try
-			{
-				base.DoLayoutList();
-			}
-			finally
-			{
-				_IsSettedVisibleRect = false;
-			}
-#endif
 		}
 	}
 }

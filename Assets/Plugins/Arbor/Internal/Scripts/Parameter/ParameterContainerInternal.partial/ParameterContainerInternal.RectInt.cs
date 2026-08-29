@@ -72,7 +72,7 @@ namespace Arbor
 				return parameter.TryGetRectInt(out value);
 			}
 
-			value = RectIntExtensions.zero;
+			value = RectInt.zero;
 			return false;
 		}
 
@@ -135,7 +135,7 @@ namespace Arbor
 #endif
 		public RectInt GetRectInt(string name, RectInt defaultValue)
 		{
-			RectInt value = RectIntExtensions.zero;
+			RectInt value = RectInt.zero;
 			if (TryGetRectInt(name, out value))
 			{
 				return value;
@@ -158,7 +158,7 @@ namespace Arbor
 #endif
 		public RectInt GetRectInt(string name)
 		{
-			return GetRectInt(name, RectIntExtensions.zero);
+			return GetRectInt(name, RectInt.zero);
 		}
 
 #if ARBOR_DOC_JA
@@ -178,7 +178,7 @@ namespace Arbor
 #endif
 		public RectInt GetRectInt(int id, RectInt defaultValue)
 		{
-			RectInt value = RectIntExtensions.zero;
+			RectInt value = RectInt.zero;
 			if (TryGetRectInt(id, out value))
 			{
 				return value;
@@ -201,7 +201,7 @@ namespace Arbor
 #endif
 		public RectInt GetRectInt(int id)
 		{
-			return GetRectInt(id, RectIntExtensions.zero);
+			return GetRectInt(id, RectInt.zero);
 		}
 
 		#endregion //RectInt

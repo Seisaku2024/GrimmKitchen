@@ -117,7 +117,7 @@ namespace ArborEditor.UIElements
 			Rect commentRect = new Rect(nodePosition, size);
 			commentRect.y -= commentRect.height + 4f;
 
-			transform.position = commentRect.position;
+			UIElementsUtility.SetTransformPosition(this, commentRect.position);
 		}
 
 		void OnGUI()

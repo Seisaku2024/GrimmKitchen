@@ -53,7 +53,7 @@ namespace Arbor
 #endif
 		protected override RectInt GetDefault()
 		{
-			return RectIntExtensions.zero;
+			return RectInt.zero;
 		}
 
 #if ARBOR_DOC_JA

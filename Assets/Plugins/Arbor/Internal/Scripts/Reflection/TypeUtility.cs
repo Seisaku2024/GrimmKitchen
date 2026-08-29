@@ -45,6 +45,7 @@ namespace Arbor
 
 		private static Dictionary<Type, string> s_AssemblyTypeNameCache = new Dictionary<Type, string>();
 
+		private static object s_LockTypeCache = new object();
 		private static Dictionary<string, Type> s_TypeCache = new Dictionary<string, Type>();
 
 		static string GetNullableTypeName(Type type)
@@ -288,10 +289,13 @@ namespace Arbor
 			}
 
 			Type type = null;
-			if (!s_TypeCache.TryGetValue(assemblyTypeName, out type))
+			lock (s_LockTypeCache)
 			{
-				type = Type.GetType(assemblyTypeName, false);
-				s_TypeCache.Add(assemblyTypeName, type);
+				if (!s_TypeCache.TryGetValue(assemblyTypeName, out type))
+				{
+					type = Type.GetType(assemblyTypeName, false);
+					s_TypeCache.Add(assemblyTypeName, type);
+				}
 			}
 
 			return type;
@@ -773,6 +777,7 @@ namespace Arbor
 			return type != null && IsClass(type) && IsAbstract(type) && IsSealed(type);
 		}
 
+		private static object s_LockRenamedTypes = new object();
 		private static Dictionary<string, Type> s_RenamedTypes = null;
 
 		struct ReferenceableKey : IEquatable<ReferenceableKey>
@@ -1026,37 +1031,6 @@ namespace Arbor
 			return IsUserAssembly(assembly) || !IsEditorDependentAssembly(assembly);
 		}
 
-#if WINDOWS_UWP
-		private static async System.Threading.Tasks.Task<Assembly[]> GetAssembliesAsync()
-		{
-			var installedLocation = Windows.ApplicationModel.Package.Current.InstalledLocation;
-			var files = await installedLocation.GetFilesAsync().AsTask().ConfigureAwait(false);
-			if (files == null || files.Count == 0)
-			{
-				return new Assembly[0];
-			}
-
-			List<Assembly> assemblies = new List<Assembly>();
-			for (int i = 0; i < files.Count; i++)
-			{
-				var file = files[i];
-				string fileType = file.FileType;
-				if (!(fileType == ".dll" || fileType == ".exe"))
-				{
-					continue;
-				}
-				var assemblyName = new AssemblyName(System.IO.Path.GetFileNameWithoutExtension(file.Name));
-				var assembly = TryToLoad(assemblyName);
-				if (assembly != null)
-				{
-					assemblies.Add(assembly);
-				}
-			}
-
-			return assemblies.ToArray();
-		}
-#endif
-
 #if ARBOR_DOC_JA
 		/// <summary>
 		/// アプリケーションに読み込まれているアセンブリを取得する。
@@ -1070,22 +1044,10 @@ namespace Arbor
 #endif
 		public static Assembly[] GetAssemblies()
 		{
-#if WINDOWS_UWP
-			var task = GetAssembliesAsync();
-			try
-			{
-				task.Wait();
-			}
-			catch (AggregateException ex)
-			{
-				UnityEngine.Debug.LogException(ex);
-			}
-			return task.Result;
-#else
 			return AppDomain.CurrentDomain.GetAssemblies();
-#endif
 		}
 
+		private static object s_LockRuntimeAssemblies = new object();
 		private static List<Assembly> s_RuntimeAssembies = null;
 
 #if ARBOR_DOC_JA
@@ -1101,35 +1063,39 @@ namespace Arbor
 #endif
 		public static List<Assembly> GetRuntimeAssembies()
 		{
-			if (s_RuntimeAssembies != null)
+			lock (s_LockRuntimeAssemblies)
 			{
+				if (s_RuntimeAssembies != null)
+				{
+					return s_RuntimeAssembies;
+				}
+
+				s_RuntimeAssembies = new List<Assembly>();
+
+				Assembly thisAssembly = GetAssembly(typeof(TypeUtility));
+
+				var assemblies = GetAssemblies();
+				if (assemblies != null)
+				{
+					for (int i = 0; i < assemblies.Length; i++)
+					{
+						Assembly assembly = assemblies[i];
+						if (assembly.IsDynamic ||
+							!IsReferenceable(assembly, thisAssembly) ||
+							!IsRuntimeAssembly(assembly))
+						{
+							continue;
+						}
+
+						s_RuntimeAssembies.Add(assembly);
+					}
+				}
+
 				return s_RuntimeAssembies;
 			}
-
-			s_RuntimeAssembies = new List<Assembly>();
-
-			Assembly thisAssembly = GetAssembly(typeof(TypeUtility));
-
-			var assemblies = GetAssemblies();
-			if (assemblies != null)
-			{
-				for (int i = 0; i < assemblies.Length; i++)
-				{
-					Assembly assembly = assemblies[i];
-					if (assembly.IsDynamic ||
-						!IsReferenceable(assembly, thisAssembly) ||
-						!IsRuntimeAssembly(assembly))
-					{
-						continue;
-					}
-
-					s_RuntimeAssembies.Add(assembly);
-				}
-			}
-
-			return s_RuntimeAssembies;
 		}
 
+		private static object s_LockRuntimeTypes = new object();
 		private static List<Type> s_RuntimeTypes = null;
 
 #if ARBOR_DOC_JA
@@ -1145,40 +1111,43 @@ namespace Arbor
 #endif
 		public static List<Type> GetRuntimeTypes()
 		{
-			if (s_RuntimeTypes != null)
+			lock (s_LockRuntimeTypes)
 			{
-				return s_RuntimeTypes;
-			}
-
-			s_RuntimeTypes = new List<Type>();
-
-			var assemblies = GetRuntimeAssembies();
-			if (assemblies != null)
-			{
-				for (int i = 0; i < assemblies.Count; i++)
+				if (s_RuntimeTypes != null)
 				{
-					Assembly assembly = assemblies[i];
+					return s_RuntimeTypes;
+				}
 
-					var types = GetTypesFromAssembly(assembly);
-					for (int typeIndex = 0; typeIndex < types.Length; typeIndex++)
+				s_RuntimeTypes = new List<Type>();
+
+				var assemblies = GetRuntimeAssembies();
+				if (assemblies != null)
+				{
+					for (int i = 0; i < assemblies.Count; i++)
 					{
-						Type type = types[typeIndex];
-						if (IsAssignableFrom(typeof(Attribute), type))
-						{
-							continue;
-						}
+						Assembly assembly = assemblies[i];
 
-						if (AttributeHelper.HasAttribute<System.Runtime.CompilerServices.CompilerGeneratedAttribute>(type))
+						var types = GetTypesFromAssembly(assembly);
+						for (int typeIndex = 0; typeIndex < types.Length; typeIndex++)
 						{
-							continue;
-						}
+							Type type = types[typeIndex];
+							if (IsAssignableFrom(typeof(Attribute), type))
+							{
+								continue;
+							}
 
-						s_RuntimeTypes.Add(type);
+							if (AttributeHelper.HasAttribute<System.Runtime.CompilerServices.CompilerGeneratedAttribute>(type))
+							{
+								continue;
+							}
+
+							s_RuntimeTypes.Add(type);
+						}
 					}
 				}
-			}
 
-			return s_RuntimeTypes;
+				return s_RuntimeTypes;
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -1201,20 +1170,23 @@ namespace Arbor
 				return null;
 			}
 
-			if (s_RenamedTypes == null)
+			lock (s_LockRenamedTypes)
 			{
-				s_RenamedTypes = new Dictionary<string, Type>();
-
-				var types = GetRuntimeTypes();
-				for (int typeIndex = 0; typeIndex < types.Count; typeIndex++)
+				if (s_RenamedTypes == null)
 				{
-					Type type = types[typeIndex];
+					s_RenamedTypes = new Dictionary<string, Type>();
 
-					var attributes = AttributeHelper.GetAttributes<RenamedFromAttribute>(type);
-					for (int attrIndex = 0; attrIndex < attributes.Length; attrIndex++)
+					var types = GetRuntimeTypes();
+					for (int typeIndex = 0; typeIndex < types.Count; typeIndex++)
 					{
-						RenamedFromAttribute attr = attributes[attrIndex];
-						s_RenamedTypes[attr.oldName] = type;
+						Type type = types[typeIndex];
+
+						var attributes = AttributeHelper.GetAttributes<RenamedFromAttribute>(type);
+						for (int attrIndex = 0; attrIndex < attributes.Length; attrIndex++)
+						{
+							RenamedFromAttribute attr = attributes[attrIndex];
+							s_RenamedTypes[attr.oldName] = type;
+						}
 					}
 				}
 			}
@@ -1227,6 +1199,7 @@ namespace Arbor
 			return null;
 		}
 
+		private static object s_LockFindTypes = new object();
 		private static Dictionary<string, Type> s_FindTypes = new Dictionary<string, Type>();
 
 #if ARBOR_DOC_JA
@@ -1245,20 +1218,23 @@ namespace Arbor
 		public static Type FindType(string typeName)
 		{
 			Type foundType = null;
-			if (!s_FindTypes.TryGetValue(typeName, out foundType))
+			lock (s_LockFindTypes)
 			{
-				var types = GetRuntimeTypes();
-				for (int i = 0; i < types.Count; i++)
+				if (!s_FindTypes.TryGetValue(typeName, out foundType))
 				{
-					Type t = types[i];
-					if (t.FullName == typeName)
+					var types = GetRuntimeTypes();
+					for (int i = 0; i < types.Count; i++)
 					{
-						foundType = t;
-						break;
+						Type t = types[i];
+						if (t.FullName == typeName)
+						{
+							foundType = t;
+							break;
+						}
 					}
-				}
 
-				s_FindTypes.Add(typeName, foundType);
+					s_FindTypes.Add(typeName, foundType);
+				}
 			}
 
 			return foundType;

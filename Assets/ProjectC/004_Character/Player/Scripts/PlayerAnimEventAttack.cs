@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SaintsField;
 using System;
+using NaughtyAttributes;
 
 public enum AttackerTypeID
 {

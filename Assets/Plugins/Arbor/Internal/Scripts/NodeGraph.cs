@@ -2612,7 +2612,7 @@ namespace Arbor
 #endif
 		public static NodeGraph FindGraph(string name, System.Type type)
 		{
-			return GetGraphInternal(ObjectUtility.FindObjectsOfType<NodeGraph>(), type, name);
+			return GetGraphInternal(ObjectUtility.FindObjectsByTypeInternal<NodeGraph>(), type, name);
 		}
 
 #if ARBOR_DOC_JA
@@ -2632,7 +2632,7 @@ namespace Arbor
 #endif
 		public static T FindGraph<T>(string name) where T : NodeGraph
 		{
-			return GetGraphInternal(ObjectUtility.FindObjectsOfType<NodeGraph>(), typeof(T), name) as T;
+			return GetGraphInternal(ObjectUtility.FindObjectsByTypeInternal<NodeGraph>(), typeof(T), name) as T;
 		}
 
 		private static System.Array GetGraphsInternal(IList<NodeGraph> graphs, System.Type type, string name, bool useSearchTypeAsArrayReturnType)
@@ -2698,7 +2698,7 @@ namespace Arbor
 #endif
 		public static NodeGraph[] FindGraphs(string name, System.Type type)
 		{
-			return (NodeGraph[])GetGraphsInternal(ObjectUtility.FindObjectsOfType<NodeGraph>(), type, name, false);
+			return (NodeGraph[])GetGraphsInternal(ObjectUtility.FindObjectsByTypeInternal<NodeGraph>(), type, name, false);
 		}
 
 #if ARBOR_DOC_JA
@@ -2718,7 +2718,7 @@ namespace Arbor
 #endif
 		public static T[] FindGraphs<T>(string name) where T : NodeGraph
 		{
-			return (T[])GetGraphsInternal(ObjectUtility.FindObjectsOfType<NodeGraph>(), typeof(T), name, true);
+			return (T[])GetGraphsInternal(ObjectUtility.FindObjectsByTypeInternal<NodeGraph>(), typeof(T), name, true);
 		}
 
 #if ARBOR_DOC_JA

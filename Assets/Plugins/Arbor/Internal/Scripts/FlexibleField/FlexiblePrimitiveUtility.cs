@@ -6,32 +6,36 @@ namespace Arbor
 {
 	internal static class FlexiblePrimitiveUtility
 	{
+		private static object s_LockFindFlexibleFields = new object();
 		private static List<IFlexibleField> s_FindFlexibleFields = null;
 
 		public static bool HasRandomFlexiblePrimitive(object obj)
 		{
-			if (s_FindFlexibleFields == null)
+			lock (s_LockFindFlexibleFields)
 			{
-				s_FindFlexibleFields = new List<IFlexibleField>();
-			}
-			else
-			{
-				s_FindFlexibleFields.Clear();
-			}
-
-			EachField<IFlexibleField>.Find(obj, obj.GetType(), s_FindFlexibleFields);
-
-			for (int i = 0; i < s_FindFlexibleFields.Count; i++)
-			{
-				var f = s_FindFlexibleFields[i];
-				FlexiblePrimitiveBase flexiblePrimitive = f as FlexiblePrimitiveBase;
-				if (flexiblePrimitive != null && flexiblePrimitive.type == FlexiblePrimitiveType.Random)
+				if (s_FindFlexibleFields == null)
 				{
-					return true;
+					s_FindFlexibleFields = new List<IFlexibleField>();
 				}
-			}
+				else
+				{
+					s_FindFlexibleFields.Clear();
+				}
 
-			return false;
+				EachField<IFlexibleField>.Find(obj, obj.GetType(), s_FindFlexibleFields);
+
+				for (int i = 0; i < s_FindFlexibleFields.Count; i++)
+				{
+					var f = s_FindFlexibleFields[i];
+					FlexiblePrimitiveBase flexiblePrimitive = f as FlexiblePrimitiveBase;
+					if (flexiblePrimitive != null && flexiblePrimitive.type == FlexiblePrimitiveType.Random)
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
 		}
 	}
 }

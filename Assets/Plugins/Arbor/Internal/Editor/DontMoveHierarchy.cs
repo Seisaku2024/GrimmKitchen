@@ -14,7 +14,11 @@ namespace ArborEditor
 	{
 		static DontMoveHierarchy()
 		{
+#if UNITY_6000_4_OR_NEWER
+			EditorApplication.hierarchyWindowItemByEntityIdOnGUI += OnHierarchyGUI;
+#else
 			EditorApplication.hierarchyWindowItemOnGUI += OnHierarchyGUI;
+#endif
 			EditorApplication.projectWindowItemOnGUI += OnProjectWindowGUI;
 		}
 
@@ -33,7 +37,11 @@ namespace ArborEditor
 			return false;
 		}
 
+#if UNITY_6000_4_OR_NEWER
+		static void OnHierarchyGUI(EntityId entityId, Rect selectionRect)
+#else
 		static void OnHierarchyGUI(int instanceID, Rect selectionRect)
+#endif
 		{
 			Event current = Event.current;
 

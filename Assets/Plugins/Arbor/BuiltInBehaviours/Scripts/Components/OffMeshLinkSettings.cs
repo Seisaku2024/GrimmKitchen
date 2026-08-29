@@ -20,14 +20,8 @@ namespace Arbor
 #endif
 	[AddComponentMenu("Arbor/Navigation/OffMeshLinkSettings")]
 	[BuiltInComponent]
-#if !ARBOR_OFFMESHLINKSETTINGS_DISABLE_REQUIRECOMPONENT
-#if ARBOR_SUPPORT_AI_NAVIGATION && !ARBOR_OFFMESHLINKSETTINGS_USE_OFFMESHLINK
+#if ARBOR_SUPPORT_AI_NAVIGATION && !ARBOR_OFFMESHLINKSETTINGS_DISABLE_REQUIRECOMPONENT
 	[RequireComponent(typeof(Unity.AI.Navigation.NavMeshLink))]
-#else
-#pragma warning disable 0618
-	[RequireComponent(typeof(OffMeshLink))]
-#pragma warning restore
-#endif
 #endif
 	[HelpURL(ArborReferenceUtility.docUrl + "manual/builtin/offmeshlinksettings.html")]
 	[Internal.DocumentManual("/manual/builtin/offmeshlinksettings.md")]

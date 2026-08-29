@@ -189,7 +189,7 @@ public class CompoundPass : ScriptableRenderPass {
         // Configure the pass to tell the renderer what inputs we need
         ConfigureInput(passInput);
 
-#if UNITY_2022_1_OR_NEWER
+#if UNITY_6000_0_OR_NEWER
         requiresIntermediateTexture = m_ActivePostProcessRenderers.Count != 0;
 #endif
 

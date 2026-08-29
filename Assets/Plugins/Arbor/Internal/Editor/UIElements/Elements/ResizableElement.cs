@@ -123,7 +123,7 @@ namespace ArborEditor.UIElements
 			_ResizerElement.maxSize = e.newRect.height - minRemainingSize - _ResizerHeight;
 			if (_ResizerElement.maxSize >= _ResizerElement.minSize)
 			{
-				style.display = StyleKeyword.Null;
+				style.display = DisplayStyle.Flex;
 				float currentSize = _Size;
 				if (currentSize >= 0f)
 				{
@@ -146,7 +146,7 @@ namespace ArborEditor.UIElements
 
 			if (_Size >= 0)
 			{
-				_ContentContainer.style.display = StyleKeyword.Null;
+				_ContentContainer.style.display = DisplayStyle.Flex;
 				_ContentContainer.style.height = _Size;
 			}
 			else

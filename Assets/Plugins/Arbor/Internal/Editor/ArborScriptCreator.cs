@@ -14,7 +14,16 @@ namespace ArborEditor
 		[MenuItem("Assets/Create/Arbor/Calculator C# Script", false, 101)]
 		public static void CreateCSharpScriptCalculator()
 		{
-			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), "NewCalculatorScript.cs", DefaultScriptIcon.CSharpIcon, _CalculatorCSharpTemplatePath);
+			StartNameEditing("NewCalculatorScript.cs", _CalculatorCSharpTemplatePath);
+		}
+
+		internal static void StartNameEditing(string pathName, string resourceFile)
+		{
+#if UNITY_6000_4_OR_NEWER
+			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(EntityId.None, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), pathName, DefaultScriptIcon.CSharpIcon, resourceFile);
+#else
+			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), pathName, DefaultScriptIcon.CSharpIcon, resourceFile);
+#endif
 		}
 	}
 }

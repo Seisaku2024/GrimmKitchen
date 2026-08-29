@@ -10,8 +10,14 @@ namespace ArborEditor
 	using Arbor;
 	using ArborEditor.IMGUI.Controls;
 
-	public class GraphTreeViewItem : TreeViewItem
+	internal class GraphTreeViewItem : TreeViewItem
 	{
+		public ObjectId objectId
+		{
+			get;
+			private set;
+		}
+
 		public NodeGraph nodeGraph
 		{
 			get;
@@ -34,14 +40,11 @@ namespace ArborEditor
 			}
 		}
 
-		public GraphTreeViewItem(int id, NodeGraph nodeGraph) : base(id, nodeGraph.graphName, null)
+		public GraphTreeViewItem(int id, ObjectId objectId, NodeGraph nodeGraph) : base(id, nodeGraph.graphName, null)
 		{
+			this.objectId = objectId;
 			this.nodeGraph = nodeGraph;
 			nodeGraph.onChangedGraphName += OnChangedGraphName;
-		}
-
-		public GraphTreeViewItem(NodeGraph nodeGraph) : this(nodeGraph.GetInstanceID(), nodeGraph)
-		{
 		}
 
 		public override void Dispose()

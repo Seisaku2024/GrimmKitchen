@@ -19,9 +19,9 @@ namespace Arbor.Pool
 	/// <typeparam name="T">Instance type</typeparam>
 	/// <remarks>By using it in the using statement, it will be returned to the pool when it goes out of scope.</remarks>
 #endif
+	[Obsolete("use UnityEngine.Pool.PooledObject")] // The minimum supported Unity version is now 6.0, so UnityEngine.Pool is recommended.
 	public struct PooledObject<T> : IDisposable where T : class
 	{
-#if UNITY_2021_1_OR_NEWER
 		private readonly UnityEngine.Pool.PooledObject<T> m_PooledObject;
 
 		internal PooledObject(UnityEngine.Pool.PooledObject<T> pooledObject)
@@ -38,20 +38,5 @@ namespace Arbor.Pool
 		{
 			GenericDispose(m_PooledObject);
 		}
-#else
-		private readonly T m_ToReturn;
-		private readonly IObjectPool<T> m_Pool;
-
-		internal PooledObject(T value, IObjectPool<T> pool)
-		{
-			m_ToReturn = value;
-			m_Pool = pool;
-		}
-
-		void IDisposable.Dispose()
-		{
-			m_Pool.Release(m_ToReturn);
-		}
-#endif
 	}
 }

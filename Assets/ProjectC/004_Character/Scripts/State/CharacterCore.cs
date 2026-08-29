@@ -11,6 +11,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.Rendering;
 using CriWare;
 using Unity.VisualScripting;
+using NaughtyAttributes;
 
 
 // キャラクターの基盤クラス

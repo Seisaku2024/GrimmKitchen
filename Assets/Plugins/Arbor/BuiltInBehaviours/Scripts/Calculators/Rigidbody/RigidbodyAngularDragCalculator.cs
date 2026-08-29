@@ -52,11 +52,7 @@ namespace Arbor.Calculators
 			Rigidbody rigidbody = _Rigidbody.value;
 			if (rigidbody != null)
 			{
-#if UNITY_2023_3_OR_NEWER
 				_AngularDrag.SetValue(rigidbody.angularDamping);
-#else
-				_AngularDrag.SetValue(rigidbody.angularDrag);
-#endif
 			}
 		}
 	}

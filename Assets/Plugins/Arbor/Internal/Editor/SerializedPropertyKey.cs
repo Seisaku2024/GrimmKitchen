@@ -4,13 +4,14 @@
 //-----------------------------------------------------
 using UnityEngine;
 using UnityEditor;
+using Arbor;
 
 namespace ArborEditor
 {
 	internal struct SerializedPropertyKey : System.IEquatable<SerializedPropertyKey>
 	{
 		private SerializedObject _SerializedObject;
-		private int[] _InstanceIDs;
+		private ObjectId[] _InstanceIDs;
 		private string _PropertyPath;
 
 		private int _HashCode;
@@ -22,11 +23,11 @@ namespace ArborEditor
 
 			_HashCode = _PropertyPath.GetHashCode();
 			var targetObjects = _SerializedObject.targetObjects;
-			_InstanceIDs = new int[targetObjects.Length];
+			_InstanceIDs = new ObjectId[targetObjects.Length];
 			for (int objIndex = 0; objIndex < targetObjects.Length; objIndex++)
 			{
 				Object obj = targetObjects[objIndex];
-				_InstanceIDs[objIndex] = obj.GetInstanceID();
+				_InstanceIDs[objIndex] = new ObjectId(obj);
 				_HashCode ^= obj.GetHashCode();
 			}
 		}
@@ -52,7 +53,7 @@ namespace ArborEditor
 		{
 			try
 			{
-				int[] otherInstanceIDs = other._InstanceIDs;
+				var otherInstanceIDs = other._InstanceIDs;
 
 				if (_PropertyPath != other._PropertyPath ||
 					_InstanceIDs == null || otherInstanceIDs == null ||

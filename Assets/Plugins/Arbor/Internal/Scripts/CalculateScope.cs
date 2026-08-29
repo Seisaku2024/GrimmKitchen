@@ -201,7 +201,7 @@ namespace Arbor
 			}
 		}
 
-		private HashSet<int> _Calculators = new HashSet<int>();
+		private HashSet<ObjectId> _Calculators = new HashSet<ObjectId>();
 
 		private CalculateScope()
 		{
@@ -209,12 +209,12 @@ namespace Arbor
 
 		private void Add(Calculator calculator)
 		{
-			_Calculators.Add(calculator.GetInstanceID());
+			_Calculators.Add(new ObjectId(calculator));
 		}
 
 		private bool Contains(Calculator calculator)
 		{
-			return _Calculators.Contains(calculator.GetInstanceID());
+			return _Calculators.Contains(new ObjectId(calculator));
 		}
 
 		private void Clear()

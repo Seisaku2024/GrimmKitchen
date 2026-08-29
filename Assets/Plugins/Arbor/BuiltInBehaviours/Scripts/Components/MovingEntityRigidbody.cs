@@ -39,11 +39,7 @@ namespace Arbor
 		{
 			get
 			{
-#if UNITY_2023_3_OR_NEWER
 				return _Rigidbody.linearVelocity;
-#else
-				return _Rigidbody.velocity;
-#endif
 			}
 		}
 

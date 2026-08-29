@@ -9,6 +9,7 @@ using System.Collections.Generic;
 namespace Arbor
 {
 	using Arbor.Extensions;
+	using Arbor.Pool;
 
 #if ARBOR_DOC_JA
 	/// <summary>
@@ -715,93 +716,92 @@ namespace Arbor
 			}
 		}
 
-		private static Dictionary<string, DataLinkFieldInfo> s_OldDataLinks = null;
+		private static ThreadSafeObjectPool<Dictionary<string, DataLinkFieldInfo>> s_OldDataLinksPool = new ThreadSafeObjectPool<Dictionary<string, DataLinkFieldInfo>>(() => new Dictionary<string, DataLinkFieldInfo>(), null, l => l.Clear());
 
 		void RebuildDataSlotFieldLinks()
 		{
 			System.Type type = GetType();
 
-			if (s_OldDataLinks == null)
+			var oldDataLinks = s_OldDataLinksPool.Get();
+			try
 			{
-				s_OldDataLinks = new Dictionary<string, DataLinkFieldInfo>();
-			}
-			else
-			{
-				s_OldDataLinks.Clear();
-			}
-
-			for (int linkIndex = 0; linkIndex < _DataSlotFieldLinks.Count; linkIndex++)
-			{
-				DataLinkFieldInfo link = _DataSlotFieldLinks[linkIndex];
-				s_OldDataLinks.Add(link.fieldName, link);
-			}
-
-			_DataSlotFieldLinks.Clear();
-
-			for (TypeCache typeCache = TypeCache.GetTypeCache(type); typeCache != null; typeCache = typeCache.baseType)
-			{
-				var dataLinkFields = typeCache.dataLinkFields;
-				for (int fieldIndex = 0; fieldIndex < dataLinkFields.Count; fieldIndex++)
+				for (int linkIndex = 0; linkIndex < _DataSlotFieldLinks.Count; linkIndex++)
 				{
-					FieldCache fieldCache = dataLinkFields[fieldIndex];
-					DynamicReflection.DynamicField field = fieldCache.field;
+					DataLinkFieldInfo link = _DataSlotFieldLinks[linkIndex];
+					oldDataLinks.Add(link.fieldName, link);
+				}
 
-					System.Reflection.FieldInfo fieldInfo = field.fieldInfo;
-					string fieldName = fieldInfo.Name;
+				_DataSlotFieldLinks.Clear();
 
-					System.Type fieldType = fieldInfo.FieldType;
-
-					DataLinkFieldInfo link = null;
-					if (s_OldDataLinks.TryGetValue(fieldName, out link))
+				for (TypeCache typeCache = TypeCache.GetTypeCache(type); typeCache != null; typeCache = typeCache.baseType)
+				{
+					var dataLinkFields = typeCache.dataLinkFields;
+					for (int fieldIndex = 0; fieldIndex < dataLinkFields.Count; fieldIndex++)
 					{
-						s_OldDataLinks.Remove(fieldName);
-					}
-					else
-					{
-						var formerlySerializedAsList = fieldCache.formerlySerializedAsList;
-						for (int index = 0; index < formerlySerializedAsList.Length; index++)
+						FieldCache fieldCache = dataLinkFields[fieldIndex];
+						DynamicReflection.DynamicField field = fieldCache.field;
+
+						System.Reflection.FieldInfo fieldInfo = field.fieldInfo;
+						string fieldName = fieldInfo.Name;
+
+						System.Type fieldType = fieldInfo.FieldType;
+
+						DataLinkFieldInfo link = null;
+						if (oldDataLinks.TryGetValue(fieldName, out link))
 						{
-							FormerlySerializedAsAttribute formerlySerializedAs = formerlySerializedAsList[index];
-							string oldFieldName = formerlySerializedAs.oldName;
-							if (s_OldDataLinks.TryGetValue(formerlySerializedAs.oldName, out link) && link.slot.dataType == fieldType)
+							oldDataLinks.Remove(fieldName);
+						}
+						else
+						{
+							var formerlySerializedAsList = fieldCache.formerlySerializedAsList;
+							for (int index = 0; index < formerlySerializedAsList.Length; index++)
 							{
-								s_OldDataLinks.Remove(oldFieldName);
-								link.fieldName = fieldName;
-								break;
+								FormerlySerializedAsAttribute formerlySerializedAs = formerlySerializedAsList[index];
+								string oldFieldName = formerlySerializedAs.oldName;
+								if (oldDataLinks.TryGetValue(formerlySerializedAs.oldName, out link) && link.slot.dataType == fieldType)
+								{
+									oldDataLinks.Remove(oldFieldName);
+									link.fieldName = fieldName;
+									break;
+								}
+
+								link = null;
 							}
-
-							link = null;
 						}
-					}
 
-					if (link == null)
-					{
-						link = new DataLinkFieldInfo();
-						link.fieldName = fieldName;
-					}
-
-					System.Type slotType = link.slot.dataType;
-
-					if (slotType != fieldType)
-					{
-						if (link.slot.branchID != 0 && (slotType == null || !TypeUtility.IsAssignableFrom(slotType, fieldType)))
+						if (link == null)
 						{
-							Debug.LogWarningFormat("{0}#{1} is disconnected because its type has been changed : {2} -> {3}", TypeUtility.GetTypeName(type), fieldName, TypeUtility.GetTypeName(slotType), TypeUtility.GetTypeName(fieldType));
-							link.slot.Disconnect();
+							link = new DataLinkFieldInfo();
+							link.fieldName = fieldName;
 						}
-						link.slot.SetType(fieldType);
+
+						System.Type slotType = link.slot.dataType;
+
+						if (slotType != fieldType)
+						{
+							if (link.slot.branchID != 0 && (slotType == null || !TypeUtility.IsAssignableFrom(slotType, fieldType)))
+							{
+								Debug.LogWarningFormat("{0}#{1} is disconnected because its type has been changed : {2} -> {3}", TypeUtility.GetTypeName(type), fieldName, TypeUtility.GetTypeName(slotType), TypeUtility.GetTypeName(fieldType));
+								link.slot.Disconnect();
+							}
+							link.slot.SetType(fieldType);
+						}
+
+						link.field = field;
+						link.attribute = fieldCache.attribute;
+
+						_DataSlotFieldLinks.Add(link);
 					}
+				}
 
-					link.field = field;
-					link.attribute = fieldCache.attribute;
-
-					_DataSlotFieldLinks.Add(link);
+				foreach (DataLinkFieldInfo link in oldDataLinks.Values)
+				{
+					link.slot.Disconnect();
 				}
 			}
-
-			foreach (DataLinkFieldInfo link in s_OldDataLinks.Values)
+			finally
 			{
-				link.slot.Disconnect();
+				s_OldDataLinksPool.Release(oldDataLinks);
 			}
 		}
 

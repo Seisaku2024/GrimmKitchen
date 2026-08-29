@@ -2,6 +2,7 @@
 //            Arbor 3: FSM & BT Graph Editor
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
+using System;
 using System.Collections.Generic;
 
 namespace Arbor.Pool
@@ -19,9 +20,10 @@ namespace Arbor.Pool
 	/// <typeparam name="TCollection">Collection type</typeparam>
 	/// <typeparam name="TItem">Element type</typeparam>
 #endif
+	[Obsolete("use UnityEngine.CollectionPool")] // The minimum supported Unity version is now 6.0, so UnityEngine.Pool is recommended.
 	public class CollectionPool<TCollection, TItem> where TCollection : class, ICollection<TItem>, new()
 	{
-		internal static readonly ObjectPool<TCollection> s_Pool = new ObjectPool<TCollection>(
+		internal static readonly UnityEngine.Pool.ObjectPool<TCollection> s_Pool = new UnityEngine.Pool.ObjectPool<TCollection>(
 			() => new TCollection(),
 			null,
 			l => l.Clear(),
@@ -61,7 +63,8 @@ namespace Arbor.Pool
 #endif
 		public static PooledObject<TCollection> Get(out TCollection value)
 		{
-			return s_Pool.Get(out value);
+			var pooledObject = s_Pool.Get(out value);
+			return new PooledObject<TCollection>(pooledObject);
 		}
 
 #if ARBOR_DOC_JA

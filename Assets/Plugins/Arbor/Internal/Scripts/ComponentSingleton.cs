@@ -40,7 +40,7 @@ namespace Arbor
 			{
 				if (s_Instance == null)
 				{
-					return ObjectUtility.FindObjectOfType<T>() ?? CreateNewSingleton();
+					return FindAnyObjectByType<T>() ?? CreateNewSingleton();
 				}
 
 				return s_Instance;

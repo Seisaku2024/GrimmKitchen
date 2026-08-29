@@ -73,7 +73,7 @@ namespace ArborEditor.UIElements
 				return;
 
 			Vector2 size = new Vector2(resolvedStyle.width, resolvedStyle.height);
-			transform.position = _AttachPoint - size * 0.5f;
+			UIElementsUtility.SetTransformPosition(this, _AttachPoint - size * 0.5f);
 		}
 	}
 }

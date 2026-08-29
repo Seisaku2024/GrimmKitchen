@@ -2,6 +2,7 @@
 //            Arbor 3: FSM & BT Graph Editor
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,6 +35,8 @@ namespace Arbor.Extensions
 		/// <param name="i">Integer for the divisor</param>
 		/// <returns>Returns the divided Vector2Int.</returns>
 #endif
+		[Obsolete("use `v / i`")]
+		// The minimum supported Unity version is now 6.0, so Vector2Int.operator/ is recommended.
 		public static Vector2Int Div(this Vector2Int v, int i)
 		{
 			return v / i;
@@ -52,31 +55,11 @@ namespace Arbor.Extensions
 		/// <param name="v">Vector2Int to reverse the sign of each component</param>
 		/// <returns>Returns the result of reversing the sign of each component.</returns>
 #endif
+		[Obsolete("use `-v`")]
+		// The minimum supported Unity version is now 6.0, so Vector2Int.operator- is recommended.
 		public static Vector2Int Negative(this Vector2Int v)
 		{
 			return new Vector2Int(-v.x, -v.y);
 		}
-
-#if !UNITY_2020_1_OR_NEWER
-#if ARBOR_DOC_JA
-		/// <summary>
-		/// Vector2Intを文字列に変換する。
-		/// </summary>
-		/// <param name="v">変換するVector2Int</param>
-		/// <param name="format">フォーマット</param>
-		/// <returns>変換した文字列。</returns>
-#else
-		/// <summary>
-		/// Convert Vector2Int to a string.
-		/// </summary>
-		/// <param name="v">Vector2Int to convert</param>
-		/// <param name="format">Format</param>
-		/// <returns>Converted string.</returns>
-#endif
-		public static string ToString(this Vector2Int v, string format)
-		{
-			return string.Format("({0}, {1})", v.x.ToString(format), v.y.ToString(format));
-		}
-#endif
 	}
 }

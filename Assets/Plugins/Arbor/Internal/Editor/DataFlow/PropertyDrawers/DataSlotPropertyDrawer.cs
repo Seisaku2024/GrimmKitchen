@@ -152,16 +152,16 @@ namespace ArborEditor
 									case DataSlotShowMode.Outside:
 									case DataSlotShowMode.Flexibly:
 										{
-											int targetInstanceID = property.serializedObject.targetObject.GetInstanceID();
-											BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetInstanceID);
+											var targetObjectID = new ObjectId(property.serializedObject.targetObject);
+											BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetObjectID);
 											editorGUI?.SetInputSlotLink(slotPosition, property);
 											EditorGUI.LabelField(slotPosition, label);
 										}
 										break;
 									case DataSlotShowMode.Inside:
 										{
-											int targetInstanceID = property.serializedObject.targetObject.GetInstanceID();
-											BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetInstanceID);
+											var targetObjectID = new ObjectId(property.serializedObject.targetObject);
+											BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetObjectID);
 											if (editorGUI != null)
 											{
 												DataSlotGUI slotGUI = editorGUI.GetDataSlotGUI(property);
@@ -174,8 +174,8 @@ namespace ArborEditor
 								break;
 							case SlotType.Output:
 								{
-									int targetInstanceID = property.serializedObject.targetObject.GetInstanceID();
-									BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetInstanceID);
+									var targetObjectID = new ObjectId(property.serializedObject.targetObject);
+									BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetObjectID);
 									if (editorGUI != null)
 									{
 										DataSlotGUI slotGUI = editorGUI.GetDataSlotGUI(property);

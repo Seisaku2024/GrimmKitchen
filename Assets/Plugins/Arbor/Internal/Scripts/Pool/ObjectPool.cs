@@ -18,75 +18,10 @@ namespace Arbor.Pool
 	/// </summary>
 	/// <typeparam name="T">Pool type</typeparam>
 #endif
+	[Obsolete("use UnityEngine.Pool.ObjectPool")] // The minimum supported Unity version is now 6.0, so UnityEngine.Pool is recommended.
 	public class ObjectPool<T> : IDisposable, IObjectPool<T> where T : class
 	{
-#if UNITY_2021_1_OR_NEWER
 		private readonly UnityEngine.Pool.ObjectPool<T> m_Pool;
-
-		public int CountAll
-		{
-			get
-			{
-				return m_Pool.CountAll;
-			}
-		}
-
-		public int CountActive
-		{
-			get
-			{
-				return m_Pool.CountActive;
-			}
-		}
-
-		public int CountInactive
-		{
-			get
-			{
-				return m_Pool.CountInactive;
-			}
-		}
-
-		public ObjectPool(
-			Func<T> createFunc,
-			Action<T> actionOnGet = null,
-			Action<T> actionOnRelease = null,
-			Action<T> actionOnDestroy = null,
-			bool collectionCheck = true,
-			int defaultCapacity = 10,
-			int maxSize = 10000)
-		{
-			m_Pool = new UnityEngine.Pool.ObjectPool<T>(createFunc, actionOnGet, actionOnRelease, actionOnDestroy, collectionCheck, defaultCapacity, maxSize);
-		}
-
-		public T Get()
-		{
-			return m_Pool.Get();
-		}
-
-		public PooledObject<T> Get(out T v)
-		{
-			var pooledObject = m_Pool.Get(out v);
-			return new PooledObject<T>(pooledObject);
-		}
-
-		public void Release(T element)
-		{
-			m_Pool.Release(element);
-		}
-
-		public void Clear()
-		{
-			m_Pool.Clear();
-		}
-#else
-		readonly Stack<T> m_Stack;
-		readonly Func<T> m_CreateFunc;
-		readonly Action<T> m_ActionOnGet;
-		readonly Action<T> m_ActionOnRelease;
-		readonly Action<T> m_ActionOnDestroy;
-		readonly int m_MaxSize;
-		bool m_CollectionCheck;
 
 #if ARBOR_DOC_JA
 		/// <summary>
@@ -99,7 +34,10 @@ namespace Arbor.Pool
 #endif
 		public int CountAll
 		{
-			get; private set;
+			get
+			{
+				return m_Pool.CountAll;
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -115,7 +53,7 @@ namespace Arbor.Pool
 		{
 			get
 			{
-				return CountAll - CountInactive;
+				return m_Pool.CountActive;
 			}
 		}
 
@@ -132,7 +70,7 @@ namespace Arbor.Pool
 		{
 			get
 			{
-				return m_Stack.Count;
+				return m_Pool.CountInactive;
 			}
 		}
 
@@ -159,7 +97,8 @@ namespace Arbor.Pool
 		/// <param name="defaultCapacity">The default capacity at which the stack is created</param>
 		/// <param name="maxSize">Maximum size of the pool. When the pool reaches its maximum size, the instances you try to return to the pool will be ignored and garbage collected.</param>
 #endif
-		public ObjectPool(Func<T> createFunc,
+		public ObjectPool(
+			Func<T> createFunc,
 			Action<T> actionOnGet = null,
 			Action<T> actionOnRelease = null,
 			Action<T> actionOnDestroy = null,
@@ -167,19 +106,7 @@ namespace Arbor.Pool
 			int defaultCapacity = 10,
 			int maxSize = 10000)
 		{
-			if (createFunc == null)
-				throw new ArgumentNullException(nameof(createFunc));
-
-			if (maxSize <= 0)
-				throw new ArgumentException("Max Size must be greater than 0", nameof(maxSize));
-
-			m_Stack = new Stack<T>(defaultCapacity);
-			m_CreateFunc = createFunc;
-			m_MaxSize = maxSize;
-			m_ActionOnGet = actionOnGet;
-			m_ActionOnRelease = actionOnRelease;
-			m_ActionOnDestroy = actionOnDestroy;
-			m_CollectionCheck = collectionCheck;
+			m_Pool = new UnityEngine.Pool.ObjectPool<T>(createFunc, actionOnGet, actionOnRelease, actionOnDestroy, collectionCheck, defaultCapacity, maxSize);
 		}
 
 #if ARBOR_DOC_JA
@@ -195,18 +122,7 @@ namespace Arbor.Pool
 #endif
 		public T Get()
 		{
-			T element;
-			if (m_Stack.Count == 0)
-			{
-				element = m_CreateFunc();
-				CountAll++;
-			}
-			else
-			{
-				element = m_Stack.Pop();
-			}
-			m_ActionOnGet?.Invoke(element);
-			return element;
+			return m_Pool.Get();
 		}
 
 #if ARBOR_DOC_JA
@@ -226,7 +142,8 @@ namespace Arbor.Pool
 #endif
 		public PooledObject<T> Get(out T v)
 		{
-			return new PooledObject<T>(v = Get(), this);
+			var pooledObject = m_Pool.Get(out v);
+			return new PooledObject<T>(pooledObject);
 		}
 
 #if ARBOR_DOC_JA
@@ -242,22 +159,7 @@ namespace Arbor.Pool
 #endif
 		public void Release(T element)
 		{
-			if (m_CollectionCheck && m_Stack.Count > 0)
-			{
-				if (m_Stack.Contains(element))
-					throw new InvalidOperationException("Trying to release an object that has already been released to the pool.");
-			}
-
-			m_ActionOnRelease?.Invoke(element);
-
-			if (CountInactive < m_MaxSize)
-			{
-				m_Stack.Push(element);
-			}
-			else
-			{
-				m_ActionOnDestroy?.Invoke(element);
-			}
+			m_Pool.Release(element);
 		}
 
 #if ARBOR_DOC_JA
@@ -271,18 +173,8 @@ namespace Arbor.Pool
 #endif
 		public void Clear()
 		{
-			if (m_ActionOnDestroy != null)
-			{
-				foreach (var item in m_Stack)
-				{
-					m_ActionOnDestroy(item);
-				}
-			}
-
-			m_Stack.Clear();
-			CountAll = 0;
+			m_Pool.Clear();
 		}
-#endif
 
 #if ARBOR_DOC_JA
 		/// <summary>

@@ -2,6 +2,7 @@
 //            Arbor 3: FSM & BT Graph Editor
 //		  Copyright(c) 2014-2021 caitsithware
 //-----------------------------------------------------
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,28 +20,10 @@ namespace Arbor.Pool
 	/// </summary>
 	/// <typeparam name="T">Pool type</typeparam>
 #endif
+	[Obsolete("use UnityEngine.Pool.GenericPool")] // The minimum supported Unity version is now 6.0, so UnityEngine.Pool is recommended.
 	public class GenericPool<T>
 		where T : class, new()
 	{
-#if UNITY_2021_1_OR_NEWER
-		public static T Get()
-		{
-			return UnityEngine.Pool.GenericPool<T>.Get();
-		}
-
-		public static PooledObject<T> Get(out T value)
-		{
-			var pooledObject = UnityEngine.Pool.GenericPool<T>.Get(out value);
-			return new PooledObject<T>(pooledObject);
-		}
-
-		public static void Release(T toRelease)
-		{
-			UnityEngine.Pool.GenericPool<T>.Release(toRelease);
-		}
-#else
-		internal static readonly ObjectPool<T> s_Pool = new ObjectPool<T>(() => new T(), null, null);
-
 #if ARBOR_DOC_JA
 		/// <summary>
 		/// プールからインスタンスを取り出す。
@@ -54,7 +37,7 @@ namespace Arbor.Pool
 #endif
 		public static T Get()
 		{
-			return s_Pool.Get();
+			return UnityEngine.Pool.GenericPool<T>.Get();
 		}
 
 #if ARBOR_DOC_JA
@@ -74,7 +57,8 @@ namespace Arbor.Pool
 #endif
 		public static PooledObject<T> Get(out T value)
 		{
-			return s_Pool.Get(out value);
+			var pooledObject = UnityEngine.Pool.GenericPool<T>.Get(out value);
+			return new PooledObject<T>(pooledObject);
 		}
 
 #if ARBOR_DOC_JA
@@ -90,8 +74,7 @@ namespace Arbor.Pool
 #endif
 		public static void Release(T toRelease)
 		{
-			s_Pool.Release(toRelease);
+			UnityEngine.Pool.GenericPool<T>.Release(toRelease);
 		}
-#endif
 	}
 }

@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 namespace Arbor.StateMachine.StateBehaviours
 {
+	using Arbor.Utilities;
+
 #if ARBOR_DOC_JA
 	/// <summary>
 	/// Rigidbody2Dの速度を加算する。
@@ -161,7 +163,7 @@ namespace Arbor.StateMachine.StateBehaviours
 					direction = target.transform.rotation * direction;
 					break;
 			}
-			target.linearVelocity += direction.normalized * _Speed.value;
+			Physics2DUtility.AddLinearVelocity(target, direction.normalized * _Speed.value);
 		}
 
 		// Use this for enter state

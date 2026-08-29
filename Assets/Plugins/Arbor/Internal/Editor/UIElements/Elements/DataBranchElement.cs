@@ -21,6 +21,7 @@ namespace ArborEditor.UIElements
 		private DataViewElement _DataViewElement;
 
 		private bool _IsHover;
+		private bool _IsAttached;
 
 		public DataBranchElement(NodeGraphEditor graphEditor)
 		{
@@ -35,10 +36,22 @@ namespace ArborEditor.UIElements
 			};
 			Add(_BezierElement);
 
+			RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
+			RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
 			RegisterCallback<MouseOverEvent>(OnMouseOver);
 			RegisterCallback<MouseOutEvent>(OnMouseOut);
 
 			this.AddManipulator(new ContextClickManipulator(OnContextClick));
+		}
+
+		void OnAttachToPanel(AttachToPanelEvent evt)
+		{
+			_IsAttached = true;
+		}
+
+		void OnDetachFromPanel(DetachFromPanelEvent evt)
+		{
+			_IsAttached = false;
 		}
 
 		void OnContextClick(ContextClickEvent evt)
@@ -140,7 +153,23 @@ namespace ArborEditor.UIElements
 			if (!_IsHover)
 			{
 				_IsHover = true;
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
+			}
+		}
+
+		void ChangeLayer()
+		{
+			if (!_IsAttached)
+				return;
+
+			if (_IsHover)
+			{
 				_GraphEditor.graphView.dataBranchOverlayLayer.Add(this);
+			}
+			else
+			{
+				_GraphEditor.graphView.dataBranchUnderlayLayer.Add(this);
 			}
 		}
 
@@ -149,7 +178,8 @@ namespace ArborEditor.UIElements
 			if (_IsHover)
 			{
 				_IsHover = false;
-				_GraphEditor.graphView.dataBranchUnderlayLayer.Add(this);
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
 			}
 		}
 
@@ -270,7 +300,7 @@ namespace ArborEditor.UIElements
 				Bezier2D bezier = branch.lineBezier;
 				Vector2 pos = _GraphView.GraphToElement(hierarchy.parent, bezier.GetPoint(0.5f));
 
-				transform.position = pos - size * 0.5f;
+				UIElementsUtility.SetTransformPosition(this, pos - size * 0.5f);
 			}
 
 			void OnGUI()

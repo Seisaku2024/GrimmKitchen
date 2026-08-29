@@ -63,7 +63,7 @@ namespace Arbor.Calculators
 		// Use this for calculate
 		public override void OnCalculate()
 		{
-			_Result.SetValue(_Value1.value.Div(_Value2.value));
+			_Result.SetValue(_Value1.value / _Value2.value);
 		}
 	}
 }

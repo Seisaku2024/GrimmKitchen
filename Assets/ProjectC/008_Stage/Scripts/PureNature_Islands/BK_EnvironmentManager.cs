@@ -1,161 +1,288 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BKPureNature
 {
     [ExecuteInEditMode]
-public class BK_EnvironmentManager : MonoBehaviour
-{
-    public Light directionalLight;
-
-    public Gradient sunColorGradient;
-    public Gradient fogColorGradient;
-    public Gradient cloudColorGradient;
-    public Gradient scatteringColorGradient;
-    public Gradient ambientColorGradient;
-
-    [Header("Color Gradients Enable Flags")]
-    public bool overrideSunColor = true;
-    public bool overrideFogColor = true;
-    public bool overrideCloudColor = true;
-    public bool overrideAmbientColor = true;
-
-    [Header("Base Wind")]
-    [Tooltip("Base wind animate the trunks")]
-    [Range(0f, 5f)]
-    public float baseWindPower = 3f;
-    [Tooltip("Base wind animate the trunks")]
-    public float baseWindSpeed = 1f;
-
-    [Header("Wind Burst")]
-    [Tooltip("Bursts are managed by a moving World-Space noise that multiply the base wind speed and power")]
-    [Range(0f, 10f)]
-    public float burstsPower = 0.5f;
-    [Tooltip("Speed of the Bursts noise")]
-    public float burstsSpeed = 5f;
-    [Tooltip("Size of the Bursts noise in Word-Space")]
-    public float burstsScale = 10f;
-
-    [Header("Micro Wind")]
-    [Tooltip("Micro wind animate the leaves")]
-    [Range(0f, 1f)]
-    public float microPower = 0.1f;
-    [Tooltip("Micro wind animate the leaves")]
-    public float microSpeed = 1f;
-    [Tooltip("Micro wind animate the leaves")]
-    public float microFrequency = 3f;
-
-    [Space(10)]
-    public float renderDistance = 30f;
-
-    [Space(10)]
-    public float Altitude = 1000f;
-    public float volumeSize = 500f;
-    public int volumeSamples = 25;
-
-    private float volumeOffset;
-    private Mesh quadMesh;
-    private Matrix4x4[] matrices;
-
-    [Space(10)]
-    [Tooltip("Material for the clouds")]
-    public Material cloudsMaterial;
-
-    private bool hasIssuedMaterialWarning = false;
-
-    void Awake()
+    public class BK_EnvironmentManager : MonoBehaviour
     {
-        quadMesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
-        matrices = new Matrix4x4[volumeSamples];
-    }
+        private const int MaxInstanceCount = 1023;
 
-    void Update()
-    {
-        UpdateEnvironment();
-        UpdateCloudsVolume();
-        UpdateLighting();
-    }
+        private static readonly int WindPowerId = Shader.PropertyToID("WindPower");
+        private static readonly int WindSpeedId = Shader.PropertyToID("WindSpeed");
+        private static readonly int WindBurstsPowerId = Shader.PropertyToID("WindBurstsPower");
+        private static readonly int WindBurstsSpeedId = Shader.PropertyToID("WindBurstsSpeed");
+        private static readonly int WindBurstsScaleId = Shader.PropertyToID("WindBurstsScale");
+        private static readonly int MicroPowerId = Shader.PropertyToID("MicroPower");
+        private static readonly int MicroSpeedId = Shader.PropertyToID("MicroSpeed");
+        private static readonly int MicroFrequencyId = Shader.PropertyToID("MicroFrequency");
+        private static readonly int GrassRenderDistanceId = Shader.PropertyToID("GrassRenderDist");
 
-    private void UpdateEnvironment()
-    {
-        Shader.SetGlobalFloat("WindPower", baseWindPower);
-        Shader.SetGlobalFloat("WindSpeed", baseWindSpeed);
-        Shader.SetGlobalFloat("WindBurstsPower", burstsPower);
-        Shader.SetGlobalFloat("WindBurstsSpeed", burstsSpeed);
-        Shader.SetGlobalFloat("WindBurstsScale", burstsScale);
-        Shader.SetGlobalFloat("MicroPower", microPower);
-        Shader.SetGlobalFloat("MicroSpeed", microSpeed);
-        Shader.SetGlobalFloat("MicroFrequency", microFrequency);
-        Shader.SetGlobalFloat("GrassRenderDist", renderDistance);
-    }
+        private static readonly int CloudsPositionId = Shader.PropertyToID("_cloudsPosition");
+        private static readonly int CloudsHeightId = Shader.PropertyToID("_cloudsHeight");
+        private static readonly int ScatteringColorId = Shader.PropertyToID("_ScatteringColor");
 
-    private void UpdateCloudsVolume()
-    {
-        volumeSamples = Mathf.Max(1, volumeSamples);
-        volumeSize = Mathf.Max(0, volumeSize);
+        public Light directionalLight;
 
-        if (cloudsMaterial == null)
+        public Gradient sunColorGradient;
+        public Gradient fogColorGradient;
+
+        // Kept for backward compatibility with existing scenes and prefabs.
+        public Gradient cloudColorGradient;
+        public Gradient scatteringColorGradient;
+        public Gradient ambientColorGradient;
+
+        [Header("Color Gradients Enable Flags")]
+        public bool overrideSunColor = true;
+        public bool overrideFogColor = true;
+        public bool overrideCloudColor = true;
+        public bool overrideAmbientColor = true;
+
+        [Header("Base Wind")]
+        [Tooltip("Base wind animates the trunks")]
+        [Range(0f, 5f)]
+        public float baseWindPower = 3f;
+
+        [Tooltip("Base wind animation speed")]
+        public float baseWindSpeed = 1f;
+
+        [Header("Wind Burst")]
+        [Tooltip("Bursts are managed by a moving world-space noise that multiplies the base wind speed and power")]
+        [Range(0f, 10f)]
+        public float burstsPower = 0.5f;
+
+        [Tooltip("Speed of the bursts noise")]
+        public float burstsSpeed = 5f;
+
+        [Tooltip("Size of the bursts noise in world space")]
+        public float burstsScale = 10f;
+
+        [Header("Micro Wind")]
+        [Tooltip("Micro wind animates the leaves")]
+        [Range(0f, 1f)]
+        public float microPower = 0.1f;
+
+        [Tooltip("Micro wind animation speed")]
+        public float microSpeed = 1f;
+
+        [Tooltip("Micro wind animation frequency")]
+        public float microFrequency = 3f;
+
+        [Space(10)]
+        public float renderDistance = 30f;
+
+        [Space(10)]
+        public float Altitude = 1000f;
+        public float volumeSize = 500f;
+
+        [Min(1)]
+        public int volumeSamples = 25;
+
+        [Space(10)]
+        [Tooltip("Material for the clouds")]
+        public Material cloudsMaterial;
+
+        private Mesh quadMesh;
+        private Matrix4x4[] matrices;
+        private MaterialPropertyBlock cloudProperties;
+
+        private int cachedVolumeSamples = -1;
+        private float cachedVolumeSize = float.NaN;
+        private float cachedAltitude = float.NaN;
+
+        private bool hasIssuedMaterialWarning;
+        private bool hasIssuedMeshWarning;
+
+        private void Awake()
         {
-            return;
+            EnsureInitialized();
         }
 
-        // Dynamically adjust the size of the matrices array to match volumeSamples
-        if (matrices.Length != volumeSamples)
+        private void OnEnable()
         {
-            matrices = new Matrix4x4[volumeSamples];
+            EnsureInitialized();
+            InvalidateCloudMatrices();
         }
 
-        if (!cloudsMaterial.HasProperty("_ScatteringColor"))
+        private void OnValidate()
         {
-            if (!hasIssuedMaterialWarning)
+            volumeSamples = Mathf.Clamp(volumeSamples, 1, MaxInstanceCount);
+            volumeSize = Mathf.Max(0f, volumeSize);
+            InvalidateCloudMatrices();
+        }
+
+        private void Update()
+        {
+            UpdateEnvironment();
+            UpdateLighting();
+            UpdateCloudsVolume();
+        }
+
+        private void EnsureInitialized()
+        {
+            if (quadMesh == null)
             {
-                Debug.LogWarning("The assigned material in the Cloud material slot of the EnvironmentManager isn't supported.");
-                hasIssuedMaterialWarning = true;
+                quadMesh = Resources.GetBuiltinResource<Mesh>("Quad.fbx");
             }
-            return;
+
+            if (cloudProperties == null)
+            {
+                cloudProperties = new MaterialPropertyBlock();
+            }
+
+            int sampleCount = Mathf.Clamp(volumeSamples, 1, MaxInstanceCount);
+            if (matrices == null || matrices.Length != sampleCount)
+            {
+                matrices = new Matrix4x4[sampleCount];
+            }
         }
-        else
+
+        private void InvalidateCloudMatrices()
         {
+            cachedVolumeSamples = -1;
+            cachedVolumeSize = float.NaN;
+            cachedAltitude = float.NaN;
+        }
+
+        private void UpdateEnvironment()
+        {
+            Shader.SetGlobalFloat(WindPowerId, baseWindPower);
+            Shader.SetGlobalFloat(WindSpeedId, baseWindSpeed);
+            Shader.SetGlobalFloat(WindBurstsPowerId, burstsPower);
+            Shader.SetGlobalFloat(WindBurstsSpeedId, burstsSpeed);
+            Shader.SetGlobalFloat(WindBurstsScaleId, burstsScale);
+            Shader.SetGlobalFloat(MicroPowerId, microPower);
+            Shader.SetGlobalFloat(MicroSpeedId, microSpeed);
+            Shader.SetGlobalFloat(MicroFrequencyId, microFrequency);
+            Shader.SetGlobalFloat(GrassRenderDistanceId, renderDistance);
+        }
+
+        private void UpdateCloudsVolume()
+        {
+            if (cloudsMaterial == null)
+            {
+                hasIssuedMaterialWarning = false;
+                return;
+            }
+
+            EnsureInitialized();
+
+            if (quadMesh == null)
+            {
+                if (!hasIssuedMeshWarning)
+                {
+                    Debug.LogWarning("The built-in Quad mesh could not be loaded by the EnvironmentManager.", this);
+                    hasIssuedMeshWarning = true;
+                }
+
+                return;
+            }
+
+            hasIssuedMeshWarning = false;
+
+            if (!cloudsMaterial.HasProperty(CloudsPositionId) ||
+                !cloudsMaterial.HasProperty(CloudsHeightId) ||
+                !cloudsMaterial.HasProperty(ScatteringColorId))
+            {
+                if (!hasIssuedMaterialWarning)
+                {
+                    Debug.LogWarning(
+                        "The assigned material in the Cloud material slot of the EnvironmentManager isn't supported.",
+                        this);
+                    hasIssuedMaterialWarning = true;
+                }
+
+                return;
+            }
+
             hasIssuedMaterialWarning = false;
+
+            int sampleCount = Mathf.Clamp(volumeSamples, 1, MaxInstanceCount);
+            float safeVolumeSize = Mathf.Max(0f, volumeSize);
+
+            if (matrices == null || matrices.Length != sampleCount)
+            {
+                matrices = new Matrix4x4[sampleCount];
+                InvalidateCloudMatrices();
+            }
+
+            RebuildCloudMatricesIfNeeded(sampleCount, safeVolumeSize);
+
+            cloudProperties.Clear();
+            cloudProperties.SetFloat(CloudsPositionId, Altitude);
+            cloudProperties.SetFloat(CloudsHeightId, safeVolumeSize);
+
+            if (overrideCloudColor && directionalLight != null)
+            {
+                cloudProperties.SetColor(ScatteringColorId, scatteringColorGradient.Evaluate(GetLightingTime()));
+            }
+
+            Graphics.DrawMeshInstanced(
+                quadMesh,
+                0,
+                cloudsMaterial,
+                matrices,
+                sampleCount,
+                cloudProperties);
         }
 
-        cloudsMaterial.SetFloat("_cloudsPosition", Altitude);
-        cloudsMaterial.SetFloat("_cloudsHeight", volumeSize);
-
-        volumeOffset = volumeSize / volumeSamples / 2f;
-        Vector3 cloudsStartPosition = new Vector3(0, Altitude, 0) + (Vector3.up * (volumeOffset * volumeSamples / 2f));
-
-        for (int i = 0; i < volumeSamples; i++)
+        private void RebuildCloudMatricesIfNeeded(int sampleCount, float safeVolumeSize)
         {
-            matrices[i] = Matrix4x4.TRS(cloudsStartPosition - (Vector3.up * volumeOffset * i), Quaternion.Euler(-90, 0, 0), new Vector3(10000, 10000, 10000));
-        }
+            if (cachedVolumeSamples == sampleCount &&
+                Mathf.Approximately(cachedVolumeSize, safeVolumeSize) &&
+                Mathf.Approximately(cachedAltitude, Altitude))
+            {
+                return;
+            }
 
-        Graphics.DrawMeshInstanced(quadMesh, 0, cloudsMaterial, matrices, volumeSamples);
-    }
+            // This preserves the original cloud-layer distribution so existing scenes
+            // keep the same appearance and volume placement.
+            float volumeOffset = safeVolumeSize / sampleCount / 2f;
+            Vector3 cloudsStartPosition =
+                new Vector3(0f, Altitude, 0f) + Vector3.up * (volumeOffset * sampleCount / 2f);
+
+            Quaternion rotation = Quaternion.Euler(-90f, 0f, 0f);
+            Vector3 scale = new Vector3(10000f, 10000f, 10000f);
+
+            for (int i = 0; i < sampleCount; i++)
+            {
+                Vector3 position = cloudsStartPosition - Vector3.up * (volumeOffset * i);
+                matrices[i] = Matrix4x4.TRS(position, rotation, scale);
+            }
+
+            cachedVolumeSamples = sampleCount;
+            cachedVolumeSize = safeVolumeSize;
+            cachedAltitude = Altitude;
+        }
 
         private void UpdateLighting()
         {
-            if (directionalLight == null) return;
+            if (directionalLight == null)
+            {
+                return;
+            }
 
-            float dot = Vector3.Dot(directionalLight.transform.forward, Vector3.up);
-            float time = (dot + 1f) / 2f;
+            float time = GetLightingTime();
 
             if (overrideFogColor)
+            {
                 RenderSettings.fogColor = fogColorGradient.Evaluate(time);
-            if (overrideSunColor)
-                directionalLight.color = sunColorGradient.Evaluate(time);
-            if (overrideAmbientColor)
-                RenderSettings.ambientLight = ambientColorGradient.Evaluate(time);
+            }
 
-            if (cloudsMaterial != null && cloudsMaterial.HasProperty("_ScatteringColor") && overrideCloudColor)
+            if (overrideSunColor)
             {
-                cloudsMaterial.SetColor("_ScatteringColor", scatteringColorGradient.Evaluate(time));
+                directionalLight.color = sunColorGradient.Evaluate(time);
             }
-            else if (cloudsMaterial == null)
+
+            if (overrideAmbientColor)
             {
-                Debug.LogError("cloudsMaterial is null. Please assign a material.");
+                RenderSettings.ambientLight = ambientColorGradient.Evaluate(time);
             }
+        }
+
+        private float GetLightingTime()
+        {
+            float dot = Vector3.Dot(directionalLight.transform.forward, Vector3.up);
+            return Mathf.Clamp01((dot + 1f) * 0.5f);
         }
     }
 }

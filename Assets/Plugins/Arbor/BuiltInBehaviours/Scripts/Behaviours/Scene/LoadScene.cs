@@ -110,7 +110,23 @@ namespace Arbor.StateMachine.StateBehaviours
 
 		IEnumerator WaitLoad(string sceneName, LoadSceneMode loadSceneMode)
 		{
+#if UNITY_EDITOR
+			var nextScene = SceneManager.GetSceneByName(sceneName);
+			if (nextScene.IsValid()
+				&& nextScene.buildIndex == -1)
+			{
+				// Even if a scene is not registered in the Build Profile, it will be loaded using the editor function if it is valid.
+				Debug.LogWarning($"Scene '{sceneName}' is not registered in the build profile. It will only be loaded via EditorSceneManager when playing in the editor.");
+				yield return UnityEditor.SceneManagement.EditorSceneManager.LoadSceneAsyncInPlayMode(nextScene.path,
+					new LoadSceneParameters(loadSceneMode));
+			}
+			else
+			{
+				yield return SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+			}
+#else
 			yield return SceneManager.LoadSceneAsync(sceneName, loadSceneMode);
+#endif
 
 			Scene scene = SceneManager.GetSceneByName(sceneName);
 			if (scene.IsValid())

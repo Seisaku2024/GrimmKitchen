@@ -20,7 +20,9 @@ namespace Arbor
 #endif
 	public static class AttributeHelper
 	{
+		private static object s_LockMemberAttributes = new object();
 		private static readonly Dictionary<MemberInfo, Attribute[]> _MemberAttributes = new Dictionary<MemberInfo, Attribute[]>();
+		private static object s_LockAssemblyAttributes = new object();
 		private static readonly Dictionary<Assembly, Attribute[]> _AssemblyAttributes = new Dictionary<Assembly, Attribute[]>();
 
 #if ARBOR_DOC_JA
@@ -39,10 +41,13 @@ namespace Arbor
 		public static Attribute[] GetAttributes(Assembly assembly)
 		{
 			Attribute[] attributes = null;
-			if (!_AssemblyAttributes.TryGetValue(assembly, out attributes))
+			lock (s_LockAssemblyAttributes)
 			{
-				attributes = assembly.GetCustomAttributes().ToArray();
-				_AssemblyAttributes.Add(assembly, attributes);
+				if (!_AssemblyAttributes.TryGetValue(assembly, out attributes))
+				{
+					attributes = assembly.GetCustomAttributes().ToArray();
+					_AssemblyAttributes.Add(assembly, attributes);
+				}
 			}
 
 			return attributes;
@@ -200,18 +205,21 @@ namespace Arbor
 		public static Attribute[] GetAttributes(MemberInfo member)
 		{
 			Attribute[] attributes = null;
-			if (!_MemberAttributes.TryGetValue(member, out attributes))
+			lock (s_LockMemberAttributes)
 			{
-				try
+				if (!_MemberAttributes.TryGetValue(member, out attributes))
 				{
-					attributes = member.GetCustomAttributes(typeof(Attribute), false) as Attribute[];
-				}
-				catch
-				{
-					attributes = new Attribute[0];
-				}
+					try
+					{
+						attributes = member.GetCustomAttributes(typeof(Attribute), false) as Attribute[];
+					}
+					catch
+					{
+						attributes = new Attribute[0];
+					}
 
-				_MemberAttributes.Add(member, attributes);
+					_MemberAttributes.Add(member, attributes);
+				}
 			}
 
 			return attributes;
@@ -473,7 +481,9 @@ namespace Arbor
 
 		static class AttributeCache<T> where T : Attribute
 		{
+			private static object s_LockAssemblyAttributes = new object();
 			private static Dictionary<Assembly, T[]> s_AssemblyAttributes = new Dictionary<Assembly, T[]>();
+			private static object s_LockMemberAttributes = new object();
 			private static Dictionary<MemberInfo, T[]> s_MemberAttributes = new Dictionary<MemberInfo, T[]>();
 
 			internal static T[] GetAttributes(Assembly assembly)
@@ -484,28 +494,31 @@ namespace Arbor
 				}
 
 				T[] result = null;
-				if (s_AssemblyAttributes.TryGetValue(assembly, out result))
+				lock (s_LockAssemblyAttributes)
 				{
-					return result;
-				}
-
-				List<T> list = new List<T>();
-
-				Attribute[] attributes = AttributeHelper.GetAttributes(assembly);
-				int attributeCount = attributes.Length;
-				for (int index = 0; index < attributeCount; index++)
-				{
-					T attribute = attributes[index] as T;
-
-					if (attribute != null)
+					if (s_AssemblyAttributes.TryGetValue(assembly, out result))
 					{
-						list.Add(attribute);
+						return result;
 					}
+
+					List<T> list = new List<T>();
+
+					Attribute[] attributes = AttributeHelper.GetAttributes(assembly);
+					int attributeCount = attributes.Length;
+					for (int index = 0; index < attributeCount; index++)
+					{
+						T attribute = attributes[index] as T;
+
+						if (attribute != null)
+						{
+							list.Add(attribute);
+						}
+					}
+
+					result = list.ToArray();
+
+					s_AssemblyAttributes.Add(assembly, result);
 				}
-
-				result = list.ToArray();
-
-				s_AssemblyAttributes.Add(assembly, result);
 
 				return result;
 			}
@@ -518,28 +531,31 @@ namespace Arbor
 				}
 
 				T[] result = null;
-				if (s_MemberAttributes.TryGetValue(member, out result))
+				lock (s_LockMemberAttributes)
 				{
-					return result;
-				}
-
-				List<T> list = new List<T>();
-
-				Attribute[] attributes = AttributeHelper.GetAttributes(member);
-				int attributeCount = attributes.Length;
-				for (int index = 0; index < attributeCount; index++)
-				{
-					T attribute = attributes[index] as T;
-
-					if (attribute != null)
+					if (s_MemberAttributes.TryGetValue(member, out result))
 					{
-						list.Add(attribute);
+						return result;
 					}
+
+					List<T> list = new List<T>();
+
+					Attribute[] attributes = AttributeHelper.GetAttributes(member);
+					int attributeCount = attributes.Length;
+					for (int index = 0; index < attributeCount; index++)
+					{
+						T attribute = attributes[index] as T;
+
+						if (attribute != null)
+						{
+							list.Add(attribute);
+						}
+					}
+
+					result = list.ToArray();
+
+					s_MemberAttributes.Add(member, result);
 				}
-
-				result = list.ToArray();
-
-				s_MemberAttributes.Add(member, result);
 
 				return result;
 			}

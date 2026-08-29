@@ -38,14 +38,28 @@ namespace Arbor.StateMachine.StateBehaviours
 		// Use this for enter state
 		public override void OnStateBegin()
 		{
-			var scene = SceneManager.GetActiveScene();
-
-			StartCoroutine(WaitLoad(scene.name));
+			StartCoroutine(WaitLoad());
 		}
 
-		IEnumerator WaitLoad(string sceneName)
+		IEnumerator WaitLoad()
 		{
-			yield return SceneManager.LoadSceneAsync(sceneName);
+			var scene = SceneManager.GetActiveScene();
+
+#if UNITY_EDITOR
+			if (scene.IsValid()
+				&& scene.buildIndex == -1)
+			{
+				// Even if a scene is not registered in the Build Profile, it will be loaded using the editor function if it is valid.
+				yield return UnityEditor.SceneManagement.EditorSceneManager.LoadSceneAsyncInPlayMode(scene.path, 
+					new LoadSceneParameters(LoadSceneMode.Single));
+			}
+			else
+			{
+				yield return SceneManager.LoadSceneAsync(scene.name);
+			}
+#else
+			yield return SceneManager.LoadSceneAsync(scene.name);
+#endif
 
 			Transition(_Done);
 		}

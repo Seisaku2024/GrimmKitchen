@@ -142,8 +142,8 @@ namespace ArborEditor
 
 			Rect fieldPosition = EditorGUITools.SubtractDropdownWidth(fieldAreaPosition);
 
-			int targetInstanceID = property.serializedObject.targetObject.GetInstanceID();
-			BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetInstanceID);
+			var targetObjectID = new ObjectId(property.serializedObject.targetObject);
+			BehaviourEditorGUI editorGUI = BehaviourEditorGUI.Get(targetObjectID);
 			if (editorGUI != null)
 			{
 				if (flexibleFieldProperty.IsShowOutsideSlot())

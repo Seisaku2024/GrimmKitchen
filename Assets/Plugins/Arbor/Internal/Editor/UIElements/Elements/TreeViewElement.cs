@@ -90,8 +90,8 @@ namespace ArborEditor.UIElements
 			_ListView.AddToClassList(s_ListViewName);
 			_ListView.onAfterDeserialize += UpdateSelection;
 
-			_ListView.RegisterCallbackSelectionChange(OnSelectionChange);
-			_ListView.RegisterCallbackItemsChosen(OnItemsChosen);
+			_ListView.selectionChanged += OnSelectionChange;
+			_ListView.itemsChosen += OnItemsChosen;
 
 			hierarchy.Add(_ListView);
 
@@ -408,7 +408,6 @@ namespace ArborEditor.UIElements
 			}
 
 			var renameOverlay = GetRenameOverlay();
-			renameOverlay.BeginRename(item.displayName, item.id, delay);
 
 			if (itemContainer != null)
 			{
@@ -421,6 +420,8 @@ namespace ArborEditor.UIElements
 				renameOverlay.attachTarget = label;
 			}
 			
+			renameOverlay.BeginRename(item.displayName, item.id, delay);
+
 			var index = _ViewItems.IndexOf(item);
 			if (index >= 0)
 			{
@@ -722,7 +723,7 @@ namespace ArborEditor.UIElements
 
 		public void ListViewRefresh()
 		{
-			_ListView.RebuildList();
+			_ListView.Rebuild();
 		}
 
 		public void UpdateViewTree()
@@ -738,7 +739,7 @@ namespace ArborEditor.UIElements
 
 		void UpdateSelection()
 		{
-			_ListView.UnregisterCallbackSelectionChange(OnSelectionChange);
+			_ListView.selectionChanged -= OnSelectionChange;
 
 			_ListView.ClearSelection();
 
@@ -751,7 +752,7 @@ namespace ArborEditor.UIElements
 				}
 			}
 
-			_ListView.RegisterCallbackSelectionChange(OnSelectionChange);
+			_ListView.selectionChanged += OnSelectionChange;
 		}
 	}
 }

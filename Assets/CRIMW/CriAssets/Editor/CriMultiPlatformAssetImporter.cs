@@ -1,4 +1,4 @@
-﻿/****************************************************************************
+/****************************************************************************
  *
  * Copyright (c) 2022 CRI Middleware Co., Ltd.
  *
@@ -60,7 +60,7 @@ namespace CriWare.Assets
 
 		protected static void CreateFile(string ext)
 		{
-			ProjectWindowUtil.CreateAssetWithContent($"New {typeof(T2).Name}.{ext}", "");
+			ProjectWindowUtil.CreateAssetWithTextContent($"New {typeof(T2).Name}.{ext}", "");
 			AssetDatabase.Refresh();
 		}
 	}

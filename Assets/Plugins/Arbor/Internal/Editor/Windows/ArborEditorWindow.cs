@@ -177,19 +177,19 @@ namespace ArborEditor
 		private NodeGraph _NodeGraphRoot = null;
 
 		[SerializeField]
-		private int _NodeGraphRootInstanceID = 0;
+		private ObjectId _NodeGraphRootInstanceID = default;
 
 		[SerializeField]
 		private NodeGraph _NodeGraphRootPrev = null;
 
 		[SerializeField]
-		private int _NodeGraphRootPrevInstanceID = 0;
+		private ObjectId _NodeGraphRootPrevInstanceID = default;
 
 		[SerializeField]
 		private NodeGraph _NodeGraphCurrent = null;
 
 		[SerializeField]
-		private int _NodeGraphCurrentInstanceID = 0;
+		private ObjectId _NodeGraphCurrentInstanceID = default;
 
 		[SerializeField]
 		private bool _IsLocked = false;
@@ -755,23 +755,23 @@ namespace ArborEditor
 		void RepairNodeGraphReferences(bool repairOnly = false)
 		{
 			bool repaired = false;
-			if (_NodeGraphRootPrev == null && _NodeGraphRootPrevInstanceID != 0)
+			if (_NodeGraphRootPrev == null && _NodeGraphRootPrevInstanceID.IsValid())
 			{
-				_NodeGraphRootPrev = EditorUtility.InstanceIDToObject(_NodeGraphRootPrevInstanceID) as NodeGraph;
+				_NodeGraphRootPrev = EditorObjectUtility.IdToObject(_NodeGraphRootPrevInstanceID) as NodeGraph;
 				if (!repairOnly)
 				{
 					if (_NodeGraphRootPrev == null)
 					{
-						_NodeGraphRootPrevInstanceID = 0;
+						_NodeGraphRootPrevInstanceID = ObjectId.None;
 					}
 					ShowGraphTabHeader(_NodeGraphRootPrev != null);
 					SetupToolbarObjectField();
 				}
 				repaired = true;
 			}
-			if (_NodeGraphRoot == null && _NodeGraphRootInstanceID != 0)
+			if (_NodeGraphRoot == null && _NodeGraphRootInstanceID.IsValid())
 			{
-				_NodeGraphRoot = EditorUtility.InstanceIDToObject(_NodeGraphRootInstanceID) as NodeGraph;
+				_NodeGraphRoot = EditorObjectUtility.IdToObject(_NodeGraphRootInstanceID) as NodeGraph;
 				if (_NodeGraphRoot != null)
 				{
 					RegisterRootGraphCallback();
@@ -781,7 +781,7 @@ namespace ArborEditor
 				{
 					if (_NodeGraphRoot == null)
 					{
-						_NodeGraphRootInstanceID = 0;
+						_NodeGraphRootInstanceID = ObjectId.None;
 					}
 					ShowGraphTab(_NodeGraphRoot != null);
 					if (_NodeGraphRoot != null)
@@ -792,9 +792,9 @@ namespace ArborEditor
 				}
 				repaired = true;
 			}
-			if (_NodeGraphCurrent == null && _NodeGraphCurrentInstanceID != 0)
+			if (_NodeGraphCurrent == null && _NodeGraphCurrentInstanceID.IsValid())
 			{
-				_NodeGraphCurrent = EditorUtility.InstanceIDToObject(_NodeGraphCurrentInstanceID) as NodeGraph;
+				_NodeGraphCurrent = EditorObjectUtility.IdToObject(_NodeGraphCurrentInstanceID) as NodeGraph;
 				if (_NodeGraphCurrent != null)
 				{
 					RegisterCurrentGraphCallback();
@@ -804,7 +804,7 @@ namespace ArborEditor
 				{
 					if (_NodeGraphCurrent == null)
 					{
-						_NodeGraphCurrentInstanceID = 0;
+						_NodeGraphCurrentInstanceID = ObjectId.None;
 					}
 				}
 				repaired = true;
@@ -915,13 +915,13 @@ namespace ArborEditor
 				if (_NodeGraphRootPrev == null)
 				{
 					_NodeGraphRootPrev = _NodeGraphRoot;
-					_NodeGraphRootPrevInstanceID = _NodeGraphRootPrev.GetInstanceID();
+					_NodeGraphRootPrevInstanceID = new ObjectId(_NodeGraphRootPrev);
 				}
 			}
 			else
 			{
 				_NodeGraphRootPrev = null;
-				_NodeGraphRootPrevInstanceID = 0;
+				_NodeGraphRootPrevInstanceID = ObjectId.None;
 			}
 
 			ShowGraphTabHeader(_NodeGraphRootPrev != null);
@@ -951,8 +951,8 @@ namespace ArborEditor
 			if (rootGraph != nodeGraph)
 			{
 				var ownerBehaviour = nodeGraph.ownerBehaviourObject;
-				int instanceID = ownerBehaviour != null ? ownerBehaviour.GetInstanceID() : nodeGraph.GetInstanceID();
-				ChangeCurrentNodeGraph(instanceID);
+				var targetObj = ownerBehaviour != null ? ownerBehaviour : nodeGraph;
+				ChangeCurrentNodeGraph(targetObj);
 			}
 		}
 
@@ -966,7 +966,7 @@ namespace ArborEditor
 			InternalSelectRootGraph(nodeGraph, false);
 		}
 
-		public void SelectExternalGraph(GraphTreeViewItem graphItem)
+		void SelectExternalGraph(GraphTreeViewItem graphItem)
 		{
 			NodeGraph rootGraph = graphItem.nodeGraph.rootGraph;
 
@@ -1009,10 +1009,14 @@ namespace ArborEditor
 			_GraphEditor.DirtyGraphExtents();
 		}
 
-		public void ChangeCurrentNodeGraph(int instanceId, bool liveTracking = false)
+		public void ChangeCurrentNodeGraph(Object obj, bool liveTracking = false)
 		{
-			var graphItem = _TreeView.FindItem(instanceId) as GraphTreeViewItem;
-			ChangeCurrentNodeGraph(graphItem, liveTracking);
+			var objectId = new ObjectId(obj);
+			if (_TreeItemIds.TryGetValue(objectId, out var treeItemId))
+			{
+				var graphItem = _TreeView.FindItem(treeItemId) as GraphTreeViewItem;
+				ChangeCurrentNodeGraph(graphItem, liveTracking);
+			}
 		}
 
 		private void ChangeCurrentNodeGraph(GraphTreeViewItem graphItem, bool liveTracking = false)
@@ -1147,7 +1151,7 @@ namespace ArborEditor
 			}
 		}
 
-		static void AddGraphItem(TreeViewItem parent, NodeGraph nodeGraph)
+		void AddGraphItem(TreeViewItem parent, NodeGraph nodeGraph, ref int nextId)
 		{
 			if (nodeGraph == null)
 			{
@@ -1176,12 +1180,17 @@ namespace ArborEditor
 						// It is repaired when reloading is performed by compiling, starting play, etc.
 						if (referenceGraph != null)
 						{
-							var newItem = new SubGraphTreeViewItem(behaviour.GetInstanceID(), subGraphBehaviour);
+							var objectId = new ObjectId(behaviour);
+							_TreeItemIds.Add(objectId, nextId);
+
+							var newItem = new SubGraphTreeViewItem(nextId, objectId, subGraphBehaviour);
 							parent.AddChild(newItem);
+
+							nextId++;
 
 							if (!subGraphBehaviour.isExternal)
 							{
-								AddGraphItem(newItem, referenceGraph);
+								AddGraphItem(newItem, referenceGraph, ref nextId);
 							}
 						}
 					}
@@ -1189,17 +1198,27 @@ namespace ArborEditor
 			}
 		}
 
+		private Dictionary<ObjectId, int> _TreeItemIds = new Dictionary<ObjectId, int>();
+
 		void BuildTree()
 		{
-			int currentId = _SelectedGraphItem != null ? _SelectedGraphItem.id : 0;
+			var currentId = _SelectedGraphItem != null ? _SelectedGraphItem.objectId : ObjectId.None;
 			_TreeView.ClearTree();
+
+			_TreeItemIds.Clear();
 
 			if (_NodeGraphRoot != null)
 			{
-				var item = new GraphTreeViewItem(_NodeGraphRoot);
+				var objectId = new ObjectId(_NodeGraphRoot);
+				var id = 1;
+
+				_TreeItemIds.Add(objectId, id);
+				var item = new GraphTreeViewItem(id, objectId, _NodeGraphRoot);
 				_TreeView.root.AddChild(item);
 
-				AddGraphItem(item, _NodeGraphRoot);
+				id++;
+
+				AddGraphItem(item, _NodeGraphRoot, ref id);
 			}
 
 			_TreeView.SetupDepths();
@@ -1208,9 +1227,10 @@ namespace ArborEditor
 
 			GraphTreeViewItem nextSelectedGraphItem = null;
 
-			if (currentId != 0)
+			if (currentId.IsValid()
+				&& _TreeItemIds.TryGetValue(currentId, out var nextSelectedId))
 			{
-				nextSelectedGraphItem = _TreeView.FindItem(currentId) as GraphTreeViewItem;
+				nextSelectedGraphItem = _TreeView.FindItem(nextSelectedId) as GraphTreeViewItem;
 			}
 			if (nextSelectedGraphItem == null && _NodeGraphCurrent != null)
 			{
@@ -1264,7 +1284,7 @@ namespace ArborEditor
 			if (_NodeGraphRoot is object)
 			{
 				UnregisterRootGraphCallback();
-				_NodeGraphRootInstanceID = 0;
+				_NodeGraphRootInstanceID = ObjectId.None;
 			}
 
 			if (_NodeGraphRoot != nodeGraph)
@@ -1287,11 +1307,11 @@ namespace ArborEditor
 			if (_NodeGraphRoot != null)
 			{
 				RegisterRootGraphCallback();
-				_NodeGraphRootInstanceID = _NodeGraphRoot.GetInstanceID();
+				_NodeGraphRootInstanceID = new ObjectId(_NodeGraphRoot);
 			}
 			else
 			{
-				_NodeGraphRootInstanceID = 0;
+				_NodeGraphRootInstanceID = ObjectId.None;
 			}
 		}
 
@@ -1314,9 +1334,9 @@ namespace ArborEditor
 			List<TreeViewItem> items = new List<TreeViewItem>();
 
 			NodeGraph currentGraph = _NodeGraphCurrent;
-			if (currentGraph == null && _NodeGraphCurrentInstanceID != 0)
+			if (currentGraph == null && _NodeGraphCurrentInstanceID.IsValid())
 			{
-				currentGraph = EditorUtility.InstanceIDToObject(_NodeGraphCurrentInstanceID) as NodeGraph;
+				currentGraph = EditorObjectUtility.IdToObject(_NodeGraphCurrentInstanceID) as NodeGraph;
 			}
 			var currentItem = FindTreeViewItem(currentGraph);
 			while (currentItem != null && currentItem.id != 0)
@@ -1366,7 +1386,7 @@ namespace ArborEditor
 			if (_NodeGraphCurrent is object)
 			{
 				UnregisterCurrentGraphCallback();
-				_NodeGraphCurrentInstanceID = 0;
+				_NodeGraphCurrentInstanceID = ObjectId.None;
 			}
 
 			_NodeGraphCurrent = nodeGraph;
@@ -1376,11 +1396,11 @@ namespace ArborEditor
 			if (_NodeGraphCurrent != null)
 			{
 				RegisterCurrentGraphCallback();
-				_NodeGraphCurrentInstanceID = _NodeGraphCurrent.GetInstanceID();
+				_NodeGraphCurrentInstanceID = new ObjectId(_NodeGraphCurrent);
 			}
 			else
 			{
-				_NodeGraphCurrentInstanceID = 0;
+				_NodeGraphCurrentInstanceID = ObjectId.None;
 			}
 
 			BuildBreadcrumbs();
@@ -2065,7 +2085,7 @@ namespace ArborEditor
 		{
 			if (_GraphEditor != null)
 			{
-				_ToolbarGraphEditor.style.display = StyleKeyword.Null;
+				_ToolbarGraphEditor.style.display = DisplayStyle.Flex;
 			}
 			else
 			{
@@ -2078,46 +2098,12 @@ namespace ArborEditor
 			ArborUpdateCheck updateCheck = ArborUpdateCheck.instance;
 			if (updateCheck.isUpdated || updateCheck.isUpgrade)
 			{
-				_ToolbarNotificationButton.style.display = StyleKeyword.Null;
+				_ToolbarNotificationButton.style.display = DisplayStyle.Flex;
 			}
 			else
 			{
 				_ToolbarNotificationButton.style.display = DisplayStyle.None;
 			}
 		}
-
-#if !UNITY_2021_1_OR_NEWER
-		// Worked around a Unity issue that wasn't reflected when renamed.
-		sealed class ObjectField : UnityEditor.UIElements.ObjectField
-		{
-			private readonly System.Action _AsyncOnProjectOrHierarchyChangedCallback;
-			private readonly System.Action _OnProjectOrHierarchyChangedCallback;
-
-			public ObjectField() : base()
-			{
-				_AsyncOnProjectOrHierarchyChangedCallback = () => schedule.Execute(_OnProjectOrHierarchyChangedCallback);
-				_OnProjectOrHierarchyChangedCallback = UpdateContent;
-				RegisterCallback<AttachToPanelEvent>((evt) =>
-				{
-					EditorApplication.projectChanged += _AsyncOnProjectOrHierarchyChangedCallback;
-					EditorApplication.hierarchyChanged += _OnProjectOrHierarchyChangedCallback;
-				});
-				RegisterCallback<DetachFromPanelEvent>((evt) =>
-				{
-					EditorApplication.projectChanged -= _AsyncOnProjectOrHierarchyChangedCallback;
-					EditorApplication.hierarchyChanged -= _OnProjectOrHierarchyChangedCallback;
-				});
-			}
-
-			void UpdateContent()
-			{
-				// Call ObjectFieldDisplay.Update ().
-				// Since it cannot be called internally, change the objectType and call it indirectly.
-				var tmpType = objectType;
-				objectType = typeof(Object);
-				objectType = tmpType;
-			}
-		}
-#endif
 	}
 }

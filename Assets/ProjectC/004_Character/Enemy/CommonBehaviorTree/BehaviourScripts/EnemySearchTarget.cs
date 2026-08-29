@@ -34,7 +34,7 @@ public class EnemySearchTarget : Decorator
         transform.root.TryGetComponent(out m_myCollider);
         if (transform.root.TryGetComponent(out AgentController agent))
         {
-            m_startPos = agent.StartPosition;
+            m_startPos = agent.transform.position;
         }
 
         enemyParameters = m_enemyParameters.value as EnemyParameters;

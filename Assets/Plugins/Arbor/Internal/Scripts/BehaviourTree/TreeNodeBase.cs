@@ -15,6 +15,7 @@ namespace Arbor.BehaviourTree
 	/// Base class of Behavior Tree's node.
 	/// </summary>
 #endif
+	[System.Serializable]
 	public abstract class TreeNodeBase : Node
 	{
 		#region Serialize fields

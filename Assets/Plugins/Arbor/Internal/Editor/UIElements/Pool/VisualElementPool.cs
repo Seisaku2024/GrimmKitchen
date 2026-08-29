@@ -6,11 +6,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Pool;
 
 namespace ArborEditor.UIElements.Pool
 {
-	using Arbor.Pool;
-
 	public class VisualElementPool<T> where T : VisualElement, new()
 	{
 		internal static readonly ObjectPool<T> s_Pool = new ObjectPool<T>(

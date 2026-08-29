@@ -80,7 +80,7 @@ namespace ArborEditor.UIElements
 				Vector2 size = new Vector2(resolvedStyle.width, resolvedStyle.height);
 				pos -= size * 0.5f;
 
-				transform.position = pos;
+				UIElementsUtility.SetTransformPosition(this, pos);
 			}
 		}
 

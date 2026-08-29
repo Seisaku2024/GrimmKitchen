@@ -25,6 +25,7 @@ namespace ArborEditor.BehaviourTree.UIElements
 		}
 
 		private bool _IsHover;
+		private bool _IsAttached;
 
 		public NodeBranchElement(BehaviourTreeGraphEditor graphEditor)
 		{
@@ -39,10 +40,22 @@ namespace ArborEditor.BehaviourTree.UIElements
 			};
 			Add(_BezierElement);
 
+			RegisterCallback<AttachToPanelEvent>(OnAttachToPanel);
+			RegisterCallback<DetachFromPanelEvent>(OnDetachFromPanel);
 			RegisterCallback<MouseOverEvent>(OnMouseOver);
 			RegisterCallback<MouseOutEvent>(OnMouseOut);
 
 			this.AddManipulator(new ContextClickManipulator(OnContextClick));
+		}
+
+		void OnAttachToPanel(AttachToPanelEvent evt)
+		{
+			_IsAttached = true;
+		}
+
+		void OnDetachFromPanel(DetachFromPanelEvent evt)
+		{
+			_IsAttached = false;
 		}
 
 		void OnContextClick(ContextClickEvent evt)
@@ -88,7 +101,25 @@ namespace ArborEditor.BehaviourTree.UIElements
 			if (!_IsHover)
 			{
 				_IsHover = true;
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
+			}
+		}
+
+		void ChangeLayer()
+		{
+			if (!_IsAttached)
+			{
+				return;
+			}
+
+			if (_IsHover)
+			{
 				_GraphEditor.graphView.branchOverlayLayer.Add(this);
+			}
+			else
+			{
+				_GraphEditor.graphView.branchUnderlayLayer.Add(this);
 			}
 		}
 
@@ -97,7 +128,8 @@ namespace ArborEditor.BehaviourTree.UIElements
 			if (_IsHover)
 			{
 				_IsHover = false;
-				_GraphEditor.graphView.branchUnderlayLayer.Add(this);
+				EditorApplication.delayCall -= ChangeLayer;
+				EditorApplication.delayCall += ChangeLayer;
 			}
 		}
 

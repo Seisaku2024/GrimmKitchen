@@ -14,7 +14,7 @@ namespace ArborEditor
 		[MenuItem("Assets/Create/Arbor/StateBehaviour C# Script", false, 100)]
 		public static void CreateCSharpScriptStateBehaviour()
 		{
-			ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<DoCreateScriptAsset>(), "NewStateBehaviourScript.cs", DefaultScriptIcon.CSharpIcon, _StateBehaviourCSharpTemplatePath);
+			ArborScriptCreator.StartNameEditing("NewStateBehaviourScript.cs", _StateBehaviourCSharpTemplatePath);
 		}
 	}
 }

@@ -17,6 +17,7 @@ namespace Arbor
 	/// </summary>
 	/// <typeparam name="T">The type of the Component to input</typeparam>
 #endif
+	[System.Serializable]
 	public class InputSlotComponent<T> : InputSlot<T> where T : Component
 	{
 #if ARBOR_DOC_JA

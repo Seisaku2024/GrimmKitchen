@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Pool;
 
 namespace ArborEditor.UIElements
 {
@@ -296,7 +297,7 @@ namespace ArborEditor.UIElements
 
 			// We want to send enter events after all the leave events.
 			// We will store the elements being entered in this list.
-			using (Arbor.Pool.ListPool<VisualElement>.Get(out var enteringElements))
+			using (ListPool<VisualElement>.Get(out var enteringElements))
 			{
 				if (enteringElements.Capacity < currDepth)
 				{

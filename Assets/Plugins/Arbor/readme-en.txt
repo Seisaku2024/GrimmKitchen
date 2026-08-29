@@ -71,10 +71,10 @@ In this way, which actions (whether to go around or approach the player) are pri
 
 ## Documents included
 
-* Assets/Plugins/Arbor/readme-en.txt
+* Packages/Arbor 3: FSM & BT Graph Editor/readme-en.txt
   This file
   Basic outline and notes
-* Assets/Plugins/Arbor/CHANGELOG-ja
+* Packages/Arbor 3: FSM & BT Graph Editor/CHANGELOG-ja
   Update log
 
 ## Detailed documentation
@@ -112,8 +112,19 @@ See online documentation or downloaded documentation.
 
 # Example scene
 
-The example scene is in the following folder in the project.
-Assets/Plugins/Arbor/Examples/
+Import the sample scene from the Package Manager.
+
+1. Select "Window > Package Manager" from the menu.
+2. Select the In Project category in the Package Manager window.
+3. Select "Arbor 3: FSM & BT Graph Editor" (the one with the Custom tag) from the package list.
+4. Select the "Samples" tab in the package details section.
+5. Click the "Import" button next to Examples.
+6. Click the "All" button in the Import Unity Package window to select everything.
+7. Click the "Import" button in the Import Unity Package window.
+
+The following folders will be added after importing:
+
+Assets/Arbor/Examples/
 
 For details of each sample, refer to readme-en.txt under the Examples folder.
 
@@ -141,21 +152,20 @@ Please be sure to read when updating Arbor.
 1. Please be sure to make a backup of the project before the update.
 2. If you are opening an existing scene, create a new scene from “File / New Scene” in the menu.
 3. If you are opening the Arbor Editor window, close it once.
-4. Already Removed Arbor folder that have been imported.
-5. Import a new version of Arbor.
+4. Select "Window > Package Manager" from the menu.
+5. Select the "In Project" category in the Package Manager window.
+6. Select "Arbor 3: FSM & BT Graph Editor" (the one with the Custom tag) from the package list.
+7. Click the "Remove" button in the details section.
+8. Click the "Yes" button in the confirmation dialog.
+9. Select the "My Assets" category in the Package Manager window.
+10. Select "Arbor 3: FSM & BT Graph Editor" from the asset list.
+11. Click the "Download update version number" button in the details section.
+12. After the download is complete, click the "Import version number to project" button.
+13. Click the "All" button in the Import Unity Package window to select everything.
+14. Click the "Import" button in the Import Unity Package window.
 
 ## Version update guide
 
 Please refer to the following pages for the update guide for each version of Arbor.
 
-https://caitsithware.com/assets/arbor/docs/en/manual/updateguide.html
-
-
-
-# MadeWithArbor3 logo asset
-
-We have prepared a logo asset for use in the work using Arbor3.
-
-Posting is optional, but if you would like to post it, please download it from the following page and use it.
-
-https://arbor.caitsithware.com/en/madewitharbo3-logo-assets/
+https://arbor-docs.caitsithware.com/en/manual/updateguide.html

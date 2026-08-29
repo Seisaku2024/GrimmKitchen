@@ -52,7 +52,7 @@ namespace Arbor.Calculators
 		public override void OnCalculate()
 		{
 			Vector2Int v = _Input.value;
-			_Result.SetValue(v.Negative());
+			_Result.SetValue(-v);
 		}
 	}
 }

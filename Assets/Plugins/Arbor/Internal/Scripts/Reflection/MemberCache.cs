@@ -300,11 +300,17 @@ namespace Arbor
 			}
 		}
 
+		private static object s_LockMethodCache = new object();
 		private static Dictionary<MethodKey, MethodInfo> s_MethodCache = new Dictionary<MethodKey, MethodInfo>();
+		private static object s_LockFieldCache = new object();
 		private static Dictionary<FieldKey, FieldInfo> s_FieldCache = new Dictionary<FieldKey, FieldInfo>();
+		private static object s_LockPropertyCache = new object();
 		private static Dictionary<PropertyKey, PropertyInfo> s_PropertyCache = new Dictionary<PropertyKey, PropertyInfo>();
+		private static object s_LockRenamedMethodCache = new object();
 		private static Dictionary<System.Type, Dictionary<RenamedMethodKey, MethodInfo>> s_RenamedMethodCache = new Dictionary<System.Type, Dictionary<RenamedMethodKey, MethodInfo>>();
+		private static object s_LockRenamedFieldCache = new object();
 		private static Dictionary<System.Type, Dictionary<RenamedFieldKey, FieldInfo>> s_RenamedFieldCache = new Dictionary<System.Type, Dictionary<RenamedFieldKey, FieldInfo>>();
+		private static object s_LockRenamedPropertyCache = new object();
 		private static Dictionary<System.Type, Dictionary<RenamedPropertyKey, PropertyInfo>> s_RenamedPropertyCache = new Dictionary<System.Type, Dictionary<RenamedPropertyKey, PropertyInfo>>();
 
 #if ARBOR_DOC_JA
@@ -318,9 +324,18 @@ namespace Arbor
 #endif
 		public static void Clear()
 		{
-			s_MethodCache.Clear();
-			s_FieldCache.Clear();
-			s_PropertyCache.Clear();
+			lock (s_LockMethodCache)
+			{
+				s_MethodCache.Clear();				
+			}
+			lock (s_LockFieldCache)
+			{
+				s_FieldCache.Clear();
+			}
+			lock (s_LockPropertyCache)
+			{
+				s_PropertyCache.Clear();
+			}
 		}
 
 #if ARBOR_DOC_JA
@@ -345,10 +360,13 @@ namespace Arbor
 			MethodKey key = new MethodKey(type, methodName, arguments);
 
 			MethodInfo methodInfo = null;
-			if (!s_MethodCache.TryGetValue(key, out methodInfo))
+			lock (s_LockMethodCache)
 			{
-				methodInfo = key.GetMethodInfo();
-				s_MethodCache.Add(key, methodInfo);
+				if (!s_MethodCache.TryGetValue(key, out methodInfo))
+				{
+					methodInfo = key.GetMethodInfo();
+					s_MethodCache.Add(key, methodInfo);
+				}
 			}
 
 			return methodInfo;
@@ -374,33 +392,36 @@ namespace Arbor
 		public static MethodInfo GetMethodInfoRenamedFrom(System.Type type, string methodName, System.Type[] arguments)
 		{
 			Dictionary<RenamedMethodKey, MethodInfo> methodCache = null;
-			if (!s_RenamedMethodCache.TryGetValue(type, out methodCache))
+			lock (s_LockRenamedMethodCache)
 			{
-				methodCache = new Dictionary<RenamedMethodKey, MethodInfo>();
-
-				var methods = type.GetMethods();
-				for (int methodIndex = 0; methodIndex < methods.Length; methodIndex++)
+				if (!s_RenamedMethodCache.TryGetValue(type, out methodCache))
 				{
-					MethodInfo info = methods[methodIndex];
-					RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
-					if (attr == null)
+					methodCache = new Dictionary<RenamedMethodKey, MethodInfo>();
+
+					var methods = type.GetMethods();
+					for (int methodIndex = 0; methodIndex < methods.Length; methodIndex++)
 					{
-						continue;
+						MethodInfo info = methods[methodIndex];
+						RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
+						if (attr == null)
+						{
+							continue;
+						}
+
+						ParameterInfo[] parameters = info.GetParameters();
+
+						System.Type[] argumentTypes = new System.Type[parameters.Length];
+						for (int parameterIndex = 0; parameterIndex < parameters.Length; parameterIndex++)
+						{
+							argumentTypes[parameterIndex] = parameters[parameterIndex].ParameterType;
+						}
+
+						RenamedMethodKey oldKey = new RenamedMethodKey(attr.oldName, argumentTypes);
+						methodCache.Add(oldKey, info);
 					}
 
-					ParameterInfo[] parameters = info.GetParameters();
-
-					System.Type[] argumentTypes = new System.Type[parameters.Length];
-					for (int parameterIndex = 0; parameterIndex < parameters.Length; parameterIndex++)
-					{
-						argumentTypes[parameterIndex] = parameters[parameterIndex].ParameterType;
-					}
-
-					RenamedMethodKey oldKey = new RenamedMethodKey(attr.oldName, argumentTypes);
-					methodCache.Add(oldKey, info);
+					s_RenamedMethodCache.Add(type, methodCache);
 				}
-
-				s_RenamedMethodCache.Add(type, methodCache);
 			}
 
 			if (methodCache == null)
@@ -438,10 +459,13 @@ namespace Arbor
 			FieldKey key = new FieldKey(type, fieldName);
 
 			FieldInfo fieldInfo = null;
-			if (!s_FieldCache.TryGetValue(key, out fieldInfo))
+			lock (s_LockFieldCache)
 			{
-				fieldInfo = key.GetFieldInfo();
-				s_FieldCache.Add(key, fieldInfo);
+				if (!s_FieldCache.TryGetValue(key, out fieldInfo))
+				{
+					fieldInfo = key.GetFieldInfo();
+					s_FieldCache.Add(key, fieldInfo);
+				}
 			}
 
 			return fieldInfo;
@@ -467,25 +491,28 @@ namespace Arbor
 		public static FieldInfo GetFieldInfoRenamedFrom(System.Type type, string fieldName, System.Type fieldType)
 		{
 			Dictionary<RenamedFieldKey, FieldInfo> fieldCache = null;
-			if (!s_RenamedFieldCache.TryGetValue(type, out fieldCache))
+			lock (s_LockRenamedFieldCache)
 			{
-				fieldCache = new Dictionary<RenamedFieldKey, FieldInfo>();
-
-				var fields = type.GetFields();
-				for (int fieldIndex = 0; fieldIndex < fields.Length; fieldIndex++)
+				if (!s_RenamedFieldCache.TryGetValue(type, out fieldCache))
 				{
-					FieldInfo info = fields[fieldIndex];
-					RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
-					if (attr == null)
+					fieldCache = new Dictionary<RenamedFieldKey, FieldInfo>();
+
+					var fields = type.GetFields();
+					for (int fieldIndex = 0; fieldIndex < fields.Length; fieldIndex++)
 					{
-						continue;
+						FieldInfo info = fields[fieldIndex];
+						RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
+						if (attr == null)
+						{
+							continue;
+						}
+
+						RenamedFieldKey oldKey = new RenamedFieldKey(info.FieldType, attr.oldName);
+						fieldCache.Add(oldKey, info);
 					}
 
-					RenamedFieldKey oldKey = new RenamedFieldKey(info.FieldType, attr.oldName);
-					fieldCache.Add(oldKey, info);
+					s_RenamedFieldCache.Add(type, fieldCache);
 				}
-
-				s_RenamedFieldCache.Add(type, fieldCache);
 			}
 
 			if (fieldCache == null)
@@ -523,10 +550,13 @@ namespace Arbor
 			PropertyKey key = new PropertyKey(type, propertyName);
 
 			PropertyInfo propertyInfo = null;
-			if (!s_PropertyCache.TryGetValue(key, out propertyInfo))
+			lock (s_LockPropertyCache)
 			{
-				propertyInfo = key.GetPropertyInfo();
-				s_PropertyCache.Add(key, propertyInfo);
+				if (!s_PropertyCache.TryGetValue(key, out propertyInfo))
+				{
+					propertyInfo = key.GetPropertyInfo();
+					s_PropertyCache.Add(key, propertyInfo);
+				}
 			}
 
 			return propertyInfo;
@@ -553,25 +583,28 @@ namespace Arbor
 		public static PropertyInfo GetPropertyInfoRenamedFrom(System.Type type, string propertyName, System.Type propertyType)
 		{
 			Dictionary<RenamedPropertyKey, PropertyInfo> propertyCache = null;
-			if (!s_RenamedPropertyCache.TryGetValue(type, out propertyCache))
+			lock (s_LockRenamedPropertyCache)
 			{
-				propertyCache = new Dictionary<RenamedPropertyKey, PropertyInfo>();
-
-				var properties = type.GetProperties();
-				for (int propertyIndex = 0; propertyIndex < properties.Length; propertyIndex++)
+				if (!s_RenamedPropertyCache.TryGetValue(type, out propertyCache))
 				{
-					PropertyInfo info = properties[propertyIndex];
-					RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
-					if (attr == null)
+					propertyCache = new Dictionary<RenamedPropertyKey, PropertyInfo>();
+
+					var properties = type.GetProperties();
+					for (int propertyIndex = 0; propertyIndex < properties.Length; propertyIndex++)
 					{
-						continue;
+						PropertyInfo info = properties[propertyIndex];
+						RenamedFromAttribute attr = AttributeHelper.GetAttribute<RenamedFromAttribute>(info);
+						if (attr == null)
+						{
+							continue;
+						}
+
+						RenamedPropertyKey oldKey = new RenamedPropertyKey(info.PropertyType, attr.oldName);
+						propertyCache.Add(oldKey, info);
 					}
 
-					RenamedPropertyKey oldKey = new RenamedPropertyKey(info.PropertyType, attr.oldName);
-					propertyCache.Add(oldKey, info);
+					s_RenamedPropertyCache.Add(type, propertyCache);
 				}
-
-				s_RenamedPropertyCache.Add(type, propertyCache);
 			}
 
 			if (propertyCache == null)

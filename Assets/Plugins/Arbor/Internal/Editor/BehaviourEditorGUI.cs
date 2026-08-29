@@ -21,21 +21,21 @@ namespace ArborEditor
 	[System.Serializable]
 	public class BehaviourEditorGUI
 	{
-		private static Dictionary<int, BehaviourEditorGUI> s_BehaviourEditors = new Dictionary<int, BehaviourEditorGUI>();
+		private static Dictionary<ObjectId, BehaviourEditorGUI> s_BehaviourEditors = new Dictionary<ObjectId, BehaviourEditorGUI>();
 
-		static void Registory(int instanceID, BehaviourEditorGUI editor)
+		static void Registory(ObjectId id, BehaviourEditorGUI editor)
 		{
-			s_BehaviourEditors[instanceID] = editor;
+			s_BehaviourEditors[id] = editor;
 		}
 
-		static void Unregistory(int instanceID)
+		static void Unregistory(ObjectId id)
 		{
-			s_BehaviourEditors.Remove(instanceID);
+			s_BehaviourEditors.Remove(id);
 		}
 
-		public static BehaviourEditorGUI Get(int instancceID)
+		internal static BehaviourEditorGUI Get(ObjectId id)
 		{
-			if (s_BehaviourEditors.TryGetValue(instancceID, out var editor))
+			if (s_BehaviourEditors.TryGetValue(id, out var editor))
 			{
 				return editor;
 			}
@@ -46,7 +46,7 @@ namespace ArborEditor
 		private NodeEditor _NodeEditor;
 		private Object _BehaviourObj;
 		private bool _IsValidObject = false;
-		private int _InstanceID;
+		private ObjectId _ObjectId;
 		private Editor _Editor;
 		private MonoScript _Script;
 
@@ -65,14 +65,6 @@ namespace ArborEditor
 			get
 			{
 				return _BehaviourObj;
-			}
-		}
-
-		public int behaviourInstanceID
-		{
-			get
-			{
-				return _InstanceID;
 			}
 		}
 
@@ -133,10 +125,10 @@ namespace ArborEditor
 				_InspectorGUIElement = null;
 			}
 
-			if (_InstanceID != 0)
+			if (_ObjectId.IsValid())
 			{
-				Unregistory(_InstanceID);
-				_InstanceID = 0;
+				Unregistory(_ObjectId);
+				_ObjectId = ObjectId.None;
 			}
 
 			DestroyEditor();
@@ -150,8 +142,8 @@ namespace ArborEditor
 
 			if (_BehaviourObj != null)
 			{
-				_InstanceID = _BehaviourObj.GetInstanceID();
-				Registory(_InstanceID, this);
+				_ObjectId = new ObjectId(_BehaviourObj);
+				Registory(_ObjectId, this);
 			}
 
 			CreateInspectorGUIElement();
@@ -246,10 +238,10 @@ namespace ArborEditor
 				_Editor = null;
 			}
 
-			if (_InstanceID != 0)
+			if (_ObjectId.IsValid())
 			{
-				Unregistory(_InstanceID);
-				_InstanceID = 0;
+				Unregistory(_ObjectId);
+				_ObjectId = ObjectId.None;
 			}
 		}
 
@@ -777,18 +769,18 @@ namespace ArborEditor
 		{
 			if (_BehaviourObj != null)
 			{
-				int instanceID = _BehaviourObj.GetInstanceID();
-				if (_InstanceID != 0 && _InstanceID != instanceID)
+				var objectId = new ObjectId(_BehaviourObj);
+				if (_ObjectId.IsValid() && _ObjectId != objectId)
 				{
-					Unregistory(_InstanceID);
+					Unregistory(_ObjectId);
 				}
-				_InstanceID = instanceID;
-				Registory(_InstanceID, this);
+				_ObjectId = objectId;
+				Registory(_ObjectId, this);
 			}
-			else if (_InstanceID != 0)
+			else if (_ObjectId.IsValid())
 			{
-				Unregistory(_InstanceID);
-				_InstanceID = 0;
+				Unregistory(_ObjectId);
+				_ObjectId = ObjectId.None;
 			}
 
 			OnEnable();

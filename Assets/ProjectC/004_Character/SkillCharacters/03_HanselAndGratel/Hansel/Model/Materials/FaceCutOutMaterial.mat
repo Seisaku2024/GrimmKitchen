@@ -8,10 +8,14 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FaceCutOutMaterial
-  m_Shader: {fileID: 4800000, guid: 6459b2db96a08ca41b0f9b39dc7ad59e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9294844b15dca184d914a632279b24e1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
+  - EFFECT_HUE_VARIATION
+  - UNITY_UI_ALPHACLIP
+  - _REQUIRE_UV2
+  m_InvalidKeywords:
   - N_F_CO_ON
   - N_F_DDMD_ON
   - N_F_EAL_ON
@@ -21,18 +25,12 @@ Material:
   - N_F_TRANSAFFSHA_ON
   - N_F_TRANS_ON
   - _UVSET_UV0
-  m_InvalidKeywords:
-  - EFFECT_HUE_VARIATION
-  - UNITY_UI_ALPHACLIP
-  - _REQUIRE_UV2
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
-  stringTagMap:
-    RenderType: TransparentCutout
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3

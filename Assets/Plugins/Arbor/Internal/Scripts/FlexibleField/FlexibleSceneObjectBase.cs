@@ -16,6 +16,7 @@ namespace Arbor
 	/// Class to handle a flexible scene objects (GameObject, Component) type reference method there is more than one. Inherit and use it.
 	/// </summary>
 #endif
+	[System.Serializable]
 	public abstract class FlexibleSceneObjectBase : IFlexibleField, IAssignFieldReceiver
 	{
 #if ARBOR_DOC_JA

@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 
 namespace Arbor
 {
@@ -22,12 +23,12 @@ namespace Arbor
 	{
 		private readonly struct BlockKey : IEquatable<BlockKey>
 		{
-			private readonly int _InstanceID;
+			private readonly ObjectId _ObjectId;
 			private readonly int _MaterialIndex;
 
-			public BlockKey(int instanceID, int materialIndex)
+			public BlockKey(ObjectId objectId, int materialIndex)
 			{
-				_InstanceID = instanceID;
+				_ObjectId = objectId;
 				_MaterialIndex = materialIndex;
 			}
 
@@ -38,12 +39,12 @@ namespace Arbor
 
 			public bool Equals(BlockKey other)
 			{
-				return _InstanceID == other._InstanceID && _MaterialIndex == other._MaterialIndex;
+				return _ObjectId == other._ObjectId && _MaterialIndex == other._MaterialIndex;
 			}
 
 			public override int GetHashCode()
 			{
-				return (_InstanceID, _MaterialIndex).GetHashCode();
+				return (_ObjectId, _MaterialIndex).GetHashCode();
 			}
 
 			public static bool operator ==(BlockKey l, BlockKey r)
@@ -107,9 +108,9 @@ namespace Arbor
 				return null;
 			}
 
-			int instanceID = renderer.GetInstanceID();
+			var objectId = new ObjectId(renderer);
 
-			BlockKey key = new BlockKey(instanceID, materialIndex);
+			BlockKey key = new BlockKey(objectId, materialIndex);
 
 			RendererPropertyBlock block = null;
 			if (!s_Blocks.TryGetValue(key, out block))
@@ -236,7 +237,7 @@ namespace Arbor
 
 		Material GetMaterial()
 		{
-			using (Arbor.Pool.ListPool<Material>.Get(out var materials))
+			using (ListPool<Material>.Get(out var materials))
 			{
 				_Renderer.GetSharedMaterials(materials);
 

@@ -5,6 +5,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Pool;
 
 namespace Arbor.Calculators
 {
@@ -68,7 +69,7 @@ namespace Arbor.Calculators
 			Renderer renderer = _Renderer.value as Renderer;
 			if (renderer != null)
 			{
-				using (Arbor.Pool.ListPool<Material>.Get(out var materials))
+				using (ListPool<Material>.Get(out var materials))
 				{
 					renderer.GetSharedMaterials(materials);
 					var material = materials[_MaterialIndex.value];

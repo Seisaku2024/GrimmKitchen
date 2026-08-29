@@ -136,7 +136,7 @@ namespace ArborEditor.UIElements
 			_ListView.AddToClassList(s_ListViewName);
 			_ListView.onAfterDeserialize += OnAfterDeserialize;
 
-			_ListView.RegisterCallbackSelectionChange(OnSelectionChange);
+			_ListView.selectionChanged += OnSelectionChange;
 
 			hierarchy.Add(_ListView);
 
@@ -408,7 +408,7 @@ namespace ArborEditor.UIElements
 
 		public void ListViewRefresh()
 		{
-			_ListView.RebuildList();
+			_ListView.Rebuild();
 		}
 
 		public void RebuildViewNodes()
