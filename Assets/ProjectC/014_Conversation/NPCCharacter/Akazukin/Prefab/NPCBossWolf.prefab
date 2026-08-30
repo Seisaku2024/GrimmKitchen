@@ -173,10 +173,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042588187785272867}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -285,6 +285,7 @@ VisualEffect:
   m_StartSeed: 0
   m_ResetSeedOnPlay: 1
   m_AllowInstancing: 1
+  m_ReleaseInstanceOnDisable: 0
   m_ResourceVersion: 1
   m_PropertySheet:
     m_Float:
@@ -327,6 +328,11 @@ VFXRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_StaticBatchInfo:
@@ -346,9 +352,11 @@ VFXRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
 --- !u!1 &6496608921911458834
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 6496608921911458834}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -936,7 +944,7 @@ PrefabInstance:
       value: 88.41788
       objectReference: {fileID: 0}
     - target: {fileID: -616078597962655844, guid: ee5a2276a264ad34e886e884df35c392, type: 3}
-      propertyPath: m_BlendShapeWeights.Array.data[29]
+      propertyPath: 'm_BlendShapeWeights.Array.data[29]'
       value: 45
       objectReference: {fileID: 0}
     - target: {fileID: -231810085779191077, guid: ee5a2276a264ad34e886e884df35c392, type: 3}
@@ -1672,7 +1680,7 @@ LODGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3364632428692200523}
-  serializedVersion: 2
+  serializedVersion: 3
   m_LocalReferencePoint: {x: -0.0000019073486, y: 1.7465131, z: -0.20087528}
   m_Size: 4.0695977
   m_FadeMode: 1
@@ -1688,6 +1696,7 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8434933323227874897}
   m_Enabled: 1
+  m_GlobalIlluminationLOD: 0
 --- !u!1 &3671411228062434665 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8033432721383316365, guid: ee5a2276a264ad34e886e884df35c392, type: 3}

@@ -32,8 +32,8 @@ public class CutSceneManager : BaseManager<CutSceneManager>
     [SerializeField] private SerializableDictionary<CutSceneNumber, TimelineAsset> m_dictionaryTimeline;
 
     [Header("会話用のカメラセット")]
-    [SerializeField] private CinemachineVirtualCamera m_conversationCamera;
-    public CinemachineVirtualCamera conversationcamera => m_conversationCamera;
+    [SerializeField] private CinemachineCamera m_conversationCamera;
+    public CinemachineCamera conversationcamera => m_conversationCamera;
 
     [Header("トランジションコントローラー")]
     [SerializeField]
@@ -202,9 +202,12 @@ public class CutSceneManager : BaseManager<CutSceneManager>
     public void SetConversationCammeraDiastance(float dist)
     {
         if (m_conversationCamera == null) return;
-        var transposer = m_conversationCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
-
-        transposer.m_CameraDistance = dist; 
+        // CinemachineFramingTransposerは非推奨のためCinemachinePositionComposerに置き換え
+        var composer = m_conversationCamera.GetComponent<CinemachineOrbitalFollow>();
+        if (composer != null)
+        {
+            composer.Radius = dist;
+        }
     }
 
 

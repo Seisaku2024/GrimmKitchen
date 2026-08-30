@@ -1,10 +1,9 @@
+using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-using Cysharp.Threading.Tasks;
-
 using UniRx;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BaseGameStateUpdateController<T> : BaseManager<T> where T : MonoBehaviour
 {
@@ -61,23 +60,23 @@ public class BaseGameStateUpdateController<T> : BaseManager<T> where T : MonoBeh
     virtual protected async UniTask StartStateUpdate()
     {
 
+        
+
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
         try
         {
-            // 初期状態をセットする
             SetInitializeState();
+           
 
             await ChangeState(m_currentStateDevice.Value);
-            cancelToken.ThrowIfCancellationRequested();
 
+            cancelToken.ThrowIfCancellationRequested();
         }
         catch (System.OperationCanceledException ex)
         {
             Debug.Log(ex);
         }
-
-        await UniTask.CompletedTask;
 
     }
 
@@ -102,29 +101,22 @@ public class BaseGameStateUpdateController<T> : BaseManager<T> where T : MonoBeh
 
     private async UniTask ChangeState(int _state)
     {
+
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
         try
         {
-            // 終了処理
             await ExitState();
-            cancelToken.ThrowIfCancellationRequested();
 
-            // 削除処理
             await DestroyState();
-            cancelToken.ThrowIfCancellationRequested();
-
-            // ステートを変更・実行開始
+            
             m_currentStateDevice.Value = _state;
+
             await SetStateUpdate();
-
-            // 初期化処理
+            
             await InitializeState();
-            cancelToken.ThrowIfCancellationRequested();
-
-            // 実行処理
+            
             await UpdateState();
-            cancelToken.ThrowIfCancellationRequested();
 
         }
         catch (System.OperationCanceledException ex)
@@ -153,36 +145,47 @@ public class BaseGameStateUpdateController<T> : BaseManager<T> where T : MonoBeh
     /// </summary>
     private async UniTask UpdateState()
     {
-        if (m_currentStateUpdate == null) return;
+       
+
+        if (m_currentStateUpdate == null)
+        {
+            return;
+        }
 
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
         try
         {
-            while (cancelToken != null)
+            while (!cancelToken.IsCancellationRequested)
             {
-                // 実行処理
+               
                 await m_currentStateUpdate.OnUpdate();
+
+               
+
                 cancelToken.ThrowIfCancellationRequested();
 
-                // ステート処理が終了すれば
-                if (m_currentStateUpdate.IsEnd == true)
+               
+
+                
+          
+                if (m_currentStateUpdate.IsEnd)
                 {
-                    // ステートを変更
+                   
+
                     await ChangeState(m_currentStateUpdate.GetNextState());
                     return;
                 }
 
-                await UniTask.DelayFrame(1);
-                cancelToken.ThrowIfCancellationRequested();
+                await UniTask.DelayFrame(1, cancellationToken: cancelToken);
             }
         }
-        catch (System.OperationCanceledException ex)
+        catch (System.OperationCanceledException)
         {
-            Debug.Log(ex);
+            Debug.LogWarning("[UpdateState] Cancelled");
         }
 
-        await UniTask.CompletedTask;
+        
     }
 
 

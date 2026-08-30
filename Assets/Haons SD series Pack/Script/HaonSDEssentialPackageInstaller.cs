@@ -35,7 +35,7 @@ public class HaonSDEssentialPackageInstaller : MonoBehaviour
         {
             if (!UnityEditor.EditorApplication.isPlayingOrWillChangePlaymode)
             {
-                CheckAndInstall();
+                //CheckAndInstall();
             }
         };
     }
@@ -44,7 +44,7 @@ public class HaonSDEssentialPackageInstaller : MonoBehaviour
     private void Awake()
     {
         // Check for missing packages when scene is executed
-        CheckAndInstall();
+        //CheckAndInstall();
     }
 
     /// <summary>
@@ -54,7 +54,8 @@ public class HaonSDEssentialPackageInstaller : MonoBehaviour
     public void ForceCheckAndInstall()
     {
 #if UNITY_EDITOR
-        CheckAndInstall();
+
+        //CheckAndInstall();
 #endif
     }
 

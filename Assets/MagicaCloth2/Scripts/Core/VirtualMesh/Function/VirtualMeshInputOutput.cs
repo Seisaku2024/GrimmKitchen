@@ -718,6 +718,11 @@ namespace MagicaCloth2
 
                         var pos2 = localPositions[vindex];
                         float dist = math.distance(pos, pos2);
+                        if (dist < 1e-06f)
+                        {
+                            //Debug.LogWarning($"Distance0 (A)! [{i}]({pos}), [{vindex}]({pos2})");
+                            continue;
+                        }
                         if (dist < firstDist)
                         {
                             firstDist = dist;
@@ -727,6 +732,7 @@ namespace MagicaCloth2
                     if (firstIndex >= 0)
                     {
                         link.Add(firstIndex);
+                        //Debug.Log($"LinkA ({i}) -> ({firstIndex})");
 
                         // 次に最初に接続した距離の少し大きめの範囲にあるすべての頂点をつなげる
                         // ただし順次接続の場合は距離は無視する
@@ -751,9 +757,15 @@ namespace MagicaCloth2
 
                             var pos2 = localPositions[vindex];
                             float dist = math.distance(pos, pos2);
+                            if (dist < 1e-06f)
+                            {
+                                //Debug.LogWarning($"Distance0 (B)! [{i}]({pos}), [{vindex}]({pos2})");
+                                continue;
+                            }
                             if (dist <= firstDist)
                             {
                                 link.Add(vindex);
+                                //Debug.Log($"LinkA ({i}) -> ({vindex})");
                             }
                         }
                     }
@@ -775,7 +787,7 @@ namespace MagicaCloth2
                     var link = linkList[i];
                     if (link.Length == 0)
                     {
-                        Debug.LogError($"Connection 0! [{i}]");
+                        //Debug.LogError($"Connection 0! [{i}]");
                         continue;
                     }
                     if (link.Length == 1)
@@ -807,13 +819,22 @@ namespace MagicaCloth2
                                 var pos2 = localPositions[vindex2];
                                 var v2 = pos2 - pos;
 
+                                // 縮退トライアングル判定
+                                if (MathUtility.IsSafeTriangle(pos, pos1, pos2) == false)
+                                {
+                                    //Debug.LogWarning($"縮退トライアングル ({i},{vindex1},{vindex2})");
+                                    continue;
+                                }
+
                                 // 頂点位置が同じ座標を考慮
-                                if (math.lengthsq(v1) < 1e-06f || math.lengthsq(v2) < 1e-06f)
+                                if (math.length(v1) < 1e-06f || math.length(v2) < 1e-06f)
                                     continue;
 
                                 // ペアの角度が一定以上ならばスキップする
                                 var ang = math.degrees(MathUtility.Angle(v1, v2));
-                                if (ang >= Define.System.ProxyMeshBoneClothTriangleAngle)
+                                if (ang >= Define.System.ProxyMeshBoneClothTriangleValidAngle)
+                                    continue;
+                                if (ang <= Define.System.ProxyMeshBoneClothTriangleInvalidAngle)
                                     continue;
 
                                 // ３つのルートラインにまたがる接続は行わない

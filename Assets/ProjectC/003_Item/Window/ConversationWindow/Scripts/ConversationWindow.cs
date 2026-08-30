@@ -460,23 +460,50 @@ public class ConversationWindow : BaseWindow
 
     private void StopCameraAngle()
     {
-        PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Camera).Disable();
+        //PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Camera).Disable();
 
+        //// 非推奨APIから推奨APIへ変更
+        //var freelookCamera = FindAnyObjectByType<CinemachineFreeLook>();
+        //if (freelookCamera)
+        //    freelookCamera.GetComponent<CinemachineInputProvider>().enabled = false;
 
-        var freelookCamera = FindObjectOfType<CinemachineFreeLook>();
-        if (freelookCamera)
-            freelookCamera.GetComponent<CinemachineInputProvider>().enabled = false;
+        PlayerInputManager.instance
+        .GetInputActionMap(InputActionMapTypes.Camera)
+        .Disable();
+
+        var cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
+        if (cinemachineCamera == null)
+            return;
+
+        var inputController =
+            cinemachineCamera.GetComponent<CinemachineInputAxisController>();
+
+        if (inputController != null)
+            inputController.enabled = false;
 
     }
 
     private void RestartCameraAngle()
     {
-        PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Camera).Enable();
-        var freelookCamera = FindObjectOfType<CinemachineFreeLook>();
-        if (freelookCamera == null) return;
-        freelookCamera.GetComponent<CinemachineInputProvider>().enabled = true;
+        //PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Camera).Enable();
+        //// 非推奨APIから推奨APIへ変更
+        //var freelookCamera = FindAnyObjectByType<CinemachineFreeLook>();
+        //if (freelookCamera == null) return;
+        //freelookCamera.GetComponent<CinemachineInputProvider>().enabled = true;
 
+        PlayerInputManager.instance
+        .GetInputActionMap(InputActionMapTypes.Camera)
+        .Enable();
 
+        var cinemachineCamera = FindAnyObjectByType<CinemachineCamera>();
+        if (cinemachineCamera == null)
+            return;
+
+        var inputController =
+            cinemachineCamera.GetComponent<CinemachineInputAxisController>();
+
+        if (inputController != null)
+            inputController.enabled = true;
 
     }
 

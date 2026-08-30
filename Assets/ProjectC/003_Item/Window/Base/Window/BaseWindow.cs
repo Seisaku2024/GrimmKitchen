@@ -377,7 +377,7 @@ public class BaseWindow : MonoBehaviour
         m_alreadyPauseGameTimeScale = Time.timeScale;
 
         // 停止
-        Time.timeScale = 0.0f;
+       Time.timeScale = 0.0f;
     }
 
 
