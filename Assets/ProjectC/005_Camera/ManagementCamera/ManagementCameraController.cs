@@ -10,8 +10,7 @@ public class ManagementCameraController : MonoBehaviour
     // ほぼAimCameraControllerと同じ（山本）
 
 
-    private IInputProvider m_inputProvider = null;
-    [SerializeField] private CinemachineInputProvider m_cinemachineInputProvider = null;
+    private ICameraInputProvider m_cameraInputProvider = null;
     [SerializeField]
     private CinemachineVirtualCamera m_useVirtualCamera = null;
     [SerializeField]
@@ -28,16 +27,17 @@ public class ManagementCameraController : MonoBehaviour
 
     void Awake()
     {
-        m_inputProvider = new PlayerInputProvider();
+        m_cameraInputProvider = new CameraInputProvider();
         m_setCameraQuartanionX =  m_useVirtualCamera.transform.rotation.x;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Vector2 cameraInput = m_cameraInputProvider.CameraXY;
         Vector2 inputVec = new(
-            m_cinemachineInputProvider.GetAxisValue(0) * -1.0f,// リバースしているので-1をかける
-            m_cinemachineInputProvider.GetAxisValue(1));
+            cameraInput.x * -1.0f,// リバースしているので-1をかける
+            cameraInput.y);
        
         m_vertical.m_InputAxisValue = inputVec.y;
         m_horizontal.m_InputAxisValue = inputVec.x;
