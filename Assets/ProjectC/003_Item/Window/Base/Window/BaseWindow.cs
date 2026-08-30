@@ -530,7 +530,7 @@ public class BaseWindow : MonoBehaviour
     {
         // typeで指定した型の全てのオブジェクトを配列で取得し,その要素数分繰り返す
 
-        GameObject[] allObjects = FindObjectsOfType<GameObject>(true);
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsInactive.Include);
         foreach (GameObject obj in allObjects)
         {
 

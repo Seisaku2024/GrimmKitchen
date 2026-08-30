@@ -16,7 +16,7 @@ public class NewItemManager : BasePocketItemDataController
         // インスタンスがなければ作成
         if (instance == null)
         {
-            instance = (NewItemManager)FindObjectOfType(typeof(NewItemManager));
+            instance = FindAnyObjectByType<NewItemManager>();
 
             DontDestroyOnLoad(gameObject);
 

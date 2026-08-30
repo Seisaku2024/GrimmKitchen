@@ -20,7 +20,7 @@ public class StorageManager : BasePocketItemDataController
         // インスタンスがなければ作成
         if (instance == null)
         {
-            instance = (StorageManager)FindObjectOfType(typeof(StorageManager));
+            instance = FindAnyObjectByType<StorageManager>();
 
             DontDestroyOnLoad(gameObject);
 

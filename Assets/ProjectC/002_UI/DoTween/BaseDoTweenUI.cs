@@ -17,6 +17,7 @@ public abstract class BaseDoTweenUI : MonoBehaviour
     //===================================
     // イージングの種類
 
+    [System.Serializable]
     protected class BaseEasingData
     {
         [BoxGroup("イージング")]

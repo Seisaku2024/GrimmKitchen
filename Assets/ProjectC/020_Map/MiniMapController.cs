@@ -93,7 +93,7 @@ public class MiniMapController : MonoBehaviour
         // メインスレッドで Unity API を実行
         await UniTask.SwitchToMainThread();
 
-        m_miniMapTargetDirection = FindObjectOfType<MiniMapTargetDirection>();
+        m_miniMapTargetDirection = FindAnyObjectByType<MiniMapTargetDirection>();
     }
 
     [ContextMenu("SearchMapShowObjectTargetDirection")]
@@ -103,7 +103,7 @@ public class MiniMapController : MonoBehaviour
         await UniTask.SwitchToMainThread();
 
         m_mapShowDirectionList = 
-            new List<MapShowObjectTargetDirection>(FindObjectsOfType<MapShowObjectTargetDirection>());
+            new List<MapShowObjectTargetDirection>(FindObjectsByType<MapShowObjectTargetDirection>());
 
         // カメラに引っ付いてるやつを取得
         foreach (var mapShowDirection in m_mapShowDirectionList)

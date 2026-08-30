@@ -17,7 +17,7 @@ public class ManagementStorageManager : BasePocketItemDataController
         // インスタンスがなければ作成
         if (instance == null)
         {
-            instance = (ManagementStorageManager)FindObjectOfType(typeof(ManagementStorageManager));
+            instance = FindAnyObjectByType<ManagementStorageManager>();
 
             DontDestroyOnLoad(gameObject);
 

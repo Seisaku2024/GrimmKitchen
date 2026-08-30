@@ -31,7 +31,7 @@ public class HandlingTableServiceAssignEvent : BaseAssignEventObject
     {
         if (m_playerPutEvent == null)
         {
-            m_playerPutEvent = FindObjectOfType<PlayerPutTableServiceAssignEvent>();
+            m_playerPutEvent = FindAnyObjectByType<PlayerPutTableServiceAssignEvent>();
         }
 
         base.Start();

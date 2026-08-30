@@ -16,7 +16,7 @@ public class BaseManager<T> : MonoBehaviour where T : MonoBehaviour
         // インスタンスがなければ作成
         if (instance == null)
         {
-            instance = (T)FindObjectOfType(typeof(T));
+            instance = FindAnyObjectByType<T>();
             if (m_dontDestroyOnLoad)
             {
                 DontDestroyOnLoad(gameObject);

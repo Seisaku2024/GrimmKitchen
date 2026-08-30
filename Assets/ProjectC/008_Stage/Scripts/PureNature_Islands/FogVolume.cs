@@ -18,7 +18,7 @@ public class FogVolumeTrigger : MonoBehaviour
     private void Start()
     {
         // Attempt to find the Environment Manager in the scene
-        envManager = FindObjectOfType<BK_EnvironmentManager>();
+        envManager = FindAnyObjectByType<BK_EnvironmentManager>();
     }
 
     private void OnTriggerEnter(Collider other)

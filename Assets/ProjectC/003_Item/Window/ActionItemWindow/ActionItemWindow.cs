@@ -101,7 +101,7 @@ public class ActionItemWindow : BaseWindow
             }
 
         }
-        catch (System.OperationCanceledException ex)
+        catch (System.OperationCanceledException)
         {
 
         }

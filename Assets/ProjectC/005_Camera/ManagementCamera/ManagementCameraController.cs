@@ -34,6 +34,14 @@ public class ManagementCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Timeline がカメラを制御している間は、通常操作の値で Virtual Camera を
+        // 上書きしない。特に入場ムービーのブレンド中にこの更新が走ると、
+        // Timeline のショットと競合してカメラが意図しない方向へ動いてしまう。
+        if (CutSceneManager.instance != null && CutSceneManager.instance.IsCutScenePlay())
+        {
+            return;
+        }
+
         Vector2 cameraInput = m_cameraInputProvider.CameraXY;
         Vector2 inputVec = new(
             cameraInput.x * -1.0f,// リバースしているので-1をかける

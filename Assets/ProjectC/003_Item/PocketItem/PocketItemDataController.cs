@@ -752,14 +752,6 @@ public partial class BasePocketItemDataController : MonoBehaviour
     /// </summary>
     virtual public int GetFreeSpaceNum()
     {
-        int num = 0;
-
-        /* foreach(var data in m_itemDataRC)
-         {
-             if (data == null) continue;
-             num+=
-         }*/
-
         return m_listMaxSize - m_itemDataRC.Count;
     }
 
@@ -770,7 +762,7 @@ public partial class BasePocketItemDataController : MonoBehaviour
     public static void OnInitialize()
     {
         // コントローラーを全て取得
-        var controllerList = FindObjectsOfType<BasePocketItemDataController>();
+        var controllerList = FindObjectsByType<BasePocketItemDataController>();
         foreach (var controller in controllerList)
         {
             controller.ItemDataRC.Clear();

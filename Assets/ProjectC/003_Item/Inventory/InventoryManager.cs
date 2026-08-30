@@ -20,7 +20,7 @@ public class InventoryManager : BasePocketItemDataController
         // インスタンスがなければ作成
         if (instance == null)
         {
-            instance = (InventoryManager)FindObjectOfType(typeof(InventoryManager));
+            instance = FindAnyObjectByType<InventoryManager>();
 
             DontDestroyOnLoad(gameObject);
 
