@@ -221,10 +221,8 @@ public class SelectManagementWindow : BaseWindow
                             return;
                         }
 
-                        var controller = Instantiate(m_selectStaffWindowController);
-                        await controller.CreateWindow<BaseWindow>();
+                        await OpenChildWindow(m_selectStaffWindowController);
                         cancelToken.ThrowIfCancellationRequested();
-                        if (controller != null) Destroy(controller.gameObject);
                         break;
                     }
                 // 提供料理選択ウィンドウを作成
@@ -236,10 +234,8 @@ public class SelectManagementWindow : BaseWindow
                             return;
                         }
 
-                        var controller = Instantiate(m_provideFoodWindowController);
-                        await controller.CreateWindow<BaseWindow>();
+                        await OpenChildWindow(m_provideFoodWindowController);
                         cancelToken.ThrowIfCancellationRequested();
-                        if (controller != null) Destroy(controller.gameObject);
                         break;
                     }
                 case ButtonID.Challenge:
@@ -250,10 +246,8 @@ public class SelectManagementWindow : BaseWindow
                             return;
                         }
 
-                        var controller = Instantiate(m_challengeWindowController);
-                        await controller.CreateWindow<BaseWindow>();
+                        await OpenChildWindow(m_challengeWindowController);
                         cancelToken.ThrowIfCancellationRequested();
-                        if (controller != null) Destroy(controller.gameObject);
 
                         break;
                     }
@@ -265,6 +259,26 @@ public class SelectManagementWindow : BaseWindow
         }
     }
 
+
+    private async UniTask OpenChildWindow(WindowController prefab)
+    {
+        var controller = Instantiate(prefab);
+        try
+        {
+            await controller.CreateWindow<BaseWindow>();
+        }
+        finally
+        {
+            // 子を閉じた直後も、経営開始ウィンドウが残っていれば操作停止を継続する。
+            if (this != null && !destroyCancellationToken.IsCancellationRequested &&
+                PlayerInputManager.instance != null)
+            {
+                PlayerInputManager.instance.SetGameplayInputActive(false);
+            }
+
+            if (controller != null) Destroy(controller.gameObject);
+        }
+    }
 
     private async UniTask<bool> StartManagement()
     {
