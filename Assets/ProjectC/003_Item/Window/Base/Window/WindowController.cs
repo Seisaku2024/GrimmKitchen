@@ -103,12 +103,14 @@ public class WindowController : MonoBehaviour
             return null;
         }
 
+        // 子ウィンドウを閉じても、親ウィンドウによる入力停止を維持する。
+        var inputManager = PlayerInputManager.instance;
+        bool wasPlayerInputEnabled = inputManager.GetInputActionMap(InputActionMapTypes.Player)?.enabled ?? false;
+        bool wasCameraInputEnabled = inputManager.GetInputActionMap(InputActionMapTypes.Camera)?.enabled ?? false;
+
         try
         {
-            //if (_bSelef == false)
-            {
-                PlayerInputManager.instance.SetGameplayInputActive(false);
-            }
+            inputManager.SetGameplayInputActive(false);
 
             // ウィンドウを作成
             m_createWindowObject = Instantiate(m_window, transform);
@@ -174,10 +176,6 @@ public class WindowController : MonoBehaviour
 
             }
 
-            //UnlockCameraInput();
-            PlayerInputManager.instance.SetGameplayInputActive(true);
-
-
             // ウィンドウを返す
             return window as WindowType;
 
@@ -188,6 +186,15 @@ public class WindowController : MonoBehaviour
 
             // エラーが出た場合ウィンドウを削除する
             DestroyWindow();
+        }
+        finally
+        {
+            // キャンセルや初期化失敗でも、開始前の状態へ戻す。
+            if (inputManager != null)
+            {
+                inputManager.SetActionMapActive(InputActionMapTypes.Player, wasPlayerInputEnabled);
+                inputManager.SetActionMapActive(InputActionMapTypes.Camera, wasCameraInputEnabled);
+            }
         }
 
         return null;
@@ -200,8 +207,6 @@ public class WindowController : MonoBehaviour
 
         // ウィンドウを作成
         await CreateWindow<BaseWindow>();
-
-        PlayerInputManager.instance.SetGameplayInputActive(true);
 
         await UniTask.CompletedTask;
     }
