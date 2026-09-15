@@ -44,6 +44,36 @@ public class SelectStaffWindow : BaseWindow
     //                      実行処理
     //===========================================================
 
+    // この画面が停止したロビーのカメラ操作だけを、画面終了時に復元する。
+    private readonly List<ManagementCameraController> m_pausedCameraControllers = new();
+
+    private void OnEnable()
+    {
+        foreach (var cameraController in FindObjectsByType<ManagementCameraController>(FindObjectsSortMode.None))
+        {
+            if (cameraController.gameObject.scene != gameObject.scene || !cameraController.enabled)
+            {
+                continue;
+            }
+
+            m_pausedCameraControllers.Add(cameraController);
+            cameraController.enabled = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var cameraController in m_pausedCameraControllers)
+        {
+            if (cameraController != null)
+            {
+                cameraController.enabled = true;
+            }
+        }
+
+        m_pausedCameraControllers.Clear();
+    }
+
     public override async UniTask OnInitialize()
     {
         #region nullチェック

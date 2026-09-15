@@ -42,6 +42,15 @@ public class ManagementCameraController : MonoBehaviour
             return;
         }
 
+        // 操作説明と開始演出が終わるまでは、経営シーンのカメラ操作を停止する。
+        var managementState = ManagementStateUpdateManager.instance;
+        if (managementState != null && managementState.gameObject.scene == gameObject.scene &&
+            (managementState.IsState((int)ManagementStateUpdateInfo.ManagementState.Standby) ||
+             managementState.IsState((int)ManagementStateUpdateInfo.ManagementState.Start)))
+        {
+            return;
+        }
+
         Vector2 cameraInput = m_cameraInputProvider.CameraXY;
         Vector2 inputVec = new(
             cameraInput.x * -1.0f,// リバースしているので-1をかける
